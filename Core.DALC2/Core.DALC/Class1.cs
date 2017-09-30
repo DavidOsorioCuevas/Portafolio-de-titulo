@@ -8,6 +8,6 @@ namespace Core.DALC
 {
     public class Class1
     {
-        //hola!
+        //hola! cambio 2
     }
 }
