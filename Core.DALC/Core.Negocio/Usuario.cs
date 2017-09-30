@@ -9,7 +9,7 @@ namespace Core.Negocio
     public class Usuario
     {
 
-
+        //hola 
         public string NOMBRE_USUARIO { get; set; }
         public string PASSWORD { get; set; }
         public string NOMBRE { get; set; }
