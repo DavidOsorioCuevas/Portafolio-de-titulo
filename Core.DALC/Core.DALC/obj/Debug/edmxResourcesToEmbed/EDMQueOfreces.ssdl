@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModeloQueOfreces.Store" Provider="Oracle.DataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CATEGORIA_OFERTA">
+    <Key>
+      <PropertyRef Name="ID_CATEGORIA" />
+    </Key>
+    <Property Name="ID_CATEGORIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar2" MaxLength="30" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'MISOFERTASDB.COMPORTAMIENTO' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="COMPORTAMIENTO">
+          <Property Name="PRODUCTO_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="FECHA" Type="date" />
+        </EntityType>-->
+  <EntityType Name="CUPON">
+    <Key>
+      <PropertyRef Name="ID_CUPON" />
+    </Key>
+    <Property Name="ID_CUPON" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="FECHA_HASTA" Type="date" />
+    <Property Name="ACTIVO" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="USUARIO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DESCUENTO">
+    <Key>
+      <PropertyRef Name="ID_DESCUENTO" />
+    </Key>
+    <Property Name="ID_DESCUENTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="MIN_PUNTOS" Type="number" Precision="38" Scale="0" />
+    <Property Name="MAX_PUNTOS" Type="number" Precision="38" Scale="0" />
+    <Property Name="FECHA_CADUCIDAD" Type="date" />
+    <Property Name="PORCENTAJE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TOPE" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'MISOFERTASDB.DESCUENTO_HAS_RUBRO' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="DESCUENTO_HAS_RUBRO">
+          <Property Name="DESCUENTO_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="RUBRO_ID" Type="number" Precision="38" Scale="0" />
+        </EntityType>-->
+  <EntityType Name="EMP">
+    <Key>
+      <PropertyRef Name="EMPNO" />
+    </Key>
+    <Property Name="EMPNO" Type="number" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="ENAME" Type="varchar2" MaxLength="10" />
+    <Property Name="JOB" Type="varchar2" MaxLength="9" />
+    <Property Name="MGR" Type="number" Precision="4" Scale="0" />
+    <Property Name="HIREDATE" Type="date" />
+    <Property Name="SAL" Type="number" Precision="7" Scale="2" />
+    <Property Name="COMM" Type="number" Precision="7" Scale="2" />
+    <Property Name="DEPTNO" Type="number" Precision="2" Scale="0" />
+  </EntityType>
+  <EntityType Name="OFERTA">
+    <Key>
+      <PropertyRef Name="ID_OFERTA" />
+    </Key>
+    <Property Name="ID_OFERTA" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IMAGEN_OFERTA" Type="varchar2" MaxLength="50" />
+    <Property Name="MIN_PRODUCTO" Type="number" Precision="38" Scale="0" />
+    <Property Name="MAX_PRODUCTO" Type="number" Precision="38" Scale="0" />
+    <Property Name="ESTADO_OFERTA" Type="char" MaxLength="1" />
+    <Property Name="FECHA_OFERTA" Type="date" />
+    <Property Name="SUCURSALES_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CATEGORIA_OFERTA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PRODUCTO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PERFIL">
+    <Key>
+      <PropertyRef Name="ID_PERFIL" />
+    </Key>
+    <Property Name="ID_PERFIL" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TIPO" Type="varchar2" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'MISOFERTASDB.PREFERENCIA' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="PREFERENCIA">
+          <Property Name="USUARIO_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="RUBRO_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="CANTIDAD" Type="number" Precision="38" Scale="0" />
+        </EntityType>-->
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_PRODUCTO" />
+    </Key>
+    <Property Name="ID_PRODUCTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="RUBRO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PRECIO" Type="number" Precision="38" Scale="0" />
+    <Property Name="SKU" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="CODIGO_INTERNO" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar2" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar2" MaxLength="50" />
+    <Property Name="OFERTA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RETAIL">
+    <Key>
+      <PropertyRef Name="ID_RETAIL" />
+    </Key>
+    <Property Name="ID_RETAIL" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="RUT" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar2" MaxLength="20" />
+    <Property Name="RAZON_SOCIAL" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="TELEFONO" Type="number" Precision="38" Scale="0" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="DIRECCION" Type="varchar2" MaxLength="50" />
+    <Property Name="CIUDAD" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="RUBRO">
+    <Key>
+      <PropertyRef Name="ID_RUBRO" />
+    </Key>
+    <Property Name="ID_RUBRO" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TIPO" Type="varchar2" MaxLength="20" />
+    <Property Name="DESCRIPCIÓN" Type="varchar2" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SUCURSALES">
+    <Key>
+      <PropertyRef Name="ID_SUCURSAL" />
+    </Key>
+    <Property Name="ID_SUCURSAL" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="RUT" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="RAZON_SOCIAL" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar2" MaxLength="20" />
+    <Property Name="DIRECCION" Type="varchar2" MaxLength="50" />
+    <Property Name="TELEFONO" Type="number" Precision="38" Scale="0" />
+    <Property Name="CIUDAD" Type="varchar2" MaxLength="30" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="50" />
+    <Property Name="RETAIL_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ID_PERFIL" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE_USUARIO" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar2" MaxLength="1000" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="APELLIDO" Type="varchar2" MaxLength="50" />
+    <Property Name="RUT" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="ACTIVO" Type="char" MaxLength="1" />
+    <Property Name="SUCURSAL_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FECHA_NACIMIENTO" Type="date" />
+    <Property Name="SEXO" Type="char" MaxLength="1" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="NUMERO_CELULAR" Type="number" Precision="38" Scale="0" />
+    <Property Name="PUNTOS" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="VALORACION">
+    <Key>
+      <PropertyRef Name="ID_VALORACION" />
+    </Key>
+    <Property Name="ID_VALORACION" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CODE_IMAGEN" Type="varchar2" MaxLength="50" />
+    <Property Name="CALIFICACION" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="RUBRO" Type="varchar2" MaxLength="50" />
+    <Property Name="USUARIO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="OFERTA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FECHA_VALORACION" Type="date" />
+  </EntityType>
+  <Association Name="CUPON_USUARIO_FK">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="CUPON" Type="Self.CUPON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="CUPON">
+        <PropertyRef Name="USUARIO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OFERTA_CATEGORIA_OFERTA_FK">
+    <End Role="CATEGORIA_OFERTA" Type="Self.CATEGORIA_OFERTA" Multiplicity="1" />
+    <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIA_OFERTA">
+        <PropertyRef Name="ID_CATEGORIA" />
+      </Principal>
+      <Dependent Role="OFERTA">
+        <PropertyRef Name="CATEGORIA_OFERTA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OFERTA_PRODUCTO_FK">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Principal>
+      <Dependent Role="OFERTA">
+        <PropertyRef Name="PRODUCTO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OFERTA_SUCURSALES_FK">
+    <End Role="SUCURSALES" Type="Self.SUCURSALES" Multiplicity="1" />
+    <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUCURSALES">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Principal>
+      <Dependent Role="OFERTA">
+        <PropertyRef Name="SUCURSALES_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRODUCTO_OFERTA_FK">
+    <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OFERTA">
+        <PropertyRef Name="ID_OFERTA" />
+      </Principal>
+      <Dependent Role="PRODUCTO">
+        <PropertyRef Name="OFERTA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRODUCTO_RUBRO_FK">
+    <End Role="RUBRO" Type="Self.RUBRO" Multiplicity="1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RUBRO">
+        <PropertyRef Name="ID_RUBRO" />
+      </Principal>
+      <Dependent Role="PRODUCTO">
+        <PropertyRef Name="RUBRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SUCURSALES_RETAIL_FK">
+    <End Role="RETAIL" Type="Self.RETAIL" Multiplicity="1" />
+    <End Role="SUCURSALES" Type="Self.SUCURSALES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RETAIL">
+        <PropertyRef Name="ID_RETAIL" />
+      </Principal>
+      <Dependent Role="SUCURSALES">
+        <PropertyRef Name="RETAIL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C007000">
+    <End Role="EMP" Type="Self.EMP" Multiplicity="0..1" />
+    <End Role="EMP1" Type="Self.EMP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMP">
+        <PropertyRef Name="EMPNO" />
+      </Principal>
+      <Dependent Role="EMP1">
+        <PropertyRef Name="MGR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_PERFIL_FK">
+    <End Role="PERFIL" Type="Self.PERFIL" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERFIL">
+        <PropertyRef Name="ID_PERFIL" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="ID_PERFIL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VALORACION_OFERTA_FK">
+    <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="1" />
+    <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OFERTA">
+        <PropertyRef Name="ID_OFERTA" />
+      </Principal>
+      <Dependent Role="VALORACION">
+        <PropertyRef Name="OFERTA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VALORACION_USUARIO_FK">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="VALORACION" Type="Self.VALORACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="VALORACION">
+        <PropertyRef Name="USUARIO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModeloQueOfrecesStoreContainer">
+    <EntitySet Name="CATEGORIA_OFERTA" EntityType="Self.CATEGORIA_OFERTA" Schema="MISOFERTASDB" store:Type="Tables" />
+    <EntitySet Name="CUPON" EntityType="Self.CUPON" Schema="MISOFERTASDB" store:Type="Tables" />
+    <EntitySet Name="DESCUENTO" EntityType="Self.DESCUENTO" Schema="MISOFERTASDB" store:Type="Tables" />
+    <EntitySet Name="EMP" EntityType="Self.EMP" Schema="MISOFERTASDB" store:Type="Tables" />
+    <EntitySet Name="OFERTA" EntityType="Self.OFERTA" Schema="MISOFERTASDB" store:Type="Tables" />
+    <EntitySet Name="PERFIL" EntityType="Self.PERFIL" Schema="MISOFERTASDB" store:Type="Tables" />
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="MISOFERTASDB" store:Type="Tables" />
+    <EntitySet Name="RETAIL" EntityType="Self.RETAIL" Schema="MISOFERTASDB" store:Type="Tables" />
+    <EntitySet Name="RUBRO" EntityType="Self.RUBRO" Schema="MISOFERTASDB" store:Type="Tables" />
+    <EntitySet Name="SUCURSALES" EntityType="Self.SUCURSALES" Schema="MISOFERTASDB" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="MISOFERTASDB" store:Type="Tables" />
+    <EntitySet Name="VALORACION" EntityType="Self.VALORACION" Schema="MISOFERTASDB" store:Type="Tables" />
+    <AssociationSet Name="CUPON_USUARIO_FK" Association="Self.CUPON_USUARIO_FK">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="CUPON" EntitySet="CUPON" />
+    </AssociationSet>
+    <AssociationSet Name="OFERTA_CATEGORIA_OFERTA_FK" Association="Self.OFERTA_CATEGORIA_OFERTA_FK">
+      <End Role="CATEGORIA_OFERTA" EntitySet="CATEGORIA_OFERTA" />
+      <End Role="OFERTA" EntitySet="OFERTA" />
+    </AssociationSet>
+    <AssociationSet Name="OFERTA_PRODUCTO_FK" Association="Self.OFERTA_PRODUCTO_FK">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="OFERTA" EntitySet="OFERTA" />
+    </AssociationSet>
+    <AssociationSet Name="OFERTA_SUCURSALES_FK" Association="Self.OFERTA_SUCURSALES_FK">
+      <End Role="SUCURSALES" EntitySet="SUCURSALES" />
+      <End Role="OFERTA" EntitySet="OFERTA" />
+    </AssociationSet>
+    <AssociationSet Name="PRODUCTO_OFERTA_FK" Association="Self.PRODUCTO_OFERTA_FK">
+      <End Role="OFERTA" EntitySet="OFERTA" />
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="PRODUCTO_RUBRO_FK" Association="Self.PRODUCTO_RUBRO_FK">
+      <End Role="RUBRO" EntitySet="RUBRO" />
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="SUCURSALES_RETAIL_FK" Association="Self.SUCURSALES_RETAIL_FK">
+      <End Role="RETAIL" EntitySet="RETAIL" />
+      <End Role="SUCURSALES" EntitySet="SUCURSALES" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C007000" Association="Self.SYS_C007000">
+      <End Role="EMP" EntitySet="EMP" />
+      <End Role="EMP1" EntitySet="EMP" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_PERFIL_FK" Association="Self.USUARIO_PERFIL_FK">
+      <End Role="PERFIL" EntitySet="PERFIL" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="VALORACION_OFERTA_FK" Association="Self.VALORACION_OFERTA_FK">
+      <End Role="OFERTA" EntitySet="OFERTA" />
+      <End Role="VALORACION" EntitySet="VALORACION" />
+    </AssociationSet>
+    <AssociationSet Name="VALORACION_USUARIO_FK" Association="Self.VALORACION_USUARIO_FK">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="VALORACION" EntitySet="VALORACION" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

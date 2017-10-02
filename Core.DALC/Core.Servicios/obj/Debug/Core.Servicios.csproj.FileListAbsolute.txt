@@ -1,0 +1,14 @@
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\bin\Core.Servicios.dll.config
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\bin\Core.Servicios.dll
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\bin\Core.Servicios.pdb
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\bin\Core.Negocio.dll
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\bin\Core.DALC.dll
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\bin\EntityFramework.dll
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\bin\Core.Negocio.pdb
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\bin\Core.DALC.pdb
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\bin\EntityFramework.xml
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\obj\Debug\Core.Servicios.csprojResolveAssemblyReference.cache
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\obj\Debug\Core.Servicios.dll
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\obj\Debug\Core.Servicios.pdb
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\bin\Newtonsoft.Json.dll
+C:\Users\winbase\Desktop\Proyecto\Core.DALC\Core.Servicios\bin\Newtonsoft.Json.xml
