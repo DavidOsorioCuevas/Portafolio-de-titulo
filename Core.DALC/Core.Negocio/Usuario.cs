@@ -11,6 +11,8 @@ namespace Core.Negocio
     public class Usuario
     {
         //comentario usuarios.
+
+            //assasasasasa
         public int IdUsuario { get; set; }
         public int IdPerfil { get; set; }
         public string NombreUsuario { get; set; }
