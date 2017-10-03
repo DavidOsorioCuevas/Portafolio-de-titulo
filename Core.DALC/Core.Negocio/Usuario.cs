@@ -10,7 +10,7 @@ namespace Core.Negocio
 {
     public class Usuario
     {
-
+        //comentario usuarios.
         public int IdUsuario { get; set; }
         public int IdPerfil { get; set; }
         public string NombreUsuario { get; set; }
