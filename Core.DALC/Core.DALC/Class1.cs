@@ -8,5 +8,6 @@ namespace Core.DALC
 {
     public class Class1
     {
+        //comentario 1 
     }
 }
