@@ -33,7 +33,7 @@ namespace Core.Negocio
                 Usuario usuario = new Usuario();
 
                 usuario.IdUsuario = (int)item.ID_USUARIO;
-                usuario.IdPerfil = (int)item.ID_PERFIL;
+                usuario.IdPerfil = (int)item.PERFIL_ID;
                 usuario.NombreUsuario = item.NOMBRE_USUARIO;
                 usuario.Password = item.PASSWORD;
                 usuario.Nombre = item.NOMBRE;

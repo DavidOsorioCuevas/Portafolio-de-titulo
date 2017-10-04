@@ -47,7 +47,7 @@ namespace Core.Negocio
 
                 ru.ID_RUBRO = this.IdRubro;
                 ru.TIPO = this.TipoRubro;
-                ru.DESCRIPCIÓN = this.Descripcion;
+               // ru.DESCRIPCIÓN = this.Descripcion;
                 ctx.RUBRO.Add(ru);
                 ctx.SaveChanges();
 
@@ -69,7 +69,7 @@ namespace Core.Negocio
                 DALC.RUBRO ru = ctx.RUBRO.First(r => r.ID_RUBRO == IdRubro);
 
                 ru.TIPO = this.TipoRubro;
-                ru.DESCRIPCIÓN = this.Descripcion;
+               // ru.DESCRIPCIÓN = this.Descripcion;
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

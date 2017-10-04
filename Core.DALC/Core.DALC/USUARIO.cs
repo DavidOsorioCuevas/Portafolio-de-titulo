@@ -21,7 +21,7 @@ namespace Core.DALC
         }
     
         public decimal ID_USUARIO { get; set; }
-        public decimal ID_PERFIL { get; set; }
+        public decimal PERFIL_ID { get; set; }
         public string NOMBRE_USUARIO { get; set; }
         public string PASSWORD { get; set; }
         public string NOMBRE { get; set; }
@@ -31,12 +31,18 @@ namespace Core.DALC
         public decimal SUCURSAL_ID { get; set; }
         public Nullable<System.DateTime> FECHA_NACIMIENTO { get; set; }
         public string SEXO { get; set; }
+        public string NACIONALIDAD { get; set; }
+        public string PASSAPORTE { get; set; }
+        public Nullable<decimal> COMUNA_ID { get; set; }
+        public Nullable<decimal> REGION_ID { get; set; }
         public string EMAIL { get; set; }
         public Nullable<decimal> NUMERO_CELULAR { get; set; }
         public Nullable<decimal> PUNTOS { get; set; }
     
+        public virtual COMUNA COMUNA { get; set; }
         public virtual ICollection<CUPON> CUPON { get; set; }
         public virtual PERFIL PERFIL { get; set; }
+        public virtual REGION REGION { get; set; }
         public virtual ICollection<VALORACION> VALORACION { get; set; }
     }
 }

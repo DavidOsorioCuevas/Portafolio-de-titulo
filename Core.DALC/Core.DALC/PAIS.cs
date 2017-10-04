@@ -12,17 +12,10 @@ namespace Core.DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class RUBRO
+    public partial class PAIS
     {
-        public RUBRO()
-        {
-            this.PRODUCTO = new HashSet<PRODUCTO>();
-        }
-    
-        public decimal ID_RUBRO { get; set; }
-        public string TIPO { get; set; }
-        public string DESCRIPCION { get; set; }
-    
-        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
+        public decimal ID_PAIS { get; set; }
+        public string NOMBRE { get; set; }
+        public string SIGLA_PAIS { get; set; }
     }
 }

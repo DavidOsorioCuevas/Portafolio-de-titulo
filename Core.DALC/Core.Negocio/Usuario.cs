@@ -82,7 +82,7 @@ namespace Core.Negocio
                 Core.DALC.USUARIO usuario = ctx.USUARIO.First(u => u.NOMBRE_USUARIO == NombreUsuario);
 
                 this.IdUsuario = (int)usuario.ID_USUARIO;
-                this.IdPerfil = (int)usuario.ID_PERFIL;
+                this.IdPerfil = (int)usuario.PERFIL_ID;
                 this.NombreUsuario = usuario.NOMBRE_USUARIO;
                 this.Password = usuario.PASSWORD;
                 this.Nombre = usuario.NOMBRE;
@@ -112,7 +112,7 @@ namespace Core.Negocio
                 Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities(); // estas dos lineas wn.. la conexion esta mala al ado         
                 Core.DALC.USUARIO usuario = ctx.USUARIO.First(u => u.ID_USUARIO == IdUsuario);
                
-                this.IdPerfil = (int)usuario.ID_PERFIL;
+                this.IdPerfil = (int)usuario.PERFIL_ID;
                 this.NombreUsuario = usuario.NOMBRE_USUARIO;
                 this.Password = usuario.PASSWORD;
                 this.Nombre = usuario.NOMBRE;
@@ -145,7 +145,7 @@ namespace Core.Negocio
                 Core.DALC.USUARIO usuario = new Core.DALC.USUARIO();
 
                 usuario.ID_USUARIO = this.IdUsuario;
-                usuario.ID_PERFIL = this.IdPerfil;
+                usuario.PERFIL_ID = this.IdPerfil;
                 usuario.NOMBRE_USUARIO = this.NombreUsuario;
                 usuario.PASSWORD = this.Password;
                 usuario.NOMBRE = this.Nombre;
@@ -227,7 +227,7 @@ namespace Core.Negocio
                 DALC.USUARIO usuario = ctx.USUARIO.First(u => u.ID_USUARIO == IdUsuario);
 
                
-                usuario.ID_PERFIL = this.IdPerfil;
+                usuario.PERFIL_ID = this.IdPerfil;
                 usuario.NOMBRE_USUARIO = this.NombreUsuario;
                 usuario.PASSWORD = this.Password;
                 usuario.NOMBRE = this.Nombre;

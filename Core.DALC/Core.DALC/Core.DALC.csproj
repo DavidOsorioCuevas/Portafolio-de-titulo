@@ -58,6 +58,9 @@
       <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="COMUNA.cs">
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
+    </Compile>
     <Compile Include="CUPON.cs">
       <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
@@ -79,10 +82,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EDMQueOfreces.edmx</DependentUpon>
     </Compile>
-    <Compile Include="EMP.cs">
+    <Compile Include="OFERTA.cs">
       <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
-    <Compile Include="OFERTA.cs">
+    <Compile Include="PAIS.cs">
       <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="PERFIL.cs">
@@ -92,6 +95,9 @@
       <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="REGION.cs">
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
+    </Compile>
     <Compile Include="RETAIL.cs">
       <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
@@ -109,17 +115,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
     <EntityDeploy Include="EDMQueOfreces.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EDMQueOfreces.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="EDMQueOfreces.edmx.diagram">
       <DependentUpon>EDMQueOfreces.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="EDMQueOfreces.Context.tt">
@@ -132,9 +139,6 @@
       <DependentUpon>EDMQueOfreces.edmx</DependentUpon>
       <LastGenOutput>EDMQueOfreces.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

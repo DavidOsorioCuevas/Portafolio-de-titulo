@@ -12,27 +12,24 @@ namespace Core.DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class SUCURSALES
+    public partial class COMUNA
     {
-        public SUCURSALES()
+        public COMUNA()
         {
             this.OFERTA = new HashSet<OFERTA>();
+            this.RETAIL = new HashSet<RETAIL>();
+            this.SUCURSALES = new HashSet<SUCURSALES>();
+            this.USUARIO = new HashSet<USUARIO>();
         }
     
-        public decimal ID_SUCURSAL { get; set; }
-        public string RUT { get; set; }
-        public string RAZON_SOCIAL { get; set; }
+        public decimal ID_COMUNA { get; set; }
         public string NOMBRE { get; set; }
-        public string DIRECCION { get; set; }
-        public Nullable<decimal> TELEFONO { get; set; }
-        public Nullable<decimal> COMUNA_ID { get; set; }
-        public Nullable<decimal> REGION_ID { get; set; }
-        public string EMAIL { get; set; }
-        public decimal RETAIL_ID { get; set; }
+        public decimal REGION_ID { get; set; }
     
-        public virtual COMUNA COMUNA { get; set; }
-        public virtual ICollection<OFERTA> OFERTA { get; set; }
         public virtual REGION REGION { get; set; }
-        public virtual RETAIL RETAIL { get; set; }
+        public virtual ICollection<OFERTA> OFERTA { get; set; }
+        public virtual ICollection<RETAIL> RETAIL { get; set; }
+        public virtual ICollection<SUCURSALES> SUCURSALES { get; set; }
+        public virtual ICollection<USUARIO> USUARIO { get; set; }
     }
 }

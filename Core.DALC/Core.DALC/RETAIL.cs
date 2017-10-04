@@ -26,8 +26,11 @@ namespace Core.DALC
         public Nullable<decimal> TELEFONO { get; set; }
         public string EMAIL { get; set; }
         public string DIRECCION { get; set; }
-        public string CIUDAD { get; set; }
+        public Nullable<decimal> REGION_ID { get; set; }
+        public Nullable<decimal> COMUNA_ID { get; set; }
     
+        public virtual COMUNA COMUNA { get; set; }
+        public virtual REGION REGION { get; set; }
         public virtual ICollection<SUCURSALES> SUCURSALES { get; set; }
     }
 }
