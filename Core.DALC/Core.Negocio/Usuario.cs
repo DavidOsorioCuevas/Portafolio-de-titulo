@@ -20,6 +20,10 @@ namespace Core.Negocio
         public char? Activo { get; set; }
         public int IdSucursal { get; set; }
         public DateTime? FechaNacimiento { get; set; }
+        public string Nacionalidad { get; set; }
+        public string Pasaporte { get; set; }
+        public int IdComuna { get; set; }
+        public int Idregion { get; set; }
         public char? Sexo { get; set; }
         public string Email { get; set; }
         public int NumeroCelular { get; set; }
@@ -224,7 +228,7 @@ namespace Core.Negocio
             try
             {
                 DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
-                DALC.USUARIO usuario = ctx.USUARIO.First(u => u.ID_USUARIO == IdUsuario);
+                DALC.USUARIO usuario = ctx.USUARIO.First(u => u.NOMBRE_USUARIO == NombreUsuario);
 
                
                 usuario.PERFIL_ID = this.IdPerfil;

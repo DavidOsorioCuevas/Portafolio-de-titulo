@@ -29,8 +29,7 @@ namespace QOfreces.WPF
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
             Usuario user = new Usuario();
-
-            user.IdUsuario = int.Parse(txtIdUser.Text);
+            
             user.IdPerfil = int.Parse(txtPerfil.Text);
             user.NombreUsuario = txtNombreUsuario.Text;
             user.Password = txtPass.Text;
@@ -87,7 +86,7 @@ namespace QOfreces.WPF
         {
             Usuario user = new Usuario();
 
-            user.IdUsuario = int.Parse(txtIdUser.Text);
+
             user.IdPerfil = int.Parse(txtPerfil.Text);
             user.NombreUsuario = txtNombreUsuario.Text;
             user.Password = txtPass.Text;

@@ -30,7 +30,6 @@
                 <ColumnDefinition Width="106*"/>
                 <ColumnDefinition Width="99*"/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="lbl1" Content="Id Usuario" HorizontalAlignment="Left" Margin="14,181,0,0" VerticalAlignment="Top"/>
             <Label x:Name="labe1" Content="NombreUsuario" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top"/>
             <Label x:Name="labe7" Content="Passowod" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top"/>
             <Label x:Name="labe10" Content="Nombre" HorizontalAlignment="Left" Margin="254,110,0,0" VerticalAlignment="Top"/>
@@ -51,11 +50,19 @@
             <TextBox x:Name="txtSexo" HorizontalAlignment="Left" Height="23" Margin="117,94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="txtFechaN" HorizontalAlignment="Left" Height="23" Margin="117,43,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="0,113,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-            <TextBox x:Name="txtIdUser" HorizontalAlignment="Left" Height="23" Margin="117,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
             <Label x:Name="lbl1_Copy" Content="Activo" HorizontalAlignment="Left" Margin="254,186,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="txtActivo" HorizontalAlignment="Left" Height="23" Margin="0,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-            <Label x:Name="lbl1_Copy2" Content="Puntos" HorizontalAlignment="Left" Margin="19,212,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtPunt" HorizontalAlignment="Left" Height="23" Margin="117,212,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Width="120"/>
+            <Label x:Name="lbl1_Copy2" Content="Puntos" HorizontalAlignment="Left" Margin="14,186,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtPunt" HorizontalAlignment="Left" Height="23" Margin="117,187,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.531"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
             <Label x:Name="lbl1_Copy1" Content="Usuario Eliminar" HorizontalAlignment="Left" Margin="307,220,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="102" Height="29"/>
             <TextBox x:Name="txtIdEliminar" HorizontalAlignment="Left" Height="23" Margin="108,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
             <Button x:Name="btnListar" Content="Listar Usuarios" Grid.Column="1" HorizontalAlignment="Left" Margin="179,97,0,0" VerticalAlignment="Top" Width="108" Click="btnListar_Click"/>
