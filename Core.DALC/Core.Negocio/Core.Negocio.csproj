@@ -58,6 +58,7 @@
     <Compile Include="Descuento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Retail.cs" />
+    <Compile Include="Rubro.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioColection.cs" />
   </ItemGroup>
