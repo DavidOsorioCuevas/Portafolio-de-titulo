@@ -37,7 +37,7 @@ namespace Core.Negocio
             this.TipoRubro = string.Empty;
             this.Descripcion = string.Empty;
         }
-        //probar metodo
+        //OK
         public bool CrearRubro()
         {
             try
@@ -47,7 +47,7 @@ namespace Core.Negocio
 
                 ru.ID_RUBRO = this.IdRubro;
                 ru.TIPO = this.TipoRubro;
-               // ru.DESCRIPCIÓN = this.Descripcion;
+                ru.DESCRIPCION = this.Descripcion;
                 ctx.RUBRO.Add(ru);
                 ctx.SaveChanges();
 
@@ -66,10 +66,10 @@ namespace Core.Negocio
             try
             {
                 DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
-                DALC.RUBRO ru = ctx.RUBRO.First(r => r.ID_RUBRO == IdRubro);
+                DALC.RUBRO ru = ctx.RUBRO.First(r => r.TIPO == TipoRubro);
 
                 ru.TIPO = this.TipoRubro;
-               // ru.DESCRIPCIÓN = this.Descripcion;
+                ru.DESCRIPCION = this.Descripcion;
                 ctx.SaveChanges();
                 ctx = null;
                 return true;
@@ -80,13 +80,13 @@ namespace Core.Negocio
                 return false;
             }
         }
-        //probar metodo
+        //OK
         public bool EliminarRubro()
         {
             try
             {
                 DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
-                DALC.RUBRO ru = ctx.RUBRO.First(r => r.ID_RUBRO == IdRubro);
+                DALC.RUBRO ru = ctx.RUBRO.First(r => r.TIPO == TipoRubro);
 
                 ctx.Entry(ru).State = System.Data.EntityState.Deleted;
                 ctx.SaveChanges();

@@ -48,6 +48,24 @@
   <wsdl:message name="IService1_ReadAll_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadAllResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_CrearRubro_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearRubro" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CrearRubro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearRubroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarRubro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarRubro" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarRubro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarRubroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarRubro_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRubro" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarRubro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRubroResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="ValidarUsuarioWPF">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ValidarUsuarioWPF" message="tns:IService1_ValidarUsuarioWPF_InputMessage" />
@@ -76,6 +94,18 @@
     <wsdl:operation name="ReadAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAll" message="tns:IService1_ReadAll_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllResponse" message="tns:IService1_ReadAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearRubro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearRubro" message="tns:IService1_CrearRubro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearRubroResponse" message="tns:IService1_CrearRubro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRubro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActualizarRubro" message="tns:IService1_ActualizarRubro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ActualizarRubroResponse" message="tns:IService1_ActualizarRubro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRubro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarRubro" message="tns:IService1_EliminarRubro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarRubroResponse" message="tns:IService1_EliminarRubro_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -136,6 +166,33 @@
     </wsdl:operation>
     <wsdl:operation name="ReadAll">
       <soap:operation soapAction="http://tempuri.org/IService1/ReadAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearRubro">
+      <soap:operation soapAction="http://tempuri.org/IService1/CrearRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRubro">
+      <soap:operation soapAction="http://tempuri.org/IService1/ActualizarRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRubro">
+      <soap:operation soapAction="http://tempuri.org/IService1/EliminarRubro" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -32,5 +32,17 @@ namespace QOfreces.WPF
         {
 
         }
+
+        private void btnVolver_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMantRub_Click(object sender, RoutedEventArgs e)
+        {
+            MantenedorRubro mant = new MantenedorRubro ();
+            mant.Owner = this;
+            mant.Show();
+        }
     }
 }

@@ -56,6 +56,24 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAll", ReplyAction="http://tempuri.org/IService1/ReadAllResponse")]
         System.Threading.Tasks.Task<string> ReadAllAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearRubro", ReplyAction="http://tempuri.org/IService1/CrearRubroResponse")]
+        bool CrearRubro(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearRubro", ReplyAction="http://tempuri.org/IService1/CrearRubroResponse")]
+        System.Threading.Tasks.Task<bool> CrearRubroAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarRubro", ReplyAction="http://tempuri.org/IService1/ActualizarRubroResponse")]
+        bool ActualizarRubro(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarRubro", ReplyAction="http://tempuri.org/IService1/ActualizarRubroResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarRubroAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarRubro", ReplyAction="http://tempuri.org/IService1/EliminarRubroResponse")]
+        bool EliminarRubro(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarRubro", ReplyAction="http://tempuri.org/IService1/EliminarRubroResponse")]
+        System.Threading.Tasks.Task<bool> EliminarRubroAsync(string json);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -139,6 +157,30 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> ReadAllAsync(string json) {
             return base.Channel.ReadAllAsync(json);
+        }
+        
+        public bool CrearRubro(string json) {
+            return base.Channel.CrearRubro(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CrearRubroAsync(string json) {
+            return base.Channel.CrearRubroAsync(json);
+        }
+        
+        public bool ActualizarRubro(string json) {
+            return base.Channel.ActualizarRubro(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarRubroAsync(string json) {
+            return base.Channel.ActualizarRubroAsync(json);
+        }
+        
+        public bool EliminarRubro(string json) {
+            return base.Channel.EliminarRubro(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarRubroAsync(string json) {
+            return base.Channel.EliminarRubroAsync(json);
         }
     }
 }

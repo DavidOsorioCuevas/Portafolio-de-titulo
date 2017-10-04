@@ -28,6 +28,13 @@ namespace Core.Servicios
         string LeerId(string json);
         [OperationContract]
         string ReadAll(string json);
+        [OperationContract]
+        bool CrearRubro(string json);
+        [OperationContract]
+        bool ActualizarRubro(string json);
+        [OperationContract]
+        bool EliminarRubro(string json);
+
 
 
 

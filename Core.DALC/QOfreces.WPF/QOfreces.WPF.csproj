@@ -73,6 +73,9 @@
     <Compile Include="mainwindow.xaml.cs">
       <DependentUpon>mainwindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MantenedorRubro.xaml.cs">
+      <DependentUpon>MantenedorRubro.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MantenedorUsuarios.xaml.cs">
       <DependentUpon>MantenedorUsuarios.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="mainwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MantenedorRubro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
