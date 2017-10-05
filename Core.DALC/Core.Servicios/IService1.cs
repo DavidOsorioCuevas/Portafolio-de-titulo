@@ -20,6 +20,16 @@ namespace Core.Servicios
         string LeerUsuario(string json);
         [OperationContract]
         bool CrearUsuario(string json);
+        [OperationContract]
+        bool EliminarUsuario(string json);
+        [OperationContract]
+        bool ActualizarUsuario(string json);
+        [OperationContract]
+        string LeerId(string json);
+        [OperationContract]
+        string ReadAll(string json);
+
+
 
 
 
@@ -29,5 +39,5 @@ namespace Core.Servicios
 
 
 
-   
+
 }

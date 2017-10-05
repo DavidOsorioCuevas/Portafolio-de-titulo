@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs" />
+    <Compile Include="UsuarioColection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core.DALC\Core.DALC.csproj">

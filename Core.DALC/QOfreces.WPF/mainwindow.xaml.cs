@@ -46,18 +46,22 @@ namespace QOfreces.WPF
                     if (user.IdPerfil == 2)
                     {
                         Administrador ad = new Administrador();
+                        this.Close();
                         ad.Show();
+                        
                     }
                     else if (user.IdPerfil == 3)
                     {
 
                         EncargadoTienda encar = new EncargadoTienda();
+                        this.Close();
                         encar.Show();
 
                     }
                     else if (user.IdPerfil == 4)
                     {
                         Gerente ger = new Gerente();
+                        this.Close();
                         ger.Show();
                     }
                 }

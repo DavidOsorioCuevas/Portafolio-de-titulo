@@ -13,10 +13,44 @@ namespace Core.Servicios
     // NOTE: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service1.svc o Service1.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class Service1 : IService1
     {
+        public bool ActualizarUsuario(string json)
+        {
+            Negocio.Usuario u = new Negocio.Usuario(json);
+            return u.ActualizarUsuario();
+        }
+
         public bool CrearUsuario(string json)
         {
             Negocio.Usuario user = new Negocio.Usuario(json);
             return user.Create();
+        }
+
+        public bool EliminarUsuario(string json)
+        {
+            Negocio.Usuario user = new Negocio.Usuario(json);
+            return user.EliminarUsuario();
+        }
+
+        public string LeerId(string json)
+        {
+            try
+            {
+                Negocio.Usuario user = new Negocio.Usuario(json);
+                if (user.LeerId())
+                {
+                    return user.Serializar();
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
         }
 
         public string LeerUsuario(string json)
@@ -40,10 +74,16 @@ namespace Core.Servicios
             }
         }
 
+        public string ReadAll(string json)
+        {
+            Negocio.UsuarioColection collUser = new Negocio.UsuarioColection(json);
+            return collUser.ReadAll();
+        }
+
         public bool ValidarUsuarioWPF(string username, string password)
         {
             Negocio.Usuario user = new Negocio.Usuario();
-            
+
             return user.ValidarUsuarioWPF(username, password);
         }
 

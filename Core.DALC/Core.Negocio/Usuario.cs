@@ -107,6 +107,37 @@ namespace Core.Negocio
 
         }
 
+        public bool LeerId() {
+            try
+            {
+                Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities(); // estas dos lineas wn.. la conexion esta mala al ado         
+                Core.DALC.USUARIO usuario = ctx.USUARIO.First(u => u.ID_USUARIO == IdUsuario);
+               
+                this.IdPerfil = (int)usuario.ID_PERFIL;
+                this.NombreUsuario = usuario.NOMBRE_USUARIO;
+                this.Password = usuario.PASSWORD;
+                this.Nombre = usuario.NOMBRE;
+                this.Apellido = usuario.APELLIDO;
+                this.Rut = usuario.RUT;
+                this.Activo = Convert.ToChar(usuario.ACTIVO);
+                this.IdSucursal = (int)usuario.SUCURSAL_ID;
+                this.FechaNacimiento = usuario.FECHA_NACIMIENTO;
+                this.Sexo = Convert.ToChar(usuario.SEXO);
+                this.Email = usuario.EMAIL;
+                this.NumeroCelular = (int)usuario.NUMERO_CELULAR;
+                this.Puntos = (int)usuario.PUNTOS;
+                
+                ctx = null;
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
         public bool Create()
         {
             try
@@ -127,6 +158,7 @@ namespace Core.Negocio
                 usuario.SEXO = this.Sexo.ToString();
                 usuario.EMAIL = this.Email;
                 usuario.NUMERO_CELULAR = this.NumeroCelular;
+                usuario.PUNTOS = this.Puntos;
 
                 ctx.USUARIO.Add(usuario);
                 ctx.SaveChanges();
@@ -170,7 +202,8 @@ namespace Core.Negocio
             return false;
         }
 
-        public bool EliminarUsuario() {
+        public bool EliminarUsuario()
+        {
             try
             {
                 DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
@@ -178,15 +211,46 @@ namespace Core.Negocio
 
                 ctx.Entry(user).State = System.Data.EntityState.Deleted;
                 ctx.SaveChanges();
-                
+                return true;
             }
             catch (Exception ex)
             {
 
-                throw;
+                return false;
+            }
+        }
+
+        public bool ActualizarUsuario() {
+
+            try
+            {
+                DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
+                DALC.USUARIO usuario = ctx.USUARIO.First(u => u.ID_USUARIO == IdUsuario);
+
+               
+                usuario.ID_PERFIL = this.IdPerfil;
+                usuario.NOMBRE_USUARIO = this.NombreUsuario;
+                usuario.PASSWORD = this.Password;
+                usuario.NOMBRE = this.Nombre;
+                usuario.APELLIDO = this.Apellido;
+                usuario.RUT = this.Rut;
+                usuario.ACTIVO = this.Activo.ToString();
+                usuario.SUCURSAL_ID = this.IdSucursal;
+                usuario.FECHA_NACIMIENTO = this.FechaNacimiento;
+                usuario.SEXO = this.Sexo.ToString();
+                usuario.EMAIL = this.Email;
+                usuario.NUMERO_CELULAR = this.NumeroCelular;
+
+                ctx.SaveChanges();
+                ctx = null;
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                return false;
             }
 
-            return true;
         }
 
 
