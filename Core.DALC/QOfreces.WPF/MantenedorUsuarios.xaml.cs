@@ -125,6 +125,10 @@ namespace QOfreces.WPF
 
         private void btnListar_Click(object sender, RoutedEventArgs e)
         {
+            ListarUsuarios lst = new ListarUsuarios();
+            lst.Owner = this;
+            lst.Show();
+
         }
     }
 }

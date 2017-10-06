@@ -29,7 +29,11 @@ namespace Core.Servicios
 
         /*USUARIO COLLECTIONS*/
         [OperationContract]
-        string ReadAll(string json);
+        string ReadAll();
+
+        /*PRODUCTO COLLECTIONS*/
+        [OperationContract]
+        string ReadAllProductos(string json);
 
         /*RUBRO*/
         [OperationContract]

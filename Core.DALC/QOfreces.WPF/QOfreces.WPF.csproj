@@ -70,6 +70,9 @@
     <Compile Include="Gerente.xaml.cs">
       <DependentUpon>Gerente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListarUsuarios.xaml.cs">
+      <DependentUpon>ListarUsuarios.xaml</DependentUpon>
+    </Compile>
     <Compile Include="mainwindow.xaml.cs">
       <DependentUpon>mainwindow.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Gerente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListarUsuarios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

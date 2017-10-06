@@ -15,7 +15,7 @@ namespace Core.Negocio
         public UsuarioColection(string json)
         {
 
-            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(Usuario));
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(UsuarioColection));
             MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
 
             UsuarioColection list = (UsuarioColection)serializador.ReadObject(stream);
@@ -53,7 +53,7 @@ namespace Core.Negocio
 
         }
 
-        public string ReadAll()
+        public string ReadAllUsuarios()
         {
 
             var listaDA = new DALC.QueOfrecesEntities().USUARIO;

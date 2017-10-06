@@ -48,6 +48,12 @@
   <wsdl:message name="IService1_ReadAll_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadAllResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_ReadAllProductos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllProductos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllProductos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllProductosResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_CrearRubro_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearRubro" />
   </wsdl:message>
@@ -142,6 +148,10 @@
     <wsdl:operation name="ReadAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAll" message="tns:IService1_ReadAll_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllResponse" message="tns:IService1_ReadAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllProductos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllProductos" message="tns:IService1_ReadAllProductos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllProductosResponse" message="tns:IService1_ReadAllProductos_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CrearRubro">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearRubro" message="tns:IService1_CrearRubro_InputMessage" />
@@ -246,6 +256,15 @@
     </wsdl:operation>
     <wsdl:operation name="ReadAll">
       <soap:operation soapAction="http://tempuri.org/IService1/ReadAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllProductos">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllProductos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -1,0 +1,13 @@
+﻿<Window x:Class="QOfreces.WPF.ListarUsuarios"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QOfreces.WPF"
+        mc:Ignorable="d"
+        Title="ListarUsuarios" Height="426.852" Width="972.268">
+    <Grid>
+        <DataGrid x:Name="dataGridProductos" HorizontalAlignment="Left" Margin="25,67,0,0" VerticalAlignment="Top" Height="190" Width="902" SelectionChanged="dataGridProductos_SelectionChanged" Loaded="dataGridProductos_Loaded"/>
+        
+    </Grid>
+</Window>

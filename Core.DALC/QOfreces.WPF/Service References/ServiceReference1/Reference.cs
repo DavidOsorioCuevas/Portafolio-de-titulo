@@ -52,10 +52,16 @@ namespace QOfreces.WPF.ServiceReference1 {
         System.Threading.Tasks.Task<string> LeerIdAsync(string json);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAll", ReplyAction="http://tempuri.org/IService1/ReadAllResponse")]
-        string ReadAll(string json);
+        string ReadAll();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAll", ReplyAction="http://tempuri.org/IService1/ReadAllResponse")]
-        System.Threading.Tasks.Task<string> ReadAllAsync(string json);
+        System.Threading.Tasks.Task<string> ReadAllAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllProductos", ReplyAction="http://tempuri.org/IService1/ReadAllProductosResponse")]
+        string ReadAllProductos(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllProductos", ReplyAction="http://tempuri.org/IService1/ReadAllProductosResponse")]
+        System.Threading.Tasks.Task<string> ReadAllProductosAsync(string json);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearRubro", ReplyAction="http://tempuri.org/IService1/CrearRubroResponse")]
         bool CrearRubro(string json);
@@ -199,12 +205,20 @@ namespace QOfreces.WPF.ServiceReference1 {
             return base.Channel.LeerIdAsync(json);
         }
         
-        public string ReadAll(string json) {
-            return base.Channel.ReadAll(json);
+        public string ReadAll() {
+            return base.Channel.ReadAll();
         }
         
-        public System.Threading.Tasks.Task<string> ReadAllAsync(string json) {
-            return base.Channel.ReadAllAsync(json);
+        public System.Threading.Tasks.Task<string> ReadAllAsync() {
+            return base.Channel.ReadAllAsync();
+        }
+        
+        public string ReadAllProductos(string json) {
+            return base.Channel.ReadAllProductos(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadAllProductosAsync(string json) {
+            return base.Channel.ReadAllProductosAsync(json);
         }
         
         public bool CrearRubro(string json) {

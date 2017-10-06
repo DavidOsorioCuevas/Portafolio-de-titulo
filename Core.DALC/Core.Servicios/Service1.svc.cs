@@ -165,10 +165,17 @@ namespace Core.Servicios
             }
         }
 
-        public string ReadAll(string json)
+
+        public string ReadAll()
         {
-            Negocio.UsuarioColection collUser = new Negocio.UsuarioColection(json);
-            return collUser.ReadAll();
+            Negocio.UsuarioColection collUser = new Negocio.UsuarioColection();
+            return collUser.ReadAllUsuarios();
+        }
+
+        public string ReadAllProductos(string json)
+        {
+            Negocio.ProductoCollections collProd = new Negocio.ProductoCollections(json);
+            return collProd.ReadAllProductos();
         }
 
         public bool ValidarUsuarioWPF(string username, string password)
