@@ -13,7 +13,7 @@ namespace Core.Servicios
     public interface IService1
     {
 
-
+        /*USUARIO*/
         [OperationContract]
         bool ValidarUsuarioWPF(string username, string password);
         [OperationContract]
@@ -26,14 +26,47 @@ namespace Core.Servicios
         bool ActualizarUsuario(string json);
         [OperationContract]
         string LeerId(string json);
+
+        /*USUARIO COLLECTIONS*/
         [OperationContract]
         string ReadAll(string json);
+
+        /*RUBRO*/
         [OperationContract]
         bool CrearRubro(string json);
         [OperationContract]
         bool ActualizarRubro(string json);
         [OperationContract]
         bool EliminarRubro(string json);
+
+        /*Descuento*/
+        bool CrearDesc(string json);
+        [OperationContract]
+        bool ActualizarDesc(string json);
+        [OperationContract]
+        bool EliminarDesc(string json);
+
+        /*RETAIL*/
+        bool CrearRetail(string json);
+        [OperationContract]
+        bool ActualizarRetail(string json);
+        [OperationContract]
+        bool EliminarRetail(string json);
+
+        /*PRODUCTO*/
+        bool CrearProducto(string json);
+        [OperationContract]
+        bool ActualizarProducto(string json);
+        [OperationContract]
+        bool EliminarProducto(string json);
+
+        /*Oferta*/
+        bool CrearOferta(string json);
+        [OperationContract]
+        bool ActualizarOferta(string json);
+        [OperationContract]
+        bool EliminarOferta(string json);
+
 
 
 

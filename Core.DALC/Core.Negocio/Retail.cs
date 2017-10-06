@@ -72,8 +72,8 @@ namespace Core.Negocio
                 ret.TELEFONO = this.Telefono;
                 ret.EMAIL = this.Email;
                 ret.DIRECCION = this.Direccion;
-                //ret.IDREGION = this.IdRegion;
-                //re.IDComunda = this.IdComuna;
+                ret.REGION_ID = this.IdRegion;
+                ret.COMUNA_ID = this.IdComuna;
 
                 ctx.RETAIL.Add(ret);
                 ctx.SaveChanges();
@@ -103,8 +103,8 @@ namespace Core.Negocio
                 ret.TELEFONO = this.Telefono;
                 ret.EMAIL = this.Email;
                 ret.DIRECCION = this.Direccion;
-                //ret.IDREGION = this.IdRegion;
-                //re.IDComunda = this.IdComuna;
+                ret.REGION_ID = this.IdRegion;
+                ret.COMUNA_ID = this.IdComuna;
                 ctx.SaveChanges();
                 ctx = null;
 

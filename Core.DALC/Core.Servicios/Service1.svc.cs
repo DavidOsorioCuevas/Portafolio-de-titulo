@@ -13,6 +13,31 @@ namespace Core.Servicios
     // NOTE: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service1.svc o Service1.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class Service1 : IService1
     {
+        public bool ActualizarDesc(string json)
+        {
+            Negocio.Descuento desc = new Negocio.Descuento(json);
+            return desc.ActualizarDescuento();
+        }
+
+        public bool ActualizarOferta(string json)
+        {
+            Negocio.Oferta of = new Negocio.Oferta(json);
+            return of.ActualizarOferta();
+        }
+
+        public bool ActualizarProducto(string json)
+        {
+            Negocio.Producto prod = new Negocio.Producto(json);
+            return prod.ActualizarProducto();
+
+        }
+
+        public bool ActualizarRetail(string json)
+        {
+            Negocio.Retail ret = new Negocio.Retail(json);
+            return ret.ActualizarRetail();
+        }
+
         public bool ActualizarRubro(string json)
         {
             Negocio.Rubro ru = new Negocio.Rubro(json);
@@ -25,6 +50,30 @@ namespace Core.Servicios
             return u.ActualizarUsuario();
         }
 
+        public bool CrearDesc(string json)
+        {
+            Negocio.Descuento desc = new Negocio.Descuento(json);
+            return desc.CrearDescuento();
+        }
+
+        public bool CrearOferta(string json)
+        {
+            Negocio.Oferta of = new Negocio.Oferta(json);
+            return of.CrearOferta();
+        }
+
+        public bool CrearProducto(string json)
+        {
+            Negocio.Producto prod = new Negocio.Producto(json);
+            return prod.CrearProducto();
+        }
+
+        public bool CrearRetail(string json)
+        {
+            Negocio.Retail ret = new Negocio.Retail(json);
+            return ret.CrearRetail();
+        }
+
         public bool CrearRubro(string json)
         {
             Negocio.Rubro ru = new Negocio.Rubro(json);
@@ -35,6 +84,30 @@ namespace Core.Servicios
         {
             Negocio.Usuario user = new Negocio.Usuario(json);
             return user.Create();
+        }
+
+        public bool EliminarDesc(string json)
+        {
+            Negocio.Descuento desc = new Negocio.Descuento(json);
+            return desc.EliminarDescuento();
+        }
+
+        public bool EliminarOferta(string json)
+        {
+            Negocio.Oferta of = new Negocio.Oferta(json);
+            return of.EliminarOferta();
+        }
+
+        public bool EliminarProducto(string json)
+        {
+            Negocio.Producto prod = new Negocio.Producto(json);
+            return prod.EliminarProducto();
+        }
+
+        public bool EliminarRetail(string json)
+        {
+            Negocio.Retail ret = new Negocio.Retail(json);
+            return ret.EliminarRetail();
         }
 
         public bool EliminarRubro(string json)
