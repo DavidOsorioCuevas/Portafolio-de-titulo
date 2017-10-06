@@ -24,6 +24,8 @@ namespace QOfreces.WPF
             InitializeComponent();
         }
 
+        
+        
 
         private void dataGridProductos_Loaded(object sender, RoutedEventArgs e)
         {
@@ -31,28 +33,6 @@ namespace QOfreces.WPF
             string json = proxy.ReadAll();
             Core.Negocio.UsuarioColection collUser = new Core.Negocio.UsuarioColection(json);
             dataGridProductos.ItemsSource = collUser;
-            if (collUser != null)
-            {
-                MessageBox.Show("DATOS CARGADOS");
-            }
-            else
-            {
-                MessageBox.Show("ERROR");
-            }
-
-
-        }
-
-       private void dataGridProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-           
-        }
-        
-
-        public class checkedBoxIte
-        {
-            public string MyString { get; set; }
-            public bool MyBool { get; set; }
         }
     }
 }
