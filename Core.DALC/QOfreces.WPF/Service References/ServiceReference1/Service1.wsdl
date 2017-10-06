@@ -66,6 +66,54 @@
   <wsdl:message name="IService1_EliminarRubro_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarRubroResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_ActualizarDesc_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarDesc" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarDesc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarDescResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarDesc_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarDesc" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarDesc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarDescResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarRetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarRetail" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarRetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarRetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarRetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRetail" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarRetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarOferta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarOferta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarOferta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarOfertaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarOferta_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarOferta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarOferta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarOfertaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="ValidarUsuarioWPF">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ValidarUsuarioWPF" message="tns:IService1_ValidarUsuarioWPF_InputMessage" />
@@ -106,6 +154,38 @@
     <wsdl:operation name="EliminarRubro">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarRubro" message="tns:IService1_EliminarRubro_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarRubroResponse" message="tns:IService1_EliminarRubro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDesc">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActualizarDesc" message="tns:IService1_ActualizarDesc_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ActualizarDescResponse" message="tns:IService1_ActualizarDesc_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarDesc">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarDesc" message="tns:IService1_EliminarDesc_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarDescResponse" message="tns:IService1_EliminarDesc_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActualizarRetail" message="tns:IService1_ActualizarRetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ActualizarRetailResponse" message="tns:IService1_ActualizarRetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarRetail" message="tns:IService1_EliminarRetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarRetailResponse" message="tns:IService1_EliminarRetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActualizarProducto" message="tns:IService1_ActualizarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ActualizarProductoResponse" message="tns:IService1_ActualizarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarProducto" message="tns:IService1_EliminarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarProductoResponse" message="tns:IService1_EliminarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarOferta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActualizarOferta" message="tns:IService1_ActualizarOferta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ActualizarOfertaResponse" message="tns:IService1_ActualizarOferta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarOferta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarOferta" message="tns:IService1_EliminarOferta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarOfertaResponse" message="tns:IService1_EliminarOferta_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -193,6 +273,78 @@
     </wsdl:operation>
     <wsdl:operation name="EliminarRubro">
       <soap:operation soapAction="http://tempuri.org/IService1/EliminarRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDesc">
+      <soap:operation soapAction="http://tempuri.org/IService1/ActualizarDesc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarDesc">
+      <soap:operation soapAction="http://tempuri.org/IService1/EliminarDesc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRetail">
+      <soap:operation soapAction="http://tempuri.org/IService1/ActualizarRetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarRetail">
+      <soap:operation soapAction="http://tempuri.org/IService1/EliminarRetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <soap:operation soapAction="http://tempuri.org/IService1/ActualizarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProducto">
+      <soap:operation soapAction="http://tempuri.org/IService1/EliminarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarOferta">
+      <soap:operation soapAction="http://tempuri.org/IService1/ActualizarOferta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarOferta">
+      <soap:operation soapAction="http://tempuri.org/IService1/EliminarOferta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

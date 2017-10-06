@@ -74,6 +74,54 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarRubro", ReplyAction="http://tempuri.org/IService1/EliminarRubroResponse")]
         System.Threading.Tasks.Task<bool> EliminarRubroAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarDesc", ReplyAction="http://tempuri.org/IService1/ActualizarDescResponse")]
+        bool ActualizarDesc(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarDesc", ReplyAction="http://tempuri.org/IService1/ActualizarDescResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarDescAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarDesc", ReplyAction="http://tempuri.org/IService1/EliminarDescResponse")]
+        bool EliminarDesc(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarDesc", ReplyAction="http://tempuri.org/IService1/EliminarDescResponse")]
+        System.Threading.Tasks.Task<bool> EliminarDescAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarRetail", ReplyAction="http://tempuri.org/IService1/ActualizarRetailResponse")]
+        bool ActualizarRetail(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarRetail", ReplyAction="http://tempuri.org/IService1/ActualizarRetailResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarRetailAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarRetail", ReplyAction="http://tempuri.org/IService1/EliminarRetailResponse")]
+        bool EliminarRetail(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarRetail", ReplyAction="http://tempuri.org/IService1/EliminarRetailResponse")]
+        System.Threading.Tasks.Task<bool> EliminarRetailAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarProducto", ReplyAction="http://tempuri.org/IService1/ActualizarProductoResponse")]
+        bool ActualizarProducto(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarProducto", ReplyAction="http://tempuri.org/IService1/ActualizarProductoResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarProductoAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarProducto", ReplyAction="http://tempuri.org/IService1/EliminarProductoResponse")]
+        bool EliminarProducto(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarProducto", ReplyAction="http://tempuri.org/IService1/EliminarProductoResponse")]
+        System.Threading.Tasks.Task<bool> EliminarProductoAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarOferta", ReplyAction="http://tempuri.org/IService1/ActualizarOfertaResponse")]
+        bool ActualizarOferta(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarOferta", ReplyAction="http://tempuri.org/IService1/ActualizarOfertaResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarOfertaAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarOferta", ReplyAction="http://tempuri.org/IService1/EliminarOfertaResponse")]
+        bool EliminarOferta(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarOferta", ReplyAction="http://tempuri.org/IService1/EliminarOfertaResponse")]
+        System.Threading.Tasks.Task<bool> EliminarOfertaAsync(string json);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -181,6 +229,70 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> EliminarRubroAsync(string json) {
             return base.Channel.EliminarRubroAsync(json);
+        }
+        
+        public bool ActualizarDesc(string json) {
+            return base.Channel.ActualizarDesc(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarDescAsync(string json) {
+            return base.Channel.ActualizarDescAsync(json);
+        }
+        
+        public bool EliminarDesc(string json) {
+            return base.Channel.EliminarDesc(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarDescAsync(string json) {
+            return base.Channel.EliminarDescAsync(json);
+        }
+        
+        public bool ActualizarRetail(string json) {
+            return base.Channel.ActualizarRetail(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarRetailAsync(string json) {
+            return base.Channel.ActualizarRetailAsync(json);
+        }
+        
+        public bool EliminarRetail(string json) {
+            return base.Channel.EliminarRetail(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarRetailAsync(string json) {
+            return base.Channel.EliminarRetailAsync(json);
+        }
+        
+        public bool ActualizarProducto(string json) {
+            return base.Channel.ActualizarProducto(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarProductoAsync(string json) {
+            return base.Channel.ActualizarProductoAsync(json);
+        }
+        
+        public bool EliminarProducto(string json) {
+            return base.Channel.EliminarProducto(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarProductoAsync(string json) {
+            return base.Channel.EliminarProductoAsync(json);
+        }
+        
+        public bool ActualizarOferta(string json) {
+            return base.Channel.ActualizarOferta(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarOfertaAsync(string json) {
+            return base.Channel.ActualizarOfertaAsync(json);
+        }
+        
+        public bool EliminarOferta(string json) {
+            return base.Channel.EliminarOferta(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarOfertaAsync(string json) {
+            return base.Channel.EliminarOfertaAsync(json);
         }
     }
 }
