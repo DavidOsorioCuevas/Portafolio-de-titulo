@@ -419,6 +419,10 @@
         <Function Name="CATEGORIA_OFERTA_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="BDMISOFERTAS">
           <Parameter Name="IN_NOMBRE" Type="varchar2" Mode="In" />
         </Function>
+        <Function Name="COMUNA_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="BDMISOFERTAS">
+          <Parameter Name="IN_NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="IN_REGION_ID" Type="number" Mode="In" />
+        </Function>
         <Function Name="PAIS_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="BDMISOFERTAS">
           <Parameter Name="IN_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="IN_SIGLA_PAIS" Type="char" Mode="In" />
@@ -1170,6 +1174,10 @@
           <FunctionImport Name="CATEGORIA_OFERTA_CREAR">
             <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="COMUNA_CREAR">
+            <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="IN_REGION_ID" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="PAIS_CREAR">
             <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
             <Parameter Name="IN_SIGLA_PAIS" Mode="In" Type="String" />
@@ -1504,6 +1512,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="CATEGORIA_OFERTA_CREAR" FunctionName="QueOfrecesModel.Store.CATEGORIA_OFERTA_CREAR" />
+          <FunctionImportMapping FunctionImportName="COMUNA_CREAR" FunctionName="QueOfrecesModel.Store.COMUNA_CREAR" />
           <FunctionImportMapping FunctionImportName="PAIS_CREAR" FunctionName="QueOfrecesModel.Store.PAIS_CREAR" />
           <FunctionImportMapping FunctionImportName="PRODUCTO_CREAR" FunctionName="QueOfrecesModel.Store.PRODUCTO_CREAR" />
           <FunctionImportMapping FunctionImportName="REGION_CREAR" FunctionName="QueOfrecesModel.Store.REGION_CREAR" />

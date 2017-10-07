@@ -43,6 +43,14 @@ namespace Core.Servicios
         [OperationContract]
         bool EliminarRubro(string json);
 
+        /*RUBROCOLLECTIONS*/
+        [OperationContract]
+        string ReadAllRubros();
+
+        /*OFERTACOLLECTIONS*/
+        [OperationContract]
+        string ReadAllOfertas();
+
         /*Descuento*/
         [OperationContract]
         bool CrearDesc(string json);

@@ -81,6 +81,18 @@ namespace QOfreces.WPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarRubro", ReplyAction="http://tempuri.org/IService1/EliminarRubroResponse")]
         System.Threading.Tasks.Task<bool> EliminarRubroAsync(string json);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllRubros", ReplyAction="http://tempuri.org/IService1/ReadAllRubrosResponse")]
+        string ReadAllRubros();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllRubros", ReplyAction="http://tempuri.org/IService1/ReadAllRubrosResponse")]
+        System.Threading.Tasks.Task<string> ReadAllRubrosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertas", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasResponse")]
+        string ReadAllOfertas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertas", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasResponse")]
+        System.Threading.Tasks.Task<string> ReadAllOfertasAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearDesc", ReplyAction="http://tempuri.org/IService1/CrearDescResponse")]
         bool CrearDesc(string json);
         
@@ -267,6 +279,22 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> EliminarRubroAsync(string json) {
             return base.Channel.EliminarRubroAsync(json);
+        }
+        
+        public string ReadAllRubros() {
+            return base.Channel.ReadAllRubros();
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadAllRubrosAsync() {
+            return base.Channel.ReadAllRubrosAsync();
+        }
+        
+        public string ReadAllOfertas() {
+            return base.Channel.ReadAllOfertas();
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadAllOfertasAsync() {
+            return base.Channel.ReadAllOfertasAsync();
         }
         
         public bool CrearDesc(string json) {

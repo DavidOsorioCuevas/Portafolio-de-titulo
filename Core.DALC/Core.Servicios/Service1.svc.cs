@@ -172,10 +172,24 @@ namespace Core.Servicios
             return collUser.ReadAllUsuarios();
         }
 
+        public string ReadAllOfertas()
+        {
+            Negocio.OfertaCollections collUser = new Negocio.OfertaCollections();
+            return collUser.ReadAllOfertas();
+        }
+
+
+
         public string ReadAllProductos(string json)
         {
             Negocio.ProductoCollections collProd = new Negocio.ProductoCollections(json);
             return collProd.ReadAllProductos();
+        }
+
+        public string ReadAllRubros()
+        {
+            Negocio.RubroCollections collUser = new Negocio.RubroCollections();
+            return collUser.ReadAllRubros();
         }
 
         public bool ValidarUsuarioWPF(string username, string password)

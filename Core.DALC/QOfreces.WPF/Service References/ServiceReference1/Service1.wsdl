@@ -72,6 +72,18 @@
   <wsdl:message name="IService1_EliminarRubro_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarRubroResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_ReadAllRubros_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllRubros" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllRubros_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllRubrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllOfertas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllOfertas" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllOfertas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllOfertasResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_CrearDesc_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearDesc" />
   </wsdl:message>
@@ -188,6 +200,14 @@
     <wsdl:operation name="EliminarRubro">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarRubro" message="tns:IService1_EliminarRubro_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarRubroResponse" message="tns:IService1_EliminarRubro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllRubros">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllRubros" message="tns:IService1_ReadAllRubros_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllRubrosResponse" message="tns:IService1_ReadAllRubros_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllOfertas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllOfertas" message="tns:IService1_ReadAllOfertas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasResponse" message="tns:IService1_ReadAllOfertas_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CrearDesc">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearDesc" message="tns:IService1_CrearDesc_InputMessage" />
@@ -332,6 +352,24 @@
     </wsdl:operation>
     <wsdl:operation name="EliminarRubro">
       <soap:operation soapAction="http://tempuri.org/IService1/EliminarRubro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllRubros">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllRubros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllOfertas">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllOfertas" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -34,5 +34,10 @@ namespace QOfreces.WPF
             Core.Negocio.UsuarioColection collUser = new Core.Negocio.UsuarioColection(json);
             dataGridProductos.ItemsSource = collUser;
         }
+
+        private void dataGridProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

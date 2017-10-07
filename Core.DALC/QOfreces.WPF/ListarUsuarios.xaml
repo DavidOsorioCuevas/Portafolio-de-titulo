@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ListarUsuarios" Height="426.852" Width="972.268">
     <Grid>
-        <DataGrid x:Name="dataGridProductos" HorizontalAlignment="Left" Margin="99,73,0,0" VerticalAlignment="Top" Height="171" Width="703" Loaded="dataGridProductos_Loaded" >
+        <DataGrid x:Name="dataGridProductos" HorizontalAlignment="Left" Margin="99,73,0,0" VerticalAlignment="Top" Height="171" Width="703" Loaded="dataGridProductos_Loaded" SelectionChanged="dataGridProductos_SelectionChanged" >
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn  />
             </DataGrid.Columns>
