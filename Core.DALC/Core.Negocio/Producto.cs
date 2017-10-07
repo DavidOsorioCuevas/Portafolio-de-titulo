@@ -14,11 +14,23 @@ namespace Core.Negocio
         public int IdProducto { get; set; }
         public int IdRubro { get; set; }
         public int Precio { get; set; }
-        public string Sku { get; set; } // logica
         public string CodigoInterno { get; set; }
         public string Nombre { get; set; }
+        private string sku;
+        public string Sku
+        {
+            get
+            {
+                Rubro ru = new Rubro();
+                sku = Nombre.Substring(0, 3);
+                return sku;
+            }
+            set
+            {
+                sku = value;
+            }
+        } // logica
         public string Descripcion { get; set; }
-        public int IdOferta { get; set; }
 
         public Producto()
         {
@@ -35,11 +47,10 @@ namespace Core.Negocio
             this.IdProducto = prod.IdProducto;
             this.IdRubro = prod.IdRubro;
             this.Precio = prod.Precio;
-            this.Sku = prod.Sku;
             this.CodigoInterno = prod.CodigoInterno;
             this.Nombre = prod.Nombre;
+            this.Sku = prod.Sku;
             this.Descripcion = prod.Descripcion;
-            this.IdOferta = prod.IdOferta;
 
         }
 
@@ -52,8 +63,6 @@ namespace Core.Negocio
             this.CodigoInterno = null;
             this.Nombre = null;
             this.Descripcion = null;
-            this.IdOferta = 0;
-
         }
 
         public bool CrearProducto()
@@ -70,7 +79,7 @@ namespace Core.Negocio
                 prod.CODIGO_INTERNO = this.CodigoInterno;
                 prod.NOMBRE = this.Nombre;
                 prod.DESCRIPCION = this.Descripcion;
-                prod.OFERTA_ID = this.IdOferta;
+
                 ctx.PRODUCTO.Add(prod);
 
                 ctx.SaveChanges();
@@ -98,7 +107,6 @@ namespace Core.Negocio
                 prod.CODIGO_INTERNO = this.CodigoInterno;
                 prod.NOMBRE = this.Nombre;
                 prod.DESCRIPCION = this.Descripcion;
-                prod.OFERTA_ID = this.IdOferta;
                 ctx.PRODUCTO.Add(prod);
 
                 ctx.SaveChanges();

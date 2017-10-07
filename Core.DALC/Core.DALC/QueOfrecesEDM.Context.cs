@@ -29,13 +29,17 @@ namespace Core.DALC
         }
     
         public DbSet<CATEGORIA_OFERTA> CATEGORIA_OFERTA { get; set; }
+        public DbSet<COMPORTAMIENTO> COMPORTAMIENTO { get; set; }
         public DbSet<COMUNA> COMUNA { get; set; }
         public DbSet<CUPON> CUPON { get; set; }
         public DbSet<DESCUENTO> DESCUENTO { get; set; }
+        public DbSet<DESCUENTO_HAS_RUBRO> DESCUENTO_HAS_RUBRO { get; set; }
         public DbSet<OFERTA> OFERTA { get; set; }
         public DbSet<PAIS> PAIS { get; set; }
         public DbSet<PERFIL> PERFIL { get; set; }
+        public DbSet<PREFERENCIA> PREFERENCIA { get; set; }
         public DbSet<PRODUCTO> PRODUCTO { get; set; }
+        public DbSet<PRODUCTO_HAS_OFERTA> PRODUCTO_HAS_OFERTA { get; set; }
         public DbSet<REGION> REGION { get; set; }
         public DbSet<RETAIL> RETAIL { get; set; }
         public DbSet<RUBRO> RUBRO { get; set; }
@@ -52,19 +56,6 @@ namespace Core.DALC
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CATEGORIA_OFERTA_CREAR", iN_NOMBREParameter);
         }
     
-        public virtual int COMUNA_CREAR(string iN_NOMBRE, Nullable<decimal> iN_REGION_ID)
-        {
-            var iN_NOMBREParameter = iN_NOMBRE != null ?
-                new ObjectParameter("IN_NOMBRE", iN_NOMBRE) :
-                new ObjectParameter("IN_NOMBRE", typeof(string));
-    
-            var iN_REGION_IDParameter = iN_REGION_ID.HasValue ?
-                new ObjectParameter("IN_REGION_ID", iN_REGION_ID) :
-                new ObjectParameter("IN_REGION_ID", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("COMUNA_CREAR", iN_NOMBREParameter, iN_REGION_IDParameter);
-        }
-    
         public virtual int PAIS_CREAR(string iN_NOMBRE, string iN_SIGLA_PAIS)
         {
             var iN_NOMBREParameter = iN_NOMBRE != null ?
@@ -78,7 +69,7 @@ namespace Core.DALC
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PAIS_CREAR", iN_NOMBREParameter, iN_SIGLA_PAISParameter);
         }
     
-        public virtual int PRODUCTO_CREAR(Nullable<decimal> iN_RUBRO_ID, Nullable<decimal> iN_PRECIO, string iN_SKU, string iN_CODIGOIN, string iN_NOMBRE, string iN_DESCR, Nullable<decimal> iN_OFERTAID)
+        public virtual int PRODUCTO_CREAR(Nullable<decimal> iN_RUBRO_ID, Nullable<decimal> iN_PRECIO, string iN_SKU, string iN_CODIGOIN, string iN_NOMBRE, string iN_DESCR)
         {
             var iN_RUBRO_IDParameter = iN_RUBRO_ID.HasValue ?
                 new ObjectParameter("IN_RUBRO_ID", iN_RUBRO_ID) :
@@ -104,11 +95,7 @@ namespace Core.DALC
                 new ObjectParameter("IN_DESCR", iN_DESCR) :
                 new ObjectParameter("IN_DESCR", typeof(string));
     
-            var iN_OFERTAIDParameter = iN_OFERTAID.HasValue ?
-                new ObjectParameter("IN_OFERTAID", iN_OFERTAID) :
-                new ObjectParameter("IN_OFERTAID", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PRODUCTO_CREAR", iN_RUBRO_IDParameter, iN_PRECIOParameter, iN_SKUParameter, iN_CODIGOINParameter, iN_NOMBREParameter, iN_DESCRParameter, iN_OFERTAIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PRODUCTO_CREAR", iN_RUBRO_IDParameter, iN_PRECIOParameter, iN_SKUParameter, iN_CODIGOINParameter, iN_NOMBREParameter, iN_DESCRParameter);
         }
     
         public virtual int REGION_CREAR(string iN_NOMBRE)
@@ -333,7 +320,7 @@ namespace Core.DALC
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SUCURSAL_ELIMINAR", iN_RUTParameter);
         }
     
-        public virtual int USUARIO_CREAR(Nullable<decimal> iN_PERFIL_ID, string iN_LOGIN_USUARIO, string iN_PASS_USUARIO, string iN_NOMBRE_USUARIO, string iN_APELLIDO_USUARIO, string iN_RUT, string iN_ACTIVO, Nullable<decimal> iN_SUCURSAL, Nullable<System.DateTime> iN_FECHA_NACIMIENTO, string iN_SEXO, string iN_NACIONALIDAD, string iN_PASSAPORTE, Nullable<decimal> iN_COMUNA_ID, Nullable<decimal> iN_REGION_ID, string iN_EMAIL, Nullable<decimal> iN_CELULAR, Nullable<decimal> iN_PUNTOS)
+        public virtual int USUARIO_CREAR(Nullable<decimal> iN_PERFIL_ID, string iN_LOGIN_USUARIO, string iN_PASS_USUARIO, string iN_NOMBRE_USUARIO, string iN_APELLIDO_USUARIO, string iN_RUT, string iN_ACTIVO, Nullable<decimal> iN_SUCURSAL, Nullable<System.DateTime> iN_FECHA_NACIMIENTO, string iN_SEXO, string iN_NACIONALIDAD, string iN_PASSAPORTE, Nullable<decimal> iN_COMUNA_ID, Nullable<decimal> iN_REGION_ID, string iN_EMAIL, Nullable<decimal> iN_CELULAR, Nullable<decimal> iN_PUNTOS, string iN_CODIGO_VERIFICACION, Nullable<System.DateTime> iN_FECHA_CREACION)
         {
             var iN_PERFIL_IDParameter = iN_PERFIL_ID.HasValue ?
                 new ObjectParameter("IN_PERFIL_ID", iN_PERFIL_ID) :
@@ -403,7 +390,15 @@ namespace Core.DALC
                 new ObjectParameter("IN_PUNTOS", iN_PUNTOS) :
                 new ObjectParameter("IN_PUNTOS", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USUARIO_CREAR", iN_PERFIL_IDParameter, iN_LOGIN_USUARIOParameter, iN_PASS_USUARIOParameter, iN_NOMBRE_USUARIOParameter, iN_APELLIDO_USUARIOParameter, iN_RUTParameter, iN_ACTIVOParameter, iN_SUCURSALParameter, iN_FECHA_NACIMIENTOParameter, iN_SEXOParameter, iN_NACIONALIDADParameter, iN_PASSAPORTEParameter, iN_COMUNA_IDParameter, iN_REGION_IDParameter, iN_EMAILParameter, iN_CELULARParameter, iN_PUNTOSParameter);
+            var iN_CODIGO_VERIFICACIONParameter = iN_CODIGO_VERIFICACION != null ?
+                new ObjectParameter("IN_CODIGO_VERIFICACION", iN_CODIGO_VERIFICACION) :
+                new ObjectParameter("IN_CODIGO_VERIFICACION", typeof(string));
+    
+            var iN_FECHA_CREACIONParameter = iN_FECHA_CREACION.HasValue ?
+                new ObjectParameter("IN_FECHA_CREACION", iN_FECHA_CREACION) :
+                new ObjectParameter("IN_FECHA_CREACION", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USUARIO_CREAR", iN_PERFIL_IDParameter, iN_LOGIN_USUARIOParameter, iN_PASS_USUARIOParameter, iN_NOMBRE_USUARIOParameter, iN_APELLIDO_USUARIOParameter, iN_RUTParameter, iN_ACTIVOParameter, iN_SUCURSALParameter, iN_FECHA_NACIMIENTOParameter, iN_SEXOParameter, iN_NACIONALIDADParameter, iN_PASSAPORTEParameter, iN_COMUNA_IDParameter, iN_REGION_IDParameter, iN_EMAILParameter, iN_CELULARParameter, iN_PUNTOSParameter, iN_CODIGO_VERIFICACIONParameter, iN_FECHA_CREACIONParameter);
         }
     
         public virtual int USUARIO_DESACTIVAR(string iN_LOGIN)

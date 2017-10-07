@@ -153,6 +153,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CrearDesc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearDescResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CrearDescResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ActualizarDesc">
     <xs:complexType>
       <xs:sequence>
@@ -178,6 +192,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="EliminarDescResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearRetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearRetailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CrearRetailResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -209,6 +237,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CrearProducto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearProductoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CrearProductoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ActualizarProducto">
     <xs:complexType>
       <xs:sequence>
@@ -234,6 +276,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="EliminarProductoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearOferta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearOfertaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CrearOfertaResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

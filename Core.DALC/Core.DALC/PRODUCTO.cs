@@ -26,10 +26,8 @@ namespace Core.DALC
         public string CODIGO_INTERNO { get; set; }
         public string NOMBRE { get; set; }
         public string DESCRIPCION { get; set; }
-        public decimal OFERTA_ID { get; set; }
     
         public virtual ICollection<OFERTA> OFERTA { get; set; }
-        public virtual OFERTA OFERTA1 { get; set; }
         public virtual RUBRO RUBRO { get; set; }
     }
 }

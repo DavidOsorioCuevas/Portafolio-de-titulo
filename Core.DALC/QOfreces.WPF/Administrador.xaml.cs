@@ -44,5 +44,12 @@ namespace QOfreces.WPF
             mant.Owner = this;
             mant.Show();
         }
+
+        private void btnMantProd_Click(object sender, RoutedEventArgs e)
+        {
+            MantenedorProducto mProd = new MantenedorProducto();
+            mProd.Owner = this;
+            mProd.Show();
+        }
     }
 }

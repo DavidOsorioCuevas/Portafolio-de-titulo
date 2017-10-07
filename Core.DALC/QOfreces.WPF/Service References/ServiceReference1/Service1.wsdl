@@ -72,6 +72,12 @@
   <wsdl:message name="IService1_EliminarRubro_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarRubroResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_CrearDesc_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearDesc" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CrearDesc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearDescResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_ActualizarDesc_InputMessage">
     <wsdl:part name="parameters" element="tns:ActualizarDesc" />
   </wsdl:message>
@@ -83,6 +89,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_EliminarDesc_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarDescResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CrearRetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearRetail" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CrearRetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearRetailResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_ActualizarRetail_InputMessage">
     <wsdl:part name="parameters" element="tns:ActualizarRetail" />
@@ -96,6 +108,12 @@
   <wsdl:message name="IService1_EliminarRetail_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarRetailResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_CrearProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearProducto" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CrearProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearProductoResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_ActualizarProducto_InputMessage">
     <wsdl:part name="parameters" element="tns:ActualizarProducto" />
   </wsdl:message>
@@ -107,6 +125,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_EliminarProducto_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CrearOferta_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearOferta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CrearOferta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearOfertaResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_ActualizarOferta_InputMessage">
     <wsdl:part name="parameters" element="tns:ActualizarOferta" />
@@ -165,6 +189,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarRubro" message="tns:IService1_EliminarRubro_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarRubroResponse" message="tns:IService1_EliminarRubro_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CrearDesc">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearDesc" message="tns:IService1_CrearDesc_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearDescResponse" message="tns:IService1_CrearDesc_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ActualizarDesc">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActualizarDesc" message="tns:IService1_ActualizarDesc_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ActualizarDescResponse" message="tns:IService1_ActualizarDesc_OutputMessage" />
@@ -172,6 +200,10 @@
     <wsdl:operation name="EliminarDesc">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarDesc" message="tns:IService1_EliminarDesc_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarDescResponse" message="tns:IService1_EliminarDesc_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearRetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearRetail" message="tns:IService1_CrearRetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearRetailResponse" message="tns:IService1_CrearRetail_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ActualizarRetail">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActualizarRetail" message="tns:IService1_ActualizarRetail_InputMessage" />
@@ -181,6 +213,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarRetail" message="tns:IService1_EliminarRetail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarRetailResponse" message="tns:IService1_EliminarRetail_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CrearProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearProducto" message="tns:IService1_CrearProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearProductoResponse" message="tns:IService1_CrearProducto_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ActualizarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActualizarProducto" message="tns:IService1_ActualizarProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ActualizarProductoResponse" message="tns:IService1_ActualizarProducto_OutputMessage" />
@@ -188,6 +224,10 @@
     <wsdl:operation name="EliminarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarProducto" message="tns:IService1_EliminarProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarProductoResponse" message="tns:IService1_EliminarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearOferta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearOferta" message="tns:IService1_CrearOferta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearOfertaResponse" message="tns:IService1_CrearOferta_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ActualizarOferta">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActualizarOferta" message="tns:IService1_ActualizarOferta_InputMessage" />
@@ -299,6 +339,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CrearDesc">
+      <soap:operation soapAction="http://tempuri.org/IService1/CrearDesc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ActualizarDesc">
       <soap:operation soapAction="http://tempuri.org/IService1/ActualizarDesc" style="document" />
       <wsdl:input>
@@ -310,6 +359,15 @@
     </wsdl:operation>
     <wsdl:operation name="EliminarDesc">
       <soap:operation soapAction="http://tempuri.org/IService1/EliminarDesc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearRetail">
+      <soap:operation soapAction="http://tempuri.org/IService1/CrearRetail" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -335,6 +393,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CrearProducto">
+      <soap:operation soapAction="http://tempuri.org/IService1/CrearProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ActualizarProducto">
       <soap:operation soapAction="http://tempuri.org/IService1/ActualizarProducto" style="document" />
       <wsdl:input>
@@ -346,6 +413,15 @@
     </wsdl:operation>
     <wsdl:operation name="EliminarProducto">
       <soap:operation soapAction="http://tempuri.org/IService1/EliminarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearOferta">
+      <soap:operation soapAction="http://tempuri.org/IService1/CrearOferta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

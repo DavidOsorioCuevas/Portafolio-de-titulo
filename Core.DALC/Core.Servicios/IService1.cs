@@ -44,6 +44,7 @@ namespace Core.Servicios
         bool EliminarRubro(string json);
 
         /*Descuento*/
+        [OperationContract]
         bool CrearDesc(string json);
         [OperationContract]
         bool ActualizarDesc(string json);
@@ -51,6 +52,7 @@ namespace Core.Servicios
         bool EliminarDesc(string json);
 
         /*RETAIL*/
+        [OperationContract]
         bool CrearRetail(string json);
         [OperationContract]
         bool ActualizarRetail(string json);
@@ -58,6 +60,7 @@ namespace Core.Servicios
         bool EliminarRetail(string json);
 
         /*PRODUCTO*/
+        [OperationContract]
         bool CrearProducto(string json);
         [OperationContract]
         bool ActualizarProducto(string json);
@@ -65,6 +68,7 @@ namespace Core.Servicios
         bool EliminarProducto(string json);
 
         /*Oferta*/
+        [OperationContract]
         bool CrearOferta(string json);
         [OperationContract]
         bool ActualizarOferta(string json);

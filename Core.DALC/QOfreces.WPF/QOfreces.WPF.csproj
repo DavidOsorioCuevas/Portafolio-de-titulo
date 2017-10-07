@@ -76,20 +76,23 @@
     <Compile Include="mainwindow.xaml.cs">
       <DependentUpon>mainwindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MantenedorProducto.xaml.cs">
+      <DependentUpon>MantenedorProducto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MantenedorRubro.xaml.cs">
       <DependentUpon>MantenedorRubro.xaml</DependentUpon>
     </Compile>
     <Compile Include="MantenedorUsuarios.xaml.cs">
       <DependentUpon>MantenedorUsuarios.xaml</DependentUpon>
     </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Page Include="Administrador.xaml">
       <SubType>Designer</SubType>
@@ -108,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="mainwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MantenedorProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,6 +166,12 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core.Negocio\Core.Negocio.csproj">
+      <Project>{beccae7d-1427-4423-80bd-2382210a9618}</Project>
+      <Name>Core.Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <ItemGroup>
@@ -175,12 +188,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core.Negocio\Core.Negocio.csproj">
-      <Project>{beccae7d-1427-4423-80bd-2382210a9618}</Project>
-      <Name>Core.Negocio</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

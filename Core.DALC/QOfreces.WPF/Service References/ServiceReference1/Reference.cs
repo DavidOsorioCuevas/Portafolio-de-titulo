@@ -81,6 +81,12 @@ namespace QOfreces.WPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarRubro", ReplyAction="http://tempuri.org/IService1/EliminarRubroResponse")]
         System.Threading.Tasks.Task<bool> EliminarRubroAsync(string json);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearDesc", ReplyAction="http://tempuri.org/IService1/CrearDescResponse")]
+        bool CrearDesc(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearDesc", ReplyAction="http://tempuri.org/IService1/CrearDescResponse")]
+        System.Threading.Tasks.Task<bool> CrearDescAsync(string json);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarDesc", ReplyAction="http://tempuri.org/IService1/ActualizarDescResponse")]
         bool ActualizarDesc(string json);
         
@@ -92,6 +98,12 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarDesc", ReplyAction="http://tempuri.org/IService1/EliminarDescResponse")]
         System.Threading.Tasks.Task<bool> EliminarDescAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearRetail", ReplyAction="http://tempuri.org/IService1/CrearRetailResponse")]
+        bool CrearRetail(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearRetail", ReplyAction="http://tempuri.org/IService1/CrearRetailResponse")]
+        System.Threading.Tasks.Task<bool> CrearRetailAsync(string json);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarRetail", ReplyAction="http://tempuri.org/IService1/ActualizarRetailResponse")]
         bool ActualizarRetail(string json);
@@ -105,6 +117,12 @@ namespace QOfreces.WPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarRetail", ReplyAction="http://tempuri.org/IService1/EliminarRetailResponse")]
         System.Threading.Tasks.Task<bool> EliminarRetailAsync(string json);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearProducto", ReplyAction="http://tempuri.org/IService1/CrearProductoResponse")]
+        bool CrearProducto(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearProducto", ReplyAction="http://tempuri.org/IService1/CrearProductoResponse")]
+        System.Threading.Tasks.Task<bool> CrearProductoAsync(string json);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarProducto", ReplyAction="http://tempuri.org/IService1/ActualizarProductoResponse")]
         bool ActualizarProducto(string json);
         
@@ -116,6 +134,12 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarProducto", ReplyAction="http://tempuri.org/IService1/EliminarProductoResponse")]
         System.Threading.Tasks.Task<bool> EliminarProductoAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearOferta", ReplyAction="http://tempuri.org/IService1/CrearOfertaResponse")]
+        bool CrearOferta(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearOferta", ReplyAction="http://tempuri.org/IService1/CrearOfertaResponse")]
+        System.Threading.Tasks.Task<bool> CrearOfertaAsync(string json);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarOferta", ReplyAction="http://tempuri.org/IService1/ActualizarOfertaResponse")]
         bool ActualizarOferta(string json);
@@ -245,6 +269,14 @@ namespace QOfreces.WPF.ServiceReference1 {
             return base.Channel.EliminarRubroAsync(json);
         }
         
+        public bool CrearDesc(string json) {
+            return base.Channel.CrearDesc(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CrearDescAsync(string json) {
+            return base.Channel.CrearDescAsync(json);
+        }
+        
         public bool ActualizarDesc(string json) {
             return base.Channel.ActualizarDesc(json);
         }
@@ -259,6 +291,14 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> EliminarDescAsync(string json) {
             return base.Channel.EliminarDescAsync(json);
+        }
+        
+        public bool CrearRetail(string json) {
+            return base.Channel.CrearRetail(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CrearRetailAsync(string json) {
+            return base.Channel.CrearRetailAsync(json);
         }
         
         public bool ActualizarRetail(string json) {
@@ -277,6 +317,14 @@ namespace QOfreces.WPF.ServiceReference1 {
             return base.Channel.EliminarRetailAsync(json);
         }
         
+        public bool CrearProducto(string json) {
+            return base.Channel.CrearProducto(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CrearProductoAsync(string json) {
+            return base.Channel.CrearProductoAsync(json);
+        }
+        
         public bool ActualizarProducto(string json) {
             return base.Channel.ActualizarProducto(json);
         }
@@ -291,6 +339,14 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> EliminarProductoAsync(string json) {
             return base.Channel.EliminarProductoAsync(json);
+        }
+        
+        public bool CrearOferta(string json) {
+            return base.Channel.CrearOferta(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CrearOfertaAsync(string json) {
+            return base.Channel.CrearOfertaAsync(json);
         }
         
         public bool ActualizarOferta(string json) {

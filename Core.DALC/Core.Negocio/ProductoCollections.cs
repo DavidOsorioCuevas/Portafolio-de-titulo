@@ -37,7 +37,6 @@ namespace Core.Negocio
                 pro.CodigoInterno = item.CODIGO_INTERNO;
                 pro.Nombre = item.NOMBRE;
                 pro.Descripcion = item.DESCRIPCION;
-                pro.IdOferta = (int)item.OFERTA_ID;
 
                 list.Add(pro);
 

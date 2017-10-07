@@ -16,7 +16,6 @@ namespace Core.DALC
     {
         public OFERTA()
         {
-            this.PRODUCTO1 = new HashSet<PRODUCTO>();
             this.VALORACION = new HashSet<VALORACION>();
         }
     
@@ -39,7 +38,6 @@ namespace Core.DALC
         public virtual PRODUCTO PRODUCTO { get; set; }
         public virtual REGION REGION { get; set; }
         public virtual SUCURSALES SUCURSALES { get; set; }
-        public virtual ICollection<PRODUCTO> PRODUCTO1 { get; set; }
         public virtual ICollection<VALORACION> VALORACION { get; set; }
     }
 }
