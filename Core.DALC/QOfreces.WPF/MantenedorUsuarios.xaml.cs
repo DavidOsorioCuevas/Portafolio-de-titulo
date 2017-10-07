@@ -29,8 +29,9 @@ namespace QOfreces.WPF
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
             Usuario user = new Usuario();
-            
-            user.IdPerfil = int.Parse(txtPerfil.Text);
+
+            // user.IdPerfil = int.Parse(txtPerfil.Text);
+            user.IdPerfil = 2;
             user.NombreUsuario = txtNombreUsuario.Text;
             user.Password = txtPass.Text;
             user.Nombre = txtNombre.Text;
@@ -49,7 +50,7 @@ namespace QOfreces.WPF
             {
                 user.Puntos = int.Parse(txtPunt.Text);
             }
-            
+
 
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             string json = user.Serializar();
@@ -60,7 +61,7 @@ namespace QOfreces.WPF
             }
             else
             {
-
+                MessageBox.Show("ERROR");
             }
         }
 
@@ -79,7 +80,7 @@ namespace QOfreces.WPF
             {
                 MessageBox.Show("ERROR");
             }
-            
+
         }
 
         private void btnActualizar_Click(object sender, RoutedEventArgs e)
@@ -87,7 +88,7 @@ namespace QOfreces.WPF
             Usuario user = new Usuario();
 
 
-            user.IdPerfil = int.Parse(txtPerfil.Text);
+            //user.IdPerfil = int.Parse(txtPerfil.Text);
             user.NombreUsuario = txtNombreUsuario.Text;
             user.Password = txtPass.Text;
             user.Nombre = txtNombre.Text;
@@ -111,16 +112,9 @@ namespace QOfreces.WPF
             {
                 MessageBox.Show("ERROR AL ACTUALIZAR");
             }
-            
-
-            txtPerfil.Text = user.IdPerfil.ToString();
 
 
-
-
-
-
-
+            //txtPerfil.Text = user.IdPerfil.ToString();
         }
 
         private void btnListar_Click(object sender, RoutedEventArgs e)
@@ -128,6 +122,39 @@ namespace QOfreces.WPF
             ListarUsuarios lst = new ListarUsuarios();
             lst.Owner = this;
             lst.Show();
+
+        }
+
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+/*
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json = proxy.ReadAll();
+            UsuarioColection usercol = new UsuarioColection(json);
+            List<ComboBoxItem> list = new List<ComboBoxItem>();
+            foreach (Usuario item in usercol)
+            {
+                ComboBoxItem comboItem = new ComboBoxItem();
+                comboItem.Content = item.NombreUsuario;
+                list.Add(comboItem);
+            }
+            */
+        }
+
+        private void comboBox_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+
+        }
+
+        private void comboBox_Initialized(object sender, EventArgs e)
+        {
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json = proxy.ReadAll();
+            UsuarioColection usercol = new UsuarioColection(json);
+            comboBox.DisplayMemberPath = "NombreUsuario";
+            comboBox.SelectedValuePath = "IdUsuario";
+            comboBox.ItemsSource = usercol.ToList(); 
 
         }
     }

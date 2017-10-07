@@ -40,7 +40,6 @@
             <Label x:Name="label3" Content="Sexo" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
             <Label x:Name="label5" Content="NumeroCelular" HorizontalAlignment="Left" Margin="14,150,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="txtPass" HorizontalAlignment="Left" Height="23" Margin="117,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="txtPerfil" HorizontalAlignment="Left" Height="23" Margin="117,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="0,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
             <TextBox x:Name="txtApellido" HorizontalAlignment="Left" Height="23" Margin="5,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
             <TextBox x:Name="txtRut" HorizontalAlignment="Left" Height="23" Margin="5,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
@@ -66,6 +65,7 @@
             <Label x:Name="lbl1_Copy1" Content="Usuario Eliminar" HorizontalAlignment="Left" Margin="307,220,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="102" Height="29"/>
             <TextBox x:Name="txtIdEliminar" HorizontalAlignment="Left" Height="23" Margin="108,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
             <Button x:Name="btnListar" Content="Listar Usuarios" Grid.Column="1" HorizontalAlignment="Left" Margin="179,97,0,0" VerticalAlignment="Top" Width="108" Click="btnListar_Click"/>
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="117,13,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboBox_SelectionChanged" ContextMenuOpening="comboBox_ContextMenuOpening" Initialized="comboBox_Initialized"/>
 
 
         </Grid>

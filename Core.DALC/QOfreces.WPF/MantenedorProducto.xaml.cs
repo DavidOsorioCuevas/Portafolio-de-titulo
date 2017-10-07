@@ -33,12 +33,14 @@ namespace QOfreces.WPF
             p.IdProducto = 1;
             p.IdRubro = 2;
             p.Precio = 100;
-            p.CodigoInterno = "cod";
+            p.CodigoInterno = "cod";            
             p.Nombre = "doritos";
+            p.Sku = p.Nombre.Substring(0, 3);
             p.Descripcion = "doritos de queso";
-            string json = p.Serializar();
+
 
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json = p.Serializar();
 
             if (proxy.CrearProducto(json))
             {

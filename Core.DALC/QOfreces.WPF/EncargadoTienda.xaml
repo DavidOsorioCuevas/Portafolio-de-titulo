@@ -5,9 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QOfreces.WPF"
         mc:Ignorable="d"
-        Title="EncargadoTienda" Height="300" Width="300">
+        Title="EncargadoTienda" Height="385.185" Width="778.556">
     <Grid>
-        <Label x:Name="lblMenu" Content="Menu Encargado de Tienda" HorizontalAlignment="Center" Margin="67,18,58,0" VerticalAlignment="Top" Width="167"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblMenu" Content="Menu Encargado de Tienda" HorizontalAlignment="Center" Margin="67,18,58,0" VerticalAlignment="Top" Width="167" Grid.ColumnSpan="2"/>
+        <Button x:Name="button" Grid.ColumnSpan="2" Content="Consultar Ofertas" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="129"/>
+        <Button x:Name="button1" Grid.ColumnSpan="2" Content="Generar Oferta" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="129"/>
 
     </Grid>
 </Window>

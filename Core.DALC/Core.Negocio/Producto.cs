@@ -16,20 +16,22 @@ namespace Core.Negocio
         public int Precio { get; set; }
         public string CodigoInterno { get; set; }
         public string Nombre { get; set; }
-        private string sku;
-        public string Sku
-        {
-            get
-            {
-                Rubro ru = new Rubro();
-                sku = Nombre.Substring(0, 3);
-                return sku;
-            }
-            set
-            {
-                sku = value;
-            }
-        } // logica
+        public string Sku { get; set; }
+        // private string sku;
+        /*  public string Sku
+          {
+              get
+              {
+
+                  sku = Nombre.Substring(0, 3);
+
+                  return sku;
+              }
+              set
+              {
+                  sku = value;
+              }
+          } // logica*/
         public string Descripcion { get; set; }
 
         public Producto()
@@ -86,7 +88,6 @@ namespace Core.Negocio
                 ctx = null;
 
                 return true;
-
             }
             catch (Exception ex)
             {
