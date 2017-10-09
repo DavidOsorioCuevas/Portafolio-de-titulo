@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QueOfrecesModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QueOfrecesModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CATEGORIA_OFERTA">
           <Key>
             <PropertyRef Name="ID_CATEGORIA" />
@@ -613,8 +613,7 @@
             <End Role="VALORACION" EntitySet="VALORACION" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QueOfrecesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1140,7 +1139,7 @@
             <End Role="VALORACION" EntitySet="VALORACION" />
           </AssociationSet>
           <FunctionImport Name="CATEGORIA_OFERTA_CREAR">
-            <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
+          <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="COMUNA_CREAR">
             <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
@@ -1159,7 +1158,7 @@
             <Parameter Name="IN_DESCR" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="REGION_CREAR">
-            <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
+          <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RETAIL_CREAR">
             <Parameter Name="IN_RUT" Mode="In" Type="String" />
@@ -1182,7 +1181,7 @@
             <Parameter Name="IN_COMUNA_ID" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="RETAIL_ELIMINAR">
-            <Parameter Name="IN_ID_RETAIL" Mode="In" Type="Decimal" />
+          <Parameter Name="IN_ID_RETAIL" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="RUBRO_CREAR">
             <Parameter Name="IN_TIPO" Mode="In" Type="String" />
@@ -1194,7 +1193,7 @@
             <Parameter Name="IN_DESCRIPCION" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RUBRO_ELIMINAR">
-            <Parameter Name="IN_ID_RUBRO" Mode="In" Type="Decimal" />
+          <Parameter Name="IN_ID_RUBRO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SUCURSAL_CREAR">
             <Parameter Name="IN_RUT" Mode="In" Type="String" />
@@ -1219,7 +1218,7 @@
             <Parameter Name="IN_RETAIL_ID" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SUCURSAL_ELIMINAR">
-            <Parameter Name="IN_RUT" Mode="In" Type="Decimal" />
+          <Parameter Name="IN_RUT" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="USUARIO_CREAR">
             <Parameter Name="IN_PERFIL_ID" Mode="In" Type="Decimal" />
@@ -1243,7 +1242,7 @@
             <Parameter Name="IN_FECHA_CREACION" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="USUARIO_DESACTIVAR">
-            <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
+          <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="USUARIO_EDITAR">
             <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
@@ -1257,7 +1256,7 @@
             <Parameter Name="IN_PUNTOS" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="USUARIO_ELIMINAR">
-            <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
+          <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
