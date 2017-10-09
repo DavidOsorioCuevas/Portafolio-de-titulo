@@ -62,13 +62,14 @@ namespace QOfreces.WPF
             Core.Negocio.ProductoCollections collprod = new Core.Negocio.ProductoCollections(json);
             dGridProd.ItemsSource = collprod;
 
+        }
+
+        private void chkProd_Checked(object sender, RoutedEventArgs e)
+        {
             List<CheckBox> checkBoxlist = new List<CheckBox>();
-
-
-
-            foreach (CheckBox c in checkBoxlist)
+            foreach (var item in checkBoxlist)
             {
-                MessageBox.Show("check!");
+                lblPrueba.Content = item.Content;
             }
 
         }
