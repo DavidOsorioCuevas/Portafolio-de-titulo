@@ -33,7 +33,7 @@ namespace Core.Servicios
 
         /*PRODUCTO COLLECTIONS*/
         [OperationContract]
-        string ReadAllProductos(string json);
+        string ReadAllProductos();
 
         /*RUBRO*/
         [OperationContract]

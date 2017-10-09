@@ -180,9 +180,9 @@ namespace Core.Servicios
 
 
 
-        public string ReadAllProductos(string json)
+        public string ReadAllProductos()
         {
-            Negocio.ProductoCollections collProd = new Negocio.ProductoCollections(json);
+            Negocio.ProductoCollections collProd = new Negocio.ProductoCollections();
             return collProd.ReadAllProductos();
         }
 

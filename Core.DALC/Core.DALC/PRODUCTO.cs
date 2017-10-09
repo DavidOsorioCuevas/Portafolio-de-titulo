@@ -14,11 +14,6 @@ namespace Core.DALC
     
     public partial class PRODUCTO
     {
-        public PRODUCTO()
-        {
-            this.OFERTA = new HashSet<OFERTA>();
-        }
-    
         public decimal ID_PRODUCTO { get; set; }
         public decimal RUBRO_ID { get; set; }
         public Nullable<decimal> PRECIO { get; set; }
@@ -27,7 +22,6 @@ namespace Core.DALC
         public string NOMBRE { get; set; }
         public string DESCRIPCION { get; set; }
     
-        public virtual ICollection<OFERTA> OFERTA { get; set; }
         public virtual RUBRO RUBRO { get; set; }
     }
 }

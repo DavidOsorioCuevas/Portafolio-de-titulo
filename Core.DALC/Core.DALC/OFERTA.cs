@@ -27,15 +27,15 @@ namespace Core.DALC
         public Nullable<System.DateTime> FECHA_OFERTA { get; set; }
         public decimal SUCURSALES_ID { get; set; }
         public decimal CATEGORIA_OFERTA_ID { get; set; }
-        public decimal PRODUCTO_ID { get; set; }
         public Nullable<decimal> REGION_ID { get; set; }
         public Nullable<decimal> COMUNA_ID { get; set; }
         public string NOMBRE { get; set; }
         public string DESCRIPCION { get; set; }
+        public Nullable<decimal> PRECIO_OFERTA { get; set; }
+        public Nullable<decimal> PRECIO_ANTES { get; set; }
     
         public virtual CATEGORIA_OFERTA CATEGORIA_OFERTA { get; set; }
         public virtual COMUNA COMUNA { get; set; }
-        public virtual PRODUCTO PRODUCTO { get; set; }
         public virtual REGION REGION { get; set; }
         public virtual SUCURSALES SUCURSALES { get; set; }
         public virtual ICollection<VALORACION> VALORACION { get; set; }

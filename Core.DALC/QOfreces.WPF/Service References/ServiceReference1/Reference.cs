@@ -58,10 +58,10 @@ namespace QOfreces.WPF.ServiceReference1 {
         System.Threading.Tasks.Task<string> ReadAllAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllProductos", ReplyAction="http://tempuri.org/IService1/ReadAllProductosResponse")]
-        string ReadAllProductos(string json);
+        string ReadAllProductos();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllProductos", ReplyAction="http://tempuri.org/IService1/ReadAllProductosResponse")]
-        System.Threading.Tasks.Task<string> ReadAllProductosAsync(string json);
+        System.Threading.Tasks.Task<string> ReadAllProductosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearRubro", ReplyAction="http://tempuri.org/IService1/CrearRubroResponse")]
         bool CrearRubro(string json);
@@ -249,12 +249,12 @@ namespace QOfreces.WPF.ServiceReference1 {
             return base.Channel.ReadAllAsync();
         }
         
-        public string ReadAllProductos(string json) {
-            return base.Channel.ReadAllProductos(json);
+        public string ReadAllProductos() {
+            return base.Channel.ReadAllProductos();
         }
         
-        public System.Threading.Tasks.Task<string> ReadAllProductosAsync(string json) {
-            return base.Channel.ReadAllProductosAsync(json);
+        public System.Threading.Tasks.Task<string> ReadAllProductosAsync() {
+            return base.Channel.ReadAllProductosAsync();
         }
         
         public bool CrearRubro(string json) {

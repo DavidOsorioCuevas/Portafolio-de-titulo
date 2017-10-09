@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -17,21 +18,6 @@ namespace Core.Negocio
         public string CodigoInterno { get; set; }
         public string Nombre { get; set; }
         public string Sku { get; set; }
-        // private string sku;
-        /*  public string Sku
-          {
-              get
-              {
-
-                  sku = Nombre.Substring(0, 3);
-
-                  return sku;
-              }
-              set
-              {
-                  sku = value;
-              }
-          } // logica*/
         public string Descripcion { get; set; }
 
         public Producto()
@@ -44,7 +30,8 @@ namespace Core.Negocio
         {
             DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(Producto));
             MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
-            Producto prod = new Producto();
+
+            Producto prod = (Producto)serializador.ReadObject(stream);
 
             this.IdProducto = prod.IdProducto;
             this.IdRubro = prod.IdRubro;
@@ -61,10 +48,10 @@ namespace Core.Negocio
             this.IdProducto = 0;
             this.IdRubro = 0;
             this.Precio = 0;
-            this.Sku = null;
-            this.CodigoInterno = null;
-            this.Nombre = null;
-            this.Descripcion = null;
+            this.Sku = string.Empty;
+            this.CodigoInterno = string.Empty;
+            this.Nombre = string.Empty;
+            this.Descripcion = string.Empty;
         }
 
         public bool CrearProducto()
@@ -89,8 +76,18 @@ namespace Core.Negocio
 
                 return true;
             }
-            catch (Exception ex)
+            catch (DbEntityValidationException e)
             {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
                 return false;
             }
         }

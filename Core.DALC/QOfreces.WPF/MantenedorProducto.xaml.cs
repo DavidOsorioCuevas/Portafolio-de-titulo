@@ -29,13 +29,12 @@ namespace QOfreces.WPF
         {
 
             Core.Negocio.Producto p = new Core.Negocio.Producto();
-
-            p.IdProducto = 1;
+            
             p.IdRubro = 2;
             p.Precio = 100;
             p.CodigoInterno = "cod";            
             p.Nombre = "doritos";
-            p.Sku = p.Nombre.Substring(0, 3);
+            p.Sku = "SKU";
             p.Descripcion = "doritos de queso";
 
 
@@ -52,6 +51,25 @@ namespace QOfreces.WPF
 
 
 
+
+        }
+
+        private void btnListarProd_Click(object sender, RoutedEventArgs e)
+        {
+            dGridProd.Visibility = Visibility.Visible;
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json = proxy.ReadAllProductos();
+            Core.Negocio.ProductoCollections collprod = new Core.Negocio.ProductoCollections(json);
+            dGridProd.ItemsSource = collprod;
+
+            List<CheckBox> checkBoxlist = new List<CheckBox>();
+
+
+
+            foreach (CheckBox c in checkBoxlist)
+            {
+                MessageBox.Show("check!");
+            }
 
         }
     }

@@ -34,7 +34,7 @@ namespace Core.Negocio
             DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(Oferta));
             MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
 
-            Negocio.Oferta of = new Negocio.Oferta();
+            Negocio.Oferta of = (Oferta)serializador.ReadObject(stream);
 
             this.IdOferta = of.IdOferta;
             this.ImagenOferta = of.ImagenOferta;
@@ -54,18 +54,18 @@ namespace Core.Negocio
         private void Init()
         {
             this.IdOferta = 0;
-            this.ImagenOferta = null;
+            this.ImagenOferta = string.Empty;
             this.MinProductos = 0;
             this.MaxProductos = 0;
             this.EstadoOferta = null;
             this.FechaOferta = null;
-            this.IdSucursal = 0;
+            this.IdSucursal = 0; 
             this.CategoriaIdOferta = 0;
             this.IdProducto = 0;
             this.IdRegion = 0;
             this.IdComuna = 0;
-            this.Nombre = null;
-            this.Descripcion = null;
+            this.Nombre = string.Empty;
+            this.Descripcion = string.Empty;
         }
 
         public bool CrearOferta()
@@ -83,7 +83,6 @@ namespace Core.Negocio
                 of.FECHA_OFERTA = this.FechaOferta;
                 of.SUCURSALES_ID = this.IdSucursal;
                 of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
-                of.PRODUCTO_ID = this.IdProducto;
                 of.REGION_ID = this.IdRegion;
                 of.COMUNA_ID = this.IdComuna;
                 of.NOMBRE = this.Nombre;
@@ -117,7 +116,6 @@ namespace Core.Negocio
                 of.FECHA_OFERTA = this.FechaOferta;
                 of.SUCURSALES_ID = this.IdSucursal;
                 of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
-                of.PRODUCTO_ID = this.IdProducto;
                 of.REGION_ID = this.IdRegion;
                 of.COMUNA_ID = this.IdComuna;
                 of.NOMBRE = this.Nombre;
