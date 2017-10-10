@@ -185,8 +185,8 @@ namespace Core.Servicios
 
         public string ReadAllOfertas()
         {
-            Negocio.OfertaCollections collUser = new Negocio.OfertaCollections();
-            return collUser.ReadAllOfertas();
+            Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
+            return collOfer.ReadAllOfertas();
         }
 
 

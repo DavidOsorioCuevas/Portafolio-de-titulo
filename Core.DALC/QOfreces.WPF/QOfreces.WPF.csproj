@@ -233,6 +233,17 @@
   <ItemGroup>
     <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\MantenedorUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\MantenedorEmpresa.png" />
+    <Resource Include="img\MantenedorProducto.png" />
+    <Resource Include="img\MantenedorRubro.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
