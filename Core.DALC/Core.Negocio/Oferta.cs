@@ -191,6 +191,12 @@ namespace Core.Negocio
             
         }
 
+        public string TraerOferta()
+        {
+            return "";
+
+        }
+
         public string Serializar()
         {
             DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(Oferta));
