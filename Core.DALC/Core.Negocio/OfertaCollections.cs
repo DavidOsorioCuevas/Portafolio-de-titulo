@@ -88,6 +88,36 @@ namespace Core.Negocio
 
         }
 
+        private OfertaCollections GenerarListado(List<DALC.OFERTA> listaDALC)
+        {
+
+            OfertaCollections lista = new OfertaCollections();
+            foreach (var item in listaDALC)
+            {
+
+                    Oferta of = new Oferta();
+                    of.IdOferta = (int)item.ID_OFERTA;
+                    of.ImagenOferta = item.IMAGEN_OFERTA;
+                    of.MinProductos = (int)item.MIN_PRODUCTO;
+                    of.MaxProductos = (int)item.MAX_PRODUCTO;
+                    of.EstadoOferta = Convert.ToChar(item.ESTADO_OFERTA);
+                    of.PrecioOferta = (int)item.PRECIO_OFERTA;
+                    of.PrecioAntes = (int)item.PRECIO_ANTES;
+                    of.FechaOferta = item.FECHA_OFERTA;
+                    of.IdSucursal = (int)item.SUCURSALES_ID;
+                    of.CategoriaIdOferta = (int)item.CATEGORIA_OFERTA_ID;
+                    of.IdRegion = (int)item.REGION_ID;
+                    of.IdComuna = (int)item.COMUNA_ID;
+                    of.Nombre = item.NOMBRE;
+                    of.Descripcion = item.DESCRIPCION;
+
+                    lista.Add(of);
+
+            }
+            return lista;
+
+        }
+
         public string ReadAllOfertasActivo()
         {
 
@@ -99,6 +129,13 @@ namespace Core.Negocio
 
             var listaDA = new DALC.QueOfrecesEntities().OFERTA;
             return GenerarListadoDesactivo(listaDA.ToList()).Serializar();
+        }
+
+        public string ReadAllOfertas()
+        {
+
+            var listaDA = new DALC.QueOfrecesEntities().OFERTA;
+            return GenerarListado(listaDA.ToList()).Serializar();
         }
 
         public string Serializar()
