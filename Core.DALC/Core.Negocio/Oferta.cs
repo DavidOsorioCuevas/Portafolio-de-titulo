@@ -13,6 +13,8 @@ namespace Core.Negocio
         public int IdOferta { get; set; }
         public string ImagenOferta { get; set; }
         public int MinProductos { get; set; }
+        public int PrecioOferta { get; set; }
+        public int PrecioAntes { get; set; }
         public int MaxProductos { get; set; }
         public char? EstadoOferta { get; set; }
         public DateTime? FechaOferta { get; set; }
@@ -41,6 +43,8 @@ namespace Core.Negocio
             this.MinProductos = of.MinProductos;
             this.MaxProductos = of.MaxProductos;
             this.EstadoOferta = of.EstadoOferta;
+            this.PrecioOferta = of.PrecioOferta;
+            this.PrecioAntes = of.PrecioAntes;
             this.FechaOferta = of.FechaOferta;
             this.IdSucursal = of.IdSucursal;
             this.CategoriaIdOferta = of.CategoriaIdOferta;
@@ -59,6 +63,8 @@ namespace Core.Negocio
             this.MaxProductos = 0;
             this.EstadoOferta = null;
             this.FechaOferta = null;
+            this.PrecioOferta = 0;
+            this.PrecioAntes = 0;
             this.IdSucursal = 0; 
             this.CategoriaIdOferta = 0;
             this.IdProducto = 0;
@@ -81,6 +87,8 @@ namespace Core.Negocio
                 of.MAX_PRODUCTO = this.MaxProductos;
                 of.ESTADO_OFERTA = this.EstadoOferta.ToString();
                 of.FECHA_OFERTA = this.FechaOferta;
+                of.PRECIO_OFERTA = this.PrecioOferta;
+                of.PRECIO_ANTES = this.PrecioAntes;
                 of.SUCURSALES_ID = this.IdSucursal;
                 of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
                 of.REGION_ID = this.IdRegion;

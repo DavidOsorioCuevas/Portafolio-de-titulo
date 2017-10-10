@@ -26,13 +26,6 @@ namespace QOfreces.WPF
 
         }
 
-        void OnChecked(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
         private void btnListarProd_Click(object sender, RoutedEventArgs e)
         {
 
@@ -43,5 +36,17 @@ namespace QOfreces.WPF
             dgProd.ItemsSource = collprod;
         }
 
+        private void btnGenOferta_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(dgProd.SelectedItems.Count.ToString()+ "items seleccionados.");
+            
+            
+            /*for (int i = 0; i < dgProd.Items.Count -1 ; i++)
+            {
+               var column = dgProd.Columns[i].ToString();              
+            }
+            */
+
+        }
     }
 }
