@@ -14,42 +14,38 @@ namespace QOfreces.WPF
             InitializeComponent();
         }
 
-        private void btnMantUser_Click(object sender, RoutedEventArgs e)
+
+        private void tiUsuario_Click(object sender, RoutedEventArgs e)
         {
             MantenedorUsuarios mant = new MantenedorUsuarios();
-            mant.Owner = this;
-            mant.Show();          
- 
-            
-        }
-
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnVolver_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnMantRub_Click(object sender, RoutedEventArgs e)
-        {
-            MantenedorRubro mant = new MantenedorRubro ();
             mant.Owner = this;
             mant.Show();
         }
 
-        private void btnMantProd_Click(object sender, RoutedEventArgs e)
+        private void tiEmpresa_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tiRubro_Click(object sender, RoutedEventArgs e)
+        {
+            MantenedorRubro mant = new MantenedorRubro();
+            mant.Owner = this;
+            mant.Show();
+        }
+
+        private void tiProducto_Click(object sender, RoutedEventArgs e)
         {
             MantenedorProducto mProd = new MantenedorProducto();
             mProd.Owner = this;
             mProd.Show();
+        }
+
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            mainwindow mai = new mainwindow();
+            this.Close();
+            mai.Show();
         }
     }
 }
