@@ -49,7 +49,7 @@ namespace Core.Negocio
                     of.IdComuna = (int)item.COMUNA_ID;
                     of.Nombre = item.NOMBRE;
                     of.Descripcion = item.DESCRIPCION;
-
+                    //hpla
                     lista.Add(of);
                 }
             }
