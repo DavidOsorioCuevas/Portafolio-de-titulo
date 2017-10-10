@@ -53,7 +53,9 @@ namespace Core.Servicios
 
         /*OFERTACOLLECTIONS*/
         [OperationContract]
-        string ReadAllOfertas();
+        string ReadAllOfertasActivo();
+        [OperationContract]
+        string ReadAllOfertasDesactivo();
 
         /*Descuento*/
         [OperationContract]

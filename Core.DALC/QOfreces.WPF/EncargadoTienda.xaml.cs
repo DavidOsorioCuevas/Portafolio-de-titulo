@@ -28,7 +28,7 @@ namespace QOfreces.WPF
         {
 
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = proxy.ReadAllOfertas();
+            string json = proxy.ReadAllOfertasActivo();
             Core.Negocio.OfertaCollections collOf = new Core.Negocio.OfertaCollections(json);
             dataGridOfertas.ItemsSource = collOf;
         }

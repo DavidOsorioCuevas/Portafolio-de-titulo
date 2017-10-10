@@ -65,7 +65,7 @@ namespace Core.Negocio
             this.FechaOferta = null;
             this.PrecioOferta = 0;
             this.PrecioAntes = 0;
-            this.IdSucursal = 0; 
+            this.IdSucursal = 0;
             this.CategoriaIdOferta = 0;
             this.IdProducto = 0;
             this.IdRegion = 0;
@@ -162,23 +162,36 @@ namespace Core.Negocio
 
         }
 
-        public string TraerOferta()
-        {
-            Core.DALC.QueOfrecesEntities db = new Core.DALC.QueOfrecesEntities();
-           
-            this.Descripcion = db.OFERTA.Find(this.IdOferta).DESCRIPCION;
-            this.ImagenOferta = db.OFERTA.Find(this.IdOferta).IMAGEN_OFERTA;
-            this.MinProductos = (int)db.OFERTA.Find(this.IdOferta).MIN_PRODUCTO;
-            this.MaxProductos = (int)db.OFERTA.Find(this.IdOferta).MAX_PRODUCTO;
-            this.EstadoOferta = db.OFERTA.Find(this.IdOferta).ESTADO_OFERTA[0];
-            this.FechaOferta = db.OFERTA.Find(this.IdOferta).FECHA_OFERTA;
-            this.IdSucursal = (int)db.OFERTA.Find(this.IdOferta).SUCURSALES_ID;
-            this.CategoriaIdOferta = (int)db.OFERTA.Find(this.IdOferta).CATEGORIA_OFERTA_ID;
-            this.IdRegion = (int)db.OFERTA.Find(this.IdOferta).REGION_ID;
-            this.IdComuna = (int)db.OFERTA.Find(this.IdOferta).COMUNA_ID;
-            this.Nombre = db.OFERTA.Find(this.IdOferta).DESCRIPCION;
 
-            return Serializar(); ;
+        public bool PublicarOferta()
+        {
+            try
+            {
+                DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
+                DALC.OFERTA of = ctx.OFERTA.First(o => o.ID_OFERTA == IdOferta && o.ESTADO_OFERTA == "0");
+
+                of.IMAGEN_OFERTA = this.ImagenOferta;
+                of.MIN_PRODUCTO = this.MinProductos;
+                of.MAX_PRODUCTO = this.MaxProductos;
+                of.ESTADO_OFERTA = "1";
+                of.FECHA_OFERTA = this.FechaOferta;
+                of.SUCURSALES_ID = this.IdSucursal;
+                of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
+                of.REGION_ID = this.IdRegion;
+                of.COMUNA_ID = this.IdComuna;
+                of.NOMBRE = this.Nombre;
+                of.DESCRIPCION = this.Descripcion;
+                ctx.SaveChanges();
+                ctx = null;
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+            
         }
 
         public string Serializar()

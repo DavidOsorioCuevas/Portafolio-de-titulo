@@ -38,14 +38,23 @@ namespace QOfreces.WPF
 
         private void btnGenOferta_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(dgProd.SelectedItems.Count.ToString()+ "items seleccionados.");
-            
-            
-            /*for (int i = 0; i < dgProd.Items.Count -1 ; i++)
+
+
+            List<Core.Negocio.Producto> listProd = new List<Core.Negocio.Producto>();
+            Core.Negocio.Producto pro = new Core.Negocio.Producto();
+            //instancia de checkbox de datagrid
+            CheckBox chk = (CheckBox)sender;
+
+            //recorre items de datagrid
+            for (int i = 0; i < dgProd.Items.Count; i++)
             {
-               var column = dgProd.Columns[i].ToString();              
+                if (chk.IsChecked.Value)
+                {
+                    //obtener valores de chequeados
+                    
+                }
             }
-            */
+            
 
         }
     }
