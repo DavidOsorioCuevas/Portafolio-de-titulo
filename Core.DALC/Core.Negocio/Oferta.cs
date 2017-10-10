@@ -162,6 +162,25 @@ namespace Core.Negocio
 
         }
 
+        public string TraerOferta()
+        {
+            Core.DALC.QueOfrecesEntities db = new Core.DALC.QueOfrecesEntities();
+           
+            this.Descripcion = db.OFERTA.Find(this.IdOferta).DESCRIPCION;
+            this.ImagenOferta = db.OFERTA.Find(this.IdOferta).IMAGEN_OFERTA;
+            this.MinProductos = (int)db.OFERTA.Find(this.IdOferta).MIN_PRODUCTO;
+            this.MaxProductos = (int)db.OFERTA.Find(this.IdOferta).MAX_PRODUCTO;
+            this.EstadoOferta = db.OFERTA.Find(this.IdOferta).ESTADO_OFERTA[0];
+            this.FechaOferta = db.OFERTA.Find(this.IdOferta).FECHA_OFERTA;
+            this.IdSucursal = (int)db.OFERTA.Find(this.IdOferta).SUCURSALES_ID;
+            this.CategoriaIdOferta = (int)db.OFERTA.Find(this.IdOferta).CATEGORIA_OFERTA_ID;
+            this.IdRegion = (int)db.OFERTA.Find(this.IdOferta).REGION_ID;
+            this.IdComuna = (int)db.OFERTA.Find(this.IdOferta).COMUNA_ID;
+            this.Nombre = db.OFERTA.Find(this.IdOferta).DESCRIPCION;
+
+            return Serializar(); ;
+        }
+
         public string Serializar()
         {
             DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(Oferta));

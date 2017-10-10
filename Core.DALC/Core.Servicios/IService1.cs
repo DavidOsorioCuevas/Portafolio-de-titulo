@@ -81,6 +81,8 @@ namespace Core.Servicios
 
         /*Oferta*/
         [OperationContract]
+        string TraerOferta(string json);
+        [OperationContract]
         bool CrearOferta(string json);
         [OperationContract]
         bool ActualizarOferta(string json);
