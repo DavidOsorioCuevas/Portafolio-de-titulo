@@ -11,25 +11,27 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MahApps.Metro.Behaviours;
 
 namespace QOfreces.WPF
 {
     /// <summary>
     /// Lógica de interacción para mainwindow.xaml
     /// </summary>
-    public partial class mainwindow : Window
+    public partial class mainwindow : MetroWindow
     {
         public mainwindow()
         {
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private async void button_Click(object sender, RoutedEventArgs e)
         {
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
 
-            if (proxy.ValidarUsuarioWPF(txtUser.Text, txtPassword.Text))
+            if (proxy.ValidarUsuarioWPF(txtUser.Text, pbPassword.Password))
             {
 
                 Core.Negocio.Usuario user = new Core.Negocio.Usuario();
@@ -68,7 +70,9 @@ namespace QOfreces.WPF
             }
             else
             {
-                label.Content = "Error de Autenticación";
+                await this.ShowMessageAsync("Error", "Verifique sus credenciales");
+                txtUser.Clear();
+                pbPassword.Clear();
             }
 
 
