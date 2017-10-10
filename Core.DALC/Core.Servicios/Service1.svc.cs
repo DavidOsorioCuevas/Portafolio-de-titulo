@@ -182,10 +182,10 @@ namespace Core.Servicios
             return collUser.ReadAllUsuarios();
         }
 
-        public string ReadAllOfertas()
+        public string ReadAllOfertasActivo()
         {
             Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
-            return collOfer.ReadAllOfertas();
+            return collOfer.ReadAllOfertasActivo();
         }
 
 
@@ -209,5 +209,10 @@ namespace Core.Servicios
             return user.ValidarUsuarioWPF(username, password);
         }
 
+        public string ReadAllOfertasDesactivo()
+        {
+            Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
+            return collOfer.ReadAllOfertasDesactivo();
+        }
     }
 }

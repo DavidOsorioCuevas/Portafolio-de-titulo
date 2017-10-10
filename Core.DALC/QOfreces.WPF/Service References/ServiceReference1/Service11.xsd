@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ListarRegiones">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarRegionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ListarRegionesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ValidarWeb">
     <xs:complexType>
       <xs:sequence>
@@ -177,15 +189,27 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ReadAllOfertas">
+  <xs:element name="ReadAllOfertasActivo">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="ReadAllOfertasResponse">
+  <xs:element name="ReadAllOfertasActivoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ReadAllOfertasResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ReadAllOfertasActivoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadAllOfertasDesactivo">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadAllOfertasDesactivoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReadAllOfertasDesactivoResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

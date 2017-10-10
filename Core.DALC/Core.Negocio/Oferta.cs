@@ -65,7 +65,7 @@ namespace Core.Negocio
             this.FechaOferta = null;
             this.PrecioOferta = 0;
             this.PrecioAntes = 0;
-            this.IdSucursal = 0; 
+            this.IdSucursal = 0;
             this.CategoriaIdOferta = 0;
             this.IdProducto = 0;
             this.IdRegion = 0;
@@ -160,6 +160,38 @@ namespace Core.Negocio
                 return false;
             }
 
+        }
+
+
+        public bool PublicarOferta()
+        {
+            try
+            {
+                DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
+                DALC.OFERTA of = ctx.OFERTA.First(o => o.ID_OFERTA == IdOferta && o.ESTADO_OFERTA == "0");
+
+                of.IMAGEN_OFERTA = this.ImagenOferta;
+                of.MIN_PRODUCTO = this.MinProductos;
+                of.MAX_PRODUCTO = this.MaxProductos;
+                of.ESTADO_OFERTA = "1";
+                of.FECHA_OFERTA = this.FechaOferta;
+                of.SUCURSALES_ID = this.IdSucursal;
+                of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
+                of.REGION_ID = this.IdRegion;
+                of.COMUNA_ID = this.IdComuna;
+                of.NOMBRE = this.Nombre;
+                of.DESCRIPCION = this.Descripcion;
+                ctx.SaveChanges();
+                ctx = null;
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+            
         }
 
         public string Serializar()
