@@ -49,7 +49,7 @@ namespace Core.Negocio
                     of.IdComuna = (int)item.COMUNA_ID;
                     of.Nombre = item.NOMBRE;
                     of.Descripcion = item.DESCRIPCION;
-                    //hpla
+                    
                     lista.Add(of);
                 }
             }
@@ -62,7 +62,7 @@ namespace Core.Negocio
             OfertaCollections lista = new OfertaCollections();
             foreach (var item in listaDALC)
             {
-                if (item.ESTADO_OFERTA == "1")
+                if (item.ESTADO_OFERTA == "0")
                 {
 
                     Oferta of = new Oferta();

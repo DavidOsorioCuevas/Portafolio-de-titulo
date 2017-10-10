@@ -20,7 +20,6 @@ namespace Core.Negocio
         public DateTime? FechaOferta { get; set; }
         public int IdSucursal { get; set; }
         public int CategoriaIdOferta { get; set; }
-        public int IdProducto { get; set; }
         public int IdRegion { get; set; }
         public int IdComuna { get; set; }
         public string Nombre { get; set; }
@@ -48,7 +47,6 @@ namespace Core.Negocio
             this.FechaOferta = of.FechaOferta;
             this.IdSucursal = of.IdSucursal;
             this.CategoriaIdOferta = of.CategoriaIdOferta;
-            this.IdProducto = of.IdProducto;
             this.IdRegion = of.IdRegion;
             this.IdComuna = of.IdComuna;
             this.Nombre = of.Nombre;
@@ -67,7 +65,6 @@ namespace Core.Negocio
             this.PrecioAntes = 0;
             this.IdSucursal = 0;
             this.CategoriaIdOferta = 0;
-            this.IdProducto = 0;
             this.IdRegion = 0;
             this.IdComuna = 0;
             this.Nombre = string.Empty;
