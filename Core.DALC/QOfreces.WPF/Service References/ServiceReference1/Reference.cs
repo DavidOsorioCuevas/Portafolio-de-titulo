@@ -15,6 +15,12 @@ namespace QOfreces.WPF.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListarRegiones", ReplyAction="http://tempuri.org/IService1/ListarRegionesResponse")]
+        string ListarRegiones();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListarRegiones", ReplyAction="http://tempuri.org/IService1/ListarRegionesResponse")]
+        System.Threading.Tasks.Task<string> ListarRegionesAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ValidarWeb", ReplyAction="http://tempuri.org/IService1/ValidarWebResponse")]
         string ValidarWeb(string json);
         
@@ -93,11 +99,17 @@ namespace QOfreces.WPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllRubros", ReplyAction="http://tempuri.org/IService1/ReadAllRubrosResponse")]
         System.Threading.Tasks.Task<string> ReadAllRubrosAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertas", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasResponse")]
-        string ReadAllOfertas();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasActivo", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasActivoResponse")]
+        string ReadAllOfertasActivo();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertas", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasResponse")]
-        System.Threading.Tasks.Task<string> ReadAllOfertasAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasActivo", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasActivoResponse")]
+        System.Threading.Tasks.Task<string> ReadAllOfertasActivoAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasDesactivo", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasDesactivoResponse")]
+        string ReadAllOfertasDesactivo();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasDesactivo", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasDesactivoResponse")]
+        System.Threading.Tasks.Task<string> ReadAllOfertasDesactivoAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearDesc", ReplyAction="http://tempuri.org/IService1/CrearDescResponse")]
         bool CrearDesc(string json);
@@ -197,6 +209,14 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string ListarRegiones() {
+            return base.Channel.ListarRegiones();
+        }
+        
+        public System.Threading.Tasks.Task<string> ListarRegionesAsync() {
+            return base.Channel.ListarRegionesAsync();
         }
         
         public string ValidarWeb(string json) {
@@ -303,12 +323,20 @@ namespace QOfreces.WPF.ServiceReference1 {
             return base.Channel.ReadAllRubrosAsync();
         }
         
-        public string ReadAllOfertas() {
-            return base.Channel.ReadAllOfertas();
+        public string ReadAllOfertasActivo() {
+            return base.Channel.ReadAllOfertasActivo();
         }
         
-        public System.Threading.Tasks.Task<string> ReadAllOfertasAsync() {
-            return base.Channel.ReadAllOfertasAsync();
+        public System.Threading.Tasks.Task<string> ReadAllOfertasActivoAsync() {
+            return base.Channel.ReadAllOfertasActivoAsync();
+        }
+        
+        public string ReadAllOfertasDesactivo() {
+            return base.Channel.ReadAllOfertasDesactivo();
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadAllOfertasDesactivoAsync() {
+            return base.Channel.ReadAllOfertasDesactivoAsync();
         }
         
         public bool CrearDesc(string json) {

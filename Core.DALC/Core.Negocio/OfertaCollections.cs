@@ -9,35 +9,70 @@ using System.Threading.Tasks;
 namespace Core.Negocio
 {
 
-        public  class OfertaCollections : List<Oferta>
+    public class OfertaCollections : List<Oferta>
+    {
+        public OfertaCollections() { }
+
+        public OfertaCollections(string json)
         {
-            public OfertaCollections() { }
 
-            public OfertaCollections(string json)
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(OfertaCollections));
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
+
+            OfertaCollections list = (OfertaCollections)serializador.ReadObject(stream);
+
+            this.AddRange(list);
+
+        }
+
+        private OfertaCollections GenerarListadoActivo(List<DALC.OFERTA> listaDALC)
+        {
+
+            OfertaCollections lista = new OfertaCollections();
+            foreach (var item in listaDALC)
             {
-
-                DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(OfertaCollections));
-                MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
-
-                OfertaCollections list = (OfertaCollections)serializador.ReadObject(stream);
-
-                this.AddRange(list);
-
-            }
-
-            private OfertaCollections GenerarListado(List<DALC.OFERTA> listaDALC)
-            {
-
-                OfertaCollections lista = new OfertaCollections();
-                foreach (var item in listaDALC)
+                if (item.ESTADO_OFERTA == "1")
                 {
-                    Oferta of = new Oferta();
 
+                    Oferta of = new Oferta();
                     of.IdOferta = (int)item.ID_OFERTA;
                     of.ImagenOferta = item.IMAGEN_OFERTA;
                     of.MinProductos = (int)item.MIN_PRODUCTO;
                     of.MaxProductos = (int)item.MAX_PRODUCTO;
                     of.EstadoOferta = Convert.ToChar(item.ESTADO_OFERTA);
+                    of.PrecioOferta = (int)item.PRECIO_OFERTA;
+                    of.PrecioAntes = (int)item.PRECIO_ANTES;
+                    of.FechaOferta = item.FECHA_OFERTA;
+                    of.IdSucursal = (int)item.SUCURSALES_ID;
+                    of.CategoriaIdOferta = (int)item.CATEGORIA_OFERTA_ID;
+                    of.IdRegion = (int)item.REGION_ID;
+                    of.IdComuna = (int)item.COMUNA_ID;
+                    of.Nombre = item.NOMBRE;
+                    of.Descripcion = item.DESCRIPCION;
+                    
+                    lista.Add(of);
+                }
+            }
+            return lista;
+
+        }
+        private OfertaCollections GenerarListadoDesactivo(List<DALC.OFERTA> listaDALC)
+        {
+
+            OfertaCollections lista = new OfertaCollections();
+            foreach (var item in listaDALC)
+            {
+                if (item.ESTADO_OFERTA == "0")
+                {
+
+                    Oferta of = new Oferta();
+                    of.IdOferta = (int)item.ID_OFERTA;
+                    of.ImagenOferta = item.IMAGEN_OFERTA;
+                    of.MinProductos = (int)item.MIN_PRODUCTO;
+                    of.MaxProductos = (int)item.MAX_PRODUCTO;
+                    of.EstadoOferta = Convert.ToChar(item.ESTADO_OFERTA);
+                    of.PrecioOferta = (int)item.PRECIO_OFERTA;
+                    of.PrecioAntes = (int)item.PRECIO_ANTES;
                     of.FechaOferta = item.FECHA_OFERTA;
                     of.IdSucursal = (int)item.SUCURSALES_ID;
                     of.CategoriaIdOferta = (int)item.CATEGORIA_OFERTA_ID;
@@ -48,30 +83,74 @@ namespace Core.Negocio
 
                     lista.Add(of);
                 }
-                return lista;
-
             }
+            return lista;
 
-            public string ReadAllOfertas()
+        }
+
+        private OfertaCollections GenerarListado(List<DALC.OFERTA> listaDALC)
+        {
+
+            OfertaCollections lista = new OfertaCollections();
+            foreach (var item in listaDALC)
             {
 
-                var listaDA = new DALC.QueOfrecesEntities().OFERTA;
-                return GenerarListado(listaDA.ToList()).Serializar();
+                    Oferta of = new Oferta();
+                    of.IdOferta = (int)item.ID_OFERTA;
+                    of.ImagenOferta = item.IMAGEN_OFERTA;
+                    of.MinProductos = (int)item.MIN_PRODUCTO;
+                    of.MaxProductos = (int)item.MAX_PRODUCTO;
+                    of.EstadoOferta = Convert.ToChar(item.ESTADO_OFERTA);
+                    of.PrecioOferta = (int)item.PRECIO_OFERTA;
+                    of.PrecioAntes = (int)item.PRECIO_ANTES;
+                    of.FechaOferta = item.FECHA_OFERTA;
+                    of.IdSucursal = (int)item.SUCURSALES_ID;
+                    of.CategoriaIdOferta = (int)item.CATEGORIA_OFERTA_ID;
+                    of.IdRegion = (int)item.REGION_ID;
+                    of.IdComuna = (int)item.COMUNA_ID;
+                    of.Nombre = item.NOMBRE;
+                    of.Descripcion = item.DESCRIPCION;
+
+                    lista.Add(of);
+
             }
+            return lista;
 
-            public string Serializar()
-            {
+        }
 
-                DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(OfertaCollections));
-                MemoryStream stream = new MemoryStream();
+        public string ReadAllOfertasActivo()
+        {
 
-                serializador.WriteObject(stream, this);
+            var listaDA = new DALC.QueOfrecesEntities().OFERTA;
+            return GenerarListadoActivo(listaDA.ToList()).Serializar();
+        }
+        public string ReadAllOfertasDesactivo()
+        {
 
-                string ser = Encoding.UTF8.GetString(stream.ToArray());
+            var listaDA = new DALC.QueOfrecesEntities().OFERTA;
+            return GenerarListadoDesactivo(listaDA.ToList()).Serializar();
+        }
 
-                return ser.ToString();
+        public string ReadAllOfertas()
+        {
 
-            }
+            var listaDA = new DALC.QueOfrecesEntities().OFERTA;
+            return GenerarListado(listaDA.ToList()).Serializar();
+        }
+
+        public string Serializar()
+        {
+
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(OfertaCollections));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, this);
+
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+
+            return ser.ToString();
+
         }
     }
+}
 

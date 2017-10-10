@@ -6,6 +6,12 @@
       <xsd:import schemaLocation="http://localhost:50194/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IService1_ListarRegiones_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRegiones" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ListarRegiones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRegionesResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_ValidarWeb_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidarWeb" />
   </wsdl:message>
@@ -84,11 +90,17 @@
   <wsdl:message name="IService1_ReadAllRubros_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadAllRubrosResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_ReadAllOfertas_InputMessage">
-    <wsdl:part name="parameters" element="tns:ReadAllOfertas" />
+  <wsdl:message name="IService1_ReadAllOfertasActivo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllOfertasActivo" />
   </wsdl:message>
-  <wsdl:message name="IService1_ReadAllOfertas_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ReadAllOfertasResponse" />
+  <wsdl:message name="IService1_ReadAllOfertasActivo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllOfertasActivoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllOfertasDesactivo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllOfertasDesactivo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllOfertasDesactivo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllOfertasDesactivoResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_CrearDesc_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearDesc" />
@@ -163,6 +175,10 @@
     <wsdl:part name="parameters" element="tns:EliminarOfertaResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
+    <wsdl:operation name="ListarRegiones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ListarRegiones" message="tns:IService1_ListarRegiones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ListarRegionesResponse" message="tns:IService1_ListarRegiones_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ValidarWeb">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ValidarWeb" message="tns:IService1_ValidarWeb_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ValidarWebResponse" message="tns:IService1_ValidarWeb_OutputMessage" />
@@ -215,9 +231,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllRubros" message="tns:IService1_ReadAllRubros_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllRubrosResponse" message="tns:IService1_ReadAllRubros_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ReadAllOfertas">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllOfertas" message="tns:IService1_ReadAllOfertas_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasResponse" message="tns:IService1_ReadAllOfertas_OutputMessage" />
+    <wsdl:operation name="ReadAllOfertasActivo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasActivo" message="tns:IService1_ReadAllOfertasActivo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasActivoResponse" message="tns:IService1_ReadAllOfertasActivo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllOfertasDesactivo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasDesactivo" message="tns:IService1_ReadAllOfertasDesactivo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasDesactivoResponse" message="tns:IService1_ReadAllOfertasDesactivo_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CrearDesc">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearDesc" message="tns:IService1_CrearDesc_InputMessage" />
@@ -270,6 +290,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarRegiones">
+      <soap:operation soapAction="http://tempuri.org/IService1/ListarRegiones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ValidarWeb">
       <soap:operation soapAction="http://tempuri.org/IService1/ValidarWeb" style="document" />
       <wsdl:input>
@@ -387,8 +416,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ReadAllOfertas">
-      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllOfertas" style="document" />
+    <wsdl:operation name="ReadAllOfertasActivo">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllOfertasActivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllOfertasDesactivo">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllOfertasDesactivo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

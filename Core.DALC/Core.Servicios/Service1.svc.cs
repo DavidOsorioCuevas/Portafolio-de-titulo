@@ -13,6 +13,11 @@ namespace Core.Servicios
     // NOTE: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service1.svc o Service1.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class Service1 : IService1
     {
+        public string TraerOferta(string json)
+        {
+            Negocio.Oferta oferta = new Negocio.Oferta(json);
+            return oferta.TraerOferta();
+        }
         public string ListarRegiones()
         {
             Negocio.Listas lista = new Negocio.Listas();
@@ -182,10 +187,10 @@ namespace Core.Servicios
             return collUser.ReadAllUsuarios();
         }
 
-        public string ReadAllOfertas()
+        public string ReadAllOfertasActivo()
         {
-            Negocio.OfertaCollections collUser = new Negocio.OfertaCollections();
-            return collUser.ReadAllOfertas();
+            Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
+            return collOfer.ReadAllOfertasActivo();
         }
 
 
@@ -209,5 +214,10 @@ namespace Core.Servicios
             return user.ValidarUsuarioWPF(username, password);
         }
 
+        public string ReadAllOfertasDesactivo()
+        {
+            Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
+            return collOfer.ReadAllOfertasDesactivo();
+        }
     }
 }

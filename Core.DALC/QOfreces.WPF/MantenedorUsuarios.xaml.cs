@@ -31,7 +31,7 @@ namespace QOfreces.WPF
             Usuario user = new Usuario();
 
             // user.IdPerfil = int.Parse(txtPerfil.Text);
-            user.IdPerfil = 2;
+            user.IdPerfil = 1;
             user.NombreUsuario = txtNombreUsuario.Text;
             user.Password = txtPass.Text;
             user.Nombre = txtNombre.Text;
@@ -126,26 +126,8 @@ namespace QOfreces.WPF
         }
 
 
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-/*
-            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = proxy.ReadAll();
-            UsuarioColection usercol = new UsuarioColection(json);
-            List<ComboBoxItem> list = new List<ComboBoxItem>();
-            foreach (Usuario item in usercol)
-            {
-                ComboBoxItem comboItem = new ComboBoxItem();
-                comboItem.Content = item.NombreUsuario;
-                list.Add(comboItem);
-            }
-            */
-        }
 
-        private void comboBox_ContextMenuOpening(object sender, ContextMenuEventArgs e)
-        {
 
-        }
 
         private void comboBox_Initialized(object sender, EventArgs e)
         {

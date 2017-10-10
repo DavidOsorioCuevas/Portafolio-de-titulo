@@ -53,7 +53,9 @@ namespace Core.Servicios
 
         /*OFERTACOLLECTIONS*/
         [OperationContract]
-        string ReadAllOfertas();
+        string ReadAllOfertasActivo();
+        [OperationContract]
+        string ReadAllOfertasDesactivo();
 
         /*Descuento*/
         [OperationContract]
@@ -80,6 +82,8 @@ namespace Core.Servicios
         bool EliminarProducto(string json);
 
         /*Oferta*/
+        [OperationContract]
+        string TraerOferta(string json);
         [OperationContract]
         bool CrearOferta(string json);
         [OperationContract]

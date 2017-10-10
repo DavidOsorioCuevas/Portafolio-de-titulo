@@ -13,12 +13,13 @@ namespace Core.Negocio
         public int IdOferta { get; set; }
         public string ImagenOferta { get; set; }
         public int MinProductos { get; set; }
+        public int PrecioOferta { get; set; }
+        public int PrecioAntes { get; set; }
         public int MaxProductos { get; set; }
         public char? EstadoOferta { get; set; }
         public DateTime? FechaOferta { get; set; }
         public int IdSucursal { get; set; }
         public int CategoriaIdOferta { get; set; }
-        public int IdProducto { get; set; }
         public int IdRegion { get; set; }
         public int IdComuna { get; set; }
         public string Nombre { get; set; }
@@ -41,10 +42,11 @@ namespace Core.Negocio
             this.MinProductos = of.MinProductos;
             this.MaxProductos = of.MaxProductos;
             this.EstadoOferta = of.EstadoOferta;
+            this.PrecioOferta = of.PrecioOferta;
+            this.PrecioAntes = of.PrecioAntes;
             this.FechaOferta = of.FechaOferta;
             this.IdSucursal = of.IdSucursal;
             this.CategoriaIdOferta = of.CategoriaIdOferta;
-            this.IdProducto = of.IdProducto;
             this.IdRegion = of.IdRegion;
             this.IdComuna = of.IdComuna;
             this.Nombre = of.Nombre;
@@ -59,9 +61,10 @@ namespace Core.Negocio
             this.MaxProductos = 0;
             this.EstadoOferta = null;
             this.FechaOferta = null;
-            this.IdSucursal = 0; 
+            this.PrecioOferta = 0;
+            this.PrecioAntes = 0;
+            this.IdSucursal = 0;
             this.CategoriaIdOferta = 0;
-            this.IdProducto = 0;
             this.IdRegion = 0;
             this.IdComuna = 0;
             this.Nombre = string.Empty;
@@ -81,6 +84,8 @@ namespace Core.Negocio
                 of.MAX_PRODUCTO = this.MaxProductos;
                 of.ESTADO_OFERTA = this.EstadoOferta.ToString();
                 of.FECHA_OFERTA = this.FechaOferta;
+                of.PRECIO_OFERTA = this.PrecioOferta;
+                of.PRECIO_ANTES = this.PrecioAntes;
                 of.SUCURSALES_ID = this.IdSucursal;
                 of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
                 of.REGION_ID = this.IdRegion;
@@ -151,6 +156,44 @@ namespace Core.Negocio
 
                 return false;
             }
+
+        }
+
+
+        public bool PublicarOferta()
+        {
+            try
+            {
+                DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
+                DALC.OFERTA of = ctx.OFERTA.First(o => o.ID_OFERTA == IdOferta && o.ESTADO_OFERTA == "0");
+
+                of.IMAGEN_OFERTA = this.ImagenOferta;
+                of.MIN_PRODUCTO = this.MinProductos;
+                of.MAX_PRODUCTO = this.MaxProductos;
+                of.ESTADO_OFERTA = "1";
+                of.FECHA_OFERTA = this.FechaOferta;
+                of.SUCURSALES_ID = this.IdSucursal;
+                of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
+                of.REGION_ID = this.IdRegion;
+                of.COMUNA_ID = this.IdComuna;
+                of.NOMBRE = this.Nombre;
+                of.DESCRIPCION = this.Descripcion;
+                ctx.SaveChanges();
+                ctx = null;
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+            
+        }
+
+        public string TraerOferta()
+        {
+            return "";
 
         }
 
