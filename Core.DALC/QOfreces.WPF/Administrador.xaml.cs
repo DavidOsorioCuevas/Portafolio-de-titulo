@@ -1,5 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Navigation;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MahApps.Metro.Behaviours;
 
 
 namespace QOfreces.WPF
@@ -7,7 +10,7 @@ namespace QOfreces.WPF
     /// <summary>
     /// Lógica de interacción para Administrador.xaml
     /// </summary>
-    public partial class Administrador : Window
+    public partial class Administrador : MetroWindow
     {
         public Administrador()
         {

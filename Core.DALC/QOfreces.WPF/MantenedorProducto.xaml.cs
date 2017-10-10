@@ -13,13 +13,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Core.Negocio;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MahApps.Metro.Behaviours;
 
 namespace QOfreces.WPF
 {
     /// <summary>
     /// Lógica de interacción para MantenedorProducto.xaml
     /// </summary>
-    public partial class MantenedorProducto : Window
+    public partial class MantenedorProducto : MetroWindow
     {
         public MantenedorProducto()
         {
@@ -28,10 +31,18 @@ namespace QOfreces.WPF
 
         }
 
-
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void btnListarProd_Click(object sender, RoutedEventArgs e)
         {
+            dgProd.Visibility = Visibility.Visible;
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json = proxy.ReadAllProductos();
+            Core.Negocio.ProductoCollections collprod = new Core.Negocio.ProductoCollections(json);
+            dgProd.ItemsSource = collprod;
 
+        }
+
+        private async void btnAgregar_Click(object sender, RoutedEventArgs e)
+        {
             Core.Negocio.Producto p = new Core.Negocio.Producto();
 
             p.IdRubro = 2;
@@ -47,26 +58,18 @@ namespace QOfreces.WPF
 
             if (proxy.CrearProducto(json))
             {
-                MessageBox.Show("HELL YEAH!");
+                await this.ShowMessageAsync("Exito", "Producto agregado!");
+                txtNombre.Clear();
+                txtDescripcion.Clear();
+                txtPrecio.Clear();
+                cbRubro.SelectedIndex = 0;
+                cbSucursal.SelectedIndex = 0;
+            }
+            else
+            {
+                await this.ShowMessageAsync("Error", "No se pudo agregar el producto");
+
             };
-
-
-
-
-
-
-
         }
-
-        private void btnListarProd_Click(object sender, RoutedEventArgs e)
-        {
-            dgProd.Visibility = Visibility.Visible;
-            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = proxy.ReadAllProductos();
-            Core.Negocio.ProductoCollections collprod = new Core.Negocio.ProductoCollections(json);
-            dgProd.ItemsSource = collprod;
-
-        }
-
     }
 }
