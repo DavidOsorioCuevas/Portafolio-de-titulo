@@ -15,6 +15,8 @@ namespace Core.Servicios
 
         /*USUARIO*/
         [OperationContract]
+        string ValidarWeb(string json);
+        [OperationContract]
         bool ValidarUsuarioWPF(string username, string password);
         [OperationContract]
         string LeerUsuario(string json);

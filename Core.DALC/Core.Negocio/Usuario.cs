@@ -60,6 +60,39 @@ namespace Core.Negocio
 
         }
 
+        public string ValidarWeb()
+        {
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+            Usuario user = new Usuario();
+            var result = from a in ctx.USUARIO where this.NombreUsuario.Equals(a.NOMBRE_USUARIO) && this.Password.Equals(a.PASSWORD)
+                         select new{ a.NOMBRE,a.PERFIL_ID,a.ACTIVO,a.PUNTOS,a.EMAIL,a.APELLIDO,a.NUMERO_CELULAR,a.FECHA_NACIMIENTO,a.SEXO};
+            if (result.Count()>0)
+            {
+                if (result.First().PERFIL_ID!=1 || result.First().ACTIVO.Equals('n'))
+                {
+                    user.Activo = 'n';
+                }
+                else {
+                    user.Activo = 's';
+                    user.Nombre = result.First().NOMBRE;
+                    user.Puntos = (int)result.First().PUNTOS;
+                    user.Email = result.First().EMAIL;
+                    user.Apellido = result.First().APELLIDO;
+                    user.NumeroCelular = (int)result.First().NUMERO_CELULAR;
+                    user.FechaNacimiento = result.First().FECHA_NACIMIENTO;
+                    user.Sexo = Convert.ToChar(result.First().SEXO);
+
+                } 
+
+                
+            }else
+            {
+                user.Activo = 'n';
+            }
+
+            return SerializarUsuario(user);
+        }
+
         private void Init()
         {
             IdUsuario = 0;
@@ -191,6 +224,19 @@ namespace Core.Negocio
 
         }
 
+        public string SerializarUsuario(Usuario user)
+        {
+
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(Usuario));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, user);
+
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+
+            return ser.ToString();
+
+        }
         public bool ValidarUsuarioWPF(string username, string password)
         {
             this.NombreUsuario = username;
