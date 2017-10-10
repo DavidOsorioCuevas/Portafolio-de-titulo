@@ -81,6 +81,9 @@
     <Compile Include="EncargadoTienda.xaml.cs">
       <DependentUpon>EncargadoTienda.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GenOferta.xaml.cs">
+      <DependentUpon>GenOferta.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gerente.xaml.cs">
       <DependentUpon>Gerente.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EncargadoTienda.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GenOferta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

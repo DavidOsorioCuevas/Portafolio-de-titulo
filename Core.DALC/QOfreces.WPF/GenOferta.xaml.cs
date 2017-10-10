@@ -15,17 +15,18 @@ using System.Windows.Shapes;
 namespace QOfreces.WPF
 {
     /// <summary>
-    /// Lógica de interacción para GenerarOferta.xaml
+    /// Lógica de interacción para GenOferta.xaml
     /// </summary>
-    public partial class GenerarOferta : Window
+    public partial class GenOferta : Window
     {
-        public GenerarOferta()
+        public GenOferta()
         {
             InitializeComponent();
         }
 
-        private void btnListar_Click(object sender, RoutedEventArgs e)
+        private void btnListarProd_Click(object sender, RoutedEventArgs e)
         {
+
             dgProd.Visibility = Visibility.Visible;
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             string json = proxy.ReadAllProductos();
@@ -43,6 +44,7 @@ namespace QOfreces.WPF
                 dgProd.Items.Add(item.Descripcion);
 
             }
+
 
         }
     }

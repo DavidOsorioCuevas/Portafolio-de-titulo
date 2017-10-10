@@ -26,7 +26,7 @@ namespace QOfreces.WPF
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-           
+
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             string json = proxy.ReadAllOfertas();
             Core.Negocio.OfertaCollections collOf = new Core.Negocio.OfertaCollections(json);
@@ -35,7 +35,7 @@ namespace QOfreces.WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GenerarOferta genOf = new GenerarOferta();
+            GenOferta genOf = new GenOferta();
             genOf.Owner = this;
             genOf.Show();
         }

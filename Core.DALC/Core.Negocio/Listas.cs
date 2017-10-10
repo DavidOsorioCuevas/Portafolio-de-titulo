@@ -31,7 +31,7 @@ namespace Core.Negocio
         public string SerializarRegion(List<Region> region)
         {
 
-            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(List<Region));
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(List<Region>));
             MemoryStream stream = new MemoryStream();
 
             serializador.WriteObject(stream, region);
