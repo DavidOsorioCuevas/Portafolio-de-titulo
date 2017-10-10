@@ -32,5 +32,12 @@ namespace QOfreces.WPF
             Core.Negocio.OfertaCollections collOf = new Core.Negocio.OfertaCollections(json);
             dataGridOfertas.ItemsSource = collOf;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GenerarOferta genOf = new GenerarOferta();
+            genOf.Owner = this;
+            genOf.Show();
+        }
     }
 }

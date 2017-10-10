@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Core.Negocio;
 
 namespace QOfreces.WPF
 {
@@ -23,16 +24,19 @@ namespace QOfreces.WPF
         public MantenedorProducto()
         {
             InitializeComponent();
+
+
         }
+
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
 
             Core.Negocio.Producto p = new Core.Negocio.Producto();
-            
+
             p.IdRubro = 2;
             p.Precio = 100;
-            p.CodigoInterno = "cod";            
+            p.CodigoInterno = "cod";
             p.Nombre = "doritos";
             p.Sku = "SKU";
             p.Descripcion = "doritos de queso";
@@ -44,10 +48,10 @@ namespace QOfreces.WPF
             if (proxy.CrearProducto(json))
             {
                 MessageBox.Show("HELL YEAH!");
-            } ;
+            };
 
-           
-            
+
+
 
 
 
@@ -56,22 +60,13 @@ namespace QOfreces.WPF
 
         private void btnListarProd_Click(object sender, RoutedEventArgs e)
         {
-            dGridProd.Visibility = Visibility.Visible;
+            dgProd.Visibility = Visibility.Visible;
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             string json = proxy.ReadAllProductos();
             Core.Negocio.ProductoCollections collprod = new Core.Negocio.ProductoCollections(json);
-            dGridProd.ItemsSource = collprod;
+            dgProd.ItemsSource = collprod;
 
         }
 
-        private void chkProd_Checked(object sender, RoutedEventArgs e)
-        {
-            List<CheckBox> checkBoxlist = new List<CheckBox>();
-            foreach (var item in checkBoxlist)
-            {
-                lblPrueba.Content = item.Content;
-            }
-
-        }
     }
 }

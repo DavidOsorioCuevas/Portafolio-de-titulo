@@ -1,0 +1,21 @@
+﻿<Window x:Class="QOfreces.WPF.GenerarOferta"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QOfreces.WPF"
+        mc:Ignorable="d"
+        Title="GenerarOferta" Height="358.888" Width="738.889">
+    <Grid>
+        <Button x:Name="btnListar" Content="Listar Productos" HorizontalAlignment="Left" Margin="134,70,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="0.746,0.485" Click="btnListar_Click"/>
+        <Label Content="Generación de Ofertas" HorizontalAlignment="Left" Margin="211,10,0,0" VerticalAlignment="Top" Height="39" Width="243" FontSize="20"/>
+        <DataGrid x:Name="dgProd" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Height="161" Width="600">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn x:Name="dgcCH" Header="Seleccionar"> </DataGridCheckBoxColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Generar Oferta" HorizontalAlignment="Left" Margin="490,283,0,0" VerticalAlignment="Top" Width="116"/>
+
+    </Grid>
+</Window>
