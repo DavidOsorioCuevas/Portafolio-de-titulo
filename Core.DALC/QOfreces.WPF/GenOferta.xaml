@@ -11,7 +11,13 @@
         <Button x:Name="btnListarProd" Content="Listar Productos" HorizontalAlignment="Left" Margin="139,50,0,0" VerticalAlignment="Top" Width="104" Click="btnListarProd_Click"/>
         <DataGrid x:Name="dgProd" HorizontalAlignment="Left" Margin="26,93,0,0" VerticalAlignment="Top" Height="161" Width="600">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn x:Name="dgcSel" Header="Seleccionar"/>
+                <DataGridCheckBoxColumn Header="Seleccionar">
+                    <DataGridCheckBoxColumn.CellStyle>
+                        <Style>
+                            <EventSetter Event="CheckBox.Checked" Handler="OnChecked"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.CellStyle>
+                </DataGridCheckBoxColumn>
             </DataGrid.Columns>
         </DataGrid>
 

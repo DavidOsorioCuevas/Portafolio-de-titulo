@@ -19,10 +19,19 @@ namespace QOfreces.WPF
     /// </summary>
     public partial class GenOferta : Window
     {
+
         public GenOferta()
         {
             InitializeComponent();
+
         }
+
+        void OnChecked(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+
 
         private void btnListarProd_Click(object sender, RoutedEventArgs e)
         {
@@ -31,21 +40,8 @@ namespace QOfreces.WPF
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             string json = proxy.ReadAllProductos();
             Core.Negocio.ProductoCollections collprod = new Core.Negocio.ProductoCollections(json);
-
-            //dgProd.Columns.Add("ID");
-            foreach (var item in collprod)
-            {
-                dgProd.Items.Add(item.IdProducto);
-                dgProd.Items.Add(item.IdRubro);
-                dgProd.Items.Add(item.Precio);
-                dgProd.Items.Add(item.CodigoInterno);
-                dgProd.Items.Add(item.Nombre);
-                dgProd.Items.Add(item.Sku);
-                dgProd.Items.Add(item.Descripcion);
-
-            }
-
-
+            dgProd.ItemsSource = collprod;
         }
+
     }
 }

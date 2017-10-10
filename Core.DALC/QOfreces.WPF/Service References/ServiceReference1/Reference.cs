@@ -15,6 +15,12 @@ namespace QOfreces.WPF.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ValidarWeb", ReplyAction="http://tempuri.org/IService1/ValidarWebResponse")]
+        string ValidarWeb(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ValidarWeb", ReplyAction="http://tempuri.org/IService1/ValidarWebResponse")]
+        System.Threading.Tasks.Task<string> ValidarWebAsync(string json);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ValidarUsuarioWPF", ReplyAction="http://tempuri.org/IService1/ValidarUsuarioWPFResponse")]
         bool ValidarUsuarioWPF(string username, string password);
         
@@ -191,6 +197,14 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string ValidarWeb(string json) {
+            return base.Channel.ValidarWeb(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> ValidarWebAsync(string json) {
+            return base.Channel.ValidarWebAsync(json);
         }
         
         public bool ValidarUsuarioWPF(string username, string password) {
