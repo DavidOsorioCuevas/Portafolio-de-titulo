@@ -32,7 +32,7 @@ namespace QOfreces.WPF
         {
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
 
-            if (proxy.ValidarUsuarioWPF(txtUser.Text, pbPassword.Password))
+            if (proxy.ValidarUsuarioWPF(txtUser.Text, pbPassword.Password.ToString()))
             {
 
                 Core.Negocio.Usuario user = new Core.Negocio.Usuario();
