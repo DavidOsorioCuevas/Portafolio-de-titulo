@@ -193,7 +193,23 @@ namespace Core.Negocio
 
         public string TraerOferta()
         {
-            return "";
+            Core.DALC.QueOfrecesEntities db = new Core.DALC.QueOfrecesEntities();
+            var result = from a in db.OFERTA
+                         where a.ID_OFERTA == this.IdOferta
+                         select new {
+                             a.NOMBRE,a.PRECIO_ANTES,a.PRECIO_OFERTA,a.MAX_PRODUCTO,a.MIN_PRODUCTO,a.IMAGEN_OFERTA,a.FECHA_OFERTA
+                         };
+            if (result.Count()>0)
+            {
+                this.Nombre = result.First().NOMBRE;
+                this.PrecioAntes = (int)result.First().PRECIO_ANTES;
+                this.PrecioOferta = (int)result.First().PRECIO_OFERTA;
+                this.MaxProductos = (int)result.First().MAX_PRODUCTO;
+                this.MinProductos = (int)result.First().MIN_PRODUCTO;
+                this.ImagenOferta = result.First().IMAGEN_OFERTA;
+                this.FechaOferta = result.First().FECHA_OFERTA;
+            }
+            return Serializar();
 
         }
 
