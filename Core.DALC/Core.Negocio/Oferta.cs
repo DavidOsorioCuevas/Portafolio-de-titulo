@@ -24,7 +24,7 @@ namespace Core.Negocio
         public int IdComuna { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-
+       
         public Oferta()
         {
             this.Init();
@@ -197,10 +197,9 @@ namespace Core.Negocio
             var result = from a in db.OFERTA
                          where a.ID_OFERTA == this.IdOferta
                          select new {
-                             a.NOMBRE,a.PRECIO_ANTES,a.PRECIO_OFERTA,a.MAX_PRODUCTO,a.MIN_PRODUCTO,a.IMAGEN_OFERTA,a.FECHA_OFERTA
+                             a.NOMBRE,a.COMUNA_ID,a.REGION_ID,a.SUCURSALES_ID,a.PRECIO_ANTES,a.DESCRIPCION,a.PRECIO_OFERTA,a.MAX_PRODUCTO,a.MIN_PRODUCTO,a.IMAGEN_OFERTA,a.FECHA_OFERTA
                          };
-            if (result.Count()>0)
-            {
+            
                 this.Nombre = result.First().NOMBRE;
                 this.PrecioAntes = (int)result.First().PRECIO_ANTES;
                 this.PrecioOferta = (int)result.First().PRECIO_OFERTA;
@@ -208,7 +207,11 @@ namespace Core.Negocio
                 this.MinProductos = (int)result.First().MIN_PRODUCTO;
                 this.ImagenOferta = result.First().IMAGEN_OFERTA;
                 this.FechaOferta = result.First().FECHA_OFERTA;
-            }
+                this.Descripcion = result.First().DESCRIPCION;
+                this.IdComuna = (int)result.First().COMUNA_ID;
+                this.IdRegion = (int)result.First().REGION_ID;
+                this.IdSucursal = (int)result.First().SUCURSALES_ID;
+            
             return Serializar();
 
         }
