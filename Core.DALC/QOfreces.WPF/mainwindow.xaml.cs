@@ -25,6 +25,7 @@ namespace QOfreces.WPF
         public mainwindow()
         {
             InitializeComponent();
+            txtUser.Focus();
         }
 
         private async void button_Click(object sender, RoutedEventArgs e)

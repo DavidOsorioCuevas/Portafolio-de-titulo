@@ -8,7 +8,7 @@
         Title="GenOferta" Height="455.556" Width="701.111">
     <Grid>
         <Label Content="GenerarOferta" HorizontalAlignment="Left" Margin="265,20,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnListarProd" Content="Listar Productos" HorizontalAlignment="Left" Margin="139,50,0,0" VerticalAlignment="Top" Width="104" Click="btnListarProd_Click"/>
+        <Button x:Name="btnListarProd" Content="Listar Productos" HorizontalAlignment="Left" Margin="26,61,0,0" VerticalAlignment="Top" Width="104" Click="btnListarProd_Click"/>
         <DataGrid x:Name="dgProd" HorizontalAlignment="Left" Margin="26,93,0,0" VerticalAlignment="Top" Height="161" Width="600">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
@@ -20,7 +20,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnGenOferta" Content="Generar Oferta" HorizontalAlignment="Left" Margin="449,282,0,0" VerticalAlignment="Top" Width="128" Click="btnGenOferta_Click"/>
+        <Button x:Name="btnGenOferta" Content="Generar Oferta" HorizontalAlignment="Left" Margin="498,259,0,0" VerticalAlignment="Top" Width="128" Click="btnGenOferta_Click"/>
 
     </Grid>
 </Window>

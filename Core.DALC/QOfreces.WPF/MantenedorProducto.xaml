@@ -19,13 +19,13 @@
                 <DataGridTextColumn x:Name="dgcPrec" Header="Precio Producto" Binding="{Binding Path=Precio}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox x:Name="txtNombre" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese nombre del producto" HorizontalAlignment="Left" Height="23" Margin="176,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black"/>
+        <TextBox x:Name="txtNombre" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese nombre del producto" HorizontalAlignment="Left" Height="23" Margin="176,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"/>
         <Label x:Name="label" Content="Nombre Producto:" HorizontalAlignment="Left" Margin="72,118,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblPrueba_Copy" Content="" HorizontalAlignment="Left" Margin="236,163,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
-        <TextBox x:Name="txtPrecio" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese precio" HorizontalAlignment="Left" Height="23" Margin="176,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black"/>
+        <TextBox x:Name="txtPrecio" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese precio" HorizontalAlignment="Left" Height="23" Margin="176,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="2"/>
         <Label x:Name="label_Copy" Content="Precio:" HorizontalAlignment="Left" Margin="128,149,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblPrueba_Copy1" Content="" HorizontalAlignment="Left" Margin="268,191,0,0" VerticalAlignment="Top" Height="26" Width="16"/>
-        <TextBox x:Name="txtDescripcion" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese descripcion" HorizontalAlignment="Left" Height="23" Margin="176,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black"/>
+        <TextBox x:Name="txtDescripcion" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese descripcion" HorizontalAlignment="Left" Height="23" Margin="176,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="3"/>
         <Label x:Name="label_Copy1" Content="Descripcion:" HorizontalAlignment="Left" Margin="102,176,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblPrueba_Copy2" Content="" HorizontalAlignment="Left" Margin="268,219,0,0" VerticalAlignment="Top" Height="26" Width="16"/>
         <Label x:Name="lblPrueba_Copy3" Content="" HorizontalAlignment="Left" Margin="268,247,0,0" VerticalAlignment="Top" Height="26" Width="16"/>
@@ -35,13 +35,12 @@
         <Label x:Name="lblPrueba_Copy6" Content="" HorizontalAlignment="Left" Margin="527,144,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
         <Label x:Name="lblPrueba_Copy7" Content="" HorizontalAlignment="Left" Margin="527,172,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
         <Label x:Name="label_Copy6" Content="Sucursal:" HorizontalAlignment="Left" Margin="415,157,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbRubro" HorizontalAlignment="Left" Margin="470,116,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black"/>
-        <ComboBox x:Name="cbSucursal" HorizontalAlignment="Left" Margin="470,154,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black"/>
+        <ComboBox x:Name="cbRubro" HorizontalAlignment="Left" Margin="470,116,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black" TabIndex="4"/>
+        <ComboBox x:Name="cbSucursal" HorizontalAlignment="Left" Margin="470,154,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black" TabIndex="5"/>
         <TextBox x:Name="txtBuscar" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Busqueda" HorizontalAlignment="Left" Height="23" Margin="352,219,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black"/>
-        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="785,116,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click" BorderBrush="Black"/>
-        <Button x:Name="btnModificar" Content="Modificar" HorizontalAlignment="Left" Margin="785,152,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="785,190,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black"/>
-        <Button x:Name="btnVolver" Content="Volver" HorizontalAlignment="Left" Margin="705,384,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="785,384,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="785,116,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click" BorderBrush="Black" TabIndex="6"/>
+        <Button x:Name="btnModificar" Content="Modificar" HorizontalAlignment="Left" Margin="785,152,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" Click="btnModificar_Click"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="785,190,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" Click="btnEliminar_Click"/>
+        <Button x:Name="btnVolver" Content="Volver" HorizontalAlignment="Left" Margin="785,384,0,0" VerticalAlignment="Top" Width="75" Click="btnVolver_Click"/>
     </Grid>
 </Controls:MetroWindow>
