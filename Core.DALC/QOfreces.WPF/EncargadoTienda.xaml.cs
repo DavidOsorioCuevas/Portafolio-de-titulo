@@ -11,33 +11,49 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MahApps.Metro.Behaviours;
 
 namespace QOfreces.WPF
 {
     /// <summary>
     /// Lógica de interacción para EncargadoTienda.xaml
     /// </summary>
-    public partial class EncargadoTienda : Window
+    public partial class EncargadoTienda : MetroWindow
     {
         public EncargadoTienda()
         {
             InitializeComponent();
+            
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void btnConsultar_Click(object sender, RoutedEventArgs e)
         {
-
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             string json = proxy.ReadAllOfertasActivo();
             Core.Negocio.OfertaCollections collOf = new Core.Negocio.OfertaCollections(json);
             dataGridOfertas.ItemsSource = collOf;
+            
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnGenerar_Click(object sender, RoutedEventArgs e)
         {
             GenOferta genOf = new GenOferta();
             genOf.Owner = this;
             genOf.Show();
+        }
+
+        private async void btnPublicar_Click(object sender, RoutedEventArgs e)
+        {
+            await this.ShowMessageAsync("Alerta!", "Este evento aun no se implementa.");
+        }
+
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            mainwindow mai = new mainwindow();
+            this.Close();
+            mai.Show();
         }
     }
 }

@@ -10,10 +10,10 @@
         mc:Ignorable="d"
         Title="Login" Height="332" Width="300" Background="Gainsboro" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="button" Content="Ingresar" HorizontalAlignment="Left" Margin="91,242,0,0" VerticalAlignment="Top" Width="75" Click="button_Click" BorderBrush="Black"/>
+        <Button x:Name="button" Content="Ingresar" HorizontalAlignment="Left" Margin="91,242,0,0" VerticalAlignment="Top" Width="75" Click="button_Click" BorderBrush="Black" TabIndex="3"/>
         <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="101,156,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtUser" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu usuario" HorizontalAlignment="Left" Height="23" Margin="10,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" BorderBrush="Black"/>
-        <PasswordBox x:Name="pbPassword" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu contraseña" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Width="272" BorderBrush="Black"/>
+        <TextBox x:Name="txtUser" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu usuario" HorizontalAlignment="Left" Height="23" Margin="10,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" BorderBrush="Black" TabIndex="1"/>
+        <PasswordBox x:Name="pbPassword" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu contraseña" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Width="272" BorderBrush="Black" TabIndex="2"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="114" Margin="80,25,0,0" VerticalAlignment="Top" Width="111" Source="img/Login.png" Stretch="Fill"/>
     </Grid>
 </Controls:MetroWindow>
