@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QOfreces.WPF"
         mc:Ignorable="d"
-        Title="GenOferta" Height="455.556" Width="701.111">
+        Title="GenOferta" Height="509.548" Width="917.078">
     <Grid>
         <Label Content="GenerarOferta" HorizontalAlignment="Left" Margin="265,20,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnListarProd" Content="Listar Productos" HorizontalAlignment="Left" Margin="26,61,0,0" VerticalAlignment="Top" Width="104" Click="btnListarProd_Click"/>
-        <DataGrid x:Name="dgProd" HorizontalAlignment="Left" Margin="26,93,0,0" VerticalAlignment="Top" Height="161" Width="600">
+
+        <Button x:Name="btnGenOferta" Content="Generar Oferta" HorizontalAlignment="Left" Margin="709,402,0,0" VerticalAlignment="Top" Width="128" Click="btnGenOferta_Click"/>
+        <DataGrid x:Name="dgProd" HorizontalAlignment="Left" Margin="117,131,0,0" VerticalAlignment="Top" Height="199" Width="583"  AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <CheckBox x:Name="chk" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Id Producto" Binding="{Binding IdProducto}" />
+                <DataGridTextColumn Header="SKU" Binding="{Binding Sku}" />
+                <DataGridTextColumn Header="Nombre Producto" Binding="{Binding Nombre}" />
+                <DataGridTextColumn Header="Precio " Binding="{Binding Precio}" />
+                <DataGridTextColumn Header="Codigo Interno " Binding="{Binding CodigoInterno}" />
+                <DataGridCheckBoxColumn x:Name="chk" Header="Seleccionar" Binding="{Binding Selec}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnGenOferta" Content="Generar Oferta" HorizontalAlignment="Left" Margin="498,259,0,0" VerticalAlignment="Top" Width="128" Click="btnGenOferta_Click"/>
+
 
     </Grid>
 </Window>
