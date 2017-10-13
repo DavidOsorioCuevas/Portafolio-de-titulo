@@ -24,7 +24,8 @@ namespace Core.Negocio
         public int IdComuna { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-       
+        public string OfertaDia { get; set; }
+
         public Oferta()
         {
             this.Init();
@@ -51,6 +52,7 @@ namespace Core.Negocio
             this.IdComuna = of.IdComuna;
             this.Nombre = of.Nombre;
             this.Descripcion = of.Descripcion;
+            this.OfertaDia = of.OfertaDia;
         }
 
         private void Init()
@@ -69,6 +71,7 @@ namespace Core.Negocio
             this.IdComuna = 0;
             this.Nombre = string.Empty;
             this.Descripcion = string.Empty;
+            this.OfertaDia = string.Empty;
         }
 
         public bool CrearOferta()
@@ -92,6 +95,7 @@ namespace Core.Negocio
                 of.COMUNA_ID = this.IdComuna;
                 of.NOMBRE = this.Nombre;
                 of.DESCRIPCION = this.Descripcion;
+                of.OFERTA_DIA = this.OfertaDia;
 
                 ctx.OFERTA.Add(of);
                 ctx.SaveChanges();
@@ -125,6 +129,7 @@ namespace Core.Negocio
                 of.COMUNA_ID = this.IdComuna;
                 of.NOMBRE = this.Nombre;
                 of.DESCRIPCION = this.Descripcion;
+                of.OFERTA_DIA = this.OfertaDia;
 
                 ctx.SaveChanges();
                 ctx = null;
@@ -178,6 +183,7 @@ namespace Core.Negocio
                 of.COMUNA_ID = this.IdComuna;
                 of.NOMBRE = this.Nombre;
                 of.DESCRIPCION = this.Descripcion;
+                of.OFERTA_DIA = this.OfertaDia;
                 ctx.SaveChanges();
                 ctx = null;
                 return true;
@@ -197,7 +203,7 @@ namespace Core.Negocio
             var result = from a in db.OFERTA
                          where a.ID_OFERTA == this.IdOferta
                          select new {
-                             a.NOMBRE,a.COMUNA_ID,a.REGION_ID,a.SUCURSALES_ID,a.PRECIO_ANTES,a.DESCRIPCION,a.PRECIO_DESPUES,a.MAX_PRODUCTO,a.MIN_PRODUCTO,a.IMAGEN_OFERTA,a.FECHA_OFERTA
+                             a.NOMBRE,a.COMUNA_ID,a.REGION_ID,a.SUCURSALES_ID,a.PRECIO_ANTES,a.DESCRIPCION,a.PRECIO_DESPUES,a.MAX_PRODUCTO,a.MIN_PRODUCTO,a.IMAGEN_OFERTA,a.FECHA_OFERTA,a.OFERTA_DIA
                          };
             
                 this.Nombre = result.First().NOMBRE;
@@ -208,6 +214,7 @@ namespace Core.Negocio
                 this.ImagenOferta = result.First().IMAGEN_OFERTA;
                 this.FechaOferta = result.First().FECHA_OFERTA;
                 this.Descripcion = result.First().DESCRIPCION;
+                this.OfertaDia = result.First().OFERTA_DIA;
                 this.IdComuna = (int)result.First().COMUNA_ID;
                 this.IdRegion = (int)result.First().REGION_ID;
                 this.IdSucursal = (int)result.First().SUCURSALES_ID;
