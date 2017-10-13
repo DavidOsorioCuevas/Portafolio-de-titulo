@@ -19,7 +19,7 @@ namespace Core.DALC
             this.OFERTA = new HashSet<OFERTA>();
         }
     
-        public decimal ID_CATEGORIA { get; set; }
+        public decimal ID_CATEGORIA_OFERTA { get; set; }
         public string NOMBRE { get; set; }
     
         public virtual ICollection<OFERTA> OFERTA { get; set; }

@@ -28,6 +28,9 @@ namespace Core.Negocio
         public string Email { get; set; }
         public int NumeroCelular { get; set; }
         public int Puntos { get; set; }
+        public DateTime? FechaCreacion { get; set; }
+        public string CodigoActivacion { get; set; }
+
 
 
         public Usuario()
@@ -56,6 +59,8 @@ namespace Core.Negocio
             this.Email = user.Email;
             this.NumeroCelular = user.NumeroCelular;
             this.Puntos = user.Puntos;
+            this.FechaCreacion = user.FechaCreacion;
+            this.CodigoActivacion = user.CodigoActivacion;
 
 
         }
@@ -109,6 +114,10 @@ namespace Core.Negocio
             Email = string.Empty;
             NumeroCelular = 0;
             Puntos = 0;
+            FechaCreacion = null;
+            IdComuna = 0;
+            Idregion = 0;
+            CodigoActivacion = string.Empty;
         }
 
         public bool Read()
@@ -132,6 +141,9 @@ namespace Core.Negocio
                 this.Email = usuario.EMAIL;
                 this.NumeroCelular = (int)usuario.NUMERO_CELULAR;
                 this.Puntos = (int)usuario.PUNTOS;
+                this.FechaCreacion = usuario.FECHA_CREACION;
+                this.CodigoActivacion = usuario.CODIGO_ACTIVACION;
+
                 ctx = null;
 
                 return true;
@@ -162,7 +174,9 @@ namespace Core.Negocio
                 this.Email = usuario.EMAIL;
                 this.NumeroCelular = (int)usuario.NUMERO_CELULAR;
                 this.Puntos = (int)usuario.PUNTOS;
-                
+                this.FechaCreacion = usuario.FECHA_CREACION;
+                this.CodigoActivacion = usuario.CODIGO_ACTIVACION;
+
                 ctx = null;
 
                 return true;
@@ -195,6 +209,8 @@ namespace Core.Negocio
                 usuario.EMAIL = this.Email;
                 usuario.NUMERO_CELULAR = this.NumeroCelular;
                 usuario.PUNTOS = this.Puntos;
+                usuario.FECHA_CREACION = this.FechaCreacion;
+                usuario.CODIGO_ACTIVACION = this.CodigoActivacion;
 
                 ctx.USUARIO.Add(usuario);
                 ctx.SaveChanges();
@@ -237,6 +253,7 @@ namespace Core.Negocio
             return ser.ToString();
 
         }
+
         public bool ValidarUsuarioWPF(string username, string password)
         {
             this.NombreUsuario = username;
@@ -289,6 +306,14 @@ namespace Core.Negocio
                 usuario.SEXO = this.Sexo.ToString();
                 usuario.EMAIL = this.Email;
                 usuario.NUMERO_CELULAR = this.NumeroCelular;
+                usuario.PUNTOS = this.Puntos;
+                usuario.PASSAPORTE = this.Pasaporte;
+                usuario.NACIONALIDAD = this.Nacionalidad;
+                usuario.COMUNA_ID = this.IdComuna;
+                usuario.REGION_ID = this.Idregion;
+                usuario.FECHA_CREACION = this.FechaCreacion;
+                usuario.CODIGO_ACTIVACION = this.CodigoActivacion;
+                
 
                 ctx.SaveChanges();
                 ctx = null;

@@ -14,8 +14,8 @@ namespace Core.DALC
     
     public partial class COMPORTAMIENTO
     {
+        public decimal ID_COMPORTAMIENTO { get; set; }
         public Nullable<decimal> PRODUCTO_ID { get; set; }
         public Nullable<System.DateTime> FECHA { get; set; }
-        public decimal ID_COMPORTAMIENTO { get; set; }
     }
 }

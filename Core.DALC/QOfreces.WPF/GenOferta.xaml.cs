@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Core.Negocio;
 using System.Collections.ObjectModel;
 using System.Collections;
+using System.Data;
 
 namespace QOfreces.WPF
 {
@@ -36,26 +37,30 @@ namespace QOfreces.WPF
 
 
 
+
         private void btnGenOferta_Click(object sender, RoutedEventArgs e)
         {
-            var itemsSource = dgProd.ItemsSource as IEnumerable;
+            var rows = GetDataGridRows(dgProd);
 
-            if (itemsSource != null)
+            foreach (DataGridRow r in rows)
             {
-                foreach (var item in itemsSource)
-                {
-                    var row = dgProd.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
-                    if (row != null)
-                    {
-                        MessageBox.Show(row.ToString());
-                    }
+                DataRowView rv = (DataRowView)r.Item;
+                MessageBox.Show( rv.DataView.ToString());
+            }
 
-                }
+        }
+
+        public IEnumerable<DataGridRow> GetDataGridRows(DataGrid dgProd)
+        {
+            var itemsSource = dgProd.ItemsSource as IEnumerable;
+            if (null == itemsSource) yield return null;
+            foreach (var item in itemsSource)
+            {
+                var row = dgProd.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
+                if (null != row) yield return row;
             }
         }
     }
 
-
-
-
 }
+

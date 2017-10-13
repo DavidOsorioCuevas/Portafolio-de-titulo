@@ -333,7 +333,7 @@ namespace Core.DALC
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SUCURSAL_ELIMINAR", iN_RUTParameter);
         }
     
-        public virtual int USUARIO_CREAR(Nullable<decimal> iN_PERFIL_ID, string iN_LOGIN_USUARIO, string iN_PASS_USUARIO, string iN_NOMBRE_USUARIO, string iN_APELLIDO_USUARIO, string iN_RUT, string iN_ACTIVO, Nullable<decimal> iN_SUCURSAL, Nullable<System.DateTime> iN_FECHA_NACIMIENTO, string iN_SEXO, string iN_NACIONALIDAD, string iN_PASSAPORTE, Nullable<decimal> iN_COMUNA_ID, Nullable<decimal> iN_REGION_ID, string iN_EMAIL, Nullable<decimal> iN_CELULAR, Nullable<decimal> iN_PUNTOS, string iN_CODIGO_VERIFICACION, Nullable<System.DateTime> iN_FECHA_CREACION)
+        public virtual int USUARIO_CREAR(Nullable<decimal> iN_PERFIL_ID, string iN_LOGIN_USUARIO, string iN_PASS_USUARIO, string iN_NOMBRE_USUARIO, string iN_APELLIDO_USUARIO, string iN_RUT, Nullable<decimal> iN_SUCURSAL, Nullable<System.DateTime> iN_FECHA_NACIMIENTO, string iN_SEXO, string iN_NACIONALIDAD, string iN_PASSAPORTE, Nullable<decimal> iN_COMUNA_ID, Nullable<decimal> iN_REGION_ID, string iN_EMAIL, Nullable<decimal> iN_CELULAR, string iN_CODIGO_ACTIVACION)
         {
             var iN_PERFIL_IDParameter = iN_PERFIL_ID.HasValue ?
                 new ObjectParameter("IN_PERFIL_ID", iN_PERFIL_ID) :
@@ -358,10 +358,6 @@ namespace Core.DALC
             var iN_RUTParameter = iN_RUT != null ?
                 new ObjectParameter("IN_RUT", iN_RUT) :
                 new ObjectParameter("IN_RUT", typeof(string));
-    
-            var iN_ACTIVOParameter = iN_ACTIVO != null ?
-                new ObjectParameter("IN_ACTIVO", iN_ACTIVO) :
-                new ObjectParameter("IN_ACTIVO", typeof(string));
     
             var iN_SUCURSALParameter = iN_SUCURSAL.HasValue ?
                 new ObjectParameter("IN_SUCURSAL", iN_SUCURSAL) :
@@ -399,19 +395,11 @@ namespace Core.DALC
                 new ObjectParameter("IN_CELULAR", iN_CELULAR) :
                 new ObjectParameter("IN_CELULAR", typeof(decimal));
     
-            var iN_PUNTOSParameter = iN_PUNTOS.HasValue ?
-                new ObjectParameter("IN_PUNTOS", iN_PUNTOS) :
-                new ObjectParameter("IN_PUNTOS", typeof(decimal));
+            var iN_CODIGO_ACTIVACIONParameter = iN_CODIGO_ACTIVACION != null ?
+                new ObjectParameter("IN_CODIGO_ACTIVACION", iN_CODIGO_ACTIVACION) :
+                new ObjectParameter("IN_CODIGO_ACTIVACION", typeof(string));
     
-            var iN_CODIGO_VERIFICACIONParameter = iN_CODIGO_VERIFICACION != null ?
-                new ObjectParameter("IN_CODIGO_VERIFICACION", iN_CODIGO_VERIFICACION) :
-                new ObjectParameter("IN_CODIGO_VERIFICACION", typeof(string));
-    
-            var iN_FECHA_CREACIONParameter = iN_FECHA_CREACION.HasValue ?
-                new ObjectParameter("IN_FECHA_CREACION", iN_FECHA_CREACION) :
-                new ObjectParameter("IN_FECHA_CREACION", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USUARIO_CREAR", iN_PERFIL_IDParameter, iN_LOGIN_USUARIOParameter, iN_PASS_USUARIOParameter, iN_NOMBRE_USUARIOParameter, iN_APELLIDO_USUARIOParameter, iN_RUTParameter, iN_ACTIVOParameter, iN_SUCURSALParameter, iN_FECHA_NACIMIENTOParameter, iN_SEXOParameter, iN_NACIONALIDADParameter, iN_PASSAPORTEParameter, iN_COMUNA_IDParameter, iN_REGION_IDParameter, iN_EMAILParameter, iN_CELULARParameter, iN_PUNTOSParameter, iN_CODIGO_VERIFICACIONParameter, iN_FECHA_CREACIONParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USUARIO_CREAR", iN_PERFIL_IDParameter, iN_LOGIN_USUARIOParameter, iN_PASS_USUARIOParameter, iN_NOMBRE_USUARIOParameter, iN_APELLIDO_USUARIOParameter, iN_RUTParameter, iN_SUCURSALParameter, iN_FECHA_NACIMIENTOParameter, iN_SEXOParameter, iN_NACIONALIDADParameter, iN_PASSAPORTEParameter, iN_COMUNA_IDParameter, iN_REGION_IDParameter, iN_EMAILParameter, iN_CELULARParameter, iN_CODIGO_ACTIVACIONParameter);
         }
     
         public virtual int USUARIO_DESACTIVAR(string iN_LOGIN)

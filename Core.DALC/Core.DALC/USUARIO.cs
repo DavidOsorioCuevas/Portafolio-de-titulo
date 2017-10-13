@@ -38,8 +38,8 @@ namespace Core.DALC
         public string EMAIL { get; set; }
         public Nullable<decimal> NUMERO_CELULAR { get; set; }
         public Nullable<decimal> PUNTOS { get; set; }
-        public string CODIGO_VERIFICACION { get; set; }
         public Nullable<System.DateTime> FECHA_CREACION { get; set; }
+        public string CODIGO_ACTIVACION { get; set; }
     
         public virtual COMUNA COMUNA { get; set; }
         public virtual ICollection<CUPON> CUPON { get; set; }

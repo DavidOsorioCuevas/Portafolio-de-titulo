@@ -31,8 +31,9 @@ namespace Core.DALC
         public Nullable<decimal> COMUNA_ID { get; set; }
         public string NOMBRE { get; set; }
         public string DESCRIPCION { get; set; }
-        public Nullable<decimal> PRECIO_OFERTA { get; set; }
         public Nullable<decimal> PRECIO_ANTES { get; set; }
+        public Nullable<decimal> PRECIO_DESPUES { get; set; }
+        public string OFERTA_DIA { get; set; }
     
         public virtual CATEGORIA_OFERTA CATEGORIA_OFERTA { get; set; }
         public virtual COMUNA COMUNA { get; set; }

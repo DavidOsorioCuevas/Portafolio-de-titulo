@@ -84,7 +84,7 @@ namespace Core.Negocio
                 of.MAX_PRODUCTO = this.MaxProductos;
                 of.ESTADO_OFERTA = this.EstadoOferta.ToString();
                 of.FECHA_OFERTA = this.FechaOferta;
-                of.PRECIO_OFERTA = this.PrecioOferta;
+                of.PRECIO_DESPUES = this.PrecioOferta;
                 of.PRECIO_ANTES = this.PrecioAntes;
                 of.SUCURSALES_ID = this.IdSucursal;
                 of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
@@ -197,12 +197,12 @@ namespace Core.Negocio
             var result = from a in db.OFERTA
                          where a.ID_OFERTA == this.IdOferta
                          select new {
-                             a.NOMBRE,a.COMUNA_ID,a.REGION_ID,a.SUCURSALES_ID,a.PRECIO_ANTES,a.DESCRIPCION,a.PRECIO_OFERTA,a.MAX_PRODUCTO,a.MIN_PRODUCTO,a.IMAGEN_OFERTA,a.FECHA_OFERTA
+                             a.NOMBRE,a.COMUNA_ID,a.REGION_ID,a.SUCURSALES_ID,a.PRECIO_ANTES,a.DESCRIPCION,a.PRECIO_DESPUES,a.MAX_PRODUCTO,a.MIN_PRODUCTO,a.IMAGEN_OFERTA,a.FECHA_OFERTA
                          };
             
                 this.Nombre = result.First().NOMBRE;
                 this.PrecioAntes = (int)result.First().PRECIO_ANTES;
-                this.PrecioOferta = (int)result.First().PRECIO_OFERTA;
+                this.PrecioOferta = (int)result.First().PRECIO_DESPUES;
                 this.MaxProductos = (int)result.First().MAX_PRODUCTO;
                 this.MinProductos = (int)result.First().MIN_PRODUCTO;
                 this.ImagenOferta = result.First().IMAGEN_OFERTA;

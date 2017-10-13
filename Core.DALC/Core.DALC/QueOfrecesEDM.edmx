@@ -4,28 +4,28 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QueOfrecesModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QueOfrecesModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CATEGORIA_OFERTA">
           <Key>
-            <PropertyRef Name="ID_CATEGORIA" />
+            <PropertyRef Name="ID_CATEGORIA_OFERTA" />
           </Key>
-          <Property Name="ID_CATEGORIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CATEGORIA_OFERTA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="30" />
         </EntityType>
         <EntityType Name="COMPORTAMIENTO">
           <Key>
             <PropertyRef Name="ID_COMPORTAMIENTO" />
           </Key>
+          <Property Name="ID_COMPORTAMIENTO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="PRODUCTO_ID" Type="number" Precision="38" Scale="0" />
           <Property Name="FECHA" Type="date" />
-          <Property Name="ID_COMPORTAMIENTO" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="COMUNA">
           <Key>
             <PropertyRef Name="ID_COMUNA" />
           </Key>
           <Property Name="ID_COMUNA" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="varchar2" MaxLength="30" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="60" />
           <Property Name="REGION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="CUPON">
@@ -51,11 +51,11 @@
         </EntityType>
         <EntityType Name="DESCUENTO_HAS_RUBRO">
           <Key>
-            <PropertyRef Name="ID_DESCUENTO_RUBRO" />
+            <PropertyRef Name="ID_DESCUENTO_HAS_RUBRO" />
           </Key>
+          <Property Name="ID_DESCUENTO_HAS_RUBRO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESCUENTO_ID" Type="number" Precision="38" Scale="0" />
           <Property Name="RUBRO_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="ID_DESCUENTO_RUBRO" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="OFERTA">
           <Key>
@@ -73,8 +73,9 @@
           <Property Name="COMUNA_ID" Type="number" Precision="38" Scale="0" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="20" />
           <Property Name="DESCRIPCION" Type="varchar2" MaxLength="50" />
-          <Property Name="PRECIO_OFERTA" Type="number" Precision="38" Scale="0" />
           <Property Name="PRECIO_ANTES" Type="number" Precision="38" Scale="0" />
+          <Property Name="PRECIO_DESPUES" Type="number" Precision="38" Scale="0" />
+          <Property Name="OFERTA_DIA" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="PAIS">
           <Key>
@@ -82,7 +83,7 @@
           </Key>
           <Property Name="ID_PAIS" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="30" Nullable="false" />
-          <Property Name="SIGLA_PAIS" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="SIGLA_PAIS" Type="char" MaxLength="4" Nullable="false" />
         </EntityType>
         <EntityType Name="PERFIL">
           <Key>
@@ -95,10 +96,10 @@
           <Key>
             <PropertyRef Name="ID_PREFERENCIA" />
           </Key>
+          <Property Name="ID_PREFERENCIA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="USUARIO_ID" Type="number" Precision="38" Scale="0" />
           <Property Name="RUBRO_ID" Type="number" Precision="38" Scale="0" />
           <Property Name="CANTIDAD" Type="number" Precision="38" Scale="0" />
-          <Property Name="ID_PREFERENCIA" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="PRODUCTO">
           <Key>
@@ -125,7 +126,7 @@
             <PropertyRef Name="ID_REGION" />
           </Key>
           <Property Name="ID_REGION" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="varchar2" MaxLength="30" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="60" />
         </EntityType>
         <EntityType Name="RETAIL">
           <Key>
@@ -186,8 +187,8 @@
           <Property Name="EMAIL" Type="varchar2" MaxLength="30" Nullable="false" />
           <Property Name="NUMERO_CELULAR" Type="number" Precision="38" Scale="0" />
           <Property Name="PUNTOS" Type="number" Precision="38" Scale="0" />
-          <Property Name="CODIGO_VERIFICACION" Type="varchar2" MaxLength="50" />
           <Property Name="FECHA_CREACION" Type="date" />
+          <Property Name="CODIGO_ACTIVACION" Type="varchar2" MaxLength="30" />
         </EntityType>
         <EntityType Name="VALORACION">
           <Key>
@@ -230,7 +231,7 @@
           <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CATEGORIA_OFERTA">
-              <PropertyRef Name="ID_CATEGORIA" />
+              <PropertyRef Name="ID_CATEGORIA_OFERTA" />
             </Principal>
             <Dependent Role="OFERTA">
               <PropertyRef Name="CATEGORIA_OFERTA_ID" />
@@ -494,7 +495,6 @@
           <Parameter Name="IN_NOMBRE_USUARIO" Type="varchar2" Mode="In" />
           <Parameter Name="IN_APELLIDO_USUARIO" Type="varchar2" Mode="In" />
           <Parameter Name="IN_RUT" Type="varchar2" Mode="In" />
-          <Parameter Name="IN_ACTIVO" Type="char" Mode="In" />
           <Parameter Name="IN_SUCURSAL" Type="number" Mode="In" />
           <Parameter Name="IN_FECHA_NACIMIENTO" Type="date" Mode="In" />
           <Parameter Name="IN_SEXO" Type="char" Mode="In" />
@@ -504,9 +504,7 @@
           <Parameter Name="IN_REGION_ID" Type="number" Mode="In" />
           <Parameter Name="IN_EMAIL" Type="varchar2" Mode="In" />
           <Parameter Name="IN_CELULAR" Type="number" Mode="In" />
-          <Parameter Name="IN_PUNTOS" Type="number" Mode="In" />
-          <Parameter Name="IN_CODIGO_VERIFICACION" Type="varchar2" Mode="In" />
-          <Parameter Name="IN_FECHA_CREACION" Type="date" Mode="In" />
+          <Parameter Name="IN_CODIGO_ACTIVACION" Type="varchar2" Mode="In" />
         </Function>
         <Function Name="USUARIO_DESACTIVAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="BDMISOFERTAS">
           <Parameter Name="IN_LOGIN" Type="varchar2" Mode="In" />
@@ -613,15 +611,16 @@
             <End Role="VALORACION" EntitySet="VALORACION" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QueOfrecesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="CATEGORIA_OFERTA">
           <Key>
-            <PropertyRef Name="ID_CATEGORIA" />
+            <PropertyRef Name="ID_CATEGORIA_OFERTA" />
           </Key>
-          <Property Name="ID_CATEGORIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CATEGORIA_OFERTA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="OFERTA" Relationship="Self.OFERTA_CATEGORIA_OFERTA_FK" FromRole="CATEGORIA_OFERTA" ToRole="OFERTA" />
         </EntityType>
@@ -629,16 +628,16 @@
           <Key>
             <PropertyRef Name="ID_COMPORTAMIENTO" />
           </Key>
+          <Property Name="ID_COMPORTAMIENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="PRODUCTO_ID" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="FECHA" Type="DateTime" />
-          <Property Name="ID_COMPORTAMIENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="COMUNA">
           <Key>
             <PropertyRef Name="ID_COMUNA" />
           </Key>
           <Property Name="ID_COMUNA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="REGION_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="REGION" Relationship="Self.COMUNA_REGION_FK" FromRole="COMUNA" ToRole="REGION" />
           <NavigationProperty Name="OFERTA" Relationship="Self.OFERTA_COMUNA_FK" FromRole="COMUNA" ToRole="OFERTA" />
@@ -670,11 +669,11 @@
         </EntityType>
         <EntityType Name="DESCUENTO_HAS_RUBRO">
           <Key>
-            <PropertyRef Name="ID_DESCUENTO_RUBRO" />
+            <PropertyRef Name="ID_DESCUENTO_HAS_RUBRO" />
           </Key>
+          <Property Name="ID_DESCUENTO_HAS_RUBRO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESCUENTO_ID" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="RUBRO_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="ID_DESCUENTO_RUBRO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="OFERTA">
           <Key>
@@ -692,8 +691,9 @@
           <Property Name="COMUNA_ID" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PRECIO_OFERTA" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="PRECIO_ANTES" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PRECIO_DESPUES" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="OFERTA_DIA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="CATEGORIA_OFERTA" Relationship="Self.OFERTA_CATEGORIA_OFERTA_FK" FromRole="OFERTA" ToRole="CATEGORIA_OFERTA" />
           <NavigationProperty Name="COMUNA" Relationship="Self.OFERTA_COMUNA_FK" FromRole="OFERTA" ToRole="COMUNA" />
           <NavigationProperty Name="REGION" Relationship="Self.OFERTA_REGION_FK" FromRole="OFERTA" ToRole="REGION" />
@@ -706,7 +706,7 @@
           </Key>
           <Property Name="ID_PAIS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SIGLA_PAIS" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SIGLA_PAIS" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="PERFIL">
           <Key>
@@ -720,10 +720,10 @@
           <Key>
             <PropertyRef Name="ID_PREFERENCIA" />
           </Key>
+          <Property Name="ID_PREFERENCIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="USUARIO_ID" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="RUBRO_ID" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="CANTIDAD" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="ID_PREFERENCIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="PRODUCTO">
           <Key>
@@ -751,7 +751,7 @@
             <PropertyRef Name="ID_REGION" />
           </Key>
           <Property Name="ID_REGION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="COMUNA" Relationship="Self.COMUNA_REGION_FK" FromRole="REGION" ToRole="COMUNA" />
           <NavigationProperty Name="OFERTA" Relationship="Self.OFERTA_REGION_FK" FromRole="REGION" ToRole="OFERTA" />
           <NavigationProperty Name="RETAIL" Relationship="Self.RETAIL_REGION_FK" FromRole="REGION" ToRole="RETAIL" />
@@ -825,8 +825,8 @@
           <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NUMERO_CELULAR" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="PUNTOS" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="CODIGO_VERIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" />
+          <Property Name="CODIGO_ACTIVACION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="COMUNA" Relationship="Self.USUARIO_COMUNA_FK" FromRole="USUARIO" ToRole="COMUNA" />
           <NavigationProperty Name="CUPON" Relationship="Self.CUPON_USUARIO_FK" FromRole="USUARIO" ToRole="CUPON" />
           <NavigationProperty Name="PERFIL" Relationship="Self.USUARIO_PERFIL_FK" FromRole="USUARIO" ToRole="PERFIL" />
@@ -852,7 +852,7 @@
           <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CATEGORIA_OFERTA">
-              <PropertyRef Name="ID_CATEGORIA" />
+              <PropertyRef Name="ID_CATEGORIA_OFERTA" />
             </Principal>
             <Dependent Role="OFERTA">
               <PropertyRef Name="CATEGORIA_OFERTA_ID" />
@@ -1139,7 +1139,7 @@
             <End Role="VALORACION" EntitySet="VALORACION" />
           </AssociationSet>
           <FunctionImport Name="CATEGORIA_OFERTA_CREAR">
-          <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="COMUNA_CREAR">
             <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
@@ -1158,7 +1158,7 @@
             <Parameter Name="IN_DESCR" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="REGION_CREAR">
-          <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RETAIL_CREAR">
             <Parameter Name="IN_RUT" Mode="In" Type="String" />
@@ -1181,7 +1181,7 @@
             <Parameter Name="IN_COMUNA_ID" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="RETAIL_ELIMINAR">
-          <Parameter Name="IN_ID_RETAIL" Mode="In" Type="Decimal" />
+            <Parameter Name="IN_ID_RETAIL" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="RUBRO_CREAR">
             <Parameter Name="IN_TIPO" Mode="In" Type="String" />
@@ -1193,7 +1193,7 @@
             <Parameter Name="IN_DESCRIPCION" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RUBRO_ELIMINAR">
-          <Parameter Name="IN_ID_RUBRO" Mode="In" Type="Decimal" />
+            <Parameter Name="IN_ID_RUBRO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SUCURSAL_CREAR">
             <Parameter Name="IN_RUT" Mode="In" Type="String" />
@@ -1218,7 +1218,7 @@
             <Parameter Name="IN_RETAIL_ID" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SUCURSAL_ELIMINAR">
-          <Parameter Name="IN_RUT" Mode="In" Type="Decimal" />
+            <Parameter Name="IN_RUT" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="USUARIO_CREAR">
             <Parameter Name="IN_PERFIL_ID" Mode="In" Type="Decimal" />
@@ -1227,7 +1227,6 @@
             <Parameter Name="IN_NOMBRE_USUARIO" Mode="In" Type="String" />
             <Parameter Name="IN_APELLIDO_USUARIO" Mode="In" Type="String" />
             <Parameter Name="IN_RUT" Mode="In" Type="String" />
-            <Parameter Name="IN_ACTIVO" Mode="In" Type="String" />
             <Parameter Name="IN_SUCURSAL" Mode="In" Type="Decimal" />
             <Parameter Name="IN_FECHA_NACIMIENTO" Mode="In" Type="DateTime" />
             <Parameter Name="IN_SEXO" Mode="In" Type="String" />
@@ -1237,12 +1236,10 @@
             <Parameter Name="IN_REGION_ID" Mode="In" Type="Decimal" />
             <Parameter Name="IN_EMAIL" Mode="In" Type="String" />
             <Parameter Name="IN_CELULAR" Mode="In" Type="Decimal" />
-            <Parameter Name="IN_PUNTOS" Mode="In" Type="Decimal" />
-            <Parameter Name="IN_CODIGO_VERIFICACION" Mode="In" Type="String" />
-            <Parameter Name="IN_FECHA_CREACION" Mode="In" Type="DateTime" />
+            <Parameter Name="IN_CODIGO_ACTIVACION" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="USUARIO_DESACTIVAR">
-          <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
+            <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="USUARIO_EDITAR">
             <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
@@ -1256,7 +1253,7 @@
             <Parameter Name="IN_PUNTOS" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="USUARIO_ELIMINAR">
-          <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
+            <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -1268,7 +1265,7 @@
           <EntitySetMapping Name="CATEGORIA_OFERTA">
             <EntityTypeMapping TypeName="QueOfrecesModel.CATEGORIA_OFERTA">
               <MappingFragment StoreEntitySet="CATEGORIA_OFERTA">
-                <ScalarProperty Name="ID_CATEGORIA" ColumnName="ID_CATEGORIA" />
+                <ScalarProperty Name="ID_CATEGORIA_OFERTA" ColumnName="ID_CATEGORIA_OFERTA" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1276,9 +1273,9 @@
           <EntitySetMapping Name="COMPORTAMIENTO">
             <EntityTypeMapping TypeName="QueOfrecesModel.COMPORTAMIENTO">
               <MappingFragment StoreEntitySet="COMPORTAMIENTO">
+                <ScalarProperty Name="ID_COMPORTAMIENTO" ColumnName="ID_COMPORTAMIENTO" />
                 <ScalarProperty Name="PRODUCTO_ID" ColumnName="PRODUCTO_ID" />
                 <ScalarProperty Name="FECHA" ColumnName="FECHA" />
-                <ScalarProperty Name="ID_COMPORTAMIENTO" ColumnName="ID_COMPORTAMIENTO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1317,9 +1314,9 @@
           <EntitySetMapping Name="DESCUENTO_HAS_RUBRO">
             <EntityTypeMapping TypeName="QueOfrecesModel.DESCUENTO_HAS_RUBRO">
               <MappingFragment StoreEntitySet="DESCUENTO_HAS_RUBRO">
+                <ScalarProperty Name="ID_DESCUENTO_HAS_RUBRO" ColumnName="ID_DESCUENTO_HAS_RUBRO" />
                 <ScalarProperty Name="DESCUENTO_ID" ColumnName="DESCUENTO_ID" />
                 <ScalarProperty Name="RUBRO_ID" ColumnName="RUBRO_ID" />
-                <ScalarProperty Name="ID_DESCUENTO_RUBRO" ColumnName="ID_DESCUENTO_RUBRO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1338,8 +1335,9 @@
                 <ScalarProperty Name="COMUNA_ID" ColumnName="COMUNA_ID" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-                <ScalarProperty Name="PRECIO_OFERTA" ColumnName="PRECIO_OFERTA" />
                 <ScalarProperty Name="PRECIO_ANTES" ColumnName="PRECIO_ANTES" />
+                <ScalarProperty Name="PRECIO_DESPUES" ColumnName="PRECIO_DESPUES" />
+                <ScalarProperty Name="OFERTA_DIA" ColumnName="OFERTA_DIA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1363,10 +1361,10 @@
           <EntitySetMapping Name="PREFERENCIA">
             <EntityTypeMapping TypeName="QueOfrecesModel.PREFERENCIA">
               <MappingFragment StoreEntitySet="PREFERENCIA">
+                <ScalarProperty Name="ID_PREFERENCIA" ColumnName="ID_PREFERENCIA" />
                 <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
                 <ScalarProperty Name="RUBRO_ID" ColumnName="RUBRO_ID" />
                 <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
-                <ScalarProperty Name="ID_PREFERENCIA" ColumnName="ID_PREFERENCIA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1461,8 +1459,8 @@
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="NUMERO_CELULAR" ColumnName="NUMERO_CELULAR" />
                 <ScalarProperty Name="PUNTOS" ColumnName="PUNTOS" />
-                <ScalarProperty Name="CODIGO_VERIFICACION" ColumnName="CODIGO_VERIFICACION" />
                 <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="CODIGO_ACTIVACION" ColumnName="CODIGO_ACTIVACION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

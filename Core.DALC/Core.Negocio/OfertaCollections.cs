@@ -40,7 +40,7 @@ namespace Core.Negocio
                     of.MinProductos = (int)item.MIN_PRODUCTO;
                     of.MaxProductos = (int)item.MAX_PRODUCTO;
                     of.EstadoOferta = Convert.ToChar(item.ESTADO_OFERTA);
-                    of.PrecioOferta = (int)item.PRECIO_OFERTA;
+                    of.PrecioOferta = (int)item.PRECIO_DESPUES;
                     of.PrecioAntes = (int)item.PRECIO_ANTES;
                     of.FechaOferta = item.FECHA_OFERTA;
                     of.IdSucursal = (int)item.SUCURSALES_ID;
@@ -71,7 +71,7 @@ namespace Core.Negocio
                     of.MinProductos = (int)item.MIN_PRODUCTO;
                     of.MaxProductos = (int)item.MAX_PRODUCTO;
                     of.EstadoOferta = Convert.ToChar(item.ESTADO_OFERTA);
-                    of.PrecioOferta = (int)item.PRECIO_OFERTA;
+                    of.PrecioOferta = (int)item.PRECIO_DESPUES;
                     of.PrecioAntes = (int)item.PRECIO_ANTES;
                     of.FechaOferta = item.FECHA_OFERTA;
                     of.IdSucursal = (int)item.SUCURSALES_ID;
@@ -101,7 +101,7 @@ namespace Core.Negocio
                     of.MinProductos = (int)item.MIN_PRODUCTO;
                     of.MaxProductos = (int)item.MAX_PRODUCTO;
                     of.EstadoOferta = Convert.ToChar(item.ESTADO_OFERTA);
-                    of.PrecioOferta = (int)item.PRECIO_OFERTA;
+                    of.PrecioOferta = (int)item.PRECIO_DESPUES;
                     of.PrecioAntes = (int)item.PRECIO_ANTES;
                     of.FechaOferta = item.FECHA_OFERTA;
                     of.IdSucursal = (int)item.SUCURSALES_ID;

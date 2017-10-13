@@ -14,8 +14,8 @@ namespace Core.DALC
     
     public partial class DESCUENTO_HAS_RUBRO
     {
+        public decimal ID_DESCUENTO_HAS_RUBRO { get; set; }
         public Nullable<decimal> DESCUENTO_ID { get; set; }
         public Nullable<decimal> RUBRO_ID { get; set; }
-        public decimal ID_DESCUENTO_RUBRO { get; set; }
     }
 }

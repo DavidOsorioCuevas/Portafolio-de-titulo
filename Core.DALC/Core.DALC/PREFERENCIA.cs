@@ -14,9 +14,9 @@ namespace Core.DALC
     
     public partial class PREFERENCIA
     {
+        public decimal ID_PREFERENCIA { get; set; }
         public Nullable<decimal> USUARIO_ID { get; set; }
         public Nullable<decimal> RUBRO_ID { get; set; }
         public Nullable<decimal> CANTIDAD { get; set; }
-        public decimal ID_PREFERENCIA { get; set; }
     }
 }
