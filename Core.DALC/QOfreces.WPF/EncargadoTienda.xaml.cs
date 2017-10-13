@@ -25,7 +25,7 @@ namespace QOfreces.WPF
         public EncargadoTienda()
         {
             InitializeComponent();
-            
+                     
         }
 
         private void btnConsultar_Click(object sender, RoutedEventArgs e)
