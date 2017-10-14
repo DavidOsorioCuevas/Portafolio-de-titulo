@@ -19,6 +19,7 @@ namespace Core.Negocio
         public string Nombre { get; set; }
         public string Sku { get; set; }
         public string Descripcion { get; set; }
+        public bool Selec { get; set; }
 
         public Producto()
         {
@@ -40,6 +41,7 @@ namespace Core.Negocio
             this.Nombre = prod.Nombre;
             this.Sku = prod.Sku;
             this.Descripcion = prod.Descripcion;
+            this.Selec = prod.Selec;
 
         }
 
@@ -52,6 +54,7 @@ namespace Core.Negocio
             this.CodigoInterno = string.Empty;
             this.Nombre = string.Empty;
             this.Descripcion = string.Empty;
+            this.Selec = false;
         }
 
         public bool CrearProducto()

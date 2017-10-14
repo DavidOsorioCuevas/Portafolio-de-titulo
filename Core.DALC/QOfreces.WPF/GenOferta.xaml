@@ -10,16 +10,17 @@
         <Label Content="GenerarOferta" HorizontalAlignment="Left" Margin="265,20,0,0" VerticalAlignment="Top"/>
 
         <Button x:Name="btnGenOferta" Content="Generar Oferta" HorizontalAlignment="Left" Margin="709,402,0,0" VerticalAlignment="Top" Width="128" Click="btnGenOferta_Click"/>
-        <DataGrid x:Name="dgProd" HorizontalAlignment="Left" Margin="117,131,0,0" VerticalAlignment="Top" Height="199" Width="583"  AutoGenerateColumns="False">
+        <DataGrid x:Name="dgProd" HorizontalAlignment="Left" Margin="117,131,0,0" VerticalAlignment="Top" Height="199" Width="583"  AutoGenerateColumns="false" SelectionChanged="dgProd_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id Producto" Binding="{Binding IdProducto}" />
                 <DataGridTextColumn Header="SKU" Binding="{Binding Sku}" />
                 <DataGridTextColumn Header="Nombre Producto" Binding="{Binding Nombre}" />
                 <DataGridTextColumn Header="Precio " Binding="{Binding Precio}" />
                 <DataGridTextColumn Header="Codigo Interno " Binding="{Binding CodigoInterno}" />
-                <DataGridCheckBoxColumn x:Name="chk" Header="Seleccionar" Binding="{Binding Selec}" />
+                <DataGridCheckBoxColumn x:Name="Selecionar" Header="Seleccionar" Binding="{Binding Selec}" />
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="btnListar" Content="Listar Producto" HorizontalAlignment="Left" Margin="738,187,0,0" VerticalAlignment="Top" Width="114" Click="btnListar_Click"/>
 
 
     </Grid>
