@@ -219,5 +219,11 @@ namespace Core.Servicios
             Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
             return collOfer.ReadAllOfertasDesactivo();
         }
+
+        public string ReadAllOfertas()
+        {
+            Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
+            return collOfer.ReadAllOfertas();
+        }
     }
 }

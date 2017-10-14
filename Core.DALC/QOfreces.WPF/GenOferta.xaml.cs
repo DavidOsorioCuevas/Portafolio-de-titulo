@@ -47,12 +47,43 @@ namespace QOfreces.WPF
                 {
                     Producto prod = new Producto();
                     prod.IdProducto = item.IdProducto;
+                    prod.Sku = item.Sku;
+                    prod.Nombre = item.Nombre;
+                    prod.Precio = item.Precio;
                     lstprod.Add(prod);
-                }
-                
-                
+                }                              
             }
 
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            Oferta of = new Oferta();
+            of.ImagenOferta = "";
+            of.MinProductos = int.Parse(txtMinProd.Text);
+            of.MaxProductos = int.Parse(txtMaxProd.Text);
+            of.PrecioAntes = 1200;
+            of.PrecioOferta = 400;
+            of.EstadoOferta = Convert.ToChar("n");
+            of.FechaOferta = dpFecha.SelectedDate;
+            of.IdSucursal = 1;
+            of.CategoriaIdOferta = 1;
+            of.IdRegion = 1;
+            of.IdComuna = 1;
+            of.Nombre = txtNombre.Text;
+            of.Descripcion = txtDescOf.Text;
+            of.OfertaDia = "";
+            string json = of.Serializar();
+            if (proxy.CrearOferta(json))
+            {
+                MessageBox.Show("YEAH!");
+            }
+            else
+            {
+                MessageBox.Show("OUSH!");
+            }
+            
+
+
+
+            
           
 
         }
@@ -66,10 +97,6 @@ namespace QOfreces.WPF
             dgProd.ItemsSource = collprod;
         }
 
-        private void dgProd_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 
 }

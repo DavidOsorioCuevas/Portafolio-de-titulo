@@ -31,7 +31,7 @@ namespace QOfreces.WPF
         private void btnConsultar_Click(object sender, RoutedEventArgs e)
         {
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = proxy.ReadAllOfertasActivo();
+            string json = proxy.ReadAllOfertas();
             Core.Negocio.OfertaCollections collOf = new Core.Negocio.OfertaCollections(json);
             dataGridOfertas.ItemsSource = collOf;
             

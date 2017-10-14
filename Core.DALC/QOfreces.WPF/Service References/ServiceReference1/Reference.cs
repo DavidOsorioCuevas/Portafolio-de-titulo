@@ -111,6 +111,12 @@ namespace QOfreces.WPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasDesactivo", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasDesactivoResponse")]
         System.Threading.Tasks.Task<string> ReadAllOfertasDesactivoAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertas", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasResponse")]
+        string ReadAllOfertas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertas", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasResponse")]
+        System.Threading.Tasks.Task<string> ReadAllOfertasAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearDesc", ReplyAction="http://tempuri.org/IService1/CrearDescResponse")]
         bool CrearDesc(string json);
         
@@ -343,6 +349,14 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> ReadAllOfertasDesactivoAsync() {
             return base.Channel.ReadAllOfertasDesactivoAsync();
+        }
+        
+        public string ReadAllOfertas() {
+            return base.Channel.ReadAllOfertas();
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadAllOfertasAsync() {
+            return base.Channel.ReadAllOfertasAsync();
         }
         
         public bool CrearDesc(string json) {

@@ -102,6 +102,12 @@
   <wsdl:message name="IService1_ReadAllOfertasDesactivo_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadAllOfertasDesactivoResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_ReadAllOfertas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllOfertas" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllOfertas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllOfertasResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_CrearDesc_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearDesc" />
   </wsdl:message>
@@ -244,6 +250,10 @@
     <wsdl:operation name="ReadAllOfertasDesactivo">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasDesactivo" message="tns:IService1_ReadAllOfertasDesactivo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasDesactivoResponse" message="tns:IService1_ReadAllOfertasDesactivo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllOfertas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllOfertas" message="tns:IService1_ReadAllOfertas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasResponse" message="tns:IService1_ReadAllOfertas_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CrearDesc">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearDesc" message="tns:IService1_CrearDesc_InputMessage" />
@@ -437,6 +447,15 @@
     </wsdl:operation>
     <wsdl:operation name="ReadAllOfertasDesactivo">
       <soap:operation soapAction="http://tempuri.org/IService1/ReadAllOfertasDesactivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllOfertas">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllOfertas" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

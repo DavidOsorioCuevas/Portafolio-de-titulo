@@ -56,6 +56,8 @@ namespace Core.Servicios
         string ReadAllOfertasActivo();
         [OperationContract]
         string ReadAllOfertasDesactivo();
+        [OperationContract]
+        string ReadAllOfertas();
 
         /*Descuento*/
         [OperationContract]
