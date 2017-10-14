@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QOfreces.WPF"
         mc:Ignorable="d"
-        Title="GenOferta" Height="578.548" Width="754.078">
+        Title="GenOferta" Height="692.548" Width="754.078">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="466*"/>
@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
         <Label Content="GenerarOferta" HorizontalAlignment="Left" Margin="287,15,0,0" VerticalAlignment="Top"/>
 
-        <Button x:Name="btnGenOferta" Content="Generar Oferta" HorizontalAlignment="Left" Margin="25,506,0,0" VerticalAlignment="Top" Width="128" Click="btnGenOferta_Click" Grid.Column="1"/>
+        <Button x:Name="btnGenOferta" Content="Generar Oferta" HorizontalAlignment="Left" Margin="46,594,0,0" VerticalAlignment="Top" Width="128" Click="btnGenOferta_Click" Grid.Column="1"/>
         <DataGrid x:Name="dgProd" HorizontalAlignment="Left" Margin="29,46,0,0" VerticalAlignment="Top" Height="221" Width="704"  AutoGenerateColumns="false" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id Producto" Binding="{Binding IdProducto}" />
@@ -28,16 +28,19 @@
         <Label Content="Nombre Oferta" HorizontalAlignment="Left" Margin="29,272,0,0" VerticalAlignment="Top" Width="137"/>
         <Label Content="Precio Oferta" HorizontalAlignment="Left" Margin="29,315,0,0" VerticalAlignment="Top"/>
         <Label Content="Ingrese Fecha" HorizontalAlignment="Left" Margin="29,357,0,0" VerticalAlignment="Top"/>
-        <Label Content="Descripcion Oferta" HorizontalAlignment="Left" Margin="29,421,0,0" VerticalAlignment="Top"/>
+        <Label Content="Descripcion Oferta" HorizontalAlignment="Left" Margin="29,532,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.528,2.423"/>
         <Label Content="Adjuntar Imagen" HorizontalAlignment="Left" Margin="29,384,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="149,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtPrecio" HorizontalAlignment="Left" Height="23" Margin="149,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtDescOf" HorizontalAlignment="Left" Height="101" Margin="149,432,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
+        <TextBox x:Name="txtDescOf" HorizontalAlignment="Left" Height="101" Margin="149,532,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
         <DatePicker x:Name="dpFecha" HorizontalAlignment="Left" Margin="149,357,0,0" VerticalAlignment="Top"/>
-        <Label Content="Min Pdocuctos" HorizontalAlignment="Left" Margin="304,272,0,0" VerticalAlignment="Top" Width="78"/>
-        <TextBox x:Name="txtMinProd" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="25,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Min Pdocuctos" HorizontalAlignment="Left" Margin="304,272,0,0" VerticalAlignment="Top" Width="99" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="txtMinProd" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="33,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Max Productos" HorizontalAlignment="Left" Margin="304,315,0,0" VerticalAlignment="Top" Width="99" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txtMaxProd" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="25,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtMaxProd" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="33,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnAdjuntar" Content="Adjuntar" HorizontalAlignment="Left" Margin="264,450,0,0" VerticalAlignment="Top" Width="75" Click="btnAdjuntar_Click"/>
+        <Image x:Name="imgFoto" HorizontalAlignment="Left" Height="100" Margin="149,409,0,0" VerticalAlignment="Top" Width="100"/>
+
 
 
 

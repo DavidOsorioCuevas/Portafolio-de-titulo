@@ -16,6 +16,7 @@ using System.Collections.ObjectModel;
 using System.Collections;
 using System.Data;
 using System.ComponentModel;
+using Microsoft.Win32;
 
 namespace QOfreces.WPF
 {
@@ -56,7 +57,7 @@ namespace QOfreces.WPF
 
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             Oferta of = new Oferta();
-            of.ImagenOferta = "";
+            of.ImagenOferta = imgFoto.Source.ToString();
             of.MinProductos = int.Parse(txtMinProd.Text);
             of.MaxProductos = int.Parse(txtMaxProd.Text);
             of.PrecioAntes = 1200;
@@ -69,16 +70,18 @@ namespace QOfreces.WPF
             of.IdComuna = 1;
             of.Nombre = txtNombre.Text;
             of.Descripcion = txtDescOf.Text;
-            of.OfertaDia = "";
+            of.OfertaDia = "ss";
             string json = of.Serializar();
-            if (proxy.CrearOferta(json))
-            {
-                MessageBox.Show("YEAH!");
-            }
-            else
-            {
-                MessageBox.Show("OUSH!");
-            }
+            proxy.CrearOferta(json);
+
+            //if ()
+            //{
+            //    MessageBox.Show("YEAH!");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("OUSH!");
+            //}
             
 
 
@@ -97,6 +100,31 @@ namespace QOfreces.WPF
             dgProd.ItemsSource = collprod;
         }
 
+        private void btnAdjuntar_Click(object sender, RoutedEventArgs e)
+        {
+            if (imgFoto.Source == null)
+            {
+                OpenFileDialog openFile = new OpenFileDialog();
+                BitmapImage b = new BitmapImage();
+                openFile.Title = "Seleccione la Imagen a Mostrar";
+                openFile.Filter = "Todos(*.*) | *.*| Imagenes | *.jpg; *.gif; *.png; *.bmp";
+                if (openFile.ShowDialog() == true)
+                {
+                    b.BeginInit();
+                    b.UriSource = new Uri(openFile.FileName);
+                    b.EndInit();
+                    imgFoto.Stretch = Stretch.Fill;
+                    imgFoto.Source = b;
+
+                    btnAdjuntar.Content = "Quitar Foto";
+                }
+            }
+            else
+            {
+                imgFoto.Source = null;
+                btnAdjuntar.Content = "Cambiar Foto";
+            }
+        }
     }
 
 }
