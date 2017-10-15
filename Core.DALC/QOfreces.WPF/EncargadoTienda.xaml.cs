@@ -28,32 +28,75 @@ namespace QOfreces.WPF
                      
         }
 
-        private void btnConsultar_Click(object sender, RoutedEventArgs e)
-        {
-            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = proxy.ReadAllOfertas();
-            Core.Negocio.OfertaCollections collOf = new Core.Negocio.OfertaCollections(json);
-            dataGridOfertas.ItemsSource = collOf;
-            
-        }
-
-        private void btnGenerar_Click(object sender, RoutedEventArgs e)
-        {
-            GenOferta genOf = new GenOferta();
-            genOf.Owner = this;
-            genOf.Show();
-        }
-
-        private async void btnPublicar_Click(object sender, RoutedEventArgs e)
-        {
-            await this.ShowMessageAsync("Alerta!", "Este evento aun no se implementa.");
-        }
-
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             mainwindow mai = new mainwindow();
             this.Close();
             mai.Show();
         }
+
+        private void tiConsultarOferta_Click(object sender, RoutedEventArgs e)
+        {
+            flyBusqueda.IsOpen = true;
+            dataGridOferta.ItemsSource = null; 
+        }
+
+        private void tiGenerarOferta_Click(object sender, RoutedEventArgs e)
+        {
+            GenOferta genOf = new GenOferta();
+            genOf.Owner = this;
+            genOf.Show();
+        }
+
+        private async void tiPublicarOferta_Click(object sender, RoutedEventArgs e)
+        {
+            await this.ShowMessageAsync("Alerta!", "Este evento aun no se implementa.");
+        }
+
+        private void tiProducto_Click(object sender, RoutedEventArgs e)
+        {
+            MantenedorProducto mProd = new MantenedorProducto();
+            mProd.Owner = this;
+            mProd.Show();
+        }
+
+        private async void btnBuscar_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json = proxy.ReadAllOfertas();
+            Core.Negocio.OfertaCollections collOf = new Core.Negocio.OfertaCollections(json);
+
+            Core.Negocio.OfertaCollections collOfer = new Core.Negocio.OfertaCollections();
+
+            try
+            {
+                foreach (var item in collOf)
+                {
+                    if (txtBuscar.Text.Equals(item.Nombre))
+                    {
+                        collOfer.Add(item);
+                    }
+                }
+
+                if (collOfer.Count==0)
+                {
+                    await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                }
+                else
+                {
+                    dataGridOferta.ItemsSource = collOfer;
+                }
+                
+            }
+            catch (Exception)
+            {
+
+                await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+            }
+
+            
+        }
+
+        
     }
 }
