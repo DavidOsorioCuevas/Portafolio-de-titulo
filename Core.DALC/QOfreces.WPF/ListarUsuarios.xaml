@@ -8,6 +8,9 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Icon="img/logo.png"
+        BorderBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1"
         Title="ListarUsuarios" Height="426.852" Width="972.268">
     <Grid>
         <DataGrid x:Name="dataGridProductos" HorizontalAlignment="Left" Margin="99,73,0,0" VerticalAlignment="Top" Height="171" Width="703" Loaded="dataGridProductos_Loaded" SelectionChanged="dataGridProductos_SelectionChanged" >

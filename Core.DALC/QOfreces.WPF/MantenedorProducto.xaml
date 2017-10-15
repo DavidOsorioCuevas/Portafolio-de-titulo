@@ -8,7 +8,10 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        Title="Mantenedor Producto" Height="332.593" Width="711.553">
+        Icon="img/logo.png"
+        BorderBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1"
+        Title="Mantenedor Producto" Height="332.593" Width="711.553" Background="Gainsboro">
     <Grid x:Name="col_1" Margin="0,0,2,0">
         <Button x:Name="btnListarProd" Content="Listar Productos" HorizontalAlignment="Left" Margin="570,27,0,0" VerticalAlignment="Top" Width="128" Height="22" Click="btnListarProd_Click" BorderBrush="Black"/>
         <Label x:Name="lblPrueba" Content="" HorizontalAlignment="Left" Margin="236,135,0,0" VerticalAlignment="Top" Height="26" Width="10"/>

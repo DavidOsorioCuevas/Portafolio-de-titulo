@@ -8,6 +8,9 @@
         xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
+        Icon="img/logo.png"
+        BorderBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1"
         Title="Menu Gerencia" Height="316.917" Width="433.082" Background="Gainsboro">
     <Grid Margin="0,0,2,0">
         <Grid.ColumnDefinitions>

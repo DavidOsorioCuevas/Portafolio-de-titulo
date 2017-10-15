@@ -12,13 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Core.Negocio;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MahApps.Metro.Behaviours;
 
 namespace QOfreces.WPF
 {
     /// <summary>
     /// Lógica de interacción para MantenedorRubro.xaml
     /// </summary>
-    public partial class MantenedorRubro : Window
+    public partial class MantenedorRubro : MetroWindow
     {
         public MantenedorRubro()
         {

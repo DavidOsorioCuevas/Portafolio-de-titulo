@@ -8,6 +8,9 @@
         xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
+        Icon="img/logo.png"
+        BorderBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1"
         Title="Encargado de Tienda" Height="385.185" Width="786.556" Background="Gainsboro">
     <Grid>
         <Controls:Tile x:Name="tiConsultarOferta" Margin="509,75,122,139" TitleFontSize="12" Title="Consultar oferta" Click="tiConsultarOferta_Click">

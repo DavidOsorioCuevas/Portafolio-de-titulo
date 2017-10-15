@@ -13,13 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Core.Negocio;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MahApps.Metro.Behaviours;
 
 namespace QOfreces.WPF
 {
     /// <summary>
     /// Lógica de interacción para MantenedorUsuarios.xaml
     /// </summary>
-    public partial class MantenedorUsuarios : Window
+    public partial class MantenedorUsuarios : MetroWindow
     {
         public MantenedorUsuarios()
         {
