@@ -63,9 +63,16 @@ namespace QOfreces.WPF
             of.ImagenOferta = imgFoto.Source.ToString();
             of.MinProductos = int.Parse(txtMinProd.Text);
             of.MaxProductos = int.Parse(txtMaxProd.Text);
-            of.PrecioAntes = 1200;
-            of.PrecioOferta = 400;
-            of.EstadoOferta = char.Parse(1.ToString());
+            of.PrecioAntes = int.Parse(txtPrecioAntes.Text);
+            of.PrecioOferta = int.Parse(txtPrecio.Text);
+            if (chPubOf.IsChecked == true)
+            {
+                of.EstadoOferta = char.Parse(1.ToString());
+            }
+            else
+            {
+                of.EstadoOferta = char.Parse(0.ToString());
+            }            
             of.FechaOferta = dpFecha.SelectedDate;
             of.IdSucursal = 1;
             of.CategoriaIdOferta = 1;
@@ -74,26 +81,23 @@ namespace QOfreces.WPF
             of.Nombre = txtNombre.Text;
             of.Descripcion = txtDescOf.Text;
             of.OfertaDia = char.Parse("s");
-            
-
-
+                        
             string json = of.Serializar();
-            proxy.CrearOferta(json);
-
-            //if ()
-            //{
-            //    MessageBox.Show("YEAH!");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("OUSH!");
-            //}
             
+            if (proxy.CrearOferta(json))
+            {
+                MessageBox.Show("OFERTA CREADA");
+            }
+            else
+            {
+                MessageBox.Show("OUSH!");
+            }
 
 
 
-            
-          
+
+
+
 
         }
 
