@@ -17,13 +17,16 @@ using System.Collections;
 using System.Data;
 using System.ComponentModel;
 using Microsoft.Win32;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MahApps.Metro.Behaviours;
 
 namespace QOfreces.WPF
 {
     /// <summary>
     /// Lógica de interacción para GenOferta.xaml
     /// </summary>
-    public partial class GenOferta : Window
+    public partial class GenOferta : MetroWindow
     {
         public GenOferta()
         {

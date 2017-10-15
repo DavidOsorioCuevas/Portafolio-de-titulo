@@ -8,30 +8,36 @@
         xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Encargado de Tienda" Height="385.185" Width="778.556">
+        Title="Encargado de Tienda" Height="385.185" Width="786.556" Background="Gainsboro">
     <Grid>
-        <Controls:Tile Margin="41,204,590,10" TitleFontSize="12" Title="Consultar oferta">
+        <Controls:Tile x:Name="tiConsultarOferta" Margin="509,75,122,139" TitleFontSize="12" Title="Consultar oferta" Click="tiConsultarOferta_Click">
             <Image x:Name="image1" Height="100" Width="100" Source="img/Consultar.png"/>
         </Controls:Tile>
-        <Button x:Name="btnConsultar" Grid.ColumnSpan="2" Content="Consultar Oferta" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="129" BorderBrush="Black" Click="btnConsultar_Click"/>
-        <DataGrid x:Name="dataGridOfertas"  HorizontalAlignment="Left" Margin="198,10,0,0" VerticalAlignment="Top" Height="168" Width="540" AutoGenerateColumns="False" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id Oferta" Binding="{Binding IdOferta}" />
-                <DataGridTextColumn Header="Nombre Oferta" Binding="{Binding Nombre}" />
-                <DataGridTextColumn Header="Descripcion Oferta" Binding="{Binding Descripcion}" />
-                <DataGridTextColumn Header="Precio Oferta" Binding="{Binding PrecioOferta}" />
-                <DataGridTextColumn Header="Publicada" Binding="{Binding EstadoOferta}" />
-                <DataGridTextColumn Header="Sucursal" Binding="{Binding IdSucursal}" />
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Name="btnGenerar" Content="Generar Oferta" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" Width="129" BorderBrush="Black" Click="btnGenerar_Click"/>
-        <Button x:Name="btnPublicar" Content="PUBLICAR OFERTA" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="129" BorderBrush="Black" Click="btnPublicar_Click"/>
-        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="628,257,0,0" VerticalAlignment="Top" Width="75" Click="btnSalir_Click"/>
-        <Controls:Tile Margin="198,204,433,10" TitleFontSize="12" Title="Generar oferta">
+        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="574,308,0,0" VerticalAlignment="Top" Width="75" Click="btnSalir_Click"/>
+        <Controls:Tile x:Name="tiGenerarOferta" Margin="25,75,606,139" TitleFontSize="12" Title="Generar oferta" Click="tiGenerarOferta_Click">
             <Image x:Name="image2" Height="100" Width="100" Source="img/Generar.png"/>
         </Controls:Tile>
-        <Controls:Tile Margin="361,204,270,10" TitleFontSize="12" Title="Publicar oferta">
+        <Controls:Tile x:Name="tiPublicarOferta" Margin="185,75,446,139" TitleFontSize="12" Title="Publicar oferta" Click="tiPublicarOferta_Click">
             <Image x:Name="image" Height="100" Width="100" Source="img/Publicar.png"/>
         </Controls:Tile>
+        <Controls:Tile x:Name="tiProducto" Margin="349,75,282,139" TitleFontSize="12" Title="Mantenedor Producto" Click="tiProducto_Click">
+            <Image x:Name="image3" Height="100" Width="100" Stretch="Fill" Source="img/MantenedorProducto.png"/>
+        </Controls:Tile>
+        <Controls:Flyout x:Name="flyBusqueda" Header="Busqueda" Opacity="0.9" Background="#FF979797" Foreground="#FFFDFDFD" Width="447" Margin="-80,10,0,-10">
+            <Grid Height="254" Margin="76,0,10,0">
+                <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="191,10,0,0" VerticalAlignment="Top" Width="75" Click="btnBuscar_Click"/>
+                <TextBox x:Name="txtBuscar"  HorizontalAlignment="Left" Height="23" Margin="66,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                <DataGrid x:Name="dataGridOferta"  HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Height="168" Width="342" AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id Oferta" Binding="{Binding IdOferta}" />
+                        <DataGridTextColumn Header="Nombre Oferta" Binding="{Binding Nombre}" />
+                        <DataGridTextColumn Header="Descripcion Oferta" Binding="{Binding Descripcion}" />
+                        <DataGridTextColumn Header="Precio Oferta" Binding="{Binding PrecioOferta}" />
+                        <DataGridTextColumn Header="Publicada" Binding="{Binding EstadoOferta}" />
+                        <DataGridTextColumn Header="Sucursal" Binding="{Binding IdSucursal}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Controls:Flyout>
     </Grid>
 </Controls:MetroWindow>
