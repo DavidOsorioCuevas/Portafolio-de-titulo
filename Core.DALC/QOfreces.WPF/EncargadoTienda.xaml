@@ -23,11 +23,26 @@
         <Controls:Tile x:Name="tiProducto" Margin="349,75,282,139" TitleFontSize="12" Title="Mantenedor Producto" Click="tiProducto_Click">
             <Image x:Name="image3" Height="100" Width="100" Stretch="Fill" Source="img/MantenedorProducto.png"/>
         </Controls:Tile>
-        <Controls:Flyout x:Name="flyBusqueda" Header="Busqueda" Opacity="0.9" Background="#FF979797" Foreground="#FFFDFDFD" Width="447" Margin="-80,10,0,-10">
-            <Grid Height="254" Margin="76,0,10,0">
+        <Controls:Flyout x:Name="FlyPublicar" Position="Right" Opacity="0.9" Background="#FF979797" Foreground="White" Width="407" Header="Publicar Oferta">
+            <Grid HorizontalAlignment="Left" Height="278" Margin="10,0,0,0" Width="387">
+                <DataGrid x:Name="dataGridOfertas"  HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="168" Width="367" AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn x:Name="Selecionar" Header="Seleccionar" Binding="{Binding Selec}" />
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" />
+                        <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" />
+                        <DataGridTextColumn Header="Precio Oferta" Binding="{Binding PrecioOferta}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button x:Name="btnBusqueda" Content="Buscar" HorizontalAlignment="Left" Margin="302,36,0,0" VerticalAlignment="Top" Width="75" Click="btnBusqueda_Click"/>
+                <TextBox x:Name="txtBusqueda" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar ofertas" HorizontalAlignment="Left" Height="23" Margin="177,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="btnPublicar" Content="Button" HorizontalAlignment="Left" Margin="302,241,0,0" VerticalAlignment="Top" Width="75"/>
+            </Grid>
+        </Controls:Flyout>
+        <Controls:Flyout x:Name="flyBusqueda" Header="Busqueda" Opacity="0.9" Background="#FF979797" Foreground="#FFFDFDFD" Margin="0,0,412,-10" HorizontalAlignment="Right">
+            <Grid Height="254" Margin="82,0,10,0">
                 <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="191,10,0,0" VerticalAlignment="Top" Width="75" Click="btnBuscar_Click"/>
-                <TextBox x:Name="txtBuscar"  HorizontalAlignment="Left" Height="23" Margin="66,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                <DataGrid x:Name="dataGridOferta"  HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Height="168" Width="342" AutoGenerateColumns="False" >
+                <TextBox x:Name="txtBuscar"   HorizontalAlignment="Left" Height="23" Margin="66,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                <DataGrid x:Name="dataGridOferta"  HorizontalAlignment="Left" Margin="-67,42,0,0" VerticalAlignment="Top" Height="168" Width="342" AutoGenerateColumns="False" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id Oferta" Binding="{Binding IdOferta}" />
                         <DataGridTextColumn Header="Nombre Oferta" Binding="{Binding Nombre}" />
@@ -40,5 +55,5 @@
             </Grid>
         </Controls:Flyout>
     </Grid>
-    
+
 </Controls:MetroWindow>

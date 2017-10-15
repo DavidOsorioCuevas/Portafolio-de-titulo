@@ -48,9 +48,9 @@ namespace QOfreces.WPF
             genOf.Show();
         }
 
-        private async void tiPublicarOferta_Click(object sender, RoutedEventArgs e)
+        private  void tiPublicarOferta_Click(object sender, RoutedEventArgs e)
         {
-            await this.ShowMessageAsync("Alerta!", "Este evento aun no se implementa.");
+            FlyPublicar.IsOpen = true;
         }
 
         private void tiProducto_Click(object sender, RoutedEventArgs e)
@@ -97,6 +97,39 @@ namespace QOfreces.WPF
             
         }
 
-        
+        private async void btnBusqueda_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json = proxy.ReadAllOfertas();
+            Core.Negocio.OfertaCollections collOf = new Core.Negocio.OfertaCollections(json);
+
+            Core.Negocio.OfertaCollections collOfer = new Core.Negocio.OfertaCollections();
+
+            try
+            {
+                foreach (var item in collOf)
+                {
+                    if (txtBusqueda.Text.Equals(item.Nombre))
+                    {
+                        collOfer.Add(item);
+                    }
+                }
+
+                if (collOfer.Count == 0)
+                {
+                    await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                }
+                else
+                {
+                    dataGridOfertas.ItemsSource = collOfer;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+            }
+        }
     }
 }
