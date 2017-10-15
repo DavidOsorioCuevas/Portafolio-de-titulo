@@ -40,4 +40,5 @@
             </Grid>
         </Controls:Flyout>
     </Grid>
+    
 </Controls:MetroWindow>

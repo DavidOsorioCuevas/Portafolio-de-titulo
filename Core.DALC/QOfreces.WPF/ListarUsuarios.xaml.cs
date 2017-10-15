@@ -11,21 +11,22 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MahApps.Metro.Behaviours;
+
 
 namespace QOfreces.WPF
 {
     /// <summary>
     /// Lógica de interacción para ListarUsuarios.xaml
     /// </summary>
-    public partial class ListarUsuarios : Window
+    public partial class ListarUsuarios : MetroWindow
     {
         public ListarUsuarios()
         {
             InitializeComponent();
         }
-
-        
-        
 
         private void dataGridProductos_Loaded(object sender, RoutedEventArgs e)
         {

@@ -11,17 +11,25 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MahApps.Metro.Behaviours;
 
 namespace QOfreces.WPF
 {
     /// <summary>
     /// Lógica de interacción para Gerente.xaml
     /// </summary>
-    public partial class Gerente : Window
+    public partial class Gerente : MetroWindow
     {
         public Gerente()
         {
             InitializeComponent();
+        }
+
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

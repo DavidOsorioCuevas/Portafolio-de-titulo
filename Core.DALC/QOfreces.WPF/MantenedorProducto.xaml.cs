@@ -72,13 +72,6 @@ namespace QOfreces.WPF
             };
         }
 
-        private void btnVolver_Click(object sender, RoutedEventArgs e)
-        {
-            
-            this.Close();
-            
-        }
-
         private async void btnModificar_Click(object sender, RoutedEventArgs e)
         {
             await this.ShowMessageAsync("Alerta!", "Este evento aun no esta implementado");
@@ -87,6 +80,11 @@ namespace QOfreces.WPF
         private async void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
             await this.ShowMessageAsync("Alerta!", "Este evento aun no esta implementado");
+        }
+
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

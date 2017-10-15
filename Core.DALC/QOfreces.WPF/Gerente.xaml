@@ -1,13 +1,33 @@
-﻿<Window x:Class="QOfreces.WPF.Gerente"
+﻿<Controls:MetroWindow x:Class="QOfreces.WPF.Gerente"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QOfreces.WPF"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Gerente" Height="300" Width="300">
-    <Grid>
-        <Label x:Name="lblMenu" Content="Menu de Gerencia" HorizontalAlignment="Left" Margin="93,21,0,0" VerticalAlignment="Top"/>
-
+        Title="Menu Gerencia" Height="316.917" Width="433.082" Background="Gainsboro">
+    <Grid Margin="0,0,2,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="405*"/>
+            <ColumnDefinition Width="14*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="cbTiendas" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="dataGerente"  HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Height="168" Width="408" AutoGenerateColumns="False" Grid.ColumnSpan="2" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Usuarios" Binding="{Binding Usuarios}" />
+                <DataGridTextColumn Header="Cant. correos" Binding="{Binding Correos}" />
+                <DataGridTextColumn Header="Total Valoraciones" Binding="{Binding Valoraciones}" />
+                <DataGridTextColumn Header="Total Descuentos" Binding="{Binding DescuentosTotales}" />
+                <DataGridTextColumn Header="Descuentos Alimentos" Binding="{Binding DescAlimentos}" />
+                <DataGridTextColumn Header="Descuentos Electronica" Binding="{Binding DescElectronica}" />
+                <DataGridTextColumn Header="Descuentos LineaBlanca" Binding="{Binding DescLineaBlanca}" />
+                <DataGridTextColumn Header="Descuentos Ropa" Binding="{Binding DescRopa}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnExportar" Content="Exportar" HorizontalAlignment="Left" Margin="10,249,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="106,249,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
-</Window>
+</Controls:MetroWindow>
