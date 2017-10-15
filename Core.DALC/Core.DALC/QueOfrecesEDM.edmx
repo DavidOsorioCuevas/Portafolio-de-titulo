@@ -62,7 +62,7 @@
             <PropertyRef Name="ID_OFERTA" />
           </Key>
           <Property Name="ID_OFERTA" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="IMAGEN_OFERTA" Type="varchar2" MaxLength="50" />
+          <Property Name="IMAGEN_OFERTA" Type="varchar2" MaxLength="250" />
           <Property Name="MIN_PRODUCTO" Type="number" Precision="38" Scale="0" />
           <Property Name="MAX_PRODUCTO" Type="number" Precision="38" Scale="0" />
           <Property Name="ESTADO_OFERTA" Type="char" MaxLength="1" />
@@ -409,10 +409,6 @@
         <Function Name="CATEGORIA_OFERTA_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="BDMISOFERTAS">
           <Parameter Name="IN_NOMBRE" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="COMUNA_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="BDMISOFERTAS">
-          <Parameter Name="IN_NOMBRE" Type="varchar2" Mode="In" />
-          <Parameter Name="IN_REGION_ID" Type="number" Mode="In" />
-        </Function>
         <Function Name="PAIS_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="BDMISOFERTAS">
           <Parameter Name="IN_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="IN_SIGLA_PAIS" Type="char" Mode="In" />
@@ -680,7 +676,7 @@
             <PropertyRef Name="ID_OFERTA" />
           </Key>
           <Property Name="ID_OFERTA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="IMAGEN_OFERTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IMAGEN_OFERTA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="MIN_PRODUCTO" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="MAX_PRODUCTO" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="ESTADO_OFERTA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
@@ -1141,10 +1137,6 @@
           <FunctionImport Name="CATEGORIA_OFERTA_CREAR">
             <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="COMUNA_CREAR">
-            <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
-            <Parameter Name="IN_REGION_ID" Mode="In" Type="Decimal" />
-          </FunctionImport>
           <FunctionImport Name="PAIS_CREAR">
             <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
             <Parameter Name="IN_SIGLA_PAIS" Mode="In" Type="String" />
@@ -1478,7 +1470,6 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="CATEGORIA_OFERTA_CREAR" FunctionName="QueOfrecesModel.Store.CATEGORIA_OFERTA_CREAR" />
-          <FunctionImportMapping FunctionImportName="COMUNA_CREAR" FunctionName="QueOfrecesModel.Store.COMUNA_CREAR" />
           <FunctionImportMapping FunctionImportName="PAIS_CREAR" FunctionName="QueOfrecesModel.Store.PAIS_CREAR" />
           <FunctionImportMapping FunctionImportName="PRODUCTO_CREAR" FunctionName="QueOfrecesModel.Store.PRODUCTO_CREAR" />
           <FunctionImportMapping FunctionImportName="REGION_CREAR" FunctionName="QueOfrecesModel.Store.REGION_CREAR" />

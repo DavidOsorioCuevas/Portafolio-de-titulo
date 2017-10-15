@@ -35,13 +35,13 @@ namespace QOfreces.WPF
 
 
 
-        
+
         private void btnGenOferta_Click(object sender, RoutedEventArgs e)
         {
 
             List<Producto> lstprod = new List<Producto>();
-           var list = dgProd.Items.OfType<Producto>();
-                    
+            var list = dgProd.Items.OfType<Producto>();
+
             foreach (var item in list)
             {
                 if (item.Selec == true)
@@ -52,7 +52,7 @@ namespace QOfreces.WPF
                     prod.Nombre = item.Nombre;
                     prod.Precio = item.Precio;
                     lstprod.Add(prod);
-                }                              
+                }
             }
 
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
@@ -62,7 +62,7 @@ namespace QOfreces.WPF
             of.MaxProductos = int.Parse(txtMaxProd.Text);
             of.PrecioAntes = 1200;
             of.PrecioOferta = 400;
-            of.EstadoOferta = Convert.ToChar("n");
+            of.EstadoOferta = char.Parse(1.ToString());
             of.FechaOferta = dpFecha.SelectedDate;
             of.IdSucursal = 1;
             of.CategoriaIdOferta = 1;
@@ -70,7 +70,10 @@ namespace QOfreces.WPF
             of.IdComuna = 1;
             of.Nombre = txtNombre.Text;
             of.Descripcion = txtDescOf.Text;
-            of.OfertaDia = "ss";
+            of.OfertaDia = char.Parse("s");
+            
+
+
             string json = of.Serializar();
             proxy.CrearOferta(json);
 

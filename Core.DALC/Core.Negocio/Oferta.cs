@@ -24,7 +24,7 @@ namespace Core.Negocio
         public int IdComuna { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public string OfertaDia { get; set; }
+        public char? OfertaDia { get; set; }
 
         public Oferta()
         {
@@ -71,7 +71,7 @@ namespace Core.Negocio
             this.IdComuna = 0;
             this.Nombre = string.Empty;
             this.Descripcion = string.Empty;
-            this.OfertaDia = string.Empty;
+            this.OfertaDia = null;
         }
 
         public bool CrearOferta()
@@ -95,7 +95,7 @@ namespace Core.Negocio
                 of.COMUNA_ID = this.IdComuna;
                 of.NOMBRE = this.Nombre;
                 of.DESCRIPCION = this.Descripcion;
-                of.OFERTA_DIA = this.OfertaDia;
+                of.OFERTA_DIA = this.EstadoOferta.ToString();
 
                 ctx.OFERTA.Add(of);
                 ctx.SaveChanges();
@@ -129,7 +129,7 @@ namespace Core.Negocio
                 of.COMUNA_ID = this.IdComuna;
                 of.NOMBRE = this.Nombre;
                 of.DESCRIPCION = this.Descripcion;
-                of.OFERTA_DIA = this.OfertaDia;
+                of.OFERTA_DIA = this.OfertaDia.ToString();
 
                 ctx.SaveChanges();
                 ctx = null;
@@ -183,7 +183,7 @@ namespace Core.Negocio
                 of.COMUNA_ID = this.IdComuna;
                 of.NOMBRE = this.Nombre;
                 of.DESCRIPCION = this.Descripcion;
-                of.OFERTA_DIA = this.OfertaDia;
+                of.OFERTA_DIA = this.OfertaDia.ToString();
                 ctx.SaveChanges();
                 ctx = null;
                 return true;
@@ -214,7 +214,7 @@ namespace Core.Negocio
                 this.ImagenOferta = result.First().IMAGEN_OFERTA;
                 this.FechaOferta = result.First().FECHA_OFERTA;
                 this.Descripcion = result.First().DESCRIPCION;
-                this.OfertaDia = result.First().OFERTA_DIA;
+                this.OfertaDia = Convert.ToChar(result.First().OFERTA_DIA);
                 this.IdComuna = (int)result.First().COMUNA_ID;
                 this.IdRegion = (int)result.First().REGION_ID;
                 this.IdSucursal = (int)result.First().SUCURSALES_ID;
