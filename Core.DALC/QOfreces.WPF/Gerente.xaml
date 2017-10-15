@@ -18,7 +18,7 @@
             <ColumnDefinition Width="14*"/>
         </Grid.ColumnDefinitions>
         <ComboBox x:Name="cbTiendas" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="120"/>
-        <DataGrid x:Name="dataGerente"  HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Height="168" Width="408" AutoGenerateColumns="False" Grid.ColumnSpan="2" >
+        <DataGrid x:Name="dataGerente" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Height="168" Width="408" AutoGenerateColumns="False" Grid.ColumnSpan="2" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Usuarios" Binding="{Binding Usuarios}" />
                 <DataGridTextColumn Header="Cant. correos" Binding="{Binding Correos}" />

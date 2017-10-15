@@ -18,7 +18,7 @@
             <ColumnDefinition Width="443*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="btnGenOferta" Content="Generar Oferta" HorizontalAlignment="Left" Margin="46,594,0,0" VerticalAlignment="Top" Width="128" Click="btnGenOferta_Click" Grid.Column="1" BorderBrush="Black"/>
-        <DataGrid x:Name="dgProd" HorizontalAlignment="Left" Margin="29,20,0,0" VerticalAlignment="Top" Height="221" Width="574"  AutoGenerateColumns="false" Grid.ColumnSpan="2">
+        <DataGrid x:Name="dgProd" CanUserAddRows="False" HorizontalAlignment="Left" Margin="29,20,0,0" VerticalAlignment="Top" Height="221" Width="574"  AutoGenerateColumns="false" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id Producto" Binding="{Binding IdProducto}" />
                 <DataGridTextColumn Header="SKU" Binding="{Binding Sku}" />

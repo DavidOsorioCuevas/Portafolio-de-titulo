@@ -66,6 +66,7 @@
     <Compile Include="Retail.cs" />
     <Compile Include="Rubro.cs" />
     <Compile Include="RubroCollections.cs" />
+    <Compile Include="Sucursal.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioColection.cs" />
   </ItemGroup>

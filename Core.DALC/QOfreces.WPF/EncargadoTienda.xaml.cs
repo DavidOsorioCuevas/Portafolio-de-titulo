@@ -68,30 +68,40 @@ namespace QOfreces.WPF
 
             Core.Negocio.OfertaCollections collOfer = new Core.Negocio.OfertaCollections();
 
-            try
+            if (txtBuscar.Text == "")
             {
-                foreach (var item in collOf)
-                {
-                    if (txtBuscar.Text.Equals(item.Nombre))
-                    {
-                        collOfer.Add(item);
-                    }
-                }
+                dataGridOferta.ItemsSource = collOf;
+            }
+            else
+            {
 
-                if (collOfer.Count==0)
+
+
+                try
                 {
+                    foreach (var item in collOf)
+                    {
+                        if (txtBuscar.Text.Equals(item.Nombre))
+                        {
+                            collOfer.Add(item);
+                        }
+                    }
+
+                    if (collOfer.Count == 0)
+                    {
+                        await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                    }
+                    else
+                    {
+                        dataGridOferta.ItemsSource = collOfer;
+                    }
+
+                }
+                catch (Exception)
+                {
+
                     await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
                 }
-                else
-                {
-                    dataGridOferta.ItemsSource = collOfer;
-                }
-                
-            }
-            catch (Exception)
-            {
-
-                await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
             }
 
             

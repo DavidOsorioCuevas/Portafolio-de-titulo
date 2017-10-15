@@ -15,7 +15,7 @@
     <Grid x:Name="col_1" Margin="0,0,2,0">
         <Button x:Name="btnListarProd" Content="Listar Productos" HorizontalAlignment="Left" Margin="570,27,0,0" VerticalAlignment="Top" Width="128" Height="22" Click="btnListarProd_Click" BorderBrush="Black"/>
         <Label x:Name="lblPrueba" Content="" HorizontalAlignment="Left" Margin="236,135,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
-        <DataGrid x:Name="dgProd" HorizontalAlignment="Left" Margin="396,57,0,0" VerticalAlignment="Top" Height="161" Width="302">
+        <DataGrid x:Name="dgProd" CanUserAddRows="False" HorizontalAlignment="Left" Margin="396,57,0,0" VerticalAlignment="Top" Height="161" Width="302">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="dgcId" Header="ID" Binding="{Binding Path=IdProducto}"/>
                 <DataGridTextColumn x:Name="dgcNom" Header="Nombre Producto" Binding="{Binding Path=Nombre}"/>
