@@ -20,8 +20,7 @@ namespace Core.Negocio
         public DateTime? FechaOferta { get; set; }
         public int IdSucursal { get; set; }
         public int CategoriaIdOferta { get; set; }
-        public int IdRegion { get; set; }
-        public int IdComuna { get; set; }
+
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public char? OfertaDia { get; set; }
@@ -48,8 +47,6 @@ namespace Core.Negocio
             this.FechaOferta = of.FechaOferta;
             this.IdSucursal = of.IdSucursal;
             this.CategoriaIdOferta = of.CategoriaIdOferta;
-            this.IdRegion = of.IdRegion;
-            this.IdComuna = of.IdComuna;
             this.Nombre = of.Nombre;
             this.Descripcion = of.Descripcion;
             this.OfertaDia = of.OfertaDia;
@@ -67,8 +64,6 @@ namespace Core.Negocio
             this.PrecioAntes = 0;
             this.IdSucursal = 0;
             this.CategoriaIdOferta = 0;
-            this.IdRegion = 0;
-            this.IdComuna = 0;
             this.Nombre = string.Empty;
             this.Descripcion = string.Empty;
             this.OfertaDia = null;
@@ -91,8 +86,6 @@ namespace Core.Negocio
                 of.PRECIO_ANTES = this.PrecioAntes;
                 of.SUCURSALES_ID = this.IdSucursal;
                 of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
-                of.REGION_ID = this.IdRegion;
-                of.COMUNA_ID = this.IdComuna;
                 of.NOMBRE = this.Nombre;
                 of.DESCRIPCION = this.Descripcion;
                 of.OFERTA_DIA = this.EstadoOferta.ToString();
@@ -125,8 +118,6 @@ namespace Core.Negocio
                 of.FECHA_OFERTA = this.FechaOferta;
                 of.SUCURSALES_ID = this.IdSucursal;
                 of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
-                of.REGION_ID = this.IdRegion;
-                of.COMUNA_ID = this.IdComuna;
                 of.NOMBRE = this.Nombre;
                 of.DESCRIPCION = this.Descripcion;
                 of.OFERTA_DIA = this.OfertaDia.ToString();
@@ -179,8 +170,6 @@ namespace Core.Negocio
                 of.FECHA_OFERTA = this.FechaOferta;
                 of.SUCURSALES_ID = this.IdSucursal;
                 of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
-                of.REGION_ID = this.IdRegion;
-                of.COMUNA_ID = this.IdComuna;
                 of.NOMBRE = this.Nombre;
                 of.DESCRIPCION = this.Descripcion;
                 of.OFERTA_DIA = this.OfertaDia.ToString();
@@ -215,8 +204,6 @@ namespace Core.Negocio
                 this.FechaOferta = result.First().FECHA_OFERTA;
                 this.Descripcion = result.First().DESCRIPCION;
                 this.OfertaDia = Convert.ToChar(result.First().OFERTA_DIA);
-                this.IdComuna = (int)result.First().COMUNA_ID;
-                this.IdRegion = (int)result.First().REGION_ID;
                 this.IdSucursal = (int)result.First().SUCURSALES_ID;
             
             return Serializar();

@@ -45,8 +45,6 @@ namespace Core.Negocio
                     of.FechaOferta = item.FECHA_OFERTA;
                     of.IdSucursal = (int)item.SUCURSALES_ID;
                     of.CategoriaIdOferta = (int)item.CATEGORIA_OFERTA_ID;
-                    of.IdRegion = (int)item.REGION_ID;
-                    of.IdComuna = (int)item.COMUNA_ID;
                     of.Nombre = item.NOMBRE;
                     of.Descripcion = item.DESCRIPCION;
                     
@@ -76,8 +74,6 @@ namespace Core.Negocio
                     of.FechaOferta = item.FECHA_OFERTA;
                     of.IdSucursal = (int)item.SUCURSALES_ID;
                     of.CategoriaIdOferta = (int)item.CATEGORIA_OFERTA_ID;
-                    of.IdRegion = (int)item.REGION_ID;
-                    of.IdComuna = (int)item.COMUNA_ID;
                     of.Nombre = item.NOMBRE;
                     of.Descripcion = item.DESCRIPCION;
 
@@ -106,8 +102,6 @@ namespace Core.Negocio
                     of.FechaOferta = item.FECHA_OFERTA;
                     of.IdSucursal = (int)item.SUCURSALES_ID;
                     of.CategoriaIdOferta = (int)item.CATEGORIA_OFERTA_ID;
-                    of.IdRegion = (int)item.REGION_ID;
-                    of.IdComuna = (int)item.COMUNA_ID;
                     of.Nombre = item.NOMBRE;
                     of.Descripcion = item.DESCRIPCION;
 
