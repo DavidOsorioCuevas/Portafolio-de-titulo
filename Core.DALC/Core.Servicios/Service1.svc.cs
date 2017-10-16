@@ -78,6 +78,18 @@ namespace Core.Servicios
             return u.ActualizarUsuario();
         }
 
+        public bool ActualizarPerfil(string json)
+        {
+            Negocio.Perfil p = new Negocio.Perfil(json);
+            return p.ActualizarPerfil();
+        }
+
+        public bool CrearPerfil(string json)
+        {
+            Negocio.Perfil per = new Negocio.Perfil(json);
+            return per.CrearPerfil();
+        }
+
         public bool CrearCategoria(string json)
         {
             Negocio.CategoriaOferta cat = new Negocio.CategoriaOferta(json);
@@ -125,6 +137,14 @@ namespace Core.Servicios
             Negocio.Usuario user = new Negocio.Usuario(json);
             return user.Create();
         }
+
+
+        public bool EliminarPerfil(string json)
+        {
+            Negocio.Perfil per = new Negocio.Perfil(json);
+            return per.EliminarPerfil();
+        }
+
 
         public bool EliminarCategoria(string json)
         {
@@ -274,5 +294,12 @@ namespace Core.Servicios
             Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
             return collOfer.ReadAllOfertas();
         }
+
+        public string ReadAllPerfil()
+        {
+            Negocio.PerfilCollections collPer = new Negocio.PerfilCollections();
+            return collPer.ReadAllPerfil();
+        }
+
     }
 }

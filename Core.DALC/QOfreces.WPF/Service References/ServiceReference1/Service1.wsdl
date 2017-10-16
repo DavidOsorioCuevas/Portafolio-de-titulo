@@ -90,6 +90,30 @@
   <wsdl:message name="IService1_ReadAllRubros_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadAllRubrosResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_CrearPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearPerfil" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CrearPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPerfil" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPerfil" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllPerfil" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllPerfilResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_CrearCategoria_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearCategoria" />
   </wsdl:message>
@@ -290,6 +314,22 @@
     <wsdl:operation name="ReadAllRubros">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllRubros" message="tns:IService1_ReadAllRubros_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllRubrosResponse" message="tns:IService1_ReadAllRubros_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearPerfil" message="tns:IService1_CrearPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearPerfilResponse" message="tns:IService1_CrearPerfil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActualizarPerfil" message="tns:IService1_ActualizarPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ActualizarPerfilResponse" message="tns:IService1_ActualizarPerfil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarPerfil" message="tns:IService1_EliminarPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarPerfilResponse" message="tns:IService1_EliminarPerfil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllPerfil" message="tns:IService1_ReadAllPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllPerfilResponse" message="tns:IService1_ReadAllPerfil_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CrearCategoria">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearCategoria" message="tns:IService1_CrearCategoria_InputMessage" />
@@ -509,6 +549,42 @@
     </wsdl:operation>
     <wsdl:operation name="ReadAllRubros">
       <soap:operation soapAction="http://tempuri.org/IService1/ReadAllRubros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearPerfil">
+      <soap:operation soapAction="http://tempuri.org/IService1/CrearPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarPerfil">
+      <soap:operation soapAction="http://tempuri.org/IService1/ActualizarPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPerfil">
+      <soap:operation soapAction="http://tempuri.org/IService1/EliminarPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllPerfil">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllPerfil" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

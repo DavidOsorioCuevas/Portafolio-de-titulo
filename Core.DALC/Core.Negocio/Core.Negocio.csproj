@@ -61,6 +61,8 @@
     <Compile Include="Listas.cs" />
     <Compile Include="Oferta.cs" />
     <Compile Include="OfertaCollections.cs" />
+    <Compile Include="Perfil.cs" />
+    <Compile Include="PerfilCollections.cs" />
     <Compile Include="Producto.cs" />
     <Compile Include="ProductoCollections.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -99,6 +99,30 @@ namespace QOfreces.WPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllRubros", ReplyAction="http://tempuri.org/IService1/ReadAllRubrosResponse")]
         System.Threading.Tasks.Task<string> ReadAllRubrosAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearPerfil", ReplyAction="http://tempuri.org/IService1/CrearPerfilResponse")]
+        bool CrearPerfil(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearPerfil", ReplyAction="http://tempuri.org/IService1/CrearPerfilResponse")]
+        System.Threading.Tasks.Task<bool> CrearPerfilAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarPerfil", ReplyAction="http://tempuri.org/IService1/ActualizarPerfilResponse")]
+        bool ActualizarPerfil(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarPerfil", ReplyAction="http://tempuri.org/IService1/ActualizarPerfilResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarPerfilAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarPerfil", ReplyAction="http://tempuri.org/IService1/EliminarPerfilResponse")]
+        bool EliminarPerfil(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarPerfil", ReplyAction="http://tempuri.org/IService1/EliminarPerfilResponse")]
+        System.Threading.Tasks.Task<bool> EliminarPerfilAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllPerfil", ReplyAction="http://tempuri.org/IService1/ReadAllPerfilResponse")]
+        string ReadAllPerfil();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllPerfil", ReplyAction="http://tempuri.org/IService1/ReadAllPerfilResponse")]
+        System.Threading.Tasks.Task<string> ReadAllPerfilAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearCategoria", ReplyAction="http://tempuri.org/IService1/CrearCategoriaResponse")]
         bool CrearCategoria(string json);
         
@@ -381,6 +405,38 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> ReadAllRubrosAsync() {
             return base.Channel.ReadAllRubrosAsync();
+        }
+        
+        public bool CrearPerfil(string json) {
+            return base.Channel.CrearPerfil(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CrearPerfilAsync(string json) {
+            return base.Channel.CrearPerfilAsync(json);
+        }
+        
+        public bool ActualizarPerfil(string json) {
+            return base.Channel.ActualizarPerfil(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarPerfilAsync(string json) {
+            return base.Channel.ActualizarPerfilAsync(json);
+        }
+        
+        public bool EliminarPerfil(string json) {
+            return base.Channel.EliminarPerfil(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarPerfilAsync(string json) {
+            return base.Channel.EliminarPerfilAsync(json);
+        }
+        
+        public string ReadAllPerfil() {
+            return base.Channel.ReadAllPerfil();
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadAllPerfilAsync() {
+            return base.Channel.ReadAllPerfilAsync();
         }
         
         public bool CrearCategoria(string json) {

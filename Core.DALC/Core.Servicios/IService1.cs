@@ -51,6 +51,18 @@ namespace Core.Servicios
         [OperationContract]
         string ReadAllRubros();
 
+        /*PERFIL*/
+        [OperationContract]
+        bool CrearPerfil(string json);
+        [OperationContract]
+        bool ActualizarPerfil(string json);
+        [OperationContract]
+        bool EliminarPerfil(string json);
+
+        /*PERFILCOLLECTIONS*/
+        [OperationContract]
+        string ReadAllPerfil();
+
         /*CATEGORIA*/
         [OperationContract]
         bool CrearCategoria(string json);

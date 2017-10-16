@@ -20,7 +20,7 @@
         <Button x:Name="btnAgregar" Content="Agregar Usuario" Grid.Column="1" HorizontalAlignment="Left" Margin="177,10,0,0" VerticalAlignment="Top" Width="110" Click="btnAgregar_Click"/>
         <Button x:Name="btnActualizar" Content="Actualizar Usuario" Grid.Column="1" HorizontalAlignment="Left" Margin="177,37,0,0" VerticalAlignment="Top" Width="110" Click="btnActualizar_Click"/>
         <Button x:Name="btnEliminar" Content="Eliminar Usuario" Grid.Column="1" HorizontalAlignment="Left" Margin="177,64,0,0" VerticalAlignment="Top" Width="110" Click="btnEliminar_Click"/>
-        <Label x:Name="lbl" Content="IdPerfil" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl" Content="Perfil" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labe2" Content="NombreUsuario" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labe3" Content="Passowod" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labe4" Content="Nombre" HorizontalAlignment="Left" Margin="254,110,0,0" VerticalAlignment="Top"/>
