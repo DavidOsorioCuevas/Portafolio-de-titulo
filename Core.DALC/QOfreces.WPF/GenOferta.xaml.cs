@@ -44,6 +44,13 @@ namespace QOfreces.WPF
             cbSucursal.SelectedValuePath = "IdSucursal";
             cbSucursal.ItemsSource = sucCol.ToList();
 
+            string jerson = proxy.ReadAllCategoria();
+            CategoriaCollections catColl = new CategoriaCollections(jerson);
+            cbCatOf.DisplayMemberPath = "Nombre";
+            cbCatOf.SelectedValuePath = "IdCategoria";
+            cbCatOf.ItemsSource = catColl.ToList();
+            
+
         }
 
         private void btnGenOferta_Click(object sender, RoutedEventArgs e)
@@ -81,10 +88,9 @@ namespace QOfreces.WPF
                 of.EstadoOferta = char.Parse(0.ToString());
             }            
             of.FechaOferta = dpFecha.SelectedDate;
-            of.IdSucursal = 1;
-            of.CategoriaIdOferta = 1;
-            of.IdRegion = 1;
-            of.IdComuna = 1;
+            of.IdSucursal = (int)cbSucursal.SelectedValue;
+
+            of.CategoriaIdOferta = (int)cbCatOf.SelectedValue;
             of.Nombre = txtNombre.Text;
             of.Descripcion = txtDescOf.Text;
             of.OfertaDia = char.Parse("s");
