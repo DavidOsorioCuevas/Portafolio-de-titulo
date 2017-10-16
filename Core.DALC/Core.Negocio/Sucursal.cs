@@ -104,7 +104,6 @@ namespace Core.Negocio
                 suc.COMUNA_ID = this.IdComuna;
                 suc.REGION_ID = this.IdRegion;
                 suc.RETAIL_ID = this.IdRetail;
-                suc.ID_SUCURSAL = this.IdSucursal;
                 suc.NOMBRE = this.Nombre;
                 suc.RAZON_SOCIAL = this.RazonSocial;
                 suc.RUT = this.Rut;

@@ -29,6 +29,12 @@ namespace Core.Servicios
             return user.ValidarWeb();
         }
 
+        public bool ActualizarCategoria(string json)
+        {
+            Negocio.CategoriaOferta cat = new Negocio.CategoriaOferta(json);
+            return cat.ActualizarCategoria();
+        }
+
         public bool ActualizarDesc(string json)
         {
             Negocio.Descuento desc = new Negocio.Descuento(json);
@@ -72,6 +78,12 @@ namespace Core.Servicios
             return u.ActualizarUsuario();
         }
 
+        public bool CrearCategoria(string json)
+        {
+            Negocio.CategoriaOferta cat = new Negocio.CategoriaOferta(json);
+            return cat.CrearCategoria();
+        }
+
         public bool CrearDesc(string json)
         {
             Negocio.Descuento desc = new Negocio.Descuento(json);
@@ -112,6 +124,12 @@ namespace Core.Servicios
         {
             Negocio.Usuario user = new Negocio.Usuario(json);
             return user.Create();
+        }
+
+        public bool EliminarCategoria(string json)
+        {
+            Negocio.CategoriaOferta cat = new Negocio.CategoriaOferta(json);
+            return cat.EliminarCategoria();
         }
 
         public bool EliminarDesc(string json)
@@ -204,6 +222,12 @@ namespace Core.Servicios
         {
             Negocio.UsuarioColection collUser = new Negocio.UsuarioColection();
             return collUser.ReadAllUsuarios();
+        }
+
+        public string ReadAllCategoria()
+        {
+            Negocio.CategoriaCollections collCat = new Negocio.CategoriaCollections();
+            return collCat.ReadAllCategoria();
         }
 
         public string ReadAllOfertasActivo()

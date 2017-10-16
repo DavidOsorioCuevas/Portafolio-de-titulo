@@ -90,6 +90,30 @@
   <wsdl:message name="IService1_ReadAllRubros_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadAllRubrosResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_CrearCategoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearCategoria" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CrearCategoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarCategoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCategoria" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarCategoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarCategoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarCategoria" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarCategoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllCategoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllCategoria" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllCategoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllCategoriaResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_CrearSucursal_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearSucursal" />
   </wsdl:message>
@@ -266,6 +290,22 @@
     <wsdl:operation name="ReadAllRubros">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllRubros" message="tns:IService1_ReadAllRubros_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllRubrosResponse" message="tns:IService1_ReadAllRubros_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearCategoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearCategoria" message="tns:IService1_CrearCategoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearCategoriaResponse" message="tns:IService1_CrearCategoria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCategoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActualizarCategoria" message="tns:IService1_ActualizarCategoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ActualizarCategoriaResponse" message="tns:IService1_ActualizarCategoria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCategoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarCategoria" message="tns:IService1_EliminarCategoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarCategoriaResponse" message="tns:IService1_EliminarCategoria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllCategoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllCategoria" message="tns:IService1_ReadAllCategoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllCategoriaResponse" message="tns:IService1_ReadAllCategoria_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CrearSucursal">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearSucursal" message="tns:IService1_CrearSucursal_InputMessage" />
@@ -469,6 +509,42 @@
     </wsdl:operation>
     <wsdl:operation name="ReadAllRubros">
       <soap:operation soapAction="http://tempuri.org/IService1/ReadAllRubros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearCategoria">
+      <soap:operation soapAction="http://tempuri.org/IService1/CrearCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCategoria">
+      <soap:operation soapAction="http://tempuri.org/IService1/ActualizarCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCategoria">
+      <soap:operation soapAction="http://tempuri.org/IService1/EliminarCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllCategoria">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllCategoria" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

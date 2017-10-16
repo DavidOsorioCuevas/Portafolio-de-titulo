@@ -99,6 +99,30 @@ namespace QOfreces.WPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllRubros", ReplyAction="http://tempuri.org/IService1/ReadAllRubrosResponse")]
         System.Threading.Tasks.Task<string> ReadAllRubrosAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearCategoria", ReplyAction="http://tempuri.org/IService1/CrearCategoriaResponse")]
+        bool CrearCategoria(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearCategoria", ReplyAction="http://tempuri.org/IService1/CrearCategoriaResponse")]
+        System.Threading.Tasks.Task<bool> CrearCategoriaAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarCategoria", ReplyAction="http://tempuri.org/IService1/ActualizarCategoriaResponse")]
+        bool ActualizarCategoria(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarCategoria", ReplyAction="http://tempuri.org/IService1/ActualizarCategoriaResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarCategoriaAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarCategoria", ReplyAction="http://tempuri.org/IService1/EliminarCategoriaResponse")]
+        bool EliminarCategoria(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarCategoria", ReplyAction="http://tempuri.org/IService1/EliminarCategoriaResponse")]
+        System.Threading.Tasks.Task<bool> EliminarCategoriaAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllCategoria", ReplyAction="http://tempuri.org/IService1/ReadAllCategoriaResponse")]
+        string ReadAllCategoria();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllCategoria", ReplyAction="http://tempuri.org/IService1/ReadAllCategoriaResponse")]
+        System.Threading.Tasks.Task<string> ReadAllCategoriaAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearSucursal", ReplyAction="http://tempuri.org/IService1/CrearSucursalResponse")]
         bool CrearSucursal(string json);
         
@@ -357,6 +381,38 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> ReadAllRubrosAsync() {
             return base.Channel.ReadAllRubrosAsync();
+        }
+        
+        public bool CrearCategoria(string json) {
+            return base.Channel.CrearCategoria(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CrearCategoriaAsync(string json) {
+            return base.Channel.CrearCategoriaAsync(json);
+        }
+        
+        public bool ActualizarCategoria(string json) {
+            return base.Channel.ActualizarCategoria(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarCategoriaAsync(string json) {
+            return base.Channel.ActualizarCategoriaAsync(json);
+        }
+        
+        public bool EliminarCategoria(string json) {
+            return base.Channel.EliminarCategoria(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarCategoriaAsync(string json) {
+            return base.Channel.EliminarCategoriaAsync(json);
+        }
+        
+        public string ReadAllCategoria() {
+            return base.Channel.ReadAllCategoria();
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadAllCategoriaAsync() {
+            return base.Channel.ReadAllCategoriaAsync();
         }
         
         public bool CrearSucursal(string json) {

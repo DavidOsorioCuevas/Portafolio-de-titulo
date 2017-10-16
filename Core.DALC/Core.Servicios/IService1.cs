@@ -51,6 +51,18 @@ namespace Core.Servicios
         [OperationContract]
         string ReadAllRubros();
 
+        /*CATEGORIA*/
+        [OperationContract]
+        bool CrearCategoria(string json);
+        [OperationContract]
+        bool ActualizarCategoria(string json);
+        [OperationContract]
+        bool EliminarCategoria(string json);
+
+        /*CATEGORIACOLLECTIONS*/
+        [OperationContract]
+        string ReadAllCategoria();
+
         /*SUCURSAL*/
         [OperationContract]
         bool CrearSucursal(string json);

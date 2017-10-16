@@ -31,13 +31,20 @@ namespace QOfreces.WPF
         public GenOferta()
         {
   
-            InitializeComponent();            
-
+            InitializeComponent();
+            CargarCombobox();
         }
 
+        private void CargarCombobox()
+        {
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json = proxy.ReadAllSucursal();
+            SucursalCollections sucCol = new SucursalCollections(json);
+            cbSucursal.DisplayMemberPath = "Nombre";
+            cbSucursal.SelectedValuePath = "IdSucursal";
+            cbSucursal.ItemsSource = sucCol.ToList();
 
-
-
+        }
 
         private void btnGenOferta_Click(object sender, RoutedEventArgs e)
         {
