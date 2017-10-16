@@ -13,6 +13,7 @@ namespace Core.Servicios
     // NOTE: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service1.svc o Service1.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class Service1 : IService1
     {
+
         public string TraerOferta(string json)
         {
             Negocio.Oferta oferta = new Negocio.Oferta(json);
@@ -59,6 +60,12 @@ namespace Core.Servicios
             return ru.ActualizarRubro();
         }
 
+        public bool ActualizarSucursal(string json)
+        {
+            Negocio.Sucursal su = new Negocio.Sucursal(json);
+            return su.ActualizarSucursal();
+        }
+
         public bool ActualizarUsuario(string json)
         {
             Negocio.Usuario u = new Negocio.Usuario(json);
@@ -95,6 +102,12 @@ namespace Core.Servicios
             return ru.CrearRubro();
         }
 
+        public bool CrearSucursal(string json)
+        {
+            Negocio.Sucursal su = new Negocio.Sucursal(json);
+            return su.CrearSucursal();
+        }
+
         public bool CrearUsuario(string json)
         {
             Negocio.Usuario user = new Negocio.Usuario(json);
@@ -129,6 +142,12 @@ namespace Core.Servicios
         {
             Negocio.Rubro ru = new Negocio.Rubro(json);
             return ru.EliminarRubro();
+        }
+
+        public bool EliminarSucursal(string json)
+        {
+            Negocio.Sucursal su = new Negocio.Sucursal(json);
+            return su.CrearSucursal();
         }
 
         public bool EliminarUsuario(string json)
@@ -205,6 +224,12 @@ namespace Core.Servicios
         {
             Negocio.RubroCollections collUser = new Negocio.RubroCollections();
             return collUser.ReadAllRubros();
+        }
+
+        public string ReadAllSucursal()
+        {
+            Negocio.SucursalCollections collSuc = new Negocio.SucursalCollections();
+            return collSuc.ReadAllSucursal();
         }
 
         public bool ValidarUsuarioWPF(string username, string password)

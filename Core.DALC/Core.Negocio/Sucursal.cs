@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Core.Negocio
 {
-    class Sucursal
+    public class Sucursal
     {
         public int IdSucursal { get; set; }
         public string Rut { get; set; }
@@ -60,7 +60,7 @@ namespace Core.Negocio
             this.Telefono = 0;
         }
 
-        public bool crearSucursal()
+        public bool CrearSucursal()
         {
             try
             {
@@ -89,6 +89,69 @@ namespace Core.Negocio
 
                 return false;
             }
+        }
+
+        public bool ActualizarSucursal()
+        {
+
+            try
+            {
+                DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
+                DALC.SUCURSALES suc = ctx.SUCURSALES.First(o => o.ID_SUCURSAL == IdSucursal);
+
+                suc.DIRECCION = this.Direccion;
+                suc.EMAIL = this.Email;
+                suc.COMUNA_ID = this.IdComuna;
+                suc.REGION_ID = this.IdRegion;
+                suc.RETAIL_ID = this.IdRetail;
+                suc.ID_SUCURSAL = this.IdSucursal;
+                suc.NOMBRE = this.Nombre;
+                suc.RAZON_SOCIAL = this.RazonSocial;
+                suc.RUT = this.Rut;
+                suc.TELEFONO = this.Telefono;
+
+                ctx.SaveChanges();
+                ctx = null;
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
+
+        public bool EliminarSucursal()
+        {
+            try
+            {
+                DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
+                DALC.SUCURSALES suc = ctx.SUCURSALES.First(o => o.ID_SUCURSAL == IdSucursal);
+
+                ctx.Entry(suc).State = System.Data.EntityState.Deleted;
+                ctx.SaveChanges();
+                ctx = null;
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+
+        }
+
+        public string Serializar()
+        {
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(Sucursal));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, this);
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+
+            return ser.ToString();
+
         }
     }
 }

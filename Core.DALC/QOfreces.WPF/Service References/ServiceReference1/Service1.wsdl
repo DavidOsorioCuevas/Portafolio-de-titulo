@@ -90,6 +90,30 @@
   <wsdl:message name="IService1_ReadAllRubros_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadAllRubrosResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_CrearSucursal_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearSucursal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CrearSucursal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarSucursal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarSucursal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ActualizarSucursal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarSucursal_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarSucursal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarSucursal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllSucursal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllSucursal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllSucursal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllSucursalResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_ReadAllOfertasActivo_InputMessage">
     <wsdl:part name="parameters" element="tns:ReadAllOfertasActivo" />
   </wsdl:message>
@@ -242,6 +266,22 @@
     <wsdl:operation name="ReadAllRubros">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllRubros" message="tns:IService1_ReadAllRubros_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllRubrosResponse" message="tns:IService1_ReadAllRubros_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearSucursal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearSucursal" message="tns:IService1_CrearSucursal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearSucursalResponse" message="tns:IService1_CrearSucursal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarSucursal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActualizarSucursal" message="tns:IService1_ActualizarSucursal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ActualizarSucursalResponse" message="tns:IService1_ActualizarSucursal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarSucursal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarSucursal" message="tns:IService1_EliminarSucursal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarSucursalResponse" message="tns:IService1_EliminarSucursal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllSucursal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllSucursal" message="tns:IService1_ReadAllSucursal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllSucursalResponse" message="tns:IService1_ReadAllSucursal_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReadAllOfertasActivo">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasActivo" message="tns:IService1_ReadAllOfertasActivo_InputMessage" />
@@ -429,6 +469,42 @@
     </wsdl:operation>
     <wsdl:operation name="ReadAllRubros">
       <soap:operation soapAction="http://tempuri.org/IService1/ReadAllRubros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearSucursal">
+      <soap:operation soapAction="http://tempuri.org/IService1/CrearSucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarSucursal">
+      <soap:operation soapAction="http://tempuri.org/IService1/ActualizarSucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarSucursal">
+      <soap:operation soapAction="http://tempuri.org/IService1/EliminarSucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllSucursal">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllSucursal" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

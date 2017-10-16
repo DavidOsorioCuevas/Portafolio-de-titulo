@@ -99,6 +99,30 @@ namespace QOfreces.WPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllRubros", ReplyAction="http://tempuri.org/IService1/ReadAllRubrosResponse")]
         System.Threading.Tasks.Task<string> ReadAllRubrosAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearSucursal", ReplyAction="http://tempuri.org/IService1/CrearSucursalResponse")]
+        bool CrearSucursal(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearSucursal", ReplyAction="http://tempuri.org/IService1/CrearSucursalResponse")]
+        System.Threading.Tasks.Task<bool> CrearSucursalAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarSucursal", ReplyAction="http://tempuri.org/IService1/ActualizarSucursalResponse")]
+        bool ActualizarSucursal(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActualizarSucursal", ReplyAction="http://tempuri.org/IService1/ActualizarSucursalResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarSucursalAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarSucursal", ReplyAction="http://tempuri.org/IService1/EliminarSucursalResponse")]
+        bool EliminarSucursal(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarSucursal", ReplyAction="http://tempuri.org/IService1/EliminarSucursalResponse")]
+        System.Threading.Tasks.Task<bool> EliminarSucursalAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllSucursal", ReplyAction="http://tempuri.org/IService1/ReadAllSucursalResponse")]
+        string ReadAllSucursal();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllSucursal", ReplyAction="http://tempuri.org/IService1/ReadAllSucursalResponse")]
+        System.Threading.Tasks.Task<string> ReadAllSucursalAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasActivo", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasActivoResponse")]
         string ReadAllOfertasActivo();
         
@@ -333,6 +357,38 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> ReadAllRubrosAsync() {
             return base.Channel.ReadAllRubrosAsync();
+        }
+        
+        public bool CrearSucursal(string json) {
+            return base.Channel.CrearSucursal(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CrearSucursalAsync(string json) {
+            return base.Channel.CrearSucursalAsync(json);
+        }
+        
+        public bool ActualizarSucursal(string json) {
+            return base.Channel.ActualizarSucursal(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarSucursalAsync(string json) {
+            return base.Channel.ActualizarSucursalAsync(json);
+        }
+        
+        public bool EliminarSucursal(string json) {
+            return base.Channel.EliminarSucursal(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarSucursalAsync(string json) {
+            return base.Channel.EliminarSucursalAsync(json);
+        }
+        
+        public string ReadAllSucursal() {
+            return base.Channel.ReadAllSucursal();
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadAllSucursalAsync() {
+            return base.Channel.ReadAllSucursalAsync();
         }
         
         public string ReadAllOfertasActivo() {
