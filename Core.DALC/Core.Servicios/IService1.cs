@@ -100,7 +100,8 @@ namespace Core.Servicios
         string ReadAllOfertasDesactivo();
         [OperationContract]
         string ReadAllOfertas();
-
+        [OperationContract]
+        string ReadAllOfertasDia();
         /*Descuento*/
         [OperationContract]
         bool CrearDesc(string json);

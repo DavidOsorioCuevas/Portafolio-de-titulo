@@ -86,6 +86,37 @@ namespace Core.Negocio
 
         }
 
+        private OfertaCollections GenerarListadoDia(List<DALC.OFERTA> listaDALC)
+        {
+
+            OfertaCollections lista = new OfertaCollections();
+            foreach (var item in listaDALC)
+            {
+                if (item.FECHA_OFERTA.Value.Month == DateTime.Now.Month && item.FECHA_OFERTA.Value.Day == DateTime.Now.Day && item.FECHA_OFERTA.Value.Year == DateTime.Now.Year)
+                {
+
+                    Oferta of = new Oferta();
+                    of.IdOferta = (int)item.ID_OFERTA;
+                    of.ImagenOferta = item.IMAGEN_OFERTA;
+                    of.MinProductos = (int)item.MIN_PRODUCTO;
+                    of.MaxProductos = (int)item.MAX_PRODUCTO;
+                    of.EstadoOferta = Convert.ToChar(item.ESTADO_OFERTA);
+                    of.PrecioOferta = (int)item.PRECIO_DESPUES;
+                    of.PrecioAntes = (int)item.PRECIO_ANTES;
+                    of.FechaOferta = item.FECHA_OFERTA;
+                    of.IdSucursal = (int)item.SUCURSALES_ID;
+                    of.CategoriaIdOferta = (int)item.CATEGORIA_OFERTA_ID;
+                    of.Nombre = item.NOMBRE;
+                    of.Descripcion = item.DESCRIPCION;
+                    of.Selec = false;
+
+                    lista.Add(of);
+                }
+            }
+            return lista;
+
+        }
+
         private OfertaCollections GenerarListado(List<DALC.OFERTA> listaDALC)
         {
 
@@ -121,7 +152,12 @@ namespace Core.Negocio
             return lista;
 
         }
+        public string ReadAllOfertasDia()
+        {
 
+            var listaDA = new DALC.QueOfrecesEntities().OFERTA;
+            return GenerarListadoDia(listaDA.ToList()).Serializar();
+        }
         public string ReadAllOfertasActivo()
         {
 

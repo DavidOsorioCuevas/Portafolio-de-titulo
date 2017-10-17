@@ -299,7 +299,11 @@ namespace Core.Servicios
             Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
             return collOfer.ReadAllOfertas();
         }
-
+        public string ReadAllOfertasDia()
+        {
+            Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
+            return collOfer.ReadAllOfertasDia();
+        }
         public string ReadAllPerfil()
         {
             Negocio.PerfilCollections collPer = new Negocio.PerfilCollections();
