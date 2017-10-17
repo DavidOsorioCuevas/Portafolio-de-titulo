@@ -92,7 +92,7 @@ namespace Core.Negocio
             OfertaCollections lista = new OfertaCollections();
             foreach (var item in listaDALC)
             {
-                if (item.FECHA_OFERTA.Value.Month == DateTime.Now.Month && item.FECHA_OFERTA.Value.Day == DateTime.Now.Day && item.FECHA_OFERTA.Value.Year == DateTime.Now.Year)
+                if ((DateTime)item.FECHA_OFERTA.Value.Date == DateTime.Today.Date)
                 {
 
                     Oferta of = new Oferta();

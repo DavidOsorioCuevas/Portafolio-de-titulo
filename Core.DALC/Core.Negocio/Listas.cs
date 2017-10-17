@@ -11,6 +11,39 @@ namespace Core.Negocio
 {
     public class Listas
     {
+        public string oferta(string parametro)
+        {
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+            var result = from a in ctx.OFERTA
+                         where a.NOMBRE.Contains(parametro) || a.DESCRIPCION.Contains(parametro)
+                         select new
+                         {
+                             a
+                         };
+            List<Oferta> ofertaLista = new List<Oferta>();
+            foreach (var item in result)
+            {
+               
+                Oferta of = new Oferta();
+                of.IdOferta = (int)item.a.ID_OFERTA;
+                of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                of.MaxProductos = (int)item.a.MAX_PRODUCTO;
+                of.EstadoOferta = Convert.ToChar(item.a.ESTADO_OFERTA);
+                of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                of.FechaOferta = item.a.FECHA_OFERTA;
+                of.IdSucursal = (int)item.a.SUCURSALES_ID;
+                of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                of.Nombre = item.a.NOMBRE;
+                of.Descripcion = item.a.DESCRIPCION;
+                of.Selec = false;
+
+                ofertaLista.Add(of);
+            }
+            return SerializarOferta(ofertaLista);
+        }
+
         public string region()
         {
             Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
@@ -65,6 +98,19 @@ namespace Core.Negocio
             MemoryStream stream = new MemoryStream();
 
             serializador.WriteObject(stream, comuna);
+
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+
+            return ser.ToString();
+
+        }
+        public string SerializarOferta(List<Oferta> oferta)
+        {
+
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(List<Oferta>));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, oferta);
 
             string ser = Encoding.UTF8.GetString(stream.ToArray());
 
