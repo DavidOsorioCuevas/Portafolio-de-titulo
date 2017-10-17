@@ -10,12 +10,13 @@ namespace Core.Negocio
     {
         public int IdComuna { get; set; }
         public string Nombre { get; set; }
-
+        public int IdRegion { get; set; }
         public Comuna() { }
-        public Comuna(int IdComuna, string Nombre)
+        public Comuna(int IdComuna, string Nombre,int IdRegion)
         {
             this.IdComuna = IdComuna;
             this.Nombre = Nombre;
+            this.IdRegion = IdRegion;
         }
     }
 }

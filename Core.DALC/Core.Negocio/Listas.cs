@@ -31,13 +31,14 @@ namespace Core.Negocio
         public string comuna()
         {
             Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
-            var comunas = from a in ctx.COMUNA select new { a.ID_COMUNA, a.NOMBRE };
+            var comunas = from a in ctx.COMUNA select new { a.ID_COMUNA, a.NOMBRE,a.REGION_ID };
             List<Comuna> comunaLista = new List<Comuna>();
             foreach (var item in comunas)
             {
                 Comuna c = new Comuna();
                 c.IdComuna = (int)item.ID_COMUNA;
                 c.Nombre = item.NOMBRE;
+                c.IdRegion = (int)item.REGION_ID;
                 comunaLista.Add(c);
             }
 
