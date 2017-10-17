@@ -148,6 +148,18 @@ namespace QOfreces.WPF
                 btnAdjuntar.Content = "Cambiar Foto";
             }
         }
+
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnVolver_Click(object sender, RoutedEventArgs e)
+        {
+            EncargadoTienda en = new EncargadoTienda();
+            this.Close();
+            en.Show();
+        }
     }
 
 }
