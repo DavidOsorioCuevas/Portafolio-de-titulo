@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="CategoriaCollections.cs" />
     <Compile Include="CategoriaOferta.cs" />
+    <Compile Include="Comuna.cs" />
     <Compile Include="Descuento.cs" />
     <Compile Include="Listas.cs" />
     <Compile Include="Oferta.cs" />

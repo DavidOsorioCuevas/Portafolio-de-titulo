@@ -15,6 +15,8 @@ namespace Core.Servicios
 
         /*USUARIO*/
         [OperationContract]
+        string ListarComunas();
+        [OperationContract]
         string ListarRegiones();
         [OperationContract]
         string ValidarWeb(string json);

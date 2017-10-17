@@ -28,6 +28,22 @@ namespace Core.Negocio
             return SerializarRegion(regionLista);
         }
 
+        public string comuna()
+        {
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+            var comunas = from a in ctx.COMUNA select new { a.ID_COMUNA, a.NOMBRE };
+            List<Comuna> comunaLista = new List<Comuna>();
+            foreach (var item in comunas)
+            {
+                Comuna c = new Comuna();
+                c.IdComuna = (int)item.ID_COMUNA;
+                c.Nombre = item.NOMBRE;
+                comunaLista.Add(c);
+            }
+
+
+            return SerializarComuna(comunaLista);
+        }
         public string SerializarRegion(List<Region> region)
         {
 
@@ -35,6 +51,19 @@ namespace Core.Negocio
             MemoryStream stream = new MemoryStream();
 
             serializador.WriteObject(stream, region);
+
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+
+            return ser.ToString();
+
+        }
+        public string SerializarComuna(List<Comuna> comuna)
+        {
+
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(List<Comuna>));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, comuna);
 
             string ser = Encoding.UTF8.GetString(stream.ToArray());
 

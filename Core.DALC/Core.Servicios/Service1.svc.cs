@@ -19,6 +19,11 @@ namespace Core.Servicios
             Negocio.Oferta oferta = new Negocio.Oferta(json);
             return oferta.TraerOferta();
         }
+        public string ListarComunas()
+        {
+            Negocio.Listas lista = new Negocio.Listas();
+            return lista.comuna();
+        }
         public string ListarRegiones()
         {
             Negocio.Listas lista = new Negocio.Listas();
