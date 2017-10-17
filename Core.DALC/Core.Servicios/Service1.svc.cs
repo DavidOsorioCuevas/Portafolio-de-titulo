@@ -306,5 +306,16 @@ namespace Core.Servicios
             return collPer.ReadAllPerfil();
         }
 
+        public string ReadAllComuna()
+        {
+            Negocio.ComunaCollections collPer = new Negocio.ComunaCollections();
+            return collPer.ReadAllComuna();
+        }
+
+        public bool LeerOfertaId(string json)
+        {
+            Negocio.Oferta of = new Negocio.Oferta(json);
+            return of.LeerOfertaId();
+        }
     }
 }

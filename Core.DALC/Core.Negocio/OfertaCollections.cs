@@ -47,7 +47,8 @@ namespace Core.Negocio
                     of.CategoriaIdOferta = (int)item.CATEGORIA_OFERTA_ID;
                     of.Nombre = item.NOMBRE;
                     of.Descripcion = item.DESCRIPCION;
-                    
+                    of.Selec = true;
+
                     lista.Add(of);
                 }
             }
@@ -76,6 +77,7 @@ namespace Core.Negocio
                     of.CategoriaIdOferta = (int)item.CATEGORIA_OFERTA_ID;
                     of.Nombre = item.NOMBRE;
                     of.Descripcion = item.DESCRIPCION;
+                    of.Selec = false;
 
                     lista.Add(of);
                 }
@@ -91,21 +93,29 @@ namespace Core.Negocio
             foreach (var item in listaDALC)
             {
 
-                    Oferta of = new Oferta();
-                    of.IdOferta = (int)item.ID_OFERTA;
-                    of.ImagenOferta = item.IMAGEN_OFERTA;
-                    of.MinProductos = (int)item.MIN_PRODUCTO;
-                    of.MaxProductos = (int)item.MAX_PRODUCTO;
-                    of.EstadoOferta = Convert.ToChar(item.ESTADO_OFERTA);
-                    of.PrecioOferta = (int)item.PRECIO_DESPUES;
-                    of.PrecioAntes = (int)item.PRECIO_ANTES;
-                    of.FechaOferta = item.FECHA_OFERTA;
-                    of.IdSucursal = (int)item.SUCURSALES_ID;
-                    of.CategoriaIdOferta = (int)item.CATEGORIA_OFERTA_ID;
-                    of.Nombre = item.NOMBRE;
-                    of.Descripcion = item.DESCRIPCION;
+                Oferta of = new Oferta();
+                of.IdOferta = (int)item.ID_OFERTA;
+                of.ImagenOferta = item.IMAGEN_OFERTA;
+                of.MinProductos = (int)item.MIN_PRODUCTO;
+                of.MaxProductos = (int)item.MAX_PRODUCTO;
+                of.EstadoOferta = Convert.ToChar(item.ESTADO_OFERTA);
+                of.PrecioOferta = (int)item.PRECIO_DESPUES;
+                of.PrecioAntes = (int)item.PRECIO_ANTES;
+                of.FechaOferta = item.FECHA_OFERTA;
+                of.IdSucursal = (int)item.SUCURSALES_ID;
+                of.CategoriaIdOferta = (int)item.CATEGORIA_OFERTA_ID;
+                of.Nombre = item.NOMBRE;
+                of.Descripcion = item.DESCRIPCION;
+                if (of.EstadoOferta == '1')
+                {
+                    of.Selec = true;
+                }
+                else
+                {
+                    of.Selec = false;
+                }
 
-                    lista.Add(of);
+                lista.Add(of);
 
             }
             return lista;

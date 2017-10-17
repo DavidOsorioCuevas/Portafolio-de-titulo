@@ -105,13 +105,7 @@ namespace QOfreces.WPF
             {
                 MessageBox.Show("OUSH!");
             }
-
-
-
-
-
-
-
+            
         }
 
         private void btnListar_Click(object sender, RoutedEventArgs e)

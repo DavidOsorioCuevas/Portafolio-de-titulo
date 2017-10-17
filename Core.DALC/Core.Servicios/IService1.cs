@@ -89,6 +89,10 @@ namespace Core.Servicios
         [OperationContract]
         string ReadAllSucursal();
 
+        /*COMUNACOLLECTIONS*/
+        [OperationContract]
+        string ReadAllComuna();
+
         /*OFERTACOLLECTIONS*/
         [OperationContract]
         string ReadAllOfertasActivo();
@@ -130,6 +134,8 @@ namespace Core.Servicios
         bool ActualizarOferta(string json);
         [OperationContract]
         bool EliminarOferta(string json);
+        [OperationContract]
+        bool LeerOfertaId(string json);
 
 
 

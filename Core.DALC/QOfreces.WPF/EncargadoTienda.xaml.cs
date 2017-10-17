@@ -50,7 +50,9 @@ namespace QOfreces.WPF
 
         private  void tiPublicarOferta_Click(object sender, RoutedEventArgs e)
         {
-            FlyPublicar.IsOpen = true;
+            PublicaOferta pubOf = new PublicaOferta();
+            pubOf.Owner = this;
+            pubOf.Show();
         }
 
         private void tiProducto_Click(object sender, RoutedEventArgs e)

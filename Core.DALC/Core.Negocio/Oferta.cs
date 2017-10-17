@@ -24,6 +24,7 @@ namespace Core.Negocio
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public char? OfertaDia { get; set; }
+        public bool Selec { get; set; }
 
         public Oferta()
         {
@@ -50,6 +51,7 @@ namespace Core.Negocio
             this.Nombre = of.Nombre;
             this.Descripcion = of.Descripcion;
             this.OfertaDia = of.OfertaDia;
+            this.Selec = of.Selec;
         }
 
         private void Init()
@@ -67,6 +69,7 @@ namespace Core.Negocio
             this.Nombre = string.Empty;
             this.Descripcion = string.Empty;
             this.OfertaDia = null;
+            this.Selec = false;
         }
 
         public bool CrearOferta()
@@ -99,6 +102,39 @@ namespace Core.Negocio
             catch (Exception ex)
             {
 
+                return false;
+            }
+
+        }
+
+
+        public bool LeerOfertaId()
+        {
+            try
+            {
+                Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+                Core.DALC.OFERTA of = ctx.OFERTA.First(o => o.ID_OFERTA == IdOferta);
+
+                this.ImagenOferta = of.IMAGEN_OFERTA;
+                this.MinProductos = (int)of.MIN_PRODUCTO;
+                this.MaxProductos = (int)of.MAX_PRODUCTO;
+                this.EstadoOferta = Convert.ToChar(of.ESTADO_OFERTA);
+                this.PrecioOferta = (int)of.PRECIO_DESPUES;
+                this.PrecioAntes = (int)of.PRECIO_ANTES;
+                this.FechaOferta = of.FECHA_OFERTA;
+                this.IdSucursal = (int)of.SUCURSALES_ID;
+                this.CategoriaIdOferta = (int)of.CATEGORIA_OFERTA_ID;
+                this.Nombre = of.NOMBRE;
+                this.Descripcion = of.DESCRIPCION;
+                this.OfertaDia = Convert.ToChar(of.OFERTA_DIA);
+
+
+                ctx = null;
+
+                return true;
+            }
+            catch (Exception ex)
+            {
                 return false;
             }
 
@@ -183,7 +219,7 @@ namespace Core.Negocio
 
                 return false;
             }
-            
+
         }
 
         public string TraerOferta()
@@ -191,21 +227,33 @@ namespace Core.Negocio
             Core.DALC.QueOfrecesEntities db = new Core.DALC.QueOfrecesEntities();
             var result = from a in db.OFERTA
                          where a.ID_OFERTA == this.IdOferta
-                         select new {
-                             a.NOMBRE,a.COMUNA_ID,a.REGION_ID,a.SUCURSALES_ID,a.PRECIO_ANTES,a.DESCRIPCION,a.PRECIO_DESPUES,a.MAX_PRODUCTO,a.MIN_PRODUCTO,a.IMAGEN_OFERTA,a.FECHA_OFERTA,a.OFERTA_DIA
+                         select new
+                         {
+                             a.NOMBRE,
+                             a.COMUNA_ID,
+                             a.REGION_ID,
+                             a.SUCURSALES_ID,
+                             a.PRECIO_ANTES,
+                             a.DESCRIPCION,
+                             a.PRECIO_DESPUES,
+                             a.MAX_PRODUCTO,
+                             a.MIN_PRODUCTO,
+                             a.IMAGEN_OFERTA,
+                             a.FECHA_OFERTA,
+                             a.OFERTA_DIA
                          };
-            
-                this.Nombre = result.First().NOMBRE;
-                this.PrecioAntes = (int)result.First().PRECIO_ANTES;
-                this.PrecioOferta = (int)result.First().PRECIO_DESPUES;
-                this.MaxProductos = (int)result.First().MAX_PRODUCTO;
-                this.MinProductos = (int)result.First().MIN_PRODUCTO;
-                this.ImagenOferta = result.First().IMAGEN_OFERTA;
-                this.FechaOferta = result.First().FECHA_OFERTA;
-                this.Descripcion = result.First().DESCRIPCION;
-                this.OfertaDia = Convert.ToChar(result.First().OFERTA_DIA);
-                this.IdSucursal = (int)result.First().SUCURSALES_ID;
-            
+
+            this.Nombre = result.First().NOMBRE;
+            this.PrecioAntes = (int)result.First().PRECIO_ANTES;
+            this.PrecioOferta = (int)result.First().PRECIO_DESPUES;
+            this.MaxProductos = (int)result.First().MAX_PRODUCTO;
+            this.MinProductos = (int)result.First().MIN_PRODUCTO;
+            this.ImagenOferta = result.First().IMAGEN_OFERTA;
+            this.FechaOferta = result.First().FECHA_OFERTA;
+            this.Descripcion = result.First().DESCRIPCION;
+            this.OfertaDia = Convert.ToChar(result.First().OFERTA_DIA);
+            this.IdSucursal = (int)result.First().SUCURSALES_ID;
+
             return Serializar();
 
         }
