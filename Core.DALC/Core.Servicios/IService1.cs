@@ -143,6 +143,8 @@ namespace Core.Servicios
         bool PublicarOferta(string json);
         [OperationContract]
         bool DesPublicarOferta(string json);
+        [OperationContract]
+        string Data();
 
 
 

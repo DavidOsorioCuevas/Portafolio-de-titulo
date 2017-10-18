@@ -33,7 +33,8 @@ namespace Core.Servicios
             Negocio.Listas lista = new Negocio.Listas();
             return lista.region();
         }
-        public string ValidarWeb(string json) {
+        public string ValidarWeb(string json)
+        {
             Negocio.Usuario user = new Negocio.Usuario(json);
             return user.ValidarWeb();
         }
@@ -336,6 +337,12 @@ namespace Core.Servicios
         {
             Negocio.Oferta of = new Negocio.Oferta(json);
             return of.DesPubicarOferta();
+        }
+
+        public string Data()
+        {
+            Negocio.Oferta of = new Negocio.Oferta();
+            return of.DATAGRID();
         }
     }
 }

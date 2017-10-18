@@ -300,6 +300,12 @@
   <wsdl:message name="IService1_DesPublicarOferta_OutputMessage">
     <wsdl:part name="parameters" element="tns:DesPublicarOfertaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_Data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Data" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DataResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="ListarComunas">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ListarComunas" message="tns:IService1_ListarComunas_InputMessage" />
@@ -496,6 +502,10 @@
     <wsdl:operation name="DesPublicarOferta">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DesPublicarOferta" message="tns:IService1_DesPublicarOferta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DesPublicarOfertaResponse" message="tns:IService1_DesPublicarOferta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Data" message="tns:IService1_Data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DataResponse" message="tns:IService1_Data_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -934,6 +944,15 @@
     </wsdl:operation>
     <wsdl:operation name="DesPublicarOferta">
       <soap:operation soapAction="http://tempuri.org/IService1/DesPublicarOferta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Data">
+      <soap:operation soapAction="http://tempuri.org/IService1/Data" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
