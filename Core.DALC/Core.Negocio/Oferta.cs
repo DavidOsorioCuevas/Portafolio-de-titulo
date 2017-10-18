@@ -108,10 +108,9 @@ namespace Core.Negocio
         }
 
 
-        public bool LeerOfertaId()
+        public string LeerOfertaId()
         {
-            try
-            {
+
                 Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
                 Core.DALC.OFERTA of = ctx.OFERTA.First(o => o.ID_OFERTA == IdOferta);
 
@@ -131,12 +130,8 @@ namespace Core.Negocio
 
                 ctx = null;
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+                return Serializar();
+
 
         }
 
@@ -221,6 +216,37 @@ namespace Core.Negocio
             }
 
         }
+        public bool DesPubicarOferta()
+        {
+            try
+            {
+                DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
+                DALC.OFERTA of = ctx.OFERTA.First(o => o.ID_OFERTA == IdOferta && o.ESTADO_OFERTA == "1");
+
+                of.IMAGEN_OFERTA = this.ImagenOferta;
+                of.MIN_PRODUCTO = this.MinProductos;
+                of.MAX_PRODUCTO = this.MaxProductos;
+                of.ESTADO_OFERTA = "0";
+                of.FECHA_OFERTA = this.FechaOferta;
+                of.SUCURSALES_ID = this.IdSucursal;
+                of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
+                of.NOMBRE = this.Nombre;
+                of.DESCRIPCION = this.Descripcion;
+                of.OFERTA_DIA = this.OfertaDia.ToString();
+
+                ctx.SaveChanges();
+                ctx = null;
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+
+        }
 
         public string TraerOferta()
         {
@@ -256,69 +282,6 @@ namespace Core.Negocio
 
         }
 
-
-        public bool PubicarOferta()
-        {
-            try
-            {
-                DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
-                DALC.OFERTA of = ctx.OFERTA.First(o => o.ID_OFERTA == IdOferta);
-
-                //of.IMAGEN_OFERTA = this.ImagenOferta;
-                //of.MIN_PRODUCTO = this.MinProductos;
-                //of.MAX_PRODUCTO = this.MaxProductos;
-                of.ESTADO_OFERTA = "1";
-                //of.FECHA_OFERTA = this.FechaOferta;
-                //of.SUCURSALES_ID = this.IdSucursal;
-                //of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
-                //of.NOMBRE = this.Nombre;
-                //of.DESCRIPCION = this.Descripcion;
-                //of.OFERTA_DIA = this.OfertaDia.ToString();
-
-                ctx.SaveChanges();
-                ctx = null;
-
-                return true;
-
-            }
-            catch (Exception ex)
-            {
-
-                return false;
-            }
-
-        }
-        public bool DesPubicarOferta()
-        {
-            try
-            {
-                DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
-                DALC.OFERTA of = ctx.OFERTA.First(o => o.ID_OFERTA == IdOferta);
-
-                //of.IMAGEN_OFERTA = this.ImagenOferta;
-                //of.MIN_PRODUCTO = this.MinProductos;
-                //of.MAX_PRODUCTO = this.MaxProductos;
-                of.ESTADO_OFERTA = "0";
-                //of.FECHA_OFERTA = this.FechaOferta;
-                //of.SUCURSALES_ID = this.IdSucursal;
-                //of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
-                //of.NOMBRE = this.Nombre;
-                //of.DESCRIPCION = this.Descripcion;
-                //of.OFERTA_DIA = this.OfertaDia.ToString();
-
-                ctx.SaveChanges();
-                ctx = null;
-
-                return true;
-
-            }
-            catch (Exception ex)
-            {
-
-                return false;
-            }
-
-        }
 
         public string Serializar()
         {

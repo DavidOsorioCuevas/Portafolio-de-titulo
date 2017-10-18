@@ -320,7 +320,7 @@ namespace Core.Servicios
             return collPer.ReadAllComuna();
         }
 
-        public bool LeerOfertaId(string json)
+        public string LeerOfertaId(string json)
         {
             Negocio.Oferta of = new Negocio.Oferta(json);
             return of.LeerOfertaId();
@@ -329,7 +329,7 @@ namespace Core.Servicios
         public bool PublicarOferta(string json)
         {
             Negocio.Oferta of = new Negocio.Oferta(json);
-            return of.PubicarOferta();
+            return of.PublicarOferta();
         }
 
         public bool DesPublicarOferta(string json)

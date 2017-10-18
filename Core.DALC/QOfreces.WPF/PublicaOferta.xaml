@@ -5,18 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QOfreces.WPF"
         mc:Ignorable="d"
-        Title="PublicaOferta" Height="368.603" Width="800.294">
+        Title="PublicaOferta" Height="356.603" Width="877.294">
     <Grid>
         <Button x:Name="btnListPublicOf" Content="LISTAR OFERTAS &#xD;&#xA;PUBLICADAS" HorizontalAlignment="Left" Margin="36,281,0,0" VerticalAlignment="Top" Width="120" Click="btnListPublicOf_Click"/>
         <Button x:Name="btnListNoPublic" Content="LISTAR OFERTAS &#xD;&#xA;SIN PUBLICAR" HorizontalAlignment="Left" Margin="170,281,0,0" VerticalAlignment="Top" Width="114" Click="btnListNoPublic_Click"/>
-        <DataGrid x:Name="dgOfertas" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="259" Width="735" AutoGenerateColumns="False" CanUserAddRows="False">
+        <DataGrid x:Name="dgOfertas" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="259" Width="849" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id Oferta" Binding="{Binding IdOferta}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Nombre Oferta" Binding="{Binding Nombre}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Precio Anterior" Binding="{Binding PrecioAntes}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Precio Oferta" Binding="{Binding PrecioOferta}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Sucursal" Binding="{Binding OfertaIdSucursal.Nombre}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" IsReadOnly="True" />
-                
+
                 <DataGridCheckBoxColumn Header="Publicada" Binding="{Binding Selec}" />
             </DataGrid.Columns>
         </DataGrid>

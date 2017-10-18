@@ -23,6 +23,15 @@ namespace QOfreces.WPF
         public PublicaOferta()
         {
             InitializeComponent();
+            CargarData();
+        }
+
+        private void CargarData()
+        {
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json = proxy.ReadAllOfertas();
+            OfertaCollections collOf = new OfertaCollections(json);
+            dgOfertas.ItemsSource = collOf.ToList();
         }
 
         private void btnListPublicOf_Click(object sender, RoutedEventArgs e)
@@ -48,54 +57,32 @@ namespace QOfreces.WPF
             var list = dgOfertas.Items.OfType<Oferta>();
             int countpu = 0;
             int contdes = 0;
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            Oferta of = new Oferta();
             foreach (var item in list)
             {
-                ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-                Oferta of = new Oferta();
+               
                 of.IdOferta = item.IdOferta;
                 string json = of.Serializar();
-                proxy.LeerOfertaId(json);
-                if (item.Selec == false && of.Selec == true)
+                json = proxy.LeerOfertaId(json);
+                Oferta ofer = new Oferta(json);
+                if (item.Selec == false && ofer.EstadoOferta == '1')
                 {
                     // desactivar publicacion;
                     proxy.DesPublicarOferta(json);
                     contdes++;
-                    dgOfertas.ItemsSource = null;
 
                 }
-                else if (item.Selec == true && of.Selec == false)
+                else if (item.Selec == true && ofer.EstadoOferta == '0')
                 {
                     //activar publicacion;
                     proxy.PublicarOferta(json);
                     countpu++;
-                    dgOfertas.ItemsSource = null;
-                }
-                
-
-
-                //Oferta of = new Oferta();
-                //of.IdOferta = col.IdOferta;
-                //of.Selec = col.Selec;
-                //if (item.Selec == false && of.Selec == true && item.IdOferta == col.IdOferta)
-                //{
-                //    //desctivar publicación
-
-                //    break;
-                //}
-                //else if (item.Selec == true && of.Selec == false && item.IdOferta == col.IdOferta)
-                //{
-                //    //Activar publicación 
-                //    break;
-                //}
-                //else
-                //{
-                //    //Siguiente regristro
-                //    break;
-                //}
-
+                }            
             }
             MessageBox.Show("SE ACTIVARON " + countpu.ToString() + " PUBLICACIONES");
             MessageBox.Show("SE DESACTIVARON " + contdes.ToString() + " PUBLICACIONES");
+            CargarData();
         }
     }
 }
