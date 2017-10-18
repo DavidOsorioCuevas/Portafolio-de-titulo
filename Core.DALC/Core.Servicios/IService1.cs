@@ -15,6 +15,8 @@ namespace Core.Servicios
 
         /*USUARIO*/
         [OperationContract]
+        string ActivarUsuario(string json);
+        [OperationContract]
         string ListarComunas();
         [OperationContract]
         string ListarRegiones();
@@ -143,6 +145,8 @@ namespace Core.Servicios
         bool PublicarOferta(string json);
         [OperationContract]
         bool DesPublicarOferta(string json);
+        [OperationContract]
+        string Data();
 
 
 

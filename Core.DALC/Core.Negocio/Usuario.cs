@@ -31,7 +31,7 @@ namespace Core.Negocio
         public DateTime? FechaCreacion { get; set; }
         public string CodigoActivacion { get; set; }
 
-
+        public string Response { get; set; }
 
         public Usuario()
         {
@@ -65,20 +65,45 @@ namespace Core.Negocio
 
         }
 
+        public string ActivarUsuario()
+        {
+            Usuario user = new Usuario();
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+            var result= from a in ctx.USUARIO where a.ID_USUARIO==this.IdUsuario && a.CODIGO_ACTIVACION.Equals(this.CodigoActivacion) select new{ a};
+            if (result.Count()>0)
+            {
+
+                ctx.USUARIO.Find(this.IdUsuario).ACTIVO = "s";
+                ctx.SaveChanges();
+                user.Response = "OK";
+            }else
+            {
+                user.Response = "CI";
+            }
+            return SerializarUsuario(user);
+        }
+
         public string ValidarWeb()
         {
             Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
             Usuario user = new Usuario();
             var result = from a in ctx.USUARIO where this.NombreUsuario.Equals(a.NOMBRE_USUARIO) && this.Password.Equals(a.PASSWORD)
-                         select new{ a.NOMBRE,a.PERFIL_ID,a.ACTIVO,a.PUNTOS,a.EMAIL,a.APELLIDO,a.NUMERO_CELULAR,a.FECHA_NACIMIENTO,a.SEXO};
+                         select new{ a.ID_USUARIO,a.NOMBRE,a.PERFIL_ID,a.ACTIVO,a.PUNTOS,a.EMAIL,a.APELLIDO,a.NUMERO_CELULAR,a.FECHA_NACIMIENTO,a.SEXO,a.CODIGO_ACTIVACION};
             if (result.Count()>0)
             {
-                if (result.First().PERFIL_ID!=1 || result.First().ACTIVO.Equals('n'))
+                if (result.First().PERFIL_ID!=1)
                 {
-                    user.Activo = 'n';
+                    user.Response = "NV";
+                }else if (result.First().PERFIL_ID == 1 && result.First().ACTIVO.Equals("n"))
+                {
+                    user.IdUsuario = (int)result.First().ID_USUARIO;
+                    user.Response = "UNA";
+                    user.CodigoActivacion = result.First().CODIGO_ACTIVACION;
                 }
                 else {
-                    user.Activo = 's';
+                    user.Response = "OK";
+                    user.IdUsuario = (int)result.First().ID_USUARIO;
+                    user.Activo = result.First().ACTIVO[0];
                     user.Nombre = result.First().NOMBRE;
                     user.Puntos = (int)result.First().PUNTOS;
                     user.Email = result.First().EMAIL;
@@ -92,7 +117,7 @@ namespace Core.Negocio
                 
             }else
             {
-                user.Activo = 'n';
+                user.Response="NV";
             }
 
             return SerializarUsuario(user);
@@ -118,13 +143,14 @@ namespace Core.Negocio
             IdComuna = 0;
             Idregion = 0;
             CodigoActivacion = string.Empty;
+            Response = string.Empty;
         }
 
         public bool Read()
         {
             try
             {
-                Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities(); // estas dos lineas wn.. la conexion esta mala al ado         
+                Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();       
                 Core.DALC.USUARIO usuario = ctx.USUARIO.First(u => u.NOMBRE_USUARIO == NombreUsuario);
 
                 this.IdUsuario = (int)usuario.ID_USUARIO;
@@ -158,7 +184,7 @@ namespace Core.Negocio
         public bool LeerId() {
             try
             {
-                Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities(); // estas dos lineas wn.. la conexion esta mala al ado         
+                Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();          
                 Core.DALC.USUARIO usuario = ctx.USUARIO.First(u => u.ID_USUARIO == IdUsuario);
                
                 this.IdPerfil = (int)usuario.PERFIL_ID;

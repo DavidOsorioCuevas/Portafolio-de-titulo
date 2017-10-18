@@ -25,6 +25,7 @@ namespace Core.Negocio
 
         }
 
+
         private OfertaCollections GenerarListadoActivo(List<DALC.OFERTA> listaDALC)
         {
 

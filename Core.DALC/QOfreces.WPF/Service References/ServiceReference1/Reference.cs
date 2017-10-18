@@ -308,6 +308,12 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DesPublicarOferta", ReplyAction="http://tempuri.org/IService1/DesPublicarOfertaResponse")]
         System.Threading.Tasks.Task<bool> DesPublicarOfertaAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Data", ReplyAction="http://tempuri.org/IService1/DataResponse")]
+        string Data();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Data", ReplyAction="http://tempuri.org/IService1/DataResponse")]
+        System.Threading.Tasks.Task<string> DataAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -727,6 +733,14 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> DesPublicarOfertaAsync(string json) {
             return base.Channel.DesPublicarOfertaAsync(json);
+        }
+        
+        public string Data() {
+            return base.Channel.Data();
+        }
+        
+        public System.Threading.Tasks.Task<string> DataAsync() {
+            return base.Channel.DataAsync();
         }
     }
 }

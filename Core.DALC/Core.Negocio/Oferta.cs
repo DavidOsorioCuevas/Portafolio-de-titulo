@@ -248,6 +248,24 @@ namespace Core.Negocio
 
         }
 
+        public string DATAGRID() {
+
+            Core.DALC.QueOfrecesEntities db = new Core.DALC.QueOfrecesEntities();
+            var result = from o in db.OFERTA
+                         join s in db.SUCURSALES on o.SUCURSALES_ID equals s.ID_SUCURSAL
+                         select new
+                         {
+                             o.ID_OFERTA,
+                             s.NOMBRE,
+                             o.PRECIO_ANTES,
+                             o.PRECIO_DESPUES,
+                             o.DESCRIPCION
+                         };
+
+            return Serializar();
+
+        }
+
         public string TraerOferta()
         {
             Core.DALC.QueOfrecesEntities db = new Core.DALC.QueOfrecesEntities();
