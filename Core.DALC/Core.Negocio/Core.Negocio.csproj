@@ -60,6 +60,7 @@
     <Compile Include="Comuna.cs" />
     <Compile Include="ComunaCollections.cs" />
     <Compile Include="Descuento.cs" />
+    <Compile Include="DescuentoCollections.cs" />
     <Compile Include="Listas.cs" />
     <Compile Include="Oferta.cs" />
     <Compile Include="OfertaCollections.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Region.cs" />
     <Compile Include="RegionCollections.cs" />
     <Compile Include="Retail.cs" />
+    <Compile Include="RetailCollections.cs" />
     <Compile Include="Rubro.cs" />
     <Compile Include="RubroCollections.cs" />
     <Compile Include="Sucursal.cs" />
