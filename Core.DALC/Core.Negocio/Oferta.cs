@@ -230,8 +230,6 @@ namespace Core.Negocio
                          select new
                          {
                              a.NOMBRE,
-                             a.COMUNA_ID,
-                             a.REGION_ID,
                              a.SUCURSALES_ID,
                              a.PRECIO_ANTES,
                              a.DESCRIPCION,
@@ -255,6 +253,70 @@ namespace Core.Negocio
             this.IdSucursal = (int)result.First().SUCURSALES_ID;
 
             return Serializar();
+
+        }
+
+
+        public bool PubicarOferta()
+        {
+            try
+            {
+                DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
+                DALC.OFERTA of = ctx.OFERTA.First(o => o.ID_OFERTA == IdOferta);
+
+                //of.IMAGEN_OFERTA = this.ImagenOferta;
+                //of.MIN_PRODUCTO = this.MinProductos;
+                //of.MAX_PRODUCTO = this.MaxProductos;
+                of.ESTADO_OFERTA = "1";
+                //of.FECHA_OFERTA = this.FechaOferta;
+                //of.SUCURSALES_ID = this.IdSucursal;
+                //of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
+                //of.NOMBRE = this.Nombre;
+                //of.DESCRIPCION = this.Descripcion;
+                //of.OFERTA_DIA = this.OfertaDia.ToString();
+
+                ctx.SaveChanges();
+                ctx = null;
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+
+        }
+        public bool DesPubicarOferta()
+        {
+            try
+            {
+                DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
+                DALC.OFERTA of = ctx.OFERTA.First(o => o.ID_OFERTA == IdOferta);
+
+                //of.IMAGEN_OFERTA = this.ImagenOferta;
+                //of.MIN_PRODUCTO = this.MinProductos;
+                //of.MAX_PRODUCTO = this.MaxProductos;
+                of.ESTADO_OFERTA = "0";
+                //of.FECHA_OFERTA = this.FechaOferta;
+                //of.SUCURSALES_ID = this.IdSucursal;
+                //of.CATEGORIA_OFERTA_ID = this.CategoriaIdOferta;
+                //of.NOMBRE = this.Nombre;
+                //of.DESCRIPCION = this.Descripcion;
+                //of.OFERTA_DIA = this.OfertaDia.ToString();
+
+                ctx.SaveChanges();
+                ctx = null;
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
 
         }
 

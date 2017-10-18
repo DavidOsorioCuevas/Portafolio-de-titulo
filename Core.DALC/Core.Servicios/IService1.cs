@@ -139,6 +139,10 @@ namespace Core.Servicios
         bool LeerOfertaId(string json);
         [OperationContract]
         string OfertaParametro(string parametro);
+        [OperationContract]
+        bool PublicarOferta(string json);
+        [OperationContract]
+        bool DesPublicarOferta(string json);
 
 
 

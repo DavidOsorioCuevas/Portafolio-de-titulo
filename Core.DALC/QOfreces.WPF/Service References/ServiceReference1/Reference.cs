@@ -201,6 +201,12 @@ namespace QOfreces.WPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertas", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasResponse")]
         System.Threading.Tasks.Task<string> ReadAllOfertasAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasDia", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasDiaResponse")]
+        string ReadAllOfertasDia();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasDia", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasDiaResponse")]
+        System.Threading.Tasks.Task<string> ReadAllOfertasDiaAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearDesc", ReplyAction="http://tempuri.org/IService1/CrearDescResponse")]
         bool CrearDesc(string json);
         
@@ -284,6 +290,24 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LeerOfertaId", ReplyAction="http://tempuri.org/IService1/LeerOfertaIdResponse")]
         System.Threading.Tasks.Task<bool> LeerOfertaIdAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/OfertaParametro", ReplyAction="http://tempuri.org/IService1/OfertaParametroResponse")]
+        string OfertaParametro(string parametro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/OfertaParametro", ReplyAction="http://tempuri.org/IService1/OfertaParametroResponse")]
+        System.Threading.Tasks.Task<string> OfertaParametroAsync(string parametro);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PublicarOferta", ReplyAction="http://tempuri.org/IService1/PublicarOfertaResponse")]
+        bool PublicarOferta(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PublicarOferta", ReplyAction="http://tempuri.org/IService1/PublicarOfertaResponse")]
+        System.Threading.Tasks.Task<bool> PublicarOfertaAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DesPublicarOferta", ReplyAction="http://tempuri.org/IService1/DesPublicarOfertaResponse")]
+        bool DesPublicarOferta(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DesPublicarOferta", ReplyAction="http://tempuri.org/IService1/DesPublicarOfertaResponse")]
+        System.Threading.Tasks.Task<bool> DesPublicarOfertaAsync(string json);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -561,6 +585,14 @@ namespace QOfreces.WPF.ServiceReference1 {
             return base.Channel.ReadAllOfertasAsync();
         }
         
+        public string ReadAllOfertasDia() {
+            return base.Channel.ReadAllOfertasDia();
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadAllOfertasDiaAsync() {
+            return base.Channel.ReadAllOfertasDiaAsync();
+        }
+        
         public bool CrearDesc(string json) {
             return base.Channel.CrearDesc(json);
         }
@@ -671,6 +703,30 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> LeerOfertaIdAsync(string json) {
             return base.Channel.LeerOfertaIdAsync(json);
+        }
+        
+        public string OfertaParametro(string parametro) {
+            return base.Channel.OfertaParametro(parametro);
+        }
+        
+        public System.Threading.Tasks.Task<string> OfertaParametroAsync(string parametro) {
+            return base.Channel.OfertaParametroAsync(parametro);
+        }
+        
+        public bool PublicarOferta(string json) {
+            return base.Channel.PublicarOferta(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> PublicarOfertaAsync(string json) {
+            return base.Channel.PublicarOfertaAsync(json);
+        }
+        
+        public bool DesPublicarOferta(string json) {
+            return base.Channel.DesPublicarOferta(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DesPublicarOfertaAsync(string json) {
+            return base.Channel.DesPublicarOfertaAsync(json);
         }
     }
 }

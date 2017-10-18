@@ -325,5 +325,17 @@ namespace Core.Servicios
             Negocio.Oferta of = new Negocio.Oferta(json);
             return of.LeerOfertaId();
         }
+
+        public bool PublicarOferta(string json)
+        {
+            Negocio.Oferta of = new Negocio.Oferta(json);
+            return of.PubicarOferta();
+        }
+
+        public bool DesPublicarOferta(string json)
+        {
+            Negocio.Oferta of = new Negocio.Oferta(json);
+            return of.DesPubicarOferta();
+        }
     }
 }

@@ -56,6 +56,19 @@ namespace Core.DALC
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CATEGORIA_OFERTA_CREAR", iN_NOMBREParameter);
         }
     
+        public virtual int COMUNA_CREAR(string iN_NOMBRE, Nullable<decimal> iN_REGION_ID)
+        {
+            var iN_NOMBREParameter = iN_NOMBRE != null ?
+                new ObjectParameter("IN_NOMBRE", iN_NOMBRE) :
+                new ObjectParameter("IN_NOMBRE", typeof(string));
+    
+            var iN_REGION_IDParameter = iN_REGION_ID.HasValue ?
+                new ObjectParameter("IN_REGION_ID", iN_REGION_ID) :
+                new ObjectParameter("IN_REGION_ID", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("COMUNA_CREAR", iN_NOMBREParameter, iN_REGION_IDParameter);
+        }
+    
         public virtual int PAIS_CREAR(string iN_NOMBRE, string iN_SIGLA_PAIS)
         {
             var iN_NOMBREParameter = iN_NOMBRE != null ?

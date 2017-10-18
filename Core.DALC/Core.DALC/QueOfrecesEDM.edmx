@@ -69,8 +69,6 @@
           <Property Name="FECHA_OFERTA" Type="date" />
           <Property Name="SUCURSALES_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CATEGORIA_OFERTA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="REGION_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="COMUNA_ID" Type="number" Precision="38" Scale="0" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="20" />
           <Property Name="DESCRIPCION" Type="varchar2" MaxLength="50" />
           <Property Name="PRECIO_ANTES" Type="number" Precision="38" Scale="0" />
@@ -238,30 +236,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="OFERTA_COMUNA_FK">
-          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="0..1" />
-          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="COMUNA">
-              <PropertyRef Name="ID_COMUNA" />
-            </Principal>
-            <Dependent Role="OFERTA">
-              <PropertyRef Name="COMUNA_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="OFERTA_REGION_FK">
-          <End Role="REGION" Type="Self.REGION" Multiplicity="0..1" />
-          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="REGION">
-              <PropertyRef Name="ID_REGION" />
-            </Principal>
-            <Dependent Role="OFERTA">
-              <PropertyRef Name="REGION_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="OFERTA_SUCURSALES_FK">
           <End Role="SUCURSALES" Type="Self.SUCURSALES" Multiplicity="1" />
           <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
@@ -409,6 +383,10 @@
         <Function Name="CATEGORIA_OFERTA_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="BDMISOFERTAS">
           <Parameter Name="IN_NOMBRE" Type="varchar2" Mode="In" />
         </Function>
+        <Function Name="COMUNA_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="BDMISOFERTAS">
+          <Parameter Name="IN_NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="IN_REGION_ID" Type="number" Mode="In" />
+        </Function>
         <Function Name="PAIS_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="BDMISOFERTAS">
           <Parameter Name="IN_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="IN_SIGLA_PAIS" Type="char" Mode="In" />
@@ -550,14 +528,6 @@
             <End Role="CATEGORIA_OFERTA" EntitySet="CATEGORIA_OFERTA" />
             <End Role="OFERTA" EntitySet="OFERTA" />
           </AssociationSet>
-          <AssociationSet Name="OFERTA_COMUNA_FK" Association="Self.OFERTA_COMUNA_FK">
-            <End Role="COMUNA" EntitySet="COMUNA" />
-            <End Role="OFERTA" EntitySet="OFERTA" />
-          </AssociationSet>
-          <AssociationSet Name="OFERTA_REGION_FK" Association="Self.OFERTA_REGION_FK">
-            <End Role="REGION" EntitySet="REGION" />
-            <End Role="OFERTA" EntitySet="OFERTA" />
-          </AssociationSet>
           <AssociationSet Name="OFERTA_SUCURSALES_FK" Association="Self.OFERTA_SUCURSALES_FK">
             <End Role="SUCURSALES" EntitySet="SUCURSALES" />
             <End Role="OFERTA" EntitySet="OFERTA" />
@@ -636,7 +606,6 @@
           <Property Name="NOMBRE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="REGION_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="REGION" Relationship="Self.COMUNA_REGION_FK" FromRole="COMUNA" ToRole="REGION" />
-          <NavigationProperty Name="OFERTA" Relationship="Self.OFERTA_COMUNA_FK" FromRole="COMUNA" ToRole="OFERTA" />
           <NavigationProperty Name="RETAIL" Relationship="Self.RETAIL_COMUNA_FK" FromRole="COMUNA" ToRole="RETAIL" />
           <NavigationProperty Name="SUCURSALES" Relationship="Self.SUCURSALES_COMUNA_FK" FromRole="COMUNA" ToRole="SUCURSALES" />
           <NavigationProperty Name="USUARIO" Relationship="Self.USUARIO_COMUNA_FK" FromRole="COMUNA" ToRole="USUARIO" />
@@ -683,16 +652,12 @@
           <Property Name="FECHA_OFERTA" Type="DateTime" />
           <Property Name="SUCURSALES_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CATEGORIA_OFERTA_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="REGION_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="COMUNA_ID" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PRECIO_ANTES" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="PRECIO_DESPUES" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="OFERTA_DIA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="CATEGORIA_OFERTA" Relationship="Self.OFERTA_CATEGORIA_OFERTA_FK" FromRole="OFERTA" ToRole="CATEGORIA_OFERTA" />
-          <NavigationProperty Name="COMUNA" Relationship="Self.OFERTA_COMUNA_FK" FromRole="OFERTA" ToRole="COMUNA" />
-          <NavigationProperty Name="REGION" Relationship="Self.OFERTA_REGION_FK" FromRole="OFERTA" ToRole="REGION" />
           <NavigationProperty Name="SUCURSALES" Relationship="Self.OFERTA_SUCURSALES_FK" FromRole="OFERTA" ToRole="SUCURSALES" />
           <NavigationProperty Name="VALORACION" Relationship="Self.VALORACION_OFERTA_FK" FromRole="OFERTA" ToRole="VALORACION" />
         </EntityType>
@@ -749,7 +714,6 @@
           <Property Name="ID_REGION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="COMUNA" Relationship="Self.COMUNA_REGION_FK" FromRole="REGION" ToRole="COMUNA" />
-          <NavigationProperty Name="OFERTA" Relationship="Self.OFERTA_REGION_FK" FromRole="REGION" ToRole="OFERTA" />
           <NavigationProperty Name="RETAIL" Relationship="Self.RETAIL_REGION_FK" FromRole="REGION" ToRole="RETAIL" />
           <NavigationProperty Name="SUCURSALES" Relationship="Self.SUCURSALES_REGION_FK" FromRole="REGION" ToRole="SUCURSALES" />
           <NavigationProperty Name="USUARIO" Relationship="Self.USUARIO_REGION_FK" FromRole="REGION" ToRole="USUARIO" />
@@ -867,18 +831,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="OFERTA_COMUNA_FK">
-          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="0..1" />
-          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="COMUNA">
-              <PropertyRef Name="ID_COMUNA" />
-            </Principal>
-            <Dependent Role="OFERTA">
-              <PropertyRef Name="COMUNA_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="RETAIL_COMUNA_FK">
           <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="0..1" />
           <End Role="RETAIL" Type="Self.RETAIL" Multiplicity="*" />
@@ -924,18 +876,6 @@
             </Principal>
             <Dependent Role="CUPON">
               <PropertyRef Name="USUARIO_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="OFERTA_REGION_FK">
-          <End Role="REGION" Type="Self.REGION" Multiplicity="0..1" />
-          <End Role="OFERTA" Type="Self.OFERTA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="REGION">
-              <PropertyRef Name="ID_REGION" />
-            </Principal>
-            <Dependent Role="OFERTA">
-              <PropertyRef Name="REGION_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1074,10 +1014,6 @@
             <End Role="REGION" EntitySet="REGION" />
             <End Role="COMUNA" EntitySet="COMUNA" />
           </AssociationSet>
-          <AssociationSet Name="OFERTA_COMUNA_FK" Association="Self.OFERTA_COMUNA_FK">
-            <End Role="COMUNA" EntitySet="COMUNA" />
-            <End Role="OFERTA" EntitySet="OFERTA" />
-          </AssociationSet>
           <AssociationSet Name="RETAIL_COMUNA_FK" Association="Self.RETAIL_COMUNA_FK">
             <End Role="COMUNA" EntitySet="COMUNA" />
             <End Role="RETAIL" EntitySet="RETAIL" />
@@ -1093,10 +1029,6 @@
           <AssociationSet Name="CUPON_USUARIO_FK" Association="Self.CUPON_USUARIO_FK">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="CUPON" EntitySet="CUPON" />
-          </AssociationSet>
-          <AssociationSet Name="OFERTA_REGION_FK" Association="Self.OFERTA_REGION_FK">
-            <End Role="REGION" EntitySet="REGION" />
-            <End Role="OFERTA" EntitySet="OFERTA" />
           </AssociationSet>
           <AssociationSet Name="OFERTA_SUCURSALES_FK" Association="Self.OFERTA_SUCURSALES_FK">
             <End Role="SUCURSALES" EntitySet="SUCURSALES" />
@@ -1136,6 +1068,10 @@
           </AssociationSet>
           <FunctionImport Name="CATEGORIA_OFERTA_CREAR">
             <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="COMUNA_CREAR">
+            <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="IN_REGION_ID" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PAIS_CREAR">
             <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
@@ -1323,8 +1259,6 @@
                 <ScalarProperty Name="FECHA_OFERTA" ColumnName="FECHA_OFERTA" />
                 <ScalarProperty Name="SUCURSALES_ID" ColumnName="SUCURSALES_ID" />
                 <ScalarProperty Name="CATEGORIA_OFERTA_ID" ColumnName="CATEGORIA_OFERTA_ID" />
-                <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
-                <ScalarProperty Name="COMUNA_ID" ColumnName="COMUNA_ID" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
                 <ScalarProperty Name="PRECIO_ANTES" ColumnName="PRECIO_ANTES" />
@@ -1470,6 +1404,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="CATEGORIA_OFERTA_CREAR" FunctionName="QueOfrecesModel.Store.CATEGORIA_OFERTA_CREAR" />
+          <FunctionImportMapping FunctionImportName="COMUNA_CREAR" FunctionName="QueOfrecesModel.Store.COMUNA_CREAR" />
           <FunctionImportMapping FunctionImportName="PAIS_CREAR" FunctionName="QueOfrecesModel.Store.PAIS_CREAR" />
           <FunctionImportMapping FunctionImportName="PRODUCTO_CREAR" FunctionName="QueOfrecesModel.Store.PRODUCTO_CREAR" />
           <FunctionImportMapping FunctionImportName="REGION_CREAR" FunctionName="QueOfrecesModel.Store.REGION_CREAR" />

@@ -17,7 +17,6 @@ namespace Core.DALC
         public REGION()
         {
             this.COMUNA = new HashSet<COMUNA>();
-            this.OFERTA = new HashSet<OFERTA>();
             this.RETAIL = new HashSet<RETAIL>();
             this.SUCURSALES = new HashSet<SUCURSALES>();
             this.USUARIO = new HashSet<USUARIO>();
@@ -27,7 +26,6 @@ namespace Core.DALC
         public string NOMBRE { get; set; }
     
         public virtual ICollection<COMUNA> COMUNA { get; set; }
-        public virtual ICollection<OFERTA> OFERTA { get; set; }
         public virtual ICollection<RETAIL> RETAIL { get; set; }
         public virtual ICollection<SUCURSALES> SUCURSALES { get; set; }
         public virtual ICollection<USUARIO> USUARIO { get; set; }

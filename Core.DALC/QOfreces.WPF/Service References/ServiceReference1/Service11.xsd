@@ -411,6 +411,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ReadAllOfertasDia">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadAllOfertasDiaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReadAllOfertasDiaResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CrearDesc">
     <xs:complexType>
       <xs:sequence>
@@ -604,6 +616,48 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="LeerOfertaIdResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OfertaParametro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parametro" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OfertaParametroResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OfertaParametroResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PublicarOferta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PublicarOfertaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PublicarOfertaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DesPublicarOferta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DesPublicarOfertaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DesPublicarOfertaResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

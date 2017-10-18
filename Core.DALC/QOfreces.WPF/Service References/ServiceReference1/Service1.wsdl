@@ -192,6 +192,12 @@
   <wsdl:message name="IService1_ReadAllOfertas_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadAllOfertasResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_ReadAllOfertasDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllOfertasDia" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllOfertasDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllOfertasDiaResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_CrearDesc_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearDesc" />
   </wsdl:message>
@@ -275,6 +281,24 @@
   </wsdl:message>
   <wsdl:message name="IService1_LeerOfertaId_OutputMessage">
     <wsdl:part name="parameters" element="tns:LeerOfertaIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OfertaParametro_InputMessage">
+    <wsdl:part name="parameters" element="tns:OfertaParametro" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OfertaParametro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OfertaParametroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PublicarOferta_InputMessage">
+    <wsdl:part name="parameters" element="tns:PublicarOferta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PublicarOferta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PublicarOfertaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DesPublicarOferta_InputMessage">
+    <wsdl:part name="parameters" element="tns:DesPublicarOferta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DesPublicarOferta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DesPublicarOfertaResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="ListarComunas">
@@ -401,6 +425,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllOfertas" message="tns:IService1_ReadAllOfertas_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasResponse" message="tns:IService1_ReadAllOfertas_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ReadAllOfertasDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasDia" message="tns:IService1_ReadAllOfertasDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasDiaResponse" message="tns:IService1_ReadAllOfertasDia_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CrearDesc">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearDesc" message="tns:IService1_CrearDesc_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearDescResponse" message="tns:IService1_CrearDesc_OutputMessage" />
@@ -456,6 +484,18 @@
     <wsdl:operation name="LeerOfertaId">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/LeerOfertaId" message="tns:IService1_LeerOfertaId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/LeerOfertaIdResponse" message="tns:IService1_LeerOfertaId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OfertaParametro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/OfertaParametro" message="tns:IService1_OfertaParametro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/OfertaParametroResponse" message="tns:IService1_OfertaParametro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PublicarOferta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PublicarOferta" message="tns:IService1_PublicarOferta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PublicarOfertaResponse" message="tns:IService1_PublicarOferta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DesPublicarOferta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DesPublicarOferta" message="tns:IService1_DesPublicarOferta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DesPublicarOfertaResponse" message="tns:IService1_DesPublicarOferta_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -739,6 +779,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReadAllOfertasDia">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllOfertasDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CrearDesc">
       <soap:operation soapAction="http://tempuri.org/IService1/CrearDesc" style="document" />
       <wsdl:input>
@@ -858,6 +907,33 @@
     </wsdl:operation>
     <wsdl:operation name="LeerOfertaId">
       <soap:operation soapAction="http://tempuri.org/IService1/LeerOfertaId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OfertaParametro">
+      <soap:operation soapAction="http://tempuri.org/IService1/OfertaParametro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PublicarOferta">
+      <soap:operation soapAction="http://tempuri.org/IService1/PublicarOferta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesPublicarOferta">
+      <soap:operation soapAction="http://tempuri.org/IService1/DesPublicarOferta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

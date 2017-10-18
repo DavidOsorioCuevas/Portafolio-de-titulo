@@ -46,7 +46,8 @@ namespace QOfreces.WPF
         {
 
             var list = dgOfertas.Items.OfType<Oferta>();
-            
+            int countpu = 0;
+            int contdes = 0;
             foreach (var item in list)
             {
                 ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
@@ -57,10 +58,17 @@ namespace QOfreces.WPF
                 if (item.Selec == false && of.Selec == true)
                 {
                     // desactivar publicacion;
+                    proxy.DesPublicarOferta(json);
+                    contdes++;
+                    dgOfertas.ItemsSource = null;
+
                 }
                 else if (item.Selec == true && of.Selec == false)
                 {
                     //activar publicacion;
+                    proxy.PublicarOferta(json);
+                    countpu++;
+                    dgOfertas.ItemsSource = null;
                 }
                 
 
@@ -86,6 +94,8 @@ namespace QOfreces.WPF
                 //}
 
             }
+            MessageBox.Show("SE ACTIVARON " + countpu.ToString() + " PUBLICACIONES");
+            MessageBox.Show("SE DESACTIVARON " + contdes.ToString() + " PUBLICACIONES");
         }
     }
 }
