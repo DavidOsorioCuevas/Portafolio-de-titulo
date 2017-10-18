@@ -218,7 +218,7 @@ namespace Core.Servicios
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return null;
@@ -239,7 +239,7 @@ namespace Core.Servicios
                     return null;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return null;

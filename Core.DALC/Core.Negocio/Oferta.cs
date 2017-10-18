@@ -99,7 +99,7 @@ namespace Core.Negocio
 
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return false;
@@ -158,7 +158,7 @@ namespace Core.Negocio
                 return true;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return false;
@@ -178,7 +178,7 @@ namespace Core.Negocio
                 ctx = null;
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return false;
@@ -209,7 +209,7 @@ namespace Core.Negocio
                 return true;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return false;
@@ -240,7 +240,7 @@ namespace Core.Negocio
                 return true;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return false;
