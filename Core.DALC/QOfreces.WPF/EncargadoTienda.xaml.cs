@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using MahApps.Metro.Behaviours;
+using Core.Negocio;
 
 namespace QOfreces.WPF
 {
@@ -50,9 +51,8 @@ namespace QOfreces.WPF
 
         private  void tiPublicarOferta_Click(object sender, RoutedEventArgs e)
         {
-            PublicaOferta pubOf = new PublicaOferta();
-            pubOf.Owner = this;
-            pubOf.Show();
+            FlyPublicar.IsOpen = true;
+            dgOfertas.ItemsSource = null;
         }
 
         private void tiProducto_Click(object sender, RoutedEventArgs e)
@@ -109,7 +109,7 @@ namespace QOfreces.WPF
             
         }
 
-        private async void btnBusqueda_Click(object sender, RoutedEventArgs e)
+        private async void btnBusquedaPu_Click(object sender, RoutedEventArgs e)
         {
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             string json = proxy.ReadAllOfertas();
@@ -117,31 +117,184 @@ namespace QOfreces.WPF
 
             Core.Negocio.OfertaCollections collOfer = new Core.Negocio.OfertaCollections();
 
-            try
+            if (txtBusquedaPu.Text == "")
             {
-                foreach (var item in collOf)
+                if (cbPublicadas.IsChecked == true)
                 {
-                    if (txtBusqueda.Text.Equals(item.Nombre))
+                    try
                     {
-                        collOfer.Add(item);
-                    }
-                }
+                        foreach (var item in collOf)
+                        {
+                            if (item.EstadoOferta == '1')
+                            {
+                                collOfer.Add(item);
+                            }
+                        }
 
-                if (collOfer.Count == 0)
-                {
-                    await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                        if (collOfer.Count == 0)
+                        {
+                            await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                        }
+                        else
+                        {
+                            dgOfertas.ItemsSource = collOfer;
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+
+                        await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                    }
                 }
                 else
                 {
-                    dataGridOfertas.ItemsSource = collOfer;
-                }
+                    try
+                    {
+                        foreach (var item in collOf)
+                        {
+                            if (item.EstadoOferta == '0')
+                            {
+                                collOfer.Add(item);
+                            }
+                        }
 
+                        if (collOfer.Count == 0)
+                        {
+                            await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                        }
+                        else
+                        {
+                            dgOfertas.ItemsSource = collOfer;
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+
+                        await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                    }
+                }
             }
-            catch (Exception)
+            else
+            {
+                if (cbPublicadas.IsChecked == true)
+                {
+                    try
+                    {
+                        foreach (var item in collOf)
+                        {
+                            if (txtBusquedaPu.Text.Equals(item.Nombre) && item.EstadoOferta=='1')
+                            {
+                                collOfer.Add(item);
+                            }
+                        }
+
+                        if (collOfer.Count == 0)
+                        {
+                            await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                        }
+                        else
+                        {
+                            dgOfertas.ItemsSource = collOfer;
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+
+                        await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        foreach (var item in collOf)
+                        {
+                            if (txtBusquedaPu.Text.Equals(item.Nombre) && item.EstadoOferta == '0')
+                            {
+                                collOfer.Add(item);
+                            }
+                        }
+
+                        if (collOfer.Count == 0)
+                        {
+                            await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                        }
+                        else
+                        {
+                            dgOfertas.ItemsSource = collOfer;
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+
+                        await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                    }
+                }
+            }
+
+                try
+                {
+                    foreach (var item in collOf)
+                    {
+                        if (txtBusquedaPu.Text.Equals(item.Nombre))
+                        {
+                            collOfer.Add(item);
+                        }
+                    }
+
+                    if (collOfer.Count == 0)
+                    {
+                        await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                    }
+                    else
+                    {
+                        dgOfertas.ItemsSource = collOfer;
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                }
+            
+        }
+
+        private void btnPublicar_Click(object sender, RoutedEventArgs e)
+        {
+            var list = dgOfertas.Items.OfType<Oferta>();
+            int countpu = 0;
+            int contdes = 0;
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            Oferta of = new Oferta();
+            foreach (var item in list)
             {
 
-                await this.ShowMessageAsync("Fallo", "No se encontro la oferta");
+                of.IdOferta = item.IdOferta;
+                string json = of.Serializar();
+                json = proxy.LeerOfertaId(json);
+                Oferta ofer = new Oferta(json);
+                if (item.Selec == false && ofer.EstadoOferta == '1')
+                {
+                    // desactivar publicacion;
+                    proxy.DesPublicarOferta(json);
+                    contdes++;
+
+                }
+                else if (item.Selec == true && ofer.EstadoOferta == '0')
+                {
+                    //activar publicacion;
+                    proxy.PublicarOferta(json);
+                    countpu++;
+                }
             }
+            MessageBox.Show("SE ACTIVARON " + countpu.ToString() + " PUBLICACIONES");
+            MessageBox.Show("SE DESACTIVARON " + contdes.ToString() + " PUBLICACIONES");
+            
         }
     }
 }

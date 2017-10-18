@@ -27,25 +27,25 @@
             <Image x:Name="image3" Height="100" Width="100" Stretch="Fill" Source="img/MantenedorProducto.png"/>
         </Controls:Tile>
 
-        <Controls:Flyout x:Name="FlyPublicar" Position="Right" Opacity="0.9" Background="#FF979797" Foreground="White" Width="611" Header="Publicar Oferta">
-            <Grid HorizontalAlignment="Left" Height="278" Margin="10,0,0,0" Width="747">
-                <DataGrid x:Name="dataGridOfertas" CanUserAddRows="False" HorizontalAlignment="Left" Margin="178,62,0,0" VerticalAlignment="Top" Height="168" Width="376" AutoGenerateColumns="False" >
+        <Controls:Flyout x:Name="FlyPublicar" Position="Right" Opacity="0.9" Background="#FF979797" Foreground="White" Width="797" Header="Publicar Oferta">
+            <Grid HorizontalAlignment="Left" Height="342" Width="797">
+                <DataGrid x:Name="dgOfertas" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="259" Width="777" AutoGenerateColumns="False" CanUserAddRows="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id Oferta" Binding="{Binding IdOferta}" IsReadOnly="true"/>
-                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="true" />
-                        <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" IsReadOnly="true"/>
-                        <DataGridTextColumn Header="Precio Oferta" Binding="{Binding PrecioOferta}" IsReadOnly="true"/>
-                        <DataGridTextColumn Header="Sucursal" Binding="{Binding IdSucursal}" IsReadOnly="true" />
-                        <DataGridCheckBoxColumn Header="Publicada" Binding="{Binding Selec}" IsReadOnly="true"/>
+                        <DataGridTextColumn Header="Id Oferta" Binding="{Binding IdOferta}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Nombre Oferta" Binding="{Binding Nombre}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Precio Anterior" Binding="{Binding PrecioAntes}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Precio Oferta" Binding="{Binding PrecioOferta}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Sucursal" Binding="{Binding IdSucursal}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" IsReadOnly="True" />
+                        <DataGridCheckBoxColumn Header="Publicada" Binding="{Binding Selec}" />
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button x:Name="btnBusqueda" Content="Buscar" HorizontalAlignment="Left" Margin="479,31,0,0" VerticalAlignment="Top" Width="75" Click="btnBusqueda_Click"/>
-                <TextBox x:Name="txtBusqueda" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar ofertas" HorizontalAlignment="Left" Height="23" Margin="354,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                <Button x:Name="btnPublicar" Content="Button" HorizontalAlignment="Left" Margin="479,235,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button x:Name="btnBusquedaPu" Content="Buscar" HorizontalAlignment="Left" Margin="712,8,0,0" VerticalAlignment="Top" Width="75" Click="btnBusquedaPu_Click"/>
+                <TextBox x:Name="txtBusquedaPu" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar ofertas" HorizontalAlignment="Left" Height="23" Margin="587,8,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="btnPublicar" Content="Actualizar" HorizontalAlignment="Left" Margin="712,305,0,0" VerticalAlignment="Top" Width="75" Click="btnPublicar_Click"/>
+                <CheckBox x:Name="cbPublicadas" Content="Publicadas" HorizontalAlignment="Left" Margin="487,10,0,0" VerticalAlignment="Top" Height="24" Width="87"/>
             </Grid>
         </Controls:Flyout>
-
-
         <Controls:Flyout x:Name="flyBusqueda" Header="Busqueda" Opacity="0.9" Background="#FF979797" Foreground="#FFFDFDFD" Margin="0,0,125,0" HorizontalAlignment="Right">
             <Grid Height="254" Margin="10,0">
                 <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="191,10,0,0" VerticalAlignment="Top" Width="75" Click="btnBuscar_Click"/>

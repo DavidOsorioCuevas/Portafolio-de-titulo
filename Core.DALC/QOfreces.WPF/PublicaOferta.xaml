@@ -15,14 +15,11 @@
                 <DataGridTextColumn Header="Nombre Oferta" Binding="{Binding Nombre}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Precio Anterior" Binding="{Binding PrecioAntes}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Precio Oferta" Binding="{Binding PrecioOferta}" IsReadOnly="True" />
-                <DataGridTextColumn Header="Sucursal" Binding="{Binding OfertaIdSucursal.Nombre}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Sucursal" Binding="{Binding IdSucursal}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" IsReadOnly="True" />
-
                 <DataGridCheckBoxColumn Header="Publicada" Binding="{Binding Selec}" />
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="btnPublicar" Content="PUBLICAR &#xD;&#xA;OFERTA" HorizontalAlignment="Left" Margin="303,281,0,0" VerticalAlignment="Top" Width="75" Click="btnPublicar_Click" />
-        <DataGrid HorizontalAlignment="Left" Margin="547,201,0,0" VerticalAlignment="Top"/>
-
     </Grid>
 </Window>
