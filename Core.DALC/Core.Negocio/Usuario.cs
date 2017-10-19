@@ -94,7 +94,7 @@ namespace Core.Negocio
                 if (result.First().PERFIL_ID!=1)
                 {
                     user.Response = "NV";
-                }else if (result.First().PERFIL_ID == 1 && result.First().ACTIVO.Equals("n"))
+                }else if (result.First().PERFIL_ID == 3 && result.First().ACTIVO.Equals("n"))
                 {
                     user.IdUsuario = (int)result.First().ID_USUARIO;
                     user.Response = "UNA";
