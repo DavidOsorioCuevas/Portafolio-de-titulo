@@ -71,7 +71,7 @@
             <Label x:Name="lbl1_Copy1" Content="Usuario Eliminar" HorizontalAlignment="Left" Margin="307,220,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="102" Height="29"/>
             <TextBox x:Name="txtIdEliminar" HorizontalAlignment="Left" Height="23" Margin="108,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
             <Button x:Name="btnListar" Content="Listar Usuarios" Grid.Column="1" HorizontalAlignment="Left" Margin="179,97,0,0" VerticalAlignment="Top" Width="108" Click="btnListar_Click"/>
-            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="117,13,0,0" VerticalAlignment="Top" Width="120"  Initialized="comboBox_Initialized"/>
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="117,13,0,0" VerticalAlignment="Top" Width="120"/>
 
 
         </Grid>

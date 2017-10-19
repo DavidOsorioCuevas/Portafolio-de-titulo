@@ -174,7 +174,7 @@ namespace Core.Negocio
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -299,7 +299,7 @@ namespace Core.Negocio
             try
             {
                 DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
-                DALC.USUARIO user = ctx.USUARIO.First(u => u.NOMBRE_USUARIO == NombreUsuario);
+                DALC.USUARIO user = ctx.USUARIO.First(u => u.ID_USUARIO == IdUsuario);
 
                 ctx.Entry(user).State = System.Data.EntityState.Deleted;
                 ctx.SaveChanges();

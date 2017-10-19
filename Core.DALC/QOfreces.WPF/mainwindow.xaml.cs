@@ -46,14 +46,14 @@ namespace QOfreces.WPF
                 {
                     user = new Core.Negocio.Usuario(json);
 
-                    if (user.IdPerfil == 2)
+                    if (user.IdPerfil == 1)
                     {
                         Administrador ad = new Administrador();
                         this.Close();
                         ad.Show();
                         
                     }
-                    else if (user.IdPerfil == 3)
+                    else if (user.IdPerfil == 2)
                     {
 
                         EncargadoTienda encar = new EncargadoTienda();

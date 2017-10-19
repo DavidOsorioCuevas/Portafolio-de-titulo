@@ -27,6 +27,23 @@ namespace QOfreces.WPF
         public MantenedorUsuarios()
         {
             InitializeComponent();
+            CargarCombobox();
+        }
+
+        private void CargarCombobox()
+        {
+           
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json = proxy.ReadAllPerfil();
+            PerfilCollections perCol = new PerfilCollections(json);
+            Perfil p = new Perfil();
+            p.IdPerfil = 5;
+            p.Tipo = "Seleccione un valor";
+            perCol.Add(p);
+            comboBox.DisplayMemberPath = "Tipo";
+            comboBox.SelectedValuePath = "IdPerfil";
+            comboBox.ItemsSource = perCol.ToList();
+            comboBox.SelectedIndex = 4;
         }
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
@@ -34,7 +51,7 @@ namespace QOfreces.WPF
             Usuario user = new Usuario();
 
             // user.IdPerfil = int.Parse(txtPerfil.Text);
-            user.IdPerfil = 1;
+            user.IdPerfil = (int)comboBox.SelectedValue;
             user.NombreUsuario = txtNombreUsuario.Text;
             user.Password = txtPass.Text;
             user.Nombre = txtNombre.Text;
@@ -71,7 +88,9 @@ namespace QOfreces.WPF
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
             Usuario user = new Usuario();
-            user.NombreUsuario = txtIdEliminar.Text;
+            int id;
+            int.TryParse(txtIdEliminar.Text, out id);
+            user.IdUsuario = id;
 
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             string json = user.Serializar();
@@ -127,20 +146,6 @@ namespace QOfreces.WPF
             lst.Show();
 
         }
-
-
-
-
-
-        private void comboBox_Initialized(object sender, EventArgs e)
-        {
-            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = proxy.ReadAll();
-            UsuarioColection usercol = new UsuarioColection(json);
-            comboBox.DisplayMemberPath = "NombreUsuario";
-            comboBox.SelectedValuePath = "IdUsuario";
-            comboBox.ItemsSource = usercol.ToList(); 
-
-        }
+        
     }
 }

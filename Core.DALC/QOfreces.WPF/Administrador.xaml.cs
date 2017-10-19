@@ -20,7 +20,7 @@ namespace QOfreces.WPF
 
         private void tiUsuario_Click(object sender, RoutedEventArgs e)
         {
-            MantenedorUsuarios mant = new MantenedorUsuarios();
+            MantenedorUsuario mant = new MantenedorUsuario();
             mant.Owner = this;
             mant.Show();
         }
@@ -49,6 +49,13 @@ namespace QOfreces.WPF
             mainwindow mai = new mainwindow();
             this.Close();
             mai.Show();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            ListarUsuarios l = new ListarUsuarios();
+            this.Close();
+            l.Show();
         }
     }
 }
