@@ -20,6 +20,9 @@ using Microsoft.Win32;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using MahApps.Metro.Behaviours;
+using iTextSharp.text.pdf;
+using System.Windows.Controls.Primitives;
+using iTextSharp.text;
 
 namespace QOfreces.WPF
 {
@@ -153,6 +156,66 @@ namespace QOfreces.WPF
             EncargadoTienda en = new EncargadoTienda();
             this.Close();
             en.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ExportToPdf(dgProd);
+       }
+
+        private T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+                if (child != null && child is T)
+                    return (T)child;
+                else
+                {
+                    T childOfChild = FindVisualChild<T>(child);
+                    if (childOfChild != null)
+                        return childOfChild;
+                }
+            }
+            return null;
+        }
+
+        public void ExportToPdf(DataGrid grid)
+        {
+            PdfPTable table = new PdfPTable(grid.Columns.Count);
+            Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
+            PdfWriter writer = PdfWriter.GetInstance(doc, new System.IO.FileStream("Test.pdf", System.IO.FileMode.Create));
+            doc.Open();
+
+            for (int j = 0; j < grid.Columns.Count; j++)
+            {
+                table.AddCell(new Phrase(grid.Columns[j].Header.ToString()));
+            }
+            table.HeaderRows = 1;
+            IEnumerable itemsSource = grid.ItemsSource as IEnumerable;
+            if (itemsSource != null)
+            {
+                foreach (var item in itemsSource)
+                {
+                    DataGridRow row = grid.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
+                    if (row != null)
+                    {
+                        DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
+                        for (int i = 0; i < grid.Columns.Count; ++i)
+                        {
+                            DataGridCell cell = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(i);
+                            TextBlock txt = cell.Content as TextBlock;
+                            if (txt != null)
+                            {
+                                table.AddCell(new Phrase(txt.Text));
+                            }
+                        }
+                    }
+                }
+
+                doc.Add(table);
+                doc.Close();
+            }
         }
     }
 
