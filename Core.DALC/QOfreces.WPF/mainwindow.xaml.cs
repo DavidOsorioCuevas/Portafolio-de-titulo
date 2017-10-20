@@ -67,6 +67,12 @@ namespace QOfreces.WPF
                         this.Close();
                         ger.Show();
                     }
+                    else if(user.IdPerfil == 3)
+                    {
+                        await this.ShowMessageAsync("Error", "No se aceptan consumidores en este sistema");
+                        txtUser.Clear();
+                        pbPassword.Clear();
+                    }                  
                 }
             }
             else
