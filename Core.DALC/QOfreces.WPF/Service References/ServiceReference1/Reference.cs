@@ -15,6 +15,12 @@ namespace QOfreces.WPF.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActivarUsuario", ReplyAction="http://tempuri.org/IService1/ActivarUsuarioResponse")]
+        string ActivarUsuario(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ActivarUsuario", ReplyAction="http://tempuri.org/IService1/ActivarUsuarioResponse")]
+        System.Threading.Tasks.Task<string> ActivarUsuarioAsync(string json);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListarComunas", ReplyAction="http://tempuri.org/IService1/ListarComunasResponse")]
         string ListarComunas();
         
@@ -341,6 +347,14 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string ActivarUsuario(string json) {
+            return base.Channel.ActivarUsuario(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> ActivarUsuarioAsync(string json) {
+            return base.Channel.ActivarUsuarioAsync(json);
         }
         
         public string ListarComunas() {
