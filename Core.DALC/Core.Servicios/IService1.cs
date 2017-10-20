@@ -15,6 +15,8 @@ namespace Core.Servicios
 
         /*USUARIO*/
         [OperationContract]
+        string CrearUsuarioWeb(string json);
+        [OperationContract]
         string ActivarUsuario(string json);
         [OperationContract]
         string ListarComunas();
