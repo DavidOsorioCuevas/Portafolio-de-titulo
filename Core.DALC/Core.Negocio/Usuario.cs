@@ -31,6 +31,8 @@ namespace Core.Negocio
         public DateTime? FechaCreacion { get; set; }
         public string CodigoActivacion { get; set; }
 
+        public string fn { get; set; } //fecha de nacimiento en formato string para aplicación web
+
         public string Response { get; set; }
 
         public Usuario()
@@ -61,7 +63,68 @@ namespace Core.Negocio
             this.Puntos = user.Puntos;
             this.FechaCreacion = user.FechaCreacion;
             this.CodigoActivacion = user.CodigoActivacion;
+            this.fn = user.fn;
 
+        }
+
+        
+
+        public string NuevoWeb()
+        {
+            Core.DALC.QueOfrecesEntities db= new Core.DALC.QueOfrecesEntities();
+            Core.DALC.USUARIO usuario = new Core.DALC.USUARIO();
+            string codigo = "4799";
+
+            var resultUsuario = from a in db.USUARIO where a.NOMBRE_USUARIO.Equals(this.NombreUsuario) select new { a };
+            var resultEmail = from a in db.USUARIO where a.EMAIL.Equals(this.Email) select new { a };
+            var resultRut = from a in db.USUARIO where a.RUT.Equals(this.Rut) || a.PASSAPORTE.Equals(this.Pasaporte) select new { a };
+            if (resultUsuario.Count()>0)
+            {
+                
+                
+                this.Response = "UE";
+                return SerializarUsuario(this);
+            }
+            else if (resultEmail.Count()>0)
+            {
+                this.Response = "EE";
+                return SerializarUsuario(this);
+            }
+            else if (resultRut.Count()>0)
+            {
+                this.Response = "RPE";
+                return SerializarUsuario(this);
+            }
+            else
+            {
+                usuario.PERFIL_ID = 3;
+
+                usuario.NOMBRE_USUARIO = this.NombreUsuario;
+                usuario.PASSWORD = this.Password;
+                usuario.NOMBRE = this.Nombre;
+                usuario.APELLIDO = this.Apellido;
+                usuario.RUT = this.Rut;
+                usuario.ACTIVO = "0";
+                usuario.SUCURSAL_ID = 0;
+                usuario.FECHA_NACIMIENTO = (DateTime?)DateTime.Parse(this.fn);
+                usuario.SEXO = this.Sexo.ToString();
+                usuario.EMAIL = this.Email;
+                usuario.NUMERO_CELULAR = this.NumeroCelular;
+                usuario.PUNTOS = 0;
+                usuario.FECHA_CREACION = (DateTime?)DateTime.Now;
+
+
+
+                usuario.CODIGO_ACTIVACION = codigo;
+
+                db.USUARIO.Add(usuario);
+                db.SaveChanges();
+                this.CodigoActivacion = codigo;
+                this.Response = "OK";
+                return SerializarUsuario(this);
+            }
+
+           
 
         }
 
@@ -73,7 +136,7 @@ namespace Core.Negocio
             if (result.Count()>0)
             {
 
-                ctx.USUARIO.Find(this.IdUsuario).ACTIVO = "s";
+                ctx.USUARIO.Find(this.IdUsuario).ACTIVO = "1";
                 ctx.SaveChanges();
                 user.Response = "OK";
             }else
@@ -91,10 +154,10 @@ namespace Core.Negocio
                          select new{ a.ID_USUARIO,a.NOMBRE,a.PERFIL_ID,a.ACTIVO,a.PUNTOS,a.EMAIL,a.APELLIDO,a.NUMERO_CELULAR,a.FECHA_NACIMIENTO,a.SEXO,a.CODIGO_ACTIVACION};
             if (result.Count()>0)
             {
-                if (result.First().PERFIL_ID!=1)
+                if (result.First().PERFIL_ID!=3)
                 {
                     user.Response = "NV";
-                }else if (result.First().PERFIL_ID == 3 && result.First().ACTIVO.Equals("n"))
+                }else if (result.First().PERFIL_ID == 3 && result.First().ACTIVO.Equals("0"))
                 {
                     user.IdUsuario = (int)result.First().ID_USUARIO;
                     user.Response = "UNA";
