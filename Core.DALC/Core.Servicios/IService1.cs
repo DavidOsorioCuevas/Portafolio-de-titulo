@@ -45,6 +45,10 @@ namespace Core.Servicios
         [OperationContract]
         string ReadAllProductos();
 
+        /*REGION COLLECTIONS*/
+        [OperationContract]
+        string ReadAllRegiones();
+
         /*RUBRO*/
         [OperationContract]
         bool CrearRubro(string json);
@@ -122,6 +126,9 @@ namespace Core.Servicios
         [OperationContract]
         bool EliminarRetail(string json);
 
+        /*RetailCollections*/
+        [OperationContract]
+        string ReadAllRetail();
         /*PRODUCTO*/
         [OperationContract]
         bool CrearProducto(string json);

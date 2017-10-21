@@ -290,6 +290,18 @@ namespace Core.Servicios
             return collUser.ReadAllRubros();
         }
 
+        public string ReadAllRegiones()
+        {
+            Negocio.RegionCollections collReg = new Negocio.RegionCollections();
+            return collReg.ReadAllRegiones();
+        }
+
+        public string ReadAllRetail()
+        {
+            Negocio.RetailCollections collRetail = new Negocio.RetailCollections();
+            return collRetail.ReadAllRetail();
+        }
+
         public string ReadAllSucursal()
         {
             Negocio.SucursalCollections collSuc = new Negocio.SucursalCollections();

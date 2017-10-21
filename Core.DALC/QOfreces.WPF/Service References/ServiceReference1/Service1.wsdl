@@ -6,6 +6,12 @@
       <xsd:import schemaLocation="http://localhost:50194/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IService1_CrearUsuarioWeb_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearUsuarioWeb" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CrearUsuarioWeb_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearUsuarioWebResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_ActivarUsuario_InputMessage">
     <wsdl:part name="parameters" element="tns:ActivarUsuario" />
   </wsdl:message>
@@ -77,6 +83,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_ReadAllProductos_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadAllProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllRegiones_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllRegiones" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllRegiones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllRegionesResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_CrearRubro_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearRubro" />
@@ -240,6 +252,12 @@
   <wsdl:message name="IService1_EliminarRetail_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarRetailResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_ReadAllRetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllRetail" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllRetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllRetailResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_CrearProducto_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearProducto" />
   </wsdl:message>
@@ -313,6 +331,10 @@
     <wsdl:part name="parameters" element="tns:DataResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
+    <wsdl:operation name="CrearUsuarioWeb">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearUsuarioWeb" message="tns:IService1_CrearUsuarioWeb_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearUsuarioWebResponse" message="tns:IService1_CrearUsuarioWeb_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ActivarUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActivarUsuario" message="tns:IService1_ActivarUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ActivarUsuarioResponse" message="tns:IService1_ActivarUsuario_OutputMessage" />
@@ -360,6 +382,10 @@
     <wsdl:operation name="ReadAllProductos">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllProductos" message="tns:IService1_ReadAllProductos_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllProductosResponse" message="tns:IService1_ReadAllProductos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllRegiones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllRegiones" message="tns:IService1_ReadAllRegiones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllRegionesResponse" message="tns:IService1_ReadAllRegiones_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CrearRubro">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearRubro" message="tns:IService1_CrearRubro_InputMessage" />
@@ -469,6 +495,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarRetail" message="tns:IService1_EliminarRetail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarRetailResponse" message="tns:IService1_EliminarRetail_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ReadAllRetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllRetail" message="tns:IService1_ReadAllRetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllRetailResponse" message="tns:IService1_ReadAllRetail_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CrearProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearProducto" message="tns:IService1_CrearProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearProductoResponse" message="tns:IService1_CrearProducto_OutputMessage" />
@@ -520,6 +550,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CrearUsuarioWeb">
+      <soap:operation soapAction="http://tempuri.org/IService1/CrearUsuarioWeb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ActivarUsuario">
       <soap:operation soapAction="http://tempuri.org/IService1/ActivarUsuario" style="document" />
       <wsdl:input>
@@ -621,6 +660,15 @@
     </wsdl:operation>
     <wsdl:operation name="ReadAllProductos">
       <soap:operation soapAction="http://tempuri.org/IService1/ReadAllProductos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllRegiones">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllRegiones" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -864,6 +912,15 @@
     </wsdl:operation>
     <wsdl:operation name="EliminarRetail">
       <soap:operation soapAction="http://tempuri.org/IService1/EliminarRetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllRetail">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllRetail" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

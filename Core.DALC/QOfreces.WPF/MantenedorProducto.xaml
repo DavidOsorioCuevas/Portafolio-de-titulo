@@ -12,10 +12,10 @@
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
         Title="Mantenedor Producto" Height="319.876" Width="871.98" Background="Gainsboro">
-    <Grid x:Name="col_1" Margin="-50,0,0,0">
-        <Button x:Name="btnListarProd" Content="Listar Productos" HorizontalAlignment="Left" Margin="568,27,0,0" VerticalAlignment="Top" Width="128" Height="22" Click="btnListarProd_Click" BorderBrush="Black"/>
+    <Grid x:Name="col_1">
+        <Button x:Name="btnListarProd" Content="Listar Productos" HorizontalAlignment="Left" Margin="724,28,0,0" VerticalAlignment="Top" Width="128" Height="22" Click="btnListarProd_Click" BorderBrush="Black"/>
         <Label x:Name="lblPrueba" Content="" HorizontalAlignment="Left" Margin="236,135,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
-        <DataGrid x:Name="dgProd" CanUserAddRows="False" HorizontalAlignment="Left" Margin="394,57,-27,0" VerticalAlignment="Top" Height="161" Width="493">
+        <DataGrid x:Name="dgProd" CanUserAddRows="False" HorizontalAlignment="Left" Margin="432,58,0,0" VerticalAlignment="Top" Height="161" Width="420">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="dgcId" Header="ID" Binding="{Binding Path=IdProducto}"/>
                 <DataGridTextColumn x:Name="dgcNom" Header="Nombre Producto" Binding="{Binding Path=Nombre}"/>
@@ -40,7 +40,7 @@
         <Label x:Name="label_Copy6" Content="Sucursal:" HorizontalAlignment="Left" Margin="117,147,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="cbRubro" HorizontalAlignment="Left" Margin="178,118,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black" TabIndex="4"/>
         <ComboBox x:Name="cbSucursal" HorizontalAlignment="Left" Margin="178,151,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black" TabIndex="5"/>
-        <TextBox x:Name="txtBuscar" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Busqueda" HorizontalAlignment="Left" Height="23" Margin="394,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="169" BorderBrush="Black"/>
+        <TextBox x:Name="txtBuscar" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Busqueda" HorizontalAlignment="Left" Height="23" Margin="550,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="169" BorderBrush="Black"/>
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="128,246,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click" BorderBrush="Black" TabIndex="6"/>
         <Button x:Name="btnModificar" Content="Modificar" HorizontalAlignment="Left" Margin="223,245,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" Click="btnModificar_Click"/>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="326,245,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" Click="btnEliminar_Click"/>

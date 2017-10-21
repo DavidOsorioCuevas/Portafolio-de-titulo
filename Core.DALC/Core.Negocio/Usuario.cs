@@ -398,8 +398,6 @@ namespace Core.Negocio
                 usuario.PUNTOS = this.Puntos;
                 usuario.PASSAPORTE = this.Pasaporte;
                 usuario.NACIONALIDAD = this.Nacionalidad;
-                usuario.COMUNA_ID = this.IdComuna;
-                usuario.REGION_ID = this.Idregion;
                 usuario.FECHA_CREACION = this.FechaCreacion;
                 usuario.CODIGO_ACTIVACION = this.CodigoActivacion;
                 

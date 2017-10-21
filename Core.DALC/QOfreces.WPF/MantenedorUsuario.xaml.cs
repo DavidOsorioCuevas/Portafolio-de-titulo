@@ -27,6 +27,59 @@ namespace QOfreces.WPF
         {
             InitializeComponent();
             CargarCombobox();
+            LimpiarControles();
+        }
+
+        private void LimpiarControles()
+        {
+            txtNombreE.Text = string.Empty;
+            txtApellidoE.Text = string.Empty;
+            txtRutE.Text = string.Empty;
+            txtEmailE.Text = string.Empty;
+            txtCelularE.Text = string.Empty;
+            txtPuntosE.Text = string.Empty;
+            txtUsuarioE.Text = string.Empty;
+            dpFechaE.SelectedDate = null ;
+            cbSucursalE.SelectedIndex = 0;
+            cbPerfilE.SelectedIndex = 0;
+            chActivarE.IsChecked = false;
+            rbFemE.IsChecked = false;
+            rbMasE.IsChecked = false;
+
+
+            txtNombre.Text = string.Empty;
+            txtApellido.Text = string.Empty;
+            txtRut.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtCelular.Text = string.Empty;
+            txtPuntos.Text = string.Empty;
+            txtUsuario.Text = string.Empty;
+            dpFecha.SelectedDate = null;
+            cbSucursal.SelectedIndex = 0;
+            cbPerfil.SelectedIndex = 0;
+            chActivar.IsChecked = false;
+            rbFem.IsChecked = false;
+            rbMas.IsChecked = false;
+            pbContraseña.Password = "";
+            pbContraseña2.Password = "";
+
+            txtNombreM.Text = string.Empty;
+            txtApellidoM.Text = string.Empty;
+            txtRutM.Text = string.Empty;
+            txtEmailM.Text = string.Empty;
+            txtCelularM.Text = string.Empty;
+            txtPuntosM.Text = string.Empty;
+            txtUsuarioM.Text = string.Empty;
+            dpFechaM.SelectedDate = null;
+            cbSucursalM.SelectedIndex = 0;
+            cbPerfilM.SelectedIndex = 0;
+            chActivarM.IsChecked = false;
+            rbFemM.IsChecked = false;
+            rbMasM.IsChecked = false;
+            pbContraseñaM.Password = "";
+            pbContraseña2M.Password = "";
+
+
         }
 
         private void CargarCombobox()
@@ -58,54 +111,65 @@ namespace QOfreces.WPF
 
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            Usuario user = new Usuario();
-            user.IdSucursal = (int)cbSucursal.SelectedValue;
-            user.IdPerfil = (int)cbPerfil.SelectedValue;
-            user.NombreUsuario = txtUsuario.Text;
-            user.Password = pbContraseña.Password;
-            user.Nombre = txtNombre.Text;
-            user.Apellido = txtApellido.Text;
-            user.Rut = txtRut.Text;
-            user.FechaNacimiento = dpFecha.SelectedDate.Value;
-            if (rbFem.IsChecked == true)
+
+            if (pbContraseña.Password == pbContraseña2.Password)
             {
-                user.Sexo = 'F';
+                Usuario user = new Usuario();
+                user.IdSucursal = (int)cbSucursal.SelectedValue;
+                user.IdPerfil = (int)cbPerfil.SelectedValue;
+                user.NombreUsuario = txtUsuario.Text;
+                user.Password = pbContraseña.Password;
+                user.Nombre = txtNombre.Text;
+                user.Apellido = txtApellido.Text;
+                user.Rut = txtRut.Text;
+                user.FechaNacimiento = dpFecha.SelectedDate.Value;
+                if (rbFem.IsChecked == true)
+                {
+                    user.Sexo = 'F';
+                }
+                else
+                {
+                    user.Sexo = 'M';
+                }
+                user.Email = txtEmail.Text;
+                user.NumeroCelular = int.Parse(txtCelular.Text);
+                if (chActivar.IsChecked == true)
+                {
+                    user.Activo = '1';
+                }
+                else
+                {
+                    user.Activo = '0';
+                }
+
+                if (user.IdPerfil != 1)
+                {
+                    user.Puntos = 0;
+                }
+                else
+                {
+                    user.Puntos = int.Parse(txtPuntos.Text);
+                }
+
+
+                ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+                string json = user.Serializar();
+
+                if (proxy.CrearUsuario(json))
+                {
+                    await this.ShowMessageAsync("Exito", "Usuario creado");
+                }
+                else
+                {
+                    await this.ShowMessageAsync("Error", "No se a creado al usuario");
+                }
             }
             else
             {
-                user.Sexo = 'M';
-            }
-            user.Email = txtEmail.Text;
-            user.NumeroCelular = int.Parse(txtCelular.Text);
-            if (chActivar.IsChecked == true)
-            {
-                user.Activo = 's';
-            }else
-            {
-                user.Activo = 'n';
+                await this.ShowMessageAsync("Error", "Las contraseñas no coinciden");
             }
 
-            if (user.IdPerfil != 1)
-            {
-                user.Puntos = 0;
-            }
-            else
-            {
-                user.Puntos = int.Parse(txtPuntos.Text);
-            }
-
-
-            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = user.Serializar();
-
-            if (proxy.CrearUsuario(json))
-            {
-                await this.ShowMessageAsync("Exito", "Usuario creado");
-            }
-            else
-            {
-                await this.ShowMessageAsync("Error", "No se a creado al usuario");
-            }
+            
         }
 
         private void btnListarE_Click(object sender, RoutedEventArgs e)
@@ -128,11 +192,15 @@ namespace QOfreces.WPF
             if (proxy.EliminarUsuario(json))
             {
                 await this.ShowMessageAsync("Exito", "Usuario borrado");
+                dgUsuarioE.ItemsSource = null;
+                LimpiarControles();
                 
             }
             else
             {
                 await this.ShowMessageAsync("Error", "No se a podido borrar al usuario");
+                dgUsuarioE.ItemsSource = null;
+                LimpiarControles();
             }
         }
 
@@ -178,7 +246,7 @@ namespace QOfreces.WPF
                     }
                 }
 
-                if (u.Activo == 's' )
+                if (u.Activo == '1' )
                 {
                     chActivarE.IsChecked = true;
                 }
@@ -205,8 +273,6 @@ namespace QOfreces.WPF
             if (dgUsuarioM.SelectedItem != null)
             {
 
-                //cbPerfilM.Items.Clear();
-                //cbSucursalM.Items.Clear();
                 cbPerfilM.ItemsSource = null;
                 cbSucursalM.ItemsSource = null;
                 Usuario u = (Usuario)dgUsuarioM.SelectedItem;
@@ -220,50 +286,42 @@ namespace QOfreces.WPF
                 txtUsuarioM.Text = u.NombreUsuario;
                 dpFechaM.SelectedDate = u.FechaNacimiento;
 
-                // oh wn no puedo lograr dejar seleccionado en el combobox el valor que tiene la clase
-                //por la ptm!!!!!
+                
                 ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
                 string jsonS = proxy.ReadAllSucursal();
                 SucursalCollections suCol = new SucursalCollections(jsonS);
                 cbSucursalM.DisplayMemberPath = "Nombre";
                 cbSucursalM.SelectedValuePath = "IdSucursal";
                 cbSucursalM.ItemsSource = suCol.ToList();
-                foreach (var item in suCol)
+
+                for (int i = 0; i < cbSucursalM.Items.Count; i++)
                 {
-                    if (item.IdSucursal == u.IdSucursal)
+                    Sucursal s = (Sucursal)cbSucursalM.Items[i];
+                    if (s.IdSucursal == u.IdSucursal)
                     {
-                        cbSucursalM.SelectedItem = item.Nombre;
+                        cbSucursalM.SelectedIndex = i;
                     }
                 }
-                //ese del perfil funciona perfecto pero claro con 4 perfiles cagones cualquiera lo hace
-                //como hacerlo con 1 chilion de perfiles? no se wn no puedo T_T
+               
                 string jsonP = proxy.ReadAllPerfil();
                 PerfilCollections perCol = new PerfilCollections(jsonP);
                 cbPerfilM.DisplayMemberPath = "Tipo";
                 cbPerfilM.SelectedValuePath = "IdPerfil";
                 cbPerfilM.ItemsSource = perCol.ToList();
 
-                switch (u.IdPerfil)
+                for (int i = 0; i < cbPerfilM.Items.Count; i++)
                 {
-                    case 1:
-                        cbPerfilM.SelectedIndex = 0;
-                        break;
-                    case 2:
-                        cbPerfilM.SelectedIndex = 1;
-                        break;
-                    case 3:
-                        cbPerfilM.SelectedIndex = 2;
-                        break;
-                    case 4:
-                        cbPerfilM.SelectedIndex = 3;
-                        break;
-                    default:
-                        break;
+                    Perfil pe = (Perfil)cbPerfilM.Items[i];
+
+                    if (pe.IdPerfil == u.IdPerfil)
+                    {
+                        cbPerfilM.SelectedIndex = i;
+                    }
                 }
 
-                
 
-                if (u.Activo == 's')
+
+                if (u.Activo == '1')
                 {
                     chActivarM.IsChecked = true;
                 }
@@ -290,6 +348,71 @@ namespace QOfreces.WPF
             Core.Negocio.UsuarioColection collUser = new Core.Negocio.UsuarioColection(json);
             collUser.ToList();
             dgUsuarioM.ItemsSource = collUser;
+        }
+
+        private async void btnModificar_Click(object sender, RoutedEventArgs e)
+        {
+            if (pbContraseñaM.Password == pbContraseña2M.Password)
+            {
+                Usuario user = new Usuario();
+
+                user.NombreUsuario = txtUsuarioM.Text;
+                user.Password = pbContraseñaM.Password;
+                user.Nombre = txtNombreM.Text;
+                user.Apellido = txtApellidoM.Text;
+                user.Rut = txtRutM.Text;
+                user.FechaNacimiento = dpFechaM.SelectedDate;
+                if (rbFemM.IsChecked == true)
+                {
+                    user.Sexo = 'f';
+                }
+                else
+                {
+                    user.Sexo = 'm';
+                }
+
+                user.Email = txtEmailM.Text;
+                user.NumeroCelular = int.Parse(txtCelularM.Text);
+
+                if (chActivarM.IsChecked == true)
+                {
+                    user.Activo = '1';
+                }
+                else
+                {
+                    user.Activo = '0';
+                }
+                user.IdSucursal = (int)cbSucursalM.SelectedValue;
+                user.IdPerfil = (int)cbPerfilM.SelectedValue;
+                int punt;
+                int.TryParse(txtPuntosM.Text, out punt);
+                user.Puntos = punt;
+
+
+                ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+
+                string json = user.Serializar();
+                if (json != null)
+                {
+                    proxy.ActualizarUsuario(json);
+                    await this.ShowMessageAsync("Exito", "Usuario actualizado");
+                    dgUsuarioM.ItemsSource = null;
+                    LimpiarControles();
+                }
+                else
+                {
+                    await this.ShowMessageAsync("Error", "No se pudo actualizar al usuario");
+                }
+            }
+            else
+            {
+                await this.ShowMessageAsync("Error", "Las contraseñas no coinciden");
+            }
+        }
+
+        private void btnSalirM_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

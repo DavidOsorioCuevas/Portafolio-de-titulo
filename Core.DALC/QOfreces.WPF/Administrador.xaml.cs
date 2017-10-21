@@ -27,7 +27,9 @@ namespace QOfreces.WPF
 
         private void tiEmpresa_Click(object sender, RoutedEventArgs e)
         {
-
+            MantenedorRetail ret = new MantenedorRetail();
+            ret.Owner = this;
+            ret.Show();
         }
 
         private void tiRubro_Click(object sender, RoutedEventArgs e)

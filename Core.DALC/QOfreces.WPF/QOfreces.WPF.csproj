@@ -113,14 +113,14 @@
     <Compile Include="MantenedorProducto.xaml.cs">
       <DependentUpon>MantenedorProducto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MantenedorRetail.xaml.cs">
+      <DependentUpon>MantenedorRetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MantenedorRubro.xaml.cs">
       <DependentUpon>MantenedorRubro.xaml</DependentUpon>
     </Compile>
     <Compile Include="MantenedorUsuario.xaml.cs">
       <DependentUpon>MantenedorUsuario.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MantenedorUsuarios.xaml.cs">
-      <DependentUpon>MantenedorUsuarios.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -162,15 +162,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MantenedorRetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MantenedorRubro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MantenedorUsuario.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MantenedorUsuarios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
