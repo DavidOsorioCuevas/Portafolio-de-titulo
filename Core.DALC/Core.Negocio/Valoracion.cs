@@ -25,7 +25,7 @@ namespace Core.Negocio
 
         
         public Valoracion(string json) {
-            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(Usuario));
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(Valoracion));
             MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
 
             Valoracion val = (Valoracion)serializador.ReadObject(stream);
