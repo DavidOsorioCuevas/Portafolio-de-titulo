@@ -37,6 +37,21 @@ namespace Core.Negocio
             this.fechaValoracion = val.fechaValoracion;
         }
 
+        public string ComprobarValoracion()
+        {
+            Core.DALC.QueOfrecesEntities db = new Core.DALC.QueOfrecesEntities();
+            var result = from a in db.VALORACION where a.OFERTA_ID == this.IdOferta && a.USUARIO_ID == this.IdUsuario select new { a };
+            if (result.Count()>0)
+            {
+                this.Calificacion = int.Parse(result.First().a.CALIFICACION);
+                this.response = "EV";
+            }else
+            {
+                this.response = "NEV";
+            }
+            return Serializar();
+        }
+
         public string ValorarOferta()
         {
             Core.DALC.QueOfrecesEntities db = new Core.DALC.QueOfrecesEntities();
