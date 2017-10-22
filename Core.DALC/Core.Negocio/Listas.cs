@@ -11,6 +11,23 @@ namespace Core.Negocio
 {
     public class Listas
     {
+        public string valoracion(string parametro)
+        {
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+            var result = from a in ctx.VALORACION where a.ID_VALORACION.Equals(parametro) select new { a };
+            List<Valoracion> val = new List<Valoracion>();
+            foreach (var item in result)
+            {
+                Valoracion v = new Valoracion();
+                v.IdValoracion = (int)item.a.ID_VALORACION;
+                v.IdOferta = (int)item.a.OFERTA_ID;
+                v.IdUsuario = (int)item.a.USUARIO_ID;
+                v.fechaValoracion = (item.a.FECHA_VALORACION.Value.ToShortDateString()).ToString();
+                v.codeImagen = item.a.CODE_IMAGEN;
+                val.Add(v);
+            }
+            return SerializarValoraciones(val);
+        }
         public string oferta(string parametro)
         {
             Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
@@ -111,6 +128,20 @@ namespace Core.Negocio
             MemoryStream stream = new MemoryStream();
 
             serializador.WriteObject(stream, oferta);
+
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+
+            return ser.ToString();
+
+        }
+
+        public string SerializarValoraciones(List<Valoracion> valoracion)
+        {
+
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(List<Valoracion>));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, valoracion);
 
             string ser = Encoding.UTF8.GetString(stream.ToArray());
 

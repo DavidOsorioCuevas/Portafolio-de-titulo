@@ -15,6 +15,8 @@ namespace Core.Servicios
 
         /*USUARIO*/
         [OperationContract]
+        string ValorarOferta(string json);
+        [OperationContract]
         string CrearUsuarioWeb(string json);
         [OperationContract]
         string ActivarUsuario(string json);
