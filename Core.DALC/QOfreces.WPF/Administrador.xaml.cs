@@ -53,11 +53,6 @@ namespace QOfreces.WPF
             mai.Show();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            ListarUsuarios l = new ListarUsuarios();
-            this.Close();
-            l.Show();
-        }
+       
     }
 }

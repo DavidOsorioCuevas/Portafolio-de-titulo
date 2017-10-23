@@ -35,6 +35,7 @@ namespace Core.Negocio
                 Comuna com = new Comuna();
                 com.IdComuna = (int)item.ID_COMUNA;
                 com.Nombre = item.NOMBRE;
+                com.IdRegion = (int)item.REGION_ID;
 
                 lista.Add(com);
 

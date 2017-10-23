@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{89B57A38-AB36-482F-96A6-75A677F354D2}</ProjectGuid>
+    <ProjectGuid>{D0A72252-BC39-4345-B6AC-F3DCBC81179B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Core.DALC</RootNamespace>
@@ -31,23 +31,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Json, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c6752e45808247c2, processorArchitecture=MSIL">
-      <HintPath>..\packages\JSON.1.0.1\lib\net40\Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
-      <HintPath>..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <HintPath>..\..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -60,106 +50,107 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CATEGORIA_OFERTA.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="COMPORTAMIENTO.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="COMUNA.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="CUPON.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="DESCUENTO.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="DESCUENTO_HAS_RUBRO.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMQueOfreces.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EDMQueOfreces.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMQueOfreces.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMQueOfreces.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EDMQueOfreces.edmx</DependentUpon>
     </Compile>
     <Compile Include="OFERTA.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="PAIS.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="PERFIL.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="PREFERENCIA.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="PRODUCTO.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="PRODUCTO_HAS_OFERTA.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueOfrecesEDM.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QueOfrecesEDM.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="QueOfrecesEDM.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="QueOfrecesEDM.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QueOfrecesEDM.edmx</DependentUpon>
-    </Compile>
     <Compile Include="REGION.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="RETAIL.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="RUBRO.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="SUCURSALES.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="USUARIO.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
     <Compile Include="VALORACION.cs">
-      <DependentUpon>QueOfrecesEDM.tt</DependentUpon>
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="EDMQueOfreces.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EDMQueOfreces.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="packages.config" />
-    <EntityDeploy Include="QueOfrecesEDM.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QueOfrecesEDM.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="QueOfrecesEDM.edmx.diagram">
-      <DependentUpon>QueOfrecesEDM.edmx</DependentUpon>
+    <None Include="EDMQueOfreces.edmx.diagram">
+      <DependentUpon>EDMQueOfreces.edmx</DependentUpon>
     </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EDMQueOfreces.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EDMQueOfreces.edmx</DependentUpon>
+      <LastGenOutput>EDMQueOfreces.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EDMQueOfreces.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EDMQueOfreces.edmx</DependentUpon>
+      <LastGenOutput>EDMQueOfreces.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="QueOfrecesEDM.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QueOfrecesEDM.edmx</DependentUpon>
-      <LastGenOutput>QueOfrecesEDM.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="QueOfrecesEDM.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QueOfrecesEDM.edmx</DependentUpon>
-      <LastGenOutput>QueOfrecesEDM.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

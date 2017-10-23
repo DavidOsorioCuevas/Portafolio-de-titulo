@@ -70,7 +70,7 @@
           <Property Name="SUCURSALES_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CATEGORIA_OFERTA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="20" />
-          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="50" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="500" />
           <Property Name="PRECIO_ANTES" Type="number" Precision="38" Scale="0" />
           <Property Name="PRECIO_DESPUES" Type="number" Precision="38" Scale="0" />
           <Property Name="OFERTA_DIA" Type="char" MaxLength="1" />
@@ -387,6 +387,14 @@
           <Parameter Name="IN_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="IN_REGION_ID" Type="number" Mode="In" />
         </Function>
+        <Function Name="CUSTOM_AUTH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="BDMISOFERTAS" ReturnType="pl/sql boolean">
+          <Parameter Name="P_USERNAME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_PASSWORD" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="CUSTOM_HASH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="BDMISOFERTAS" ReturnType="varchar2">
+          <Parameter Name="P_USERNAME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_PASSWORD" Type="varchar2" Mode="In" />
+        </Function>
         <Function Name="PAIS_CREAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="BDMISOFERTAS">
           <Parameter Name="IN_NOMBRE" Type="varchar2" Mode="In" />
           <Parameter Name="IN_SIGLA_PAIS" Type="char" Mode="In" />
@@ -653,7 +661,7 @@
           <Property Name="SUCURSALES_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CATEGORIA_OFERTA_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="PRECIO_ANTES" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="PRECIO_DESPUES" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="OFERTA_DIA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />

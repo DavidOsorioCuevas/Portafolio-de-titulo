@@ -27,6 +27,35 @@ namespace QOfreces.WPF
         {
             InitializeComponent();
             Deshabilitar();
+            CargarCombobox();
+            LimpiarControles();
+        }
+
+        private void LimpiarControles()
+        {
+            txtRut.Text = string.Empty;
+            txtTelefono.Text = string.Empty;
+            txtRazonSocial.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtListar.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtDireccion.Text = string.Empty;
+            cbComuna.SelectedIndex = 0;
+            cbRegion.SelectedIndex = 0;
+            dgRetail.ItemsSource = null;
+        }
+
+        private void CargarCombobox()
+        {
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string jsonS = proxy.ReadAllRegiones();
+            RegionCollections reCol = new RegionCollections(jsonS);
+            cbRegion.DisplayMemberPath = "Nombre";
+            cbRegion.SelectedValuePath = "IdRegion";
+            cbRegion.ItemsSource = reCol.ToList();
+
+            cbComuna.IsEnabled = false;
+            
         }
 
         private void Deshabilitar()
@@ -131,6 +160,122 @@ namespace QOfreces.WPF
 
 
             }
+        }
+
+        private async void btnEjecutar_Click(object sender, RoutedEventArgs e)
+        {
+            Retail ret = new Retail();
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json;
+            switch (btnEjecutar.Content.ToString())
+            {
+                case "Agregar":
+                    
+                    ret.RutRetail = txtRut.Text;
+                    ret.NombreRetail = txtNombre.Text;
+                    ret.RazonSocial = txtRazonSocial.Text;
+                    int tele;
+                    int.TryParse(txtTelefono.Text, out tele);
+                    ret.Telefono = tele;
+                    ret.Email = txtEmail.Text;
+                    ret.Direccion = txtDireccion.Text;
+                    ret.IdRegion = (int)cbRegion.SelectedValue;
+                    ret.IdComuna = (int)cbComuna.SelectedValue;
+
+                    json = ret.Serializar();
+                    if (proxy.CrearRetail(json))
+                    {
+                        await this.ShowMessageAsync("Exito", "Retail creado");
+                        LimpiarControles();
+
+                    }
+                    else
+                    {
+                        await this.ShowMessageAsync("Error", "No se a podido crear");
+                        LimpiarControles();
+                    }
+
+                    break;
+
+                case "Modificar":
+
+                    ret.RutRetail = txtRut.Text;
+                    ret.NombreRetail = txtNombre.Text;
+                    ret.RazonSocial = txtRazonSocial.Text;
+                    int tel;
+                    int.TryParse(txtTelefono.Text, out tel);
+                    ret.Telefono = tel;
+                    ret.Email = txtEmail.Text;
+                    ret.Direccion = txtDireccion.Text;
+                    ret.IdRegion = (int)cbRegion.SelectedValue;
+                    ret.IdComuna = (int)cbComuna.SelectedValue;
+                    Retail id = (Retail)dgRetail.SelectedItem;
+                    ret.IdRetail = id.IdRetail;
+                    json = ret.Serializar();
+                    if (proxy.ActualizarRetail(json))
+                    {
+                        await this.ShowMessageAsync("Exito", "Retail actualizado");
+                        LimpiarControles();
+
+                    }
+                    else
+                    {
+                        await this.ShowMessageAsync("Error", "No se a podido actualizar");
+                        LimpiarControles();
+                    }
+                    break;
+
+                case "Eliminar":
+
+                    Retail r = (Retail)dgRetail.SelectedValue;
+                    json = r.Serializar();
+                    if (proxy.EliminarRetail(json))
+                    {
+                        await this.ShowMessageAsync("Exito", "Retail actualizado");
+                        LimpiarControles();
+                    }
+                    else
+                    {
+                        await this.ShowMessageAsync("Error", "No se a podido actualizar");
+                        LimpiarControles();
+                    }
+
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void cbRegion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbRegion.SelectedItem != null)
+            {
+
+
+                Region reg = (Region)cbRegion.SelectedItem;
+
+                ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+                string json = proxy.ReadAllComuna();
+                ComunaCollections c = new ComunaCollections(json);
+
+                ComunaCollections mostrar = new ComunaCollections();
+
+                cbComuna.IsEnabled = true;
+                cbComuna.DisplayMemberPath = "Nombre";
+                cbComuna.SelectedValuePath = "IdComuna";
+                foreach (var item in c)
+                {
+                    if (item.IdRegion == reg.IdRegion)
+                    {
+                        mostrar.Add(item);
+                    }
+                }
+
+                cbComuna.ItemsSource = mostrar.ToList();
+            }
+
+           
         }
     }
 }

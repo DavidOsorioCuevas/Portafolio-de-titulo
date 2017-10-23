@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +19,16 @@ namespace Core.Negocio
             this.IdComuna = IdComuna;
             this.Nombre = Nombre;
             this.IdRegion = IdRegion;
+        }
+
+        public string Serializar()
+        {
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(Comuna));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, this);
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+            return ser.ToString();
         }
     }
 }
