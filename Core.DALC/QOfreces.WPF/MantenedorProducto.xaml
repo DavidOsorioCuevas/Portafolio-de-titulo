@@ -11,41 +11,41 @@
         Icon="img/logo.png"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
-        Title="Mantenedor Producto" Height="319.876" Width="871.98" Background="Gainsboro">
+        Title="Mantenedor Producto" Height="400" Width="600" Background="Gainsboro">
     <Grid x:Name="col_1">
-        <Button x:Name="btnListarProd" Content="Listar Productos" HorizontalAlignment="Left" Margin="724,28,0,0" VerticalAlignment="Top" Width="128" Height="22" Click="btnListarProd_Click" BorderBrush="Black"/>
-        <Label x:Name="lblPrueba" Content="" HorizontalAlignment="Left" Margin="236,135,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
-        <DataGrid x:Name="dgProd" CanUserAddRows="False" HorizontalAlignment="Left" Margin="432,58,0,0" VerticalAlignment="Top" Height="161" Width="420">
+        <Button x:Name="btnListarProd" Visibility="Hidden" Content="Listar Productos" HorizontalAlignment="Left" Margin="477,80,0,0" VerticalAlignment="Top" Width="103" Height="22" Click="btnListarProd_Click" BorderBrush="Black"/>
+        <Label x:Name="lblPrueba" Content="" HorizontalAlignment="Left" Margin="220,186,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
+        <DataGrid x:Name="dgProd" Visibility="Hidden" CanUserAddRows="False" HorizontalAlignment="Left" Margin="358,107,0,0" VerticalAlignment="Top" Height="161" Width="222">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="dgcId" Header="ID" Binding="{Binding Path=IdProducto}"/>
                 <DataGridTextColumn x:Name="dgcNom" Header="Nombre Producto" Binding="{Binding Path=Nombre}"/>
-                <DataGridTextColumn x:Name="dgcPrec" Header="Precio Producto" Binding="{Binding Path=Precio}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox x:Name="txtNombre" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese nombre del producto" HorizontalAlignment="Left" Height="23" Margin="178,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"/>
-        <Label x:Name="label" Content="Nombre Producto:" HorizontalAlignment="Left" Margin="65,25,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPrueba_Copy" Content="" HorizontalAlignment="Left" Margin="236,163,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
-        <TextBox x:Name="txtPrecio" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese precio" HorizontalAlignment="Left" Height="23" Margin="178,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="2"/>
-        <Label x:Name="label_Copy" Content="Precio:" HorizontalAlignment="Left" Margin="128,56,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPrueba_Copy1" Content="" HorizontalAlignment="Left" Margin="268,191,0,0" VerticalAlignment="Top" Height="26" Width="16"/>
-        <TextBox x:Name="txtDescripcion" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese descripcion" HorizontalAlignment="Left" Height="23" Margin="178,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="3"/>
-        <Label x:Name="label_Copy1" Content="Descripcion:" HorizontalAlignment="Left" Margin="99,87,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPrueba_Copy2" Content="" HorizontalAlignment="Left" Margin="268,219,0,0" VerticalAlignment="Top" Height="26" Width="16"/>
+        <TextBox x:Name="txtNombre" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese nombre del producto" HorizontalAlignment="Left" Height="23" Margin="107,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"/>
+        <Label x:Name="label" Content="Nombre Producto:" HorizontalAlignment="Left" Margin="-6,79,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPrueba_Copy" Content="" HorizontalAlignment="Left" Margin="220,214,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
+        <TextBox x:Name="txtPrecio" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese precio" HorizontalAlignment="Left" Height="23" Margin="107,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="2"/>
+        <Label x:Name="label_Copy" Content="Precio:" HorizontalAlignment="Left" Margin="57,110,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPrueba_Copy1" Content="" HorizontalAlignment="Left" Margin="252,242,0,0" VerticalAlignment="Top" Height="26" Width="16"/>
+        <TextBox x:Name="txtDescripcion" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese descripcion" HorizontalAlignment="Left" Height="23" Margin="107,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="3"/>
+        <Label x:Name="label_Copy1" Content="Descripcion:" HorizontalAlignment="Left" Margin="28,141,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPrueba_Copy2" Content="" HorizontalAlignment="Left" Margin="252,270,0,0" VerticalAlignment="Top" Height="26" Width="16"/>
         <Label x:Name="lblPrueba_Copy3" Content="" HorizontalAlignment="Left" Margin="268,247,0,0" VerticalAlignment="Top" Height="26" Width="16"/>
-        <Label x:Name="lblPrueba_Copy4" Content="" HorizontalAlignment="Left" Margin="527,108,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
-        <Label x:Name="lblPrueba_Copy5" Content="" HorizontalAlignment="Left" Margin="527,136,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
-        <Label x:Name="label_Copy5" Content="Rubro:" HorizontalAlignment="Left" Margin="128,154,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPrueba_Copy6" Content="" HorizontalAlignment="Left" Margin="527,144,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
-        <Label x:Name="lblPrueba_Copy7" Content="" HorizontalAlignment="Left" Margin="527,172,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
-        <Label x:Name="label_Copy6" Content="Sucursal:" HorizontalAlignment="Left" Margin="117,180,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbRubro" HorizontalAlignment="Left" Margin="178,149,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black" TabIndex="4"/>
-        <ComboBox x:Name="cbSucursal" HorizontalAlignment="Left" Margin="178,180,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black" TabIndex="5"/>
-        <TextBox x:Name="txtBuscar" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Busqueda" HorizontalAlignment="Left" Height="23" Margin="550,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="169" BorderBrush="Black"/>
-        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="128,246,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click" BorderBrush="Black" TabIndex="6"/>
-        <Button x:Name="btnModificar" Content="Modificar" HorizontalAlignment="Left" Margin="223,245,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" Click="btnModificar_Click"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="326,245,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" Click="btnEliminar_Click"/>
-        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="617,246,0,0" VerticalAlignment="Top" Width="75" Click="btnSalir_Click"/>
-        <TextBox x:Name="txtCod" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese descripcion" HorizontalAlignment="Left" Height="23" Margin="178,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="3" RenderTransformOrigin="0.44,1.96"/>
-        <Label x:Name="label_Copy2" Content="Codigo interno:" HorizontalAlignment="Left" Margin="81,118,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPrueba_Copy4" Content="" HorizontalAlignment="Left" Margin="527,146,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
+        <Label x:Name="lblPrueba_Copy5" Content="" HorizontalAlignment="Left" Margin="527,174,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
+        <Label x:Name="label_Copy5" Content="Rubro:" HorizontalAlignment="Left" Margin="57,203,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPrueba_Copy6" Content="" HorizontalAlignment="Left" Margin="527,182,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
+        <Label x:Name="lblPrueba_Copy7" Content="" HorizontalAlignment="Left" Margin="527,210,0,0" VerticalAlignment="Top" Height="26" Width="10"/>
+        <Label x:Name="label_Copy6" Content="Sucursal:" HorizontalAlignment="Left" Margin="46,234,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbRubro" HorizontalAlignment="Left" Margin="107,203,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black" TabIndex="4"/>
+        <ComboBox x:Name="cbSucursal" HorizontalAlignment="Left" Margin="107,234,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black" TabIndex="5"/>
+        <TextBox x:Name="txtBuscar" Visibility="Hidden" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Busqueda" HorizontalAlignment="Left" Height="23" Margin="358,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="105" BorderBrush="Black"/>
+        <Button x:Name="btnEjecutar" Content="Agregar" HorizontalAlignment="Left" Margin="410,330,0,0" VerticalAlignment="Top" Width="75" Click="btnEjecutar_Click" BorderBrush="Black" TabIndex="6"/>
+        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="505,330,0,0" VerticalAlignment="Top" Width="75" Click="btnSalir_Click" BorderBrush="Black" Foreground="Black"/>
+        <TextBox x:Name="txtCod" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese descripcion" HorizontalAlignment="Left" Height="23" Margin="107,172,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="3" RenderTransformOrigin="0.44,1.96"/>
+        <Label x:Name="label_Copy2" Content="Codigo interno:" HorizontalAlignment="Left" Margin="10,172,0,0" VerticalAlignment="Top"/>
+        <Controls:Tile x:Name="tiAgregar" Height="Auto" Margin="60,10,470,325" Width="Auto" Title="Agregar" TitleFontSize="10" Click="tiAgregar_Click" />
+        <Controls:Tile x:Name="tiEliminar" Height="Auto" Margin="468,10,60,325" Width="Auto" Title="Eliminar" TitleFontSize="10" RenderTransformOrigin="0.264,0.562" Click="tiEliminar_Click"/>
+        <Controls:Tile x:Name="tiModificar" Height="Auto" Margin="265,10,265,325" Width="Auto" Title="Modificar" TitleFontSize="10" RenderTransformOrigin="1,0.438" Click="tiModificar_Click"/>
     </Grid>
 </Controls:MetroWindow>

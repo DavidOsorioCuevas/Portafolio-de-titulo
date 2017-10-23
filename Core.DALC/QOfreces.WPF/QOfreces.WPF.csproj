@@ -125,12 +125,12 @@
     <Compile Include="MantenedorSucursal.xaml.cs">
       <DependentUpon>MantenedorSucursal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MantenedorUsuario.xaml.cs">
-      <DependentUpon>MantenedorUsuario.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MantenedorUsuarios.xaml.cs">
+      <DependentUpon>MantenedorUsuarios.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -181,7 +181,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MantenedorUsuario.xaml">
+    <Page Include="MantenedorUsuarios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

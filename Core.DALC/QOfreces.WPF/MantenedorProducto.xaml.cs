@@ -29,6 +29,19 @@ namespace QOfreces.WPF
             InitializeComponent();
             CargarCombobox();
 
+
+        }
+
+        private void tiAgregar_Click(object sender, RoutedEventArgs e)
+        {
+            tiAgregar.IsEnabled = false;
+            tiModificar.IsEnabled = true;
+            tiEliminar.IsEnabled = true;
+            dgProd.Visibility = Visibility.Hidden;
+            txtBuscar.Visibility = Visibility.Hidden;
+            btnListarProd.Visibility = Visibility.Hidden;
+            btnEjecutar.Content = "Agregar";
+            HabilitarControles();
         }
 
         private void CargarCombobox()
@@ -58,7 +71,51 @@ namespace QOfreces.WPF
 
         }
 
-        private async void btnAgregar_Click(object sender, RoutedEventArgs e)
+        private void tiModificar_Click(object sender, RoutedEventArgs e)
+        {
+            tiAgregar.IsEnabled = true;
+            tiModificar.IsEnabled = false;
+            tiEliminar.IsEnabled = true;
+            dgProd.Visibility = Visibility.Visible;
+            txtBuscar.Visibility = Visibility.Visible;
+            btnListarProd.Visibility = Visibility.Visible;
+            btnEjecutar.Content = "Modificar";
+            HabilitarControles();
+        }
+
+        private void HabilitarControles()
+        {
+            txtCod.IsEnabled = true;
+            txtDescripcion.IsEnabled = true;
+            txtNombre.IsEnabled = true;
+            txtPrecio.IsEnabled = true;
+            cbRubro.IsEnabled = true;
+            cbSucursal.IsEnabled = true;
+        }
+
+        private void tiEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            tiAgregar.IsEnabled = true;
+            tiModificar.IsEnabled = true;
+            tiEliminar.IsEnabled = false;
+            dgProd.Visibility = Visibility.Visible;
+            txtBuscar.Visibility = Visibility.Visible;
+            btnListarProd.Visibility = Visibility.Visible;
+            btnEjecutar.Content = "Eliminar";
+            DeshabilitarControles();
+        }
+
+        private void DeshabilitarControles()
+        {
+            txtCod.IsEnabled = false;
+            txtDescripcion.IsEnabled = false;
+            txtNombre.IsEnabled = false;
+            txtPrecio.IsEnabled = false;
+            cbRubro.IsEnabled = false;
+            cbSucursal.IsEnabled = false;
+        }
+
+        private async void btnEjecutar_Click(object sender, RoutedEventArgs e)
         {
             Core.Negocio.Producto p = new Core.Negocio.Producto();
 
@@ -90,6 +147,7 @@ namespace QOfreces.WPF
             if (proxy.CrearProducto(jsons))
             {
                 await this.ShowMessageAsync("Exito", "Producto agregado!");
+                LimpiarControles();
                 txtNombre.Clear();
                 txtDescripcion.Clear();
                 txtPrecio.Clear();
@@ -103,19 +161,20 @@ namespace QOfreces.WPF
             };
         }
 
-        private async void btnModificar_Click(object sender, RoutedEventArgs e)
+        private void LimpiarControles()
         {
-            await this.ShowMessageAsync("Alerta!", "Este evento aun no esta implementado");
-        }
-
-        private async void btnEliminar_Click(object sender, RoutedEventArgs e)
-        {
-            await this.ShowMessageAsync("Alerta!", "Este evento aun no esta implementado");
+            txtCod.Text = string.Empty;
+            txtDescripcion.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtPrecio.Text = string.Empty;
+            cbRubro.SelectedIndex = 0;
+            cbSucursal.SelectedIndex = 0;
         }
 
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+
     }
 }
