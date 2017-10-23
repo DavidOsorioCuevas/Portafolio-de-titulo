@@ -27,8 +27,25 @@ namespace QOfreces.WPF
         public MantenedorProducto()
         {
             InitializeComponent();
+            CargarCombobox();
 
+        }
 
+        private void CargarCombobox()
+        {
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json = proxy.ReadAllRubros();
+            RubroCollections reCol = new RubroCollections(json);
+            cbRubro.DisplayMemberPath = "TipoRubro";
+            cbRubro.SelectedValuePath = "IdRubro";
+            cbRubro.ItemsSource = reCol.ToList();
+
+            json = proxy.ReadAllSucursal();
+            SucursalCollections suc = new SucursalCollections(json);
+            cbSucursal.DisplayMemberPath = "Nombre";
+            cbSucursal.SelectedValuePath = "IdSucursal";
+            cbSucursal.ItemsSource = suc.ToList();
+            
         }
 
         private void btnListarProd_Click(object sender, RoutedEventArgs e)
@@ -45,18 +62,32 @@ namespace QOfreces.WPF
         {
             Core.Negocio.Producto p = new Core.Negocio.Producto();
 
-            p.IdRubro = 2;
-            p.Precio = 100;
-            p.CodigoInterno = "cod";
-            p.Nombre = "doritos";
-            p.Sku = "SKU";
-            p.Descripcion = "doritos de queso";
-
-
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = p.Serializar();
+            string json = proxy.ReadAllRubros();
+            RubroCollections reCol = new RubroCollections(json);
+            string aux = string.Empty;
 
-            if (proxy.CrearProducto(json))
+            p.IdRubro = (int)cbRubro.SelectedValue;
+            foreach (var item in reCol)
+            {
+                if (p.IdRubro == item.IdRubro)
+                {
+                    aux = item.TipoRubro;
+                }
+            }
+            int precio;
+            int.TryParse(txtPrecio.Text, out precio);
+            p.Precio = precio;
+            p.CodigoInterno = txtCod.Text;
+            p.Nombre = txtNombre.Text;
+            p.Sku = txtNombre.Text.Substring(0, 4) + aux.Substring(0,4);
+            p.Descripcion = txtDescripcion.Text;
+
+
+           
+            string jsons = p.Serializar();
+
+            if (proxy.CrearProducto(jsons))
             {
                 await this.ShowMessageAsync("Exito", "Producto agregado!");
                 txtNombre.Clear();

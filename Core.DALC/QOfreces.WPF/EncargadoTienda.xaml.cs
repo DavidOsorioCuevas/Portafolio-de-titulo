@@ -264,7 +264,7 @@ namespace QOfreces.WPF
             
         }
 
-        private void btnPublicar_Click(object sender, RoutedEventArgs e)
+        private async void btnPublicar_Click(object sender, RoutedEventArgs e)
         {
             var list = dgOfertas.Items.OfType<Oferta>();
             int countpu = 0;
@@ -292,9 +292,13 @@ namespace QOfreces.WPF
                     countpu++;
                 }
             }
-            MessageBox.Show("SE ACTIVARON " + countpu.ToString() + " PUBLICACIONES");
-            MessageBox.Show("SE DESACTIVARON " + contdes.ToString() + " PUBLICACIONES");
-            
+
+            await this.ShowMessageAsync("Actualizando...", "SE ACTIVARON " + countpu.ToString() + " PUBLICACIONES");
+            await this.ShowMessageAsync("Actualizando...", "SE DESACTIVARON " + contdes.ToString() + " PUBLICACIONES");
+            dgOfertas.ItemsSource = null;
+
+
+
         }
     }
 }
