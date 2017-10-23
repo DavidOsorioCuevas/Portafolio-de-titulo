@@ -86,7 +86,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core.DALC\Core.DALC\Core.DALC.csproj">
+    <ProjectReference Include="..\Core.DALC\Core.DALC.csproj">
       <Project>{d0a72252-bc39-4345-b6ac-f3dcbc81179b}</Project>
       <Name>Core.DALC</Name>
     </ProjectReference>

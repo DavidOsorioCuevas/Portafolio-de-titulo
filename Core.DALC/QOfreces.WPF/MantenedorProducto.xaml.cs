@@ -117,6 +117,9 @@ namespace QOfreces.WPF
 
         private async void btnEjecutar_Click(object sender, RoutedEventArgs e)
         {
+
+
+
             Core.Negocio.Producto p = new Core.Negocio.Producto();
 
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
