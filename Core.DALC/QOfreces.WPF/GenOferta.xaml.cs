@@ -33,7 +33,7 @@ namespace QOfreces.WPF
     {
         public GenOferta()
         {
-  
+
             InitializeComponent();
             CargarCombobox();
         }
@@ -52,29 +52,12 @@ namespace QOfreces.WPF
             cbCatOf.DisplayMemberPath = "Nombre";
             cbCatOf.SelectedValuePath = "IdCategoria";
             cbCatOf.ItemsSource = catColl.ToList();
-            
+
 
         }
 
         private void btnGenOferta_Click(object sender, RoutedEventArgs e)
         {
-
-            List<Producto> lstprod = new List<Producto>();
-            var list = dgProd.Items.OfType<Producto>();
-
-            foreach (var item in list)
-            {
-                if (item.Selec == true)
-                {
-                    Producto prod = new Producto();
-                    prod.IdProducto = item.IdProducto;
-                    prod.Sku = item.Sku;
-                    prod.Nombre = item.Nombre;
-                    prod.Precio = item.Precio;
-                    lstprod.Add(prod);
-                }
-            }
-
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             Oferta of = new Oferta();
             of.ImagenOferta = imgFoto.Source.ToString();
@@ -89,7 +72,7 @@ namespace QOfreces.WPF
             else
             {
                 of.EstadoOferta = char.Parse(0.ToString());
-            }            
+            }
             of.FechaOferta = dpFecha.SelectedDate;
             of.IdSucursal = (int)cbSucursal.SelectedValue;
 
@@ -97,18 +80,33 @@ namespace QOfreces.WPF
             of.Nombre = txtNombre.Text;
             of.Descripcion = txtDescOf.Text;
             of.OfertaDia = char.Parse("s");
-                        
+
             string json = of.Serializar();
-            
+
             if (proxy.CrearOferta(json))
             {
-                MessageBox.Show("OFERTA CREADA");
+                List<Producto> lstprod = new List<Producto>();
+                var list = dgProd.Items.OfType<Producto>();
+                ProductoHasOferta pho = new ProductoHasOferta();
+                foreach (var item in list)
+                {
+                    if (item.Selec == true)
+                    {
+                        pho.OfertaId = of.IdOferta;
+                        pho.ProductoId = item.IdProducto;
+                        string jerson = pho.Serializar();
+                        proxy.CrearProductoHasOferta();
+                    }
+                }
+                MessageBox.Show("OFERTA CREADA!");
             }
             else
             {
-                MessageBox.Show("OUSH!");
+                MessageBox.Show("ERROR AL CREAR OFERTA!");
             }
-            
+
+
+
         }
 
         private void btnListar_Click(object sender, RoutedEventArgs e)
@@ -161,7 +159,7 @@ namespace QOfreces.WPF
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ExportToPdf(dgProd);
-       }
+        }
 
         private T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
         {

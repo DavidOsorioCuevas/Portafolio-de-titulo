@@ -75,23 +75,17 @@ namespace Core.Negocio
             Core.DALC.USUARIO usuario = new Core.DALC.USUARIO();
             string codigo = "4799";
 
-            var resultUsuario = from a in db.USUARIO where a.NOMBRE_USUARIO.Equals(this.NombreUsuario) select new { a };
+            
             var resultEmail = from a in db.USUARIO where a.EMAIL.Equals(this.Email) select new { a };
             var resultRut = from a in db.USUARIO where a.RUT.Equals(this.Rut) || a.PASSAPORTE.Equals(this.Pasaporte) select new { a };
-            if (resultUsuario.Count()>0)
-            {
-                
-                
-                this.Response = "UE";
-                return SerializarUsuario(this);
-            }
-            else if (resultEmail.Count()>0)
+         if (resultEmail.Count()>0)
             {
                 this.Response = "EE";
                 return SerializarUsuario(this);
             }
             else if (resultRut.Count()>0)
             {
+             
                 this.Response = "RPE";
                 return SerializarUsuario(this);
             }
@@ -99,7 +93,7 @@ namespace Core.Negocio
             {
                 usuario.PERFIL_ID = 3;
 
-                usuario.NOMBRE_USUARIO = this.NombreUsuario;
+                usuario.NOMBRE_USUARIO = "0";
                 usuario.PASSWORD = this.Password;
                 usuario.NOMBRE = this.Nombre;
                 usuario.APELLIDO = this.Apellido;
@@ -139,6 +133,7 @@ namespace Core.Negocio
                 ctx.USUARIO.Find(this.IdUsuario).ACTIVO = "1";
                 ctx.SaveChanges();
                 user.Response = "OK";
+                user.Nombre = result.First().a.NOMBRE;
             }else
             {
                 user.Response = "CI";
@@ -150,7 +145,7 @@ namespace Core.Negocio
         {
             Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
             Usuario user = new Usuario();
-            var result = from a in ctx.USUARIO where this.NombreUsuario.Equals(a.NOMBRE_USUARIO) && this.Password.Equals(a.PASSWORD)
+            var result = from a in ctx.USUARIO where this.Email.Equals(a.EMAIL) && this.Password.Equals(a.PASSWORD)
                          select new{ a.ID_USUARIO,a.NOMBRE,a.PERFIL_ID,a.ACTIVO,a.PUNTOS,a.EMAIL,a.APELLIDO,a.NUMERO_CELULAR,a.FECHA_NACIMIENTO,a.SEXO,a.CODIGO_ACTIVACION};
             if (result.Count()>0)
             {

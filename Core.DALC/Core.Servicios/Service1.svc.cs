@@ -376,5 +376,11 @@ namespace Core.Servicios
             Negocio.Oferta of = new Negocio.Oferta();
             return of.DATAGRID();
         }
+
+        public bool CrearProductoHasOferta()
+        {
+            Negocio.ProductoHasOferta pho = new Negocio.ProductoHasOferta();
+            return pho.CrearProductoHasOferta();
+        }
     }
 }

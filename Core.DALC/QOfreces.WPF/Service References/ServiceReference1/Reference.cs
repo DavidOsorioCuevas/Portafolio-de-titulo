@@ -15,6 +15,18 @@ namespace QOfreces.WPF.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ComprobarValoracion", ReplyAction="http://tempuri.org/IService1/ComprobarValoracionResponse")]
+        string ComprobarValoracion(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ComprobarValoracion", ReplyAction="http://tempuri.org/IService1/ComprobarValoracionResponse")]
+        System.Threading.Tasks.Task<string> ComprobarValoracionAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ValorarOferta", ReplyAction="http://tempuri.org/IService1/ValorarOfertaResponse")]
+        string ValorarOferta(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ValorarOferta", ReplyAction="http://tempuri.org/IService1/ValorarOfertaResponse")]
+        System.Threading.Tasks.Task<string> ValorarOfertaAsync(string json);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearUsuarioWeb", ReplyAction="http://tempuri.org/IService1/CrearUsuarioWebResponse")]
         string CrearUsuarioWeb(string json);
         
@@ -338,6 +350,12 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Data", ReplyAction="http://tempuri.org/IService1/DataResponse")]
         System.Threading.Tasks.Task<string> DataAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearProductoHasOferta", ReplyAction="http://tempuri.org/IService1/CrearProductoHasOfertaResponse")]
+        bool CrearProductoHasOferta();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearProductoHasOferta", ReplyAction="http://tempuri.org/IService1/CrearProductoHasOfertaResponse")]
+        System.Threading.Tasks.Task<bool> CrearProductoHasOfertaAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -365,6 +383,22 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string ComprobarValoracion(string json) {
+            return base.Channel.ComprobarValoracion(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> ComprobarValoracionAsync(string json) {
+            return base.Channel.ComprobarValoracionAsync(json);
+        }
+        
+        public string ValorarOferta(string json) {
+            return base.Channel.ValorarOferta(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> ValorarOfertaAsync(string json) {
+            return base.Channel.ValorarOfertaAsync(json);
         }
         
         public string CrearUsuarioWeb(string json) {
@@ -797,6 +831,14 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> DataAsync() {
             return base.Channel.DataAsync();
+        }
+        
+        public bool CrearProductoHasOferta() {
+            return base.Channel.CrearProductoHasOferta();
+        }
+        
+        public System.Threading.Tasks.Task<bool> CrearProductoHasOfertaAsync() {
+            return base.Channel.CrearProductoHasOfertaAsync();
         }
     }
 }
