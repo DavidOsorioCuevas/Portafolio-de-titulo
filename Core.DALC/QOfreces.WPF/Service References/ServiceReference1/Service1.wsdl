@@ -6,6 +6,18 @@
       <xsd:import schemaLocation="http://localhost:50194/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IService1_ComprobarValoracion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobarValoracion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ComprobarValoracion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobarValoracionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ValorarOferta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValorarOferta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ValorarOferta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValorarOfertaResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_CrearUsuarioWeb_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearUsuarioWeb" />
   </wsdl:message>
@@ -330,7 +342,21 @@
   <wsdl:message name="IService1_Data_OutputMessage">
     <wsdl:part name="parameters" element="tns:DataResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_CrearProductoHasOferta_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearProductoHasOferta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CrearProductoHasOferta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearProductoHasOfertaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
+    <wsdl:operation name="ComprobarValoracion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ComprobarValoracion" message="tns:IService1_ComprobarValoracion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ComprobarValoracionResponse" message="tns:IService1_ComprobarValoracion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValorarOferta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ValorarOferta" message="tns:IService1_ValorarOferta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ValorarOfertaResponse" message="tns:IService1_ValorarOferta_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CrearUsuarioWeb">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearUsuarioWeb" message="tns:IService1_CrearUsuarioWeb_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearUsuarioWebResponse" message="tns:IService1_CrearUsuarioWeb_OutputMessage" />
@@ -547,9 +573,31 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/Data" message="tns:IService1_Data_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DataResponse" message="tns:IService1_Data_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CrearProductoHasOferta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearProductoHasOferta" message="tns:IService1_CrearProductoHasOferta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearProductoHasOfertaResponse" message="tns:IService1_CrearProductoHasOferta_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ComprobarValoracion">
+      <soap:operation soapAction="http://tempuri.org/IService1/ComprobarValoracion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValorarOferta">
+      <soap:operation soapAction="http://tempuri.org/IService1/ValorarOferta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CrearUsuarioWeb">
       <soap:operation soapAction="http://tempuri.org/IService1/CrearUsuarioWeb" style="document" />
       <wsdl:input>
@@ -1029,6 +1077,15 @@
     </wsdl:operation>
     <wsdl:operation name="Data">
       <soap:operation soapAction="http://tempuri.org/IService1/Data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearProductoHasOferta">
+      <soap:operation soapAction="http://tempuri.org/IService1/CrearProductoHasOferta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

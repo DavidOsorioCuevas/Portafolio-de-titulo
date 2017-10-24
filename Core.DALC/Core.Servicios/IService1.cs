@@ -161,6 +161,10 @@ namespace Core.Servicios
         [OperationContract]
         string Data();
 
+        /*PRODUCTO HAS OFERTA*/
+        [OperationContract]
+        bool CrearProductoHasOferta();
+
 
 
 
