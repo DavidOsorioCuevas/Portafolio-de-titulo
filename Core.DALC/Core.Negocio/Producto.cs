@@ -108,7 +108,7 @@ namespace Core.Negocio
                 prod.CODIGO_INTERNO = this.CodigoInterno;
                 prod.NOMBRE = this.Nombre;
                 prod.DESCRIPCION = this.Descripcion;
-                ctx.PRODUCTO.Add(prod);
+               
 
                 ctx.SaveChanges();
                 ctx = null;

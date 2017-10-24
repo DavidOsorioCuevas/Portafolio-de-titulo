@@ -231,12 +231,12 @@ namespace QOfreces.WPF
                     json = r.Serializar();
                     if (proxy.EliminarRetail(json))
                     {
-                        await this.ShowMessageAsync("Exito", "Retail actualizado");
+                        await this.ShowMessageAsync("Exito", "Retail eliminado");
                         LimpiarControles();
                     }
                     else
                     {
-                        await this.ShowMessageAsync("Error", "No se a podido actualizar");
+                        await this.ShowMessageAsync("Error", "No se a podido eliminar");
                         LimpiarControles();
                     }
 
