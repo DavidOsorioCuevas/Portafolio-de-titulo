@@ -252,12 +252,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core.Negocio\Core.Negocio.csproj">
-      <Project>{beccae7d-1427-4423-80bd-2382210a9618}</Project>
-      <Name>Core.Negocio</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\WindowsIcons-license.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +280,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Negocio\Core.Negocio.csproj">
+      <Project>{beccae7d-1427-4423-80bd-2382210a9618}</Project>
+      <Name>Core.Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Servicios\Core.Servicios.csproj">
+      <Project>{f6e1d3e7-40aa-4141-8448-8f50ea278956}</Project>
+      <Name>Core.Servicios</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
