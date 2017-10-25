@@ -163,7 +163,7 @@ namespace Core.Servicios
 
         /*PRODUCTO HAS OFERTA*/
         [OperationContract]
-        bool CrearProductoHasOferta();
+        bool CrearProductoHasOferta(string json);
 
 
 

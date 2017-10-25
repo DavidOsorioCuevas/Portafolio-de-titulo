@@ -95,7 +95,7 @@ namespace QOfreces.WPF
                         pho.OfertaId = of.IdOferta;
                         pho.ProductoId = item.IdProducto;
                         string jerson = pho.Serializar();
-                        proxy.CrearProductoHasOferta();
+                        proxy.CrearProductoHasOferta(jerson);
                     }
                 }
                 MessageBox.Show("OFERTA CREADA!");

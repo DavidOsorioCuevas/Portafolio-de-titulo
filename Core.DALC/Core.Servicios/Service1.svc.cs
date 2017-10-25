@@ -377,9 +377,9 @@ namespace Core.Servicios
             return of.DATAGRID();
         }
 
-        public bool CrearProductoHasOferta()
+        public bool CrearProductoHasOferta(string json)
         {
-            Negocio.ProductoHasOferta pho = new Negocio.ProductoHasOferta();
+            Negocio.ProductoHasOferta pho = new Negocio.ProductoHasOferta(json);
             return pho.CrearProductoHasOferta();
         }
     }

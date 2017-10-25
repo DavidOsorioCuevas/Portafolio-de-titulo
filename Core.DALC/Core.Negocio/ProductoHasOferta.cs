@@ -24,7 +24,7 @@ namespace Core.Negocio
             DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(ProductoHasOferta));
             MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
             ProductoHasOferta des = (ProductoHasOferta)serializador.ReadObject(stream);
-
+            
             this.IdProductoHasOferta = des.IdProductoHasOferta;
             this.ProductoId = des.ProductoId;
             this.OfertaId = des.OfertaId;
@@ -42,12 +42,15 @@ namespace Core.Negocio
             try
             {
                 DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
-                ProductoHasOferta pho = new ProductoHasOferta();
+                DALC.PRODUCTO_HAS_OFERTA pho = new DALC.PRODUCTO_HAS_OFERTA();
+                int idOferta = (int)ctx.OFERTA.Max(u => u.ID_OFERTA);
+                
 
-                pho.IdProductoHasOferta = this.IdProductoHasOferta;
-                pho.ProductoId = this.ProductoId;
-                pho.OfertaId = this.OfertaId;
+                pho.ID_PRODUCTO_HAS_OFERTA = this.IdProductoHasOferta;
+                pho.PRUDUCTO_ID = this.ProductoId;
+                pho.OFERTA_ID = idOferta;
 
+                ctx.PRODUCTO_HAS_OFERTA.Add(pho);                
                 ctx.SaveChanges();
                 ctx = null;
                 return true;

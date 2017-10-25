@@ -352,10 +352,10 @@ namespace QOfreces.WPF.ServiceReference1 {
         System.Threading.Tasks.Task<string> DataAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearProductoHasOferta", ReplyAction="http://tempuri.org/IService1/CrearProductoHasOfertaResponse")]
-        bool CrearProductoHasOferta();
+        bool CrearProductoHasOferta(string json);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CrearProductoHasOferta", ReplyAction="http://tempuri.org/IService1/CrearProductoHasOfertaResponse")]
-        System.Threading.Tasks.Task<bool> CrearProductoHasOfertaAsync();
+        System.Threading.Tasks.Task<bool> CrearProductoHasOfertaAsync(string json);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -833,12 +833,12 @@ namespace QOfreces.WPF.ServiceReference1 {
             return base.Channel.DataAsync();
         }
         
-        public bool CrearProductoHasOferta() {
-            return base.Channel.CrearProductoHasOferta();
+        public bool CrearProductoHasOferta(string json) {
+            return base.Channel.CrearProductoHasOferta(json);
         }
         
-        public System.Threading.Tasks.Task<bool> CrearProductoHasOfertaAsync() {
-            return base.Channel.CrearProductoHasOfertaAsync();
+        public System.Threading.Tasks.Task<bool> CrearProductoHasOfertaAsync(string json) {
+            return base.Channel.CrearProductoHasOfertaAsync(json);
         }
     }
 }

@@ -45,6 +45,7 @@ namespace QOfreces.WPF
                 if (json != null)
                 {
                     user = new Core.Negocio.Usuario(json);
+                    
 
                     if (user.IdPerfil == 1)
                     {
@@ -81,18 +82,6 @@ namespace QOfreces.WPF
                 txtUser.Clear();
                 pbPassword.Clear();
             }
-
-
-
-            /* if (proxy.ValidarUsuarioWPF(txtUser.Text, txtPassword.Text))
-             {
-                 Consumidor con = new Consumidor();
-                 con.Show();
-             }
-             else
-             {
-                 label.Content = "Error de autenticación";
-             }*/
         }
     }
 }
