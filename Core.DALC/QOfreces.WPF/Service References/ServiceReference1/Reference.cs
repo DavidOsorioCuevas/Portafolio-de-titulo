@@ -214,10 +214,10 @@ namespace QOfreces.WPF.ServiceReference1 {
         System.Threading.Tasks.Task<string> ReadAllComunaAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasActivo", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasActivoResponse")]
-        string ReadAllOfertasActivo();
+        string ReadAllOfertasActivo(int idSucursal);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasActivo", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasActivoResponse")]
-        System.Threading.Tasks.Task<string> ReadAllOfertasActivoAsync();
+        System.Threading.Tasks.Task<string> ReadAllOfertasActivoAsync(int idSucursal);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasDesactivo", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasDesactivoResponse")]
         string ReadAllOfertasDesactivo();
@@ -226,10 +226,10 @@ namespace QOfreces.WPF.ServiceReference1 {
         System.Threading.Tasks.Task<string> ReadAllOfertasDesactivoAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertas", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasResponse")]
-        string ReadAllOfertas();
+        string ReadAllOfertas(int idSucursal);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertas", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasResponse")]
-        System.Threading.Tasks.Task<string> ReadAllOfertasAsync();
+        System.Threading.Tasks.Task<string> ReadAllOfertasAsync(int idSucursal);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasDia", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasDiaResponse")]
         string ReadAllOfertasDia();
@@ -649,12 +649,12 @@ namespace QOfreces.WPF.ServiceReference1 {
             return base.Channel.ReadAllComunaAsync();
         }
         
-        public string ReadAllOfertasActivo() {
-            return base.Channel.ReadAllOfertasActivo();
+        public string ReadAllOfertasActivo(int idSucursal) {
+            return base.Channel.ReadAllOfertasActivo(idSucursal);
         }
         
-        public System.Threading.Tasks.Task<string> ReadAllOfertasActivoAsync() {
-            return base.Channel.ReadAllOfertasActivoAsync();
+        public System.Threading.Tasks.Task<string> ReadAllOfertasActivoAsync(int idSucursal) {
+            return base.Channel.ReadAllOfertasActivoAsync(idSucursal);
         }
         
         public string ReadAllOfertasDesactivo() {
@@ -665,12 +665,12 @@ namespace QOfreces.WPF.ServiceReference1 {
             return base.Channel.ReadAllOfertasDesactivoAsync();
         }
         
-        public string ReadAllOfertas() {
-            return base.Channel.ReadAllOfertas();
+        public string ReadAllOfertas(int idSucursal) {
+            return base.Channel.ReadAllOfertas(idSucursal);
         }
         
-        public System.Threading.Tasks.Task<string> ReadAllOfertasAsync() {
-            return base.Channel.ReadAllOfertasAsync();
+        public System.Threading.Tasks.Task<string> ReadAllOfertasAsync(int idSucursal) {
+            return base.Channel.ReadAllOfertasAsync(idSucursal);
         }
         
         public string ReadAllOfertasDia() {

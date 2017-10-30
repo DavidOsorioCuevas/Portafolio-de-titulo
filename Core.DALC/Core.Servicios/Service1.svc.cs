@@ -280,10 +280,10 @@ namespace Core.Servicios
             return collCat.ReadAllCategoria();
         }
 
-        public string ReadAllOfertasActivo()
+        public string ReadAllOfertasActivo(int idSucursal)
         {
             Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
-            return collOfer.ReadAllOfertasActivo();
+            return collOfer.ReadAllOfertasActivo(idSucursal);
         }
 
 
@@ -331,10 +331,10 @@ namespace Core.Servicios
             return collOfer.ReadAllOfertasDesactivo();
         }
 
-        public string ReadAllOfertas()
+        public string ReadAllOfertas(int idSucursal)
         {
             Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
-            return collOfer.ReadAllOfertas();
+            return collOfer.ReadAllOfertas(idSucursal);
         }
         public string ReadAllOfertasDia()
         {

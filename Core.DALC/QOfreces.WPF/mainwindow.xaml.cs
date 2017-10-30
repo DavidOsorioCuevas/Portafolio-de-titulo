@@ -22,11 +22,12 @@ namespace QOfreces.WPF
     /// </summary>
     public partial class mainwindow : MetroWindow
     {
+        public static Core.Negocio.Usuario UsuarioACtual;
         public mainwindow()
         {
             InitializeComponent();
-            txtUser.Focus();
-        }
+            txtUser.Focus();           
+    }
 
         private async void button_Click(object sender, RoutedEventArgs e)
         {
@@ -40,12 +41,13 @@ namespace QOfreces.WPF
 
                 string json = user.Serializar();
                 json = proxy.LeerUsuario(json);
-
+                
+                
 
                 if (json != null)
                 {
                     user = new Core.Negocio.Usuario(json);
-                    
+                    UsuarioACtual = user;
 
                     if (user.IdPerfil == 1)
                     {

@@ -107,13 +107,14 @@ namespace Core.Servicios
 
         /*OFERTACOLLECTIONS*/
         [OperationContract]
-        string ReadAllOfertasActivo();
+        string ReadAllOfertasActivo(int idSucursal);
         [OperationContract]
         string ReadAllOfertasDesactivo();
         [OperationContract]
-        string ReadAllOfertas();
+        string ReadAllOfertas(int idSucursal);
         [OperationContract]
         string ReadAllOfertasDia();
+
         /*Descuento*/
         [OperationContract]
         bool CrearDesc(string json);
@@ -133,6 +134,7 @@ namespace Core.Servicios
         /*RetailCollections*/
         [OperationContract]
         string ReadAllRetail();
+
         /*PRODUCTO*/
         [OperationContract]
         bool CrearProducto(string json);

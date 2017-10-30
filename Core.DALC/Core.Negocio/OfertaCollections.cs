@@ -26,8 +26,13 @@ namespace Core.Negocio
         }
 
 
-        private OfertaCollections GenerarListadoActivo(List<DALC.OFERTA> listaDALC)
+        private OfertaCollections GenerarListadoActivo(int idSucursal)
         {
+            DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
+
+            var listaDALC = from o in ctx.OFERTA
+                            where o.SUCURSALES_ID == idSucursal
+                            select o;
 
             OfertaCollections lista = new OfertaCollections();
             foreach (var item in listaDALC)
@@ -118,9 +123,13 @@ namespace Core.Negocio
 
         }
 
-        private OfertaCollections GenerarListado(List<DALC.OFERTA> listaDALC)
+        private OfertaCollections GenerarListado(int idSucursal)
         {
+            DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
 
+            var listaDALC = from o in ctx.OFERTA
+                            where o.SUCURSALES_ID == idSucursal
+                            select o;
             OfertaCollections lista = new OfertaCollections();
             foreach (var item in listaDALC)
             {
@@ -159,11 +168,9 @@ namespace Core.Negocio
             var listaDA = new DALC.QueOfrecesEntities().OFERTA;
             return GenerarListadoDia(listaDA.ToList()).Serializar();
         }
-        public string ReadAllOfertasActivo()
-        {
-
-            var listaDA = new DALC.QueOfrecesEntities().OFERTA;
-            return GenerarListadoActivo(listaDA.ToList()).Serializar();
+        public string ReadAllOfertasActivo(int idSucursal)
+        {            
+            return GenerarListadoActivo(idSucursal).Serializar();
         }
         public string ReadAllOfertasDesactivo()
         {
@@ -172,11 +179,9 @@ namespace Core.Negocio
             return GenerarListadoDesactivo(listaDA.ToList()).Serializar();
         }
 
-        public string ReadAllOfertas()
-        {
-
-            var listaDA = new DALC.QueOfrecesEntities().OFERTA;
-            return GenerarListado(listaDA.ToList()).Serializar();
+        public string ReadAllOfertas(int idSucursal)
+        {                     
+            return GenerarListado(idSucursal).Serializar();
         }
 
         public string Serializar()

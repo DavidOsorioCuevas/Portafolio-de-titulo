@@ -65,7 +65,7 @@ namespace QOfreces.WPF
         private async void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = proxy.ReadAllOfertas();
+            string json = proxy.ReadAllOfertas(mainwindow.UsuarioACtual.IdSucursal);
             Core.Negocio.OfertaCollections collOf = new Core.Negocio.OfertaCollections(json);
 
             Core.Negocio.OfertaCollections collOfer = new Core.Negocio.OfertaCollections();
@@ -112,7 +112,7 @@ namespace QOfreces.WPF
         private async void btnBusquedaPu_Click(object sender, RoutedEventArgs e)
         {
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = proxy.ReadAllOfertas();
+            string json = proxy.ReadAllOfertas(mainwindow.UsuarioACtual.IdSucursal);
             Core.Negocio.OfertaCollections collOf = new Core.Negocio.OfertaCollections(json);
 
             Core.Negocio.OfertaCollections collOfer = new Core.Negocio.OfertaCollections();
