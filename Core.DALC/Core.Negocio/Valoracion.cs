@@ -56,8 +56,12 @@ namespace Core.Negocio
         {
             Core.DALC.QueOfrecesEntities db = new Core.DALC.QueOfrecesEntities();
             Core.DALC.VALORACION valoracion = new Core.DALC.VALORACION();
+            Core.DALC.USUARIO user = new Core.DALC.USUARIO();
+
+            int puntos=((int)db.USUARIO.Find(this.IdUsuario).PUNTOS)+10;
             try
             {
+                db.USUARIO.Find(this.IdUsuario).PUNTOS = puntos;
                 valoracion.CALIFICACION = this.Calificacion.ToString();
                 valoracion.USUARIO_ID = this.IdUsuario;
                 valoracion.OFERTA_ID = this.IdOferta;
