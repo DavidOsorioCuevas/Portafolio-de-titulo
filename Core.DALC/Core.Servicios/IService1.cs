@@ -15,6 +15,8 @@ namespace Core.Servicios
 
         /*USUARIO*/
         [OperationContract]
+        string Puntos(string json);
+        [OperationContract]
         string ComprobarValoracion(string json);
         [OperationContract]
         string ValorarOferta(string json);

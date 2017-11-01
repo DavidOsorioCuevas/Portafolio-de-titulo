@@ -141,6 +141,14 @@ namespace Core.Negocio
             return SerializarUsuario(user);
         }
 
+        public string PuntosTraer()
+        {
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+            Usuario user = new Usuario();
+            var result = from a in ctx.USUARIO where a.ID_USUARIO == this.IdUsuario select new { a.PUNTOS };
+            user.Puntos = (int)result.First().PUNTOS;
+            return SerializarUsuario(user);
+        }
         public string ValidarWeb()
         {
             Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
