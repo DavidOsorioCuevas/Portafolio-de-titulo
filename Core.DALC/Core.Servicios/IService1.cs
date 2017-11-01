@@ -107,6 +107,8 @@ namespace Core.Servicios
 
         /*OFERTACOLLECTIONS*/
         [OperationContract]
+        string ReadAllOfertasActivoWeb();
+        [OperationContract]
         string ReadAllOfertasActivo(int idSucursal);
         [OperationContract]
         string ReadAllOfertasDesactivo();

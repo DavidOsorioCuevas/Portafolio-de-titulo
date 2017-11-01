@@ -286,7 +286,11 @@ namespace Core.Servicios
             return collOfer.ReadAllOfertasActivo(idSucursal);
         }
 
-
+        public string ReadAllOfertasActivoWeb()
+        {
+            Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
+            return collOfer.ReadAllOfertasActivoWeb();
+        }
 
         public string ReadAllProductos()
         {

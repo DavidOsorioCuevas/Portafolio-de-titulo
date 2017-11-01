@@ -61,6 +61,40 @@ namespace Core.Negocio
             return lista;
 
         }
+
+        private OfertaCollections GenerarListadoActivoWeb()
+        {
+            DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
+
+            var listaDALC = from o in ctx.OFERTA
+                            where o.ESTADO_OFERTA == "1"
+                            select o;
+
+            OfertaCollections lista = new OfertaCollections();
+            foreach (var item in listaDALC)
+            {
+               
+                    Oferta of = new Oferta();
+                    of.IdOferta = (int)item.ID_OFERTA;
+                    of.ImagenOferta = item.IMAGEN_OFERTA;
+                    of.MinProductos = (int)item.MIN_PRODUCTO;
+                    of.MaxProductos = (int)item.MAX_PRODUCTO;
+                    of.EstadoOferta = Convert.ToChar(item.ESTADO_OFERTA);
+                    of.PrecioOferta = (int)item.PRECIO_DESPUES;
+                    of.PrecioAntes = (int)item.PRECIO_ANTES;
+                    of.FechaOferta = item.FECHA_OFERTA;
+                    of.IdSucursal = (int)item.SUCURSALES_ID;
+                    of.CategoriaIdOferta = (int)item.CATEGORIA_OFERTA_ID;
+                    of.Nombre = item.NOMBRE;
+                    of.Descripcion = item.DESCRIPCION;
+                    of.Selec = true;
+
+                    lista.Add(of);
+                
+            }
+            return lista;
+
+        }
         private OfertaCollections GenerarListadoDesactivo(List<DALC.OFERTA> listaDALC)
         {
 
@@ -171,6 +205,10 @@ namespace Core.Negocio
         public string ReadAllOfertasActivo(int idSucursal)
         {            
             return GenerarListadoActivo(idSucursal).Serializar();
+        }
+        public string ReadAllOfertasActivoWeb()
+        {
+            return GenerarListadoActivoWeb().Serializar();
         }
         public string ReadAllOfertasDesactivo()
         {
