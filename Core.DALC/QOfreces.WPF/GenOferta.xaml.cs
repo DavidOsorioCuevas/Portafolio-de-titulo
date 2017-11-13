@@ -136,7 +136,7 @@ namespace QOfreces.WPF
                     imgFoto.Source = b;
 
                     btnAdjuntar.Content = "Quitar Foto";
-                    string ruta = string.Format("{0}{1}", "C:/temp/Repositorio/Portafolio-de-titulo/Core.DALC/QOfreces.WPF/imgOferta/", openFile.SafeFileName);
+                    string ruta = string.Format("{0}{1}", "C:/temp/Repositorio/Portafolio-de-titulo/Core.DALC/Core.Servicios/imgOferta/", openFile.SafeFileName);
                     File.Copy(openFile.FileName, ruta);
                  
                 }
