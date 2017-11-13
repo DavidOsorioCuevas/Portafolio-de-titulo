@@ -61,7 +61,7 @@ namespace QOfreces.WPF
         {
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             Oferta of = new Oferta();
-            of.ImagenOferta = imgFoto.Name.ToString();
+            of.ImagenOferta = imgFoto.Source.ToString();
             of.MinProductos = int.Parse(txtMinProd.Text);
             of.MaxProductos = int.Parse(txtMaxProd.Text);
             of.PrecioAntes = int.Parse(txtPrecioAntes.Text);
