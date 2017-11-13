@@ -24,6 +24,7 @@ using iTextSharp.text.pdf;
 using System.Windows.Controls.Primitives;
 using iTextSharp.text;
 using System.IO;
+using System.Net;
 
 namespace QOfreces.WPF
 {
@@ -99,6 +100,8 @@ namespace QOfreces.WPF
                         proxy.CrearProductoHasOferta(jerson);
                     }
                 }
+
+                
                 MessageBox.Show("OFERTA CREADA!");
             }
             else
@@ -136,9 +139,30 @@ namespace QOfreces.WPF
                     imgFoto.Source = b;
 
                     btnAdjuntar.Content = "Quitar Foto";
-                    string ruta = string.Format("{0}{1}", "C:/temp/Repositorio/Portafolio-de-titulo/Core.DALC/Core.Servicios/imgOferta/", openFile.SafeFileName);
-                    File.Copy(openFile.FileName, ruta);
-                 
+                    /*copia imagen a carpeta imgOferta*/
+                    // string ruta = string.Format("{0}{1}", "C:/temp/Repositorio/Portafolio-de-titulo/Core.DALC/Core.Servicios/imgOferta/", openFile.SafeFileName);
+                    //File.Copy(openFile.FileName, ruta);
+
+                    /*Envia por ftp imagen adjuntada*/
+                    string user = "misofertas@adonisweb.cl";
+                    string pw = "789456123";
+                    string FTP = "ftp://adonisweb.cl/" + openFile.SafeFileName;
+
+
+                    FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create(FTP);
+                    request.Method = WebRequestMethods.Ftp.UploadFile;
+                    request.Credentials = new NetworkCredential(user, pw);
+                    request.UsePassive = true;
+                    request.UseBinary = true;
+                    request.KeepAlive = true;
+                    FileStream stream = File.OpenRead(openFile.FileName);
+                    byte[] buffer = new byte[stream.Length];
+                    stream.Read(buffer, 0, buffer.Length);
+                    stream.Close();
+                    Stream reqStream = request.GetRequestStream();
+                    reqStream.Write(buffer, 0, buffer.Length);
+                    reqStream.Flush();
+                    reqStream.Close();
                 }
             }
             else
@@ -146,9 +170,8 @@ namespace QOfreces.WPF
                 imgFoto.Source = null;
                 btnAdjuntar.Content = "Cambiar Foto";
             }
-                      
-        }
 
+        }
 
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
