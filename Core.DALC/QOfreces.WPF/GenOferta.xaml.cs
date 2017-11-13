@@ -23,6 +23,7 @@ using MahApps.Metro.Behaviours;
 using iTextSharp.text.pdf;
 using System.Windows.Controls.Primitives;
 using iTextSharp.text;
+using System.IO;
 
 namespace QOfreces.WPF
 {
@@ -60,7 +61,7 @@ namespace QOfreces.WPF
         {
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             Oferta of = new Oferta();
-            of.ImagenOferta = imgFoto.Source.ToString();
+            of.ImagenOferta = imgFoto.Name.ToString();
             of.MinProductos = int.Parse(txtMinProd.Text);
             of.MaxProductos = int.Parse(txtMaxProd.Text);
             of.PrecioAntes = int.Parse(txtPrecioAntes.Text);
@@ -135,6 +136,9 @@ namespace QOfreces.WPF
                     imgFoto.Source = b;
 
                     btnAdjuntar.Content = "Quitar Foto";
+                    string ruta = string.Format("{0}{1}", "C:/temp/Repositorio/Portafolio-de-titulo/Core.DALC/QOfreces.WPF/imgOferta/", openFile.SafeFileName);
+                    File.Copy(openFile.FileName, ruta);
+                 
                 }
             }
             else
@@ -142,7 +146,9 @@ namespace QOfreces.WPF
                 imgFoto.Source = null;
                 btnAdjuntar.Content = "Cambiar Foto";
             }
+                      
         }
+
 
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {

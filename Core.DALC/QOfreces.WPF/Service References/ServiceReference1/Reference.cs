@@ -15,6 +15,12 @@ namespace QOfreces.WPF.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Puntos", ReplyAction="http://tempuri.org/IService1/PuntosResponse")]
+        string Puntos(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Puntos", ReplyAction="http://tempuri.org/IService1/PuntosResponse")]
+        System.Threading.Tasks.Task<string> PuntosAsync(string json);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ComprobarValoracion", ReplyAction="http://tempuri.org/IService1/ComprobarValoracionResponse")]
         string ComprobarValoracion(string json);
         
@@ -213,6 +219,12 @@ namespace QOfreces.WPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllComuna", ReplyAction="http://tempuri.org/IService1/ReadAllComunaResponse")]
         System.Threading.Tasks.Task<string> ReadAllComunaAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasActivoWeb", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasActivoWebResponse")]
+        string ReadAllOfertasActivoWeb();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasActivoWeb", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasActivoWebResponse")]
+        System.Threading.Tasks.Task<string> ReadAllOfertasActivoWebAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasActivo", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasActivoResponse")]
         string ReadAllOfertasActivo(int idSucursal);
         
@@ -383,6 +395,14 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string Puntos(string json) {
+            return base.Channel.Puntos(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> PuntosAsync(string json) {
+            return base.Channel.PuntosAsync(json);
         }
         
         public string ComprobarValoracion(string json) {
@@ -647,6 +667,14 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> ReadAllComunaAsync() {
             return base.Channel.ReadAllComunaAsync();
+        }
+        
+        public string ReadAllOfertasActivoWeb() {
+            return base.Channel.ReadAllOfertasActivoWeb();
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadAllOfertasActivoWebAsync() {
+            return base.Channel.ReadAllOfertasActivoWebAsync();
         }
         
         public string ReadAllOfertasActivo(int idSucursal) {

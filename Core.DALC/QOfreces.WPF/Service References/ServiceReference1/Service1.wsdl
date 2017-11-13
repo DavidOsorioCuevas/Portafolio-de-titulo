@@ -6,6 +6,12 @@
       <xsd:import schemaLocation="http://localhost:50194/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IService1_Puntos_InputMessage">
+    <wsdl:part name="parameters" element="tns:Puntos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Puntos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PuntosResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_ComprobarValoracion_InputMessage">
     <wsdl:part name="parameters" element="tns:ComprobarValoracion" />
   </wsdl:message>
@@ -204,6 +210,12 @@
   <wsdl:message name="IService1_ReadAllComuna_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadAllComunaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_ReadAllOfertasActivoWeb_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllOfertasActivoWeb" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadAllOfertasActivoWeb_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllOfertasActivoWebResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_ReadAllOfertasActivo_InputMessage">
     <wsdl:part name="parameters" element="tns:ReadAllOfertasActivo" />
   </wsdl:message>
@@ -349,6 +361,10 @@
     <wsdl:part name="parameters" element="tns:CrearProductoHasOfertaResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
+    <wsdl:operation name="Puntos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Puntos" message="tns:IService1_Puntos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PuntosResponse" message="tns:IService1_Puntos_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ComprobarValoracion">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ComprobarValoracion" message="tns:IService1_ComprobarValoracion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ComprobarValoracionResponse" message="tns:IService1_ComprobarValoracion_OutputMessage" />
@@ -481,6 +497,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllComuna" message="tns:IService1_ReadAllComuna_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllComunaResponse" message="tns:IService1_ReadAllComuna_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ReadAllOfertasActivoWeb">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasActivoWeb" message="tns:IService1_ReadAllOfertasActivoWeb_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasActivoWebResponse" message="tns:IService1_ReadAllOfertasActivoWeb_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ReadAllOfertasActivo">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasActivo" message="tns:IService1_ReadAllOfertasActivo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadAllOfertasActivoResponse" message="tns:IService1_ReadAllOfertasActivo_OutputMessage" />
@@ -580,6 +600,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Puntos">
+      <soap:operation soapAction="http://tempuri.org/IService1/Puntos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ComprobarValoracion">
       <soap:operation soapAction="http://tempuri.org/IService1/ComprobarValoracion" style="document" />
       <wsdl:input>
@@ -870,6 +899,15 @@
     </wsdl:operation>
     <wsdl:operation name="ReadAllComuna">
       <soap:operation soapAction="http://tempuri.org/IService1/ReadAllComuna" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllOfertasActivoWeb">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadAllOfertasActivoWeb" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
