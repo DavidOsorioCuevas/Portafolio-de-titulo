@@ -149,6 +149,8 @@ namespace Core.Servicios
 
         /*Oferta*/
         [OperationContract]
+        string Filtrar(string json);
+        [OperationContract]
         string TraerOferta(string json);
         [OperationContract]
         bool CrearOferta(string json);

@@ -32,7 +32,7 @@ namespace Core.Negocio
         {
             Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
             var result = from a in ctx.OFERTA
-                         where a.NOMBRE.ToLower().Contains(parametro.ToLower()) || a.DESCRIPCION.ToLower().Contains(parametro.ToLower())
+                         where a.NOMBRE.ToLower().Contains(parametro.ToLower()) || a.DESCRIPCION.ToLower().Contains(parametro.ToLower()) && a.ESTADO_OFERTA=="1"
                          select new
                          {
                              a
@@ -94,6 +94,102 @@ namespace Core.Negocio
 
 
             return SerializarComuna(comunaLista);
+        }
+
+
+        public string Filtrar(string json) {
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            FilterParameter f = (FilterParameter)serializador.ReadObject(stream);
+           
+            List<Oferta> ofertaLista = new List<Oferta>();
+            switch (f.parameter)
+            {
+                case "PRECIOMENORMAYOR":
+                    var result = from a in ctx.OFERTA where a.ESTADO_OFERTA == "1" orderby a.PRECIO_DESPUES ascending select new { a };
+                    foreach (var item in result)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MAX_PRODUCTO;
+                        of.EstadoOferta = Convert.ToChar(item.a.ESTADO_OFERTA);
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        of.IdSucursal = (int)item.a.SUCURSALES_ID;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.Selec = false;
+
+                        ofertaLista.Add(of);
+                    }
+                break;
+                case "PRECIOMAYORMENOR":
+                    var result2 = from a in ctx.OFERTA where a.ESTADO_OFERTA == "1" orderby a.PRECIO_DESPUES descending select new { a };
+                    foreach (var item in result2)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MAX_PRODUCTO;
+                        of.EstadoOferta = Convert.ToChar(item.a.ESTADO_OFERTA);
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        of.IdSucursal = (int)item.a.SUCURSALES_ID;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.Selec = false;
+
+                        ofertaLista.Add(of);
+                    }
+                    break;
+                case "RECIENTES":
+                    var result3 = from a in ctx.OFERTA where a.ESTADO_OFERTA == "1" orderby a.FECHA_OFERTA descending select new { a };
+                    foreach (var item in result3)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MAX_PRODUCTO;
+                        of.EstadoOferta = Convert.ToChar(item.a.ESTADO_OFERTA);
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        of.IdSucursal = (int)item.a.SUCURSALES_ID;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.Selec = false;
+
+                        ofertaLista.Add(of);
+                    }
+                    break;
+            }
+
+
+            
+            return SerializarOferta(ofertaLista);
+        }
+        public string SerializarFilterParameter(List<FilterParameter> filter)
+        {
+
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(List<FilterParameter>));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, filter);
+
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+
+            return ser.ToString();
+
         }
         public string SerializarRegion(List<Region> region)
         {
