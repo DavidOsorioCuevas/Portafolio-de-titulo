@@ -33,8 +33,10 @@ namespace QOfreces.WPF
     /// </summary>
     public partial class GenOferta : MetroWindow
     {
+        private string rutaNombreImagenOferta;
         public GenOferta()
         {
+            
 
             InitializeComponent();
             CargarCombobox();
@@ -62,7 +64,7 @@ namespace QOfreces.WPF
         {
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             Oferta of = new Oferta();
-            of.ImagenOferta = imgFoto.Source.ToString();
+            of.ImagenOferta = txtNombre.Text + DateTime.Now.ToString();
             of.MinProductos = int.Parse(txtMinProd.Text);
             of.MaxProductos = int.Parse(txtMaxProd.Text);
             of.PrecioAntes = int.Parse(txtPrecioAntes.Text);
@@ -100,8 +102,27 @@ namespace QOfreces.WPF
                         proxy.CrearProductoHasOferta(jerson);
                     }
                 }
+                /*Envia por ftp imagen adjuntada*/                
+                string user = "misofertas@adonisweb.cl";
+                string pw = "789456123";
+                string FTP = "ftp://adonisweb.cl/" + of.Nombre+"_"+ DateTime.Now.ToString();
 
-                
+
+                FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create(FTP);
+                request.Method = WebRequestMethods.Ftp.UploadFile;
+                request.Credentials = new NetworkCredential(user, pw);
+                request.UsePassive = true;
+                request.UseBinary = true;
+                request.KeepAlive = true;
+                FileStream stream = File.OpenRead(rutaNombreImagenOferta);
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, buffer.Length);
+                stream.Close();
+                Stream reqStream = request.GetRequestStream();
+                reqStream.Write(buffer, 0, buffer.Length);
+                reqStream.Flush();
+                reqStream.Close();
+                                
                 MessageBox.Show("OFERTA CREADA!");
             }
             else
@@ -139,30 +160,10 @@ namespace QOfreces.WPF
                     imgFoto.Source = b;
 
                     btnAdjuntar.Content = "Quitar Foto";
+                    rutaNombreImagenOferta = openFile.FileName;
                     /*copia imagen a carpeta imgOferta*/
                     // string ruta = string.Format("{0}{1}", "C:/temp/Repositorio/Portafolio-de-titulo/Core.DALC/Core.Servicios/imgOferta/", openFile.SafeFileName);
-                    //File.Copy(openFile.FileName, ruta);
-
-                    /*Envia por ftp imagen adjuntada*/
-                    string user = "misofertas@adonisweb.cl";
-                    string pw = "789456123";
-                    string FTP = "ftp://adonisweb.cl/" + openFile.SafeFileName;
-
-
-                    FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create(FTP);
-                    request.Method = WebRequestMethods.Ftp.UploadFile;
-                    request.Credentials = new NetworkCredential(user, pw);
-                    request.UsePassive = true;
-                    request.UseBinary = true;
-                    request.KeepAlive = true;
-                    FileStream stream = File.OpenRead(openFile.FileName);
-                    byte[] buffer = new byte[stream.Length];
-                    stream.Read(buffer, 0, buffer.Length);
-                    stream.Close();
-                    Stream reqStream = request.GetRequestStream();
-                    reqStream.Write(buffer, 0, buffer.Length);
-                    reqStream.Flush();
-                    reqStream.Close();
+                    //File.Copy(openFile.FileName, ruta);                    
                 }
             }
             else

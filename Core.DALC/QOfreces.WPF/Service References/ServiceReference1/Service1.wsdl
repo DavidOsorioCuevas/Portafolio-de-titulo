@@ -300,6 +300,12 @@
   <wsdl:message name="IService1_EliminarProducto_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarProductoResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_Filtrar_InputMessage">
+    <wsdl:part name="parameters" element="tns:Filtrar" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Filtrar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FiltrarResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_TraerOferta_InputMessage">
     <wsdl:part name="parameters" element="tns:TraerOferta" />
   </wsdl:message>
@@ -556,6 +562,10 @@
     <wsdl:operation name="EliminarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarProducto" message="tns:IService1_EliminarProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarProductoResponse" message="tns:IService1_EliminarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Filtrar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Filtrar" message="tns:IService1_Filtrar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/FiltrarResponse" message="tns:IService1_Filtrar_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="TraerOferta">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerOferta" message="tns:IService1_TraerOferta_InputMessage" />
@@ -1034,6 +1044,15 @@
     </wsdl:operation>
     <wsdl:operation name="EliminarProducto">
       <soap:operation soapAction="http://tempuri.org/IService1/EliminarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Filtrar">
+      <soap:operation soapAction="http://tempuri.org/IService1/Filtrar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

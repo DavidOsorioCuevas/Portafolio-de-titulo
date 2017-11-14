@@ -38,6 +38,7 @@
         <AssociationConnector Association="QueOfrecesModel.USUARIO_REGION_FK" ManuallyRouted="false" />
         <AssociationConnector Association="QueOfrecesModel.SUCURSALES_RETAIL_FK" ManuallyRouted="false" />
         <AssociationConnector Association="QueOfrecesModel.VALORACION_USUARIO_FK" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QueOfrecesModel.OFERTA_HAS_SUCURSAL" Width="1.5" PointX="0.75" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
