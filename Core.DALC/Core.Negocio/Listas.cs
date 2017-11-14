@@ -32,7 +32,7 @@ namespace Core.Negocio
         {
             Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
             var result = from a in ctx.OFERTA
-                         where a.NOMBRE.Contains(parametro) || a.DESCRIPCION.Contains(parametro)
+                         where a.NOMBRE.ToLower().Contains(parametro.ToLower()) || a.DESCRIPCION.ToLower().Contains(parametro.ToLower())
                          select new
                          {
                              a
