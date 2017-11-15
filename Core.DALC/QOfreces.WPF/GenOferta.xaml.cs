@@ -36,7 +36,7 @@ namespace QOfreces.WPF
         private string rutaNombreImagenOferta;
         public GenOferta()
         {
-            
+
 
             InitializeComponent();
             CargarCombobox();
@@ -62,9 +62,13 @@ namespace QOfreces.WPF
 
         private void btnGenOferta_Click(object sender, RoutedEventArgs e)
         {
+
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             Oferta of = new Oferta();
-            of.ImagenOferta = txtNombre.Text + "_" + DateTime.Now.ToString();
+
+            string nombreImagen = txtNombre.Text + "_" + DateTime.Now.ToString();
+
+            of.ImagenOferta = nombreImagen;
             of.MinProductos = int.Parse(txtMinProd.Text);
             of.MaxProductos = int.Parse(txtMaxProd.Text);
             of.PrecioAntes = int.Parse(txtPrecioAntes.Text);
@@ -102,11 +106,11 @@ namespace QOfreces.WPF
                         proxy.CrearProductoHasOferta(jerson);
                     }
                 }
-                /*Envia por ftp imagen adjuntada*/                
+                /*Envia por ftp imagen adjuntada*/
+
                 string user = "misofertas@adonisweb.cl";
                 string pw = "789456123";
-                string FTP = "ftp://adonisweb.cl/" + of.Nombre + "_" + DateTime.Now.ToString();
-
+                string FTP = "ftp://adonisweb.cl/" + nombreImagen;
 
                 FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create(FTP);
                 request.Method = WebRequestMethods.Ftp.UploadFile;
@@ -122,7 +126,7 @@ namespace QOfreces.WPF
                 reqStream.Write(buffer, 0, buffer.Length);
                 reqStream.Flush();
                 reqStream.Close();
-                                
+
                 MessageBox.Show("OFERTA CREADA!");
             }
             else
