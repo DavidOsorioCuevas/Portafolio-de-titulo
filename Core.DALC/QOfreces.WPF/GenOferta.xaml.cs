@@ -64,7 +64,7 @@ namespace QOfreces.WPF
         {
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             Oferta of = new Oferta();
-            of.ImagenOferta = txtNombre.Text + DateTime.Now.ToString();
+            of.ImagenOferta = txtNombre.Text + "_" + DateTime.Now.ToString();
             of.MinProductos = int.Parse(txtMinProd.Text);
             of.MaxProductos = int.Parse(txtMaxProd.Text);
             of.PrecioAntes = int.Parse(txtPrecioAntes.Text);
@@ -105,7 +105,7 @@ namespace QOfreces.WPF
                 /*Envia por ftp imagen adjuntada*/                
                 string user = "misofertas@adonisweb.cl";
                 string pw = "789456123";
-                string FTP = "ftp://adonisweb.cl/" + of.Nombre+"_"+ DateTime.Now.ToString();
+                string FTP = "ftp://adonisweb.cl/" + of.Nombre + "_" + DateTime.Now.ToString();
 
 
                 FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create(FTP);
