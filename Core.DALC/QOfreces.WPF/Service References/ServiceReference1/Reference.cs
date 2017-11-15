@@ -309,6 +309,12 @@ namespace QOfreces.WPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarProducto", ReplyAction="http://tempuri.org/IService1/EliminarProductoResponse")]
         System.Threading.Tasks.Task<bool> EliminarProductoAsync(string json);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Filtrar", ReplyAction="http://tempuri.org/IService1/FiltrarResponse")]
+        string Filtrar(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Filtrar", ReplyAction="http://tempuri.org/IService1/FiltrarResponse")]
+        System.Threading.Tasks.Task<string> FiltrarAsync(string json);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerOferta", ReplyAction="http://tempuri.org/IService1/TraerOfertaResponse")]
         string TraerOferta(string json);
         
@@ -787,6 +793,14 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> EliminarProductoAsync(string json) {
             return base.Channel.EliminarProductoAsync(json);
+        }
+        
+        public string Filtrar(string json) {
+            return base.Channel.Filtrar(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> FiltrarAsync(string json) {
+            return base.Channel.FiltrarAsync(json);
         }
         
         public string TraerOferta(string json) {

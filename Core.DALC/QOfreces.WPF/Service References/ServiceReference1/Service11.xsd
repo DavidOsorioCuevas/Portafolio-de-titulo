@@ -659,6 +659,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="Filtrar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FiltrarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FiltrarResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="TraerOferta">
     <xs:complexType>
       <xs:sequence>
