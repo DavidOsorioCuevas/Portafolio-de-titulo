@@ -34,9 +34,10 @@ namespace QOfreces.WPF
     public partial class GenOferta : MetroWindow
     {
         private string rutaNombreImagenOferta;
+
+        string nombreCompleto = string.Format("{0} {1}", mainwindow.UsuarioACtual.Nombre, mainwindow.UsuarioACtual.Apellido);
         public GenOferta()
         {
-
 
             InitializeComponent();
             CargarCombobox();
@@ -44,6 +45,7 @@ namespace QOfreces.WPF
 
         private void CargarCombobox()
         {
+
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             string json = proxy.ReadAllSucursal();
             SucursalCollections sucCol = new SucursalCollections(json);
@@ -56,6 +58,9 @@ namespace QOfreces.WPF
             cbCatOf.DisplayMemberPath = "Nombre";
             cbCatOf.SelectedValuePath = "IdCategoria";
             cbCatOf.ItemsSource = catColl.ToList();
+
+            // Carga Nombre y Apellido del usuario actual
+            lblUserAct.Content = "Bienvenido " +nombreCompleto;
 
 
         }

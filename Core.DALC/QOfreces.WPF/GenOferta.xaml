@@ -18,17 +18,18 @@
             <ColumnDefinition Width="417*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="btnGenOferta" Content="Generar Oferta" HorizontalAlignment="Left" Margin="30,586,0,0" VerticalAlignment="Top" Width="128" Click="btnGenOferta_Click" BorderBrush="Black" Height="27" Grid.Column="1"/>
-        <DataGrid x:Name="dgProd" CanUserAddRows="False" HorizontalAlignment="Left" Margin="29,20,0,0" VerticalAlignment="Top" Height="221" Width="574"  AutoGenerateColumns="false" Grid.ColumnSpan="2">
+        <DataGrid x:Name="dgProd" CanUserAddRows="False" HorizontalAlignment="Left" Margin="29,20,0,0" VerticalAlignment="Top" Height="221" Width="637"  AutoGenerateColumns="false" Grid.ColumnSpan="2">
             <DataGrid.Columns>
+                <DataGridCheckBoxColumn x:Name="Selecionar" Header="Seleccionar" Binding="{Binding Selec}" />
                 <DataGridTextColumn Header="Id Producto" Binding="{Binding IdProducto}" IsReadOnly="True" />
                 <DataGridTextColumn Header="SKU" Binding="{Binding Sku}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Nombre Producto" Binding="{Binding Nombre}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Precio " Binding="{Binding Precio}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Codigo Interno " Binding="{Binding CodigoInterno}" IsReadOnly="True"/>
-                <DataGridCheckBoxColumn x:Name="Selecionar" Header="Seleccionar" Binding="{Binding Selec}" />
+
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnListar" Content="Listar Productos" HorizontalAlignment="Left" Margin="138,51,0,0" VerticalAlignment="Top" Width="128" Click="btnListar_Click" Grid.Column="1" BorderBrush="Black" Height="27"/>
+        <Button x:Name="btnListar" Content="Listar Productos" HorizontalAlignment="Left" Margin="227,119,0,0" VerticalAlignment="Top" Width="128" Click="btnListar_Click" Grid.Column="1" BorderBrush="Black" Height="26"/>
         <Label Content="Nombre Oferta" HorizontalAlignment="Left" Margin="29,272,0,0" VerticalAlignment="Top" Width="137" Height="26"/>
         <Label Content="Precio Oferta" HorizontalAlignment="Left" Margin="29,303,0,0" VerticalAlignment="Top" Height="26" Width="79"/>
         <Label Content="Fecha Oferta" HorizontalAlignment="Left" Margin="29,369,0,0" VerticalAlignment="Top" Height="26" Width="77"/>
@@ -43,7 +44,7 @@
         <TextBox x:Name="txtMaxProd" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Cantidad maxima" HorizontalAlignment="Left" Height="26" Margin="30,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" BorderBrush="Black" Grid.Column="1"/>
         <Button x:Name="btnAdjuntar" Content="Adjuntar&#xD;&#xA;Imagen" HorizontalAlignment="Left" Margin="24,437,0,0" VerticalAlignment="Top" Width="104" Click="btnAdjuntar_Click" BorderBrush="Black" Height="41"/>
         <Image x:Name="imgFoto" HorizontalAlignment="Left" Height="100" Margin="149,407,0,0" VerticalAlignment="Top" Width="143"/>
-        <TextBox x:Name="txtBuscarProducto" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar producto" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="138,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="128" BorderBrush="Black"/>
+        <TextBox x:Name="txtBuscarProducto" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar producto" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="227,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="128" BorderBrush="Black"/>
         <Label Content="Precio Anterior" HorizontalAlignment="Left" Margin="29,338,0,0" VerticalAlignment="Top" Width="99" Height="26"/>
         <TextBox x:Name="txtPrecioAntes" HorizontalAlignment="Left" Height="26" Margin="149,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
         <CheckBox x:Name="chPubOf" Content="Publicar Oferta" HorizontalAlignment="Left" Margin="227,381,0,0" VerticalAlignment="Top" Width="122" Grid.Column="1" Height="18"/>
@@ -53,6 +54,7 @@
         <ComboBox x:Name="cbCatOf" HorizontalAlignment="Left" Margin="30,452,0,0" VerticalAlignment="Top" Width="141" Grid.Column="1" Height="22"/>
         <Button x:Name="btnVolver" Content="Volver" Grid.Column="1" HorizontalAlignment="Left" Margin="176,586,0,0" VerticalAlignment="Top" Width="75" Click="btnVolver_Click"/>
         <Button x:Name="btnSalir" Content="SALIR" Grid.Column="1" HorizontalAlignment="Left" Margin="274,586,0,0" VerticalAlignment="Top" Width="75" Click="btnSalir_Click"/>
-        <Button Content="EXPORTAR PDF" Grid.Column="1" HorizontalAlignment="Left" Margin="138,83,0,0" VerticalAlignment="Top" Width="128" Click="Button_Click"/>
+        <Button Content="EXPORTAR PDF" Grid.Column="1" HorizontalAlignment="Left" Margin="227,170,0,0" VerticalAlignment="Top" Width="128" Click="Button_Click"/>
+        <Label x:Name="lblUserAct" Grid.Column="1" HorizontalAlignment="Left" Margin="227,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.566,-0.846" Width="165" Height="29"/>
     </Grid>
 </Controls:MetroWindow>
