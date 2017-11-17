@@ -345,10 +345,10 @@ namespace Core.Servicios
             return collOfer.ReadAllOfertasDesactivo();
         }
 
-        public string ReadAllOfertas(int idSucursal)
+        public string ReadAllOfertas(int idRetail)
         {
             Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
-            return collOfer.ReadAllOfertas(idSucursal);
+            return collOfer.ReadAllOfertas(idRetail);
         }
         public string ReadAllOfertasDia()
         {
@@ -395,6 +395,18 @@ namespace Core.Servicios
         {
             Negocio.ProductoHasOferta pho = new Negocio.ProductoHasOferta(json);
             return pho.CrearProductoHasOferta();
+        }
+
+        public string LeerSucursalId(int idSuc)
+        {
+            Negocio.Sucursal suc = new Negocio.Sucursal();
+            return suc.LeerSucursalId(idSuc);
+        }
+
+        public string LeerRetailId(int idRet)
+        {
+            Negocio.Retail ret = new Negocio.Retail();
+            return ret.LeerRetailId(idRet);
         }
     }
 }

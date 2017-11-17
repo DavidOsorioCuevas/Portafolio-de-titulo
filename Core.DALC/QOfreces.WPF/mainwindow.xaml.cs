@@ -23,6 +23,10 @@ namespace QOfreces.WPF
     public partial class mainwindow : MetroWindow
     {
         public static Core.Negocio.Usuario UsuarioACtual;
+        public static Core.Negocio.Retail RetailActual;
+        public static Core.Negocio.Sucursal SucursalActual;
+
+        ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
         public mainwindow()
         {
             InitializeComponent();
@@ -31,12 +35,13 @@ namespace QOfreces.WPF
 
         private async void button_Click(object sender, RoutedEventArgs e)
         {
-            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            
 
             if (proxy.ValidarUsuarioWPF(txtUser.Text, pbPassword.Password.ToString()))
             {
 
                 Core.Negocio.Usuario user = new Core.Negocio.Usuario();
+
                 user.NombreUsuario = txtUser.Text;
 
                 string json = user.Serializar();
@@ -46,8 +51,18 @@ namespace QOfreces.WPF
 
                 if (json != null)
                 {
+
                     user = new Core.Negocio.Usuario(json);
                     UsuarioACtual = user;
+
+                    string jsonSuc = proxy.LeerSucursalId(UsuarioACtual.IdSucursal);
+                    SucursalActual = new Core.Negocio.Sucursal(jsonSuc);
+
+                    string jsonRet = proxy.LeerRetailId(SucursalActual.IdRetail);
+                    RetailActual = new Core.Negocio.Retail(jsonRet);
+
+
+
 
                     if (user.IdPerfil == 1)
                     {
