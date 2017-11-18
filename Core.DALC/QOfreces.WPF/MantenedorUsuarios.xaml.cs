@@ -42,7 +42,7 @@ namespace QOfreces.WPF
             cbPerfil.SelectedIndex = 0;
 
             //Sucursales
-            string jsonS = proxy.ReadAllSucursal();
+            string jsonS = proxy.ReadAllSucursal(mainwindow.RetailActual.IdRetail);
             SucursalCollections suCol = new SucursalCollections(jsonS);
             Sucursal s = new Sucursal();
             cbSucursal.DisplayMemberPath = "Nombre";
@@ -332,7 +332,7 @@ namespace QOfreces.WPF
 
 
                 ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-                string jsonS = proxy.ReadAllSucursal();
+                string jsonS = proxy.ReadAllSucursal(mainwindow.RetailActual.IdRetail);
                 SucursalCollections suCol = new SucursalCollections(jsonS);
                 cbSucursal.DisplayMemberPath = "Nombre";
                 cbSucursal.SelectedValuePath = "IdSucursal";

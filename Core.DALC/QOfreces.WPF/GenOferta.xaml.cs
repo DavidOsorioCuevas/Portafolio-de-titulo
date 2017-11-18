@@ -47,7 +47,7 @@ namespace QOfreces.WPF
         {
 
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = proxy.ReadAllSucursal();
+            string json = proxy.ReadAllSucursal(mainwindow.RetailActual.IdRetail);
             SucursalCollections sucCol = new SucursalCollections(json);
             cbSucursal.DisplayMemberPath = "Nombre";
             cbSucursal.SelectedValuePath = "IdSucursal";
@@ -60,7 +60,7 @@ namespace QOfreces.WPF
             cbCatOf.ItemsSource = catColl.ToList();
 
             // Carga Nombre y Apellido del usuario actual
-            lblUserAct.Content = "Bienvenido " +nombreCompleto;
+            lblUserAct.Content = "Bienvenido " + nombreCompleto;
 
 
         }
@@ -111,6 +111,7 @@ namespace QOfreces.WPF
                         proxy.CrearProductoHasOferta(jerson);
                     }
                 }
+
                 /*Envia por ftp imagen adjuntada*/
 
                 string user = "misofertas@adonisweb.cl";
@@ -150,6 +151,13 @@ namespace QOfreces.WPF
             Core.Negocio.ProductoCollections collprod = new Core.Negocio.ProductoCollections(json);
             collprod.ToList();
             dgProd.ItemsSource = collprod;
+
+
+            string JSON = proxy.ReadAllSucursal(mainwindow.RetailActual.IdRetail);
+            SucursalCollections sucCol = new SucursalCollections(JSON);
+            dgSuc.ItemsSource = sucCol.ToList();
+
+
         }
 
         private void btnAdjuntar_Click(object sender, RoutedEventArgs e)

@@ -23,8 +23,14 @@ namespace Core.Negocio
             this.AddRange(list);
         }
 
-        private SucursalCollections GenerarListado(List<DALC.SUCURSALES> listaDALC)
+        private SucursalCollections GenerarListado(int idRetail)
         {
+            DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
+            var listaDALC = from o in ctx.SUCURSALES
+                            join r in ctx.RETAIL on o.RETAIL_ID equals r.ID_RETAIL
+                            where r.ID_RETAIL== idRetail
+                            select o;
+
 
             SucursalCollections lista = new SucursalCollections();
             foreach (var item in listaDALC)
@@ -48,11 +54,11 @@ namespace Core.Negocio
 
         }
 
-        public string ReadAllSucursal()
+        public string ReadAllSucursal(int idRetail)
         {
 
             var listaDA = new DALC.QueOfrecesEntities().SUCURSALES;
-            return GenerarListado(listaDA.ToList()).Serializar();
+            return GenerarListado(idRetail).Serializar();
         }
 
         public string Serializar()

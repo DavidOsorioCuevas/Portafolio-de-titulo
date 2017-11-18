@@ -214,10 +214,10 @@ namespace QOfreces.WPF.ServiceReference1 {
         System.Threading.Tasks.Task<string> LeerSucursalIdAsync(int idSuc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllSucursal", ReplyAction="http://tempuri.org/IService1/ReadAllSucursalResponse")]
-        string ReadAllSucursal();
+        string ReadAllSucursal(int idRetail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllSucursal", ReplyAction="http://tempuri.org/IService1/ReadAllSucursalResponse")]
-        System.Threading.Tasks.Task<string> ReadAllSucursalAsync();
+        System.Threading.Tasks.Task<string> ReadAllSucursalAsync(int idRetail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllComuna", ReplyAction="http://tempuri.org/IService1/ReadAllComunaResponse")]
         string ReadAllComuna();
@@ -679,12 +679,12 @@ namespace QOfreces.WPF.ServiceReference1 {
             return base.Channel.LeerSucursalIdAsync(idSuc);
         }
         
-        public string ReadAllSucursal() {
-            return base.Channel.ReadAllSucursal();
+        public string ReadAllSucursal(int idRetail) {
+            return base.Channel.ReadAllSucursal(idRetail);
         }
         
-        public System.Threading.Tasks.Task<string> ReadAllSucursalAsync() {
-            return base.Channel.ReadAllSucursalAsync();
+        public System.Threading.Tasks.Task<string> ReadAllSucursalAsync(int idRetail) {
+            return base.Channel.ReadAllSucursalAsync(idRetail);
         }
         
         public string ReadAllComuna() {

@@ -103,7 +103,7 @@ namespace Core.Servicios
 
         /*SUCURSALCOLLECTIONS*/
         [OperationContract]
-        string ReadAllSucursal();
+        string ReadAllSucursal(int idRetail);
 
         /*COMUNACOLLECTIONS*/
         [OperationContract]

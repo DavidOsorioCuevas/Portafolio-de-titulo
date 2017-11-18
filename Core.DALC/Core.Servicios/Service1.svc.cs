@@ -326,10 +326,10 @@ namespace Core.Servicios
             return collRetail.ReadAllRetail();
         }
 
-        public string ReadAllSucursal()
+        public string ReadAllSucursal(int idRetail)
         {
             Negocio.SucursalCollections collSuc = new Negocio.SucursalCollections();
-            return collSuc.ReadAllSucursal();
+            return collSuc.ReadAllSucursal(idRetail);
         }
 
         public bool ValidarUsuarioWPF(string username, string password)

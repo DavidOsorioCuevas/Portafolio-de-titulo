@@ -449,7 +449,9 @@
   </xs:element>
   <xs:element name="ReadAllSucursal">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idRetail" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReadAllSucursalResponse">
