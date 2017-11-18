@@ -11,8 +11,9 @@
         Icon="img/logo.png"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
-        Title="Login" Height="332" Width="300" Background="Gainsboro" WindowStartupLocation="CenterScreen">
+        Title="Login" Height="332" Width="300" Background="black" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Opacity="0.495">
     <Grid>
+      
         <Button x:Name="button" Content="Ingresar" HorizontalAlignment="Left" Margin="91,242,0,0" VerticalAlignment="Top" Width="75" Click="button_Click" BorderBrush="Black" TabIndex="3"/>
         <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="101,156,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtUser" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu usuario" HorizontalAlignment="Left" Height="23" Margin="10,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" BorderBrush="Black" TabIndex="1"/>

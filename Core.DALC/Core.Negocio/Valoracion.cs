@@ -15,7 +15,7 @@ namespace Core.Negocio
 
         public int IdValoracion { get; set; }
 
-        public int Calificacion { get; set; }
+        public string Calificacion { get; set; }
         public string codeImagen { get; set; }
 
         public string fechaValoracion { get; set; }
@@ -43,7 +43,7 @@ namespace Core.Negocio
             var result = from a in db.VALORACION where a.OFERTA_ID == this.IdOferta && a.USUARIO_ID == this.IdUsuario select new { a };
             if (result.Count()>0)
             {
-                this.Calificacion = int.Parse(result.First().a.CALIFICACION);
+                this.Calificacion = result.First().a.CALIFICACION;
                 this.response = "EV";
             }else
             {
