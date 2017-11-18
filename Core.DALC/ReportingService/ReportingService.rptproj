@@ -5,8 +5,8 @@
   <DataSets />
   <Reports>
     <ProjectItem>
-      <Name>ValoracionesUsuarios.rdl</Name>
-      <FullPath>ValoracionesUsuarios.rdl</FullPath>
+      <Name>Reporte de Valoraciones .rdl</Name>
+      <FullPath>Reporte de Valoraciones .rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>
