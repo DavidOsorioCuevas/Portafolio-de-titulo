@@ -178,6 +178,7 @@ namespace QOfreces.WPF
 
                     btnAdjuntar.Content = "Quitar Foto";
                     rutaNombreImagenOferta = openFile.FileName;
+
                     /*copia imagen a carpeta imgOferta*/
                     // string ruta = string.Format("{0}{1}", "C:/temp/Repositorio/Portafolio-de-titulo/Core.DALC/Core.Servicios/imgOferta/", openFile.SafeFileName);
                     //File.Copy(openFile.FileName, ruta);                    
@@ -202,7 +203,7 @@ namespace QOfreces.WPF
             this.Close();
             en.Show();
         }
-
+        /* 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ExportToPdf(dgProd);
@@ -224,7 +225,7 @@ namespace QOfreces.WPF
             }
             return null;
         }
-
+       
         public void ExportToPdf(DataGrid grid)
         {
             PdfPTable table = new PdfPTable(grid.Columns.Count);
@@ -262,6 +263,7 @@ namespace QOfreces.WPF
                 doc.Close();
             }
         }
+        */
     }
 
 }
