@@ -30,18 +30,7 @@ namespace QOfreces.WPF
             InitializeComponent();
             CargarCombobox();
             tiAgregar.IsEnabled = false;
-            lblApellido.Visibility = Visibility.Hidden;
-            lblContraseña.Visibility = Visibility.Hidden;
-            lblContraseña2.Visibility = Visibility.Hidden;
-            lblEmail.Visibility = Visibility.Hidden;
-            lblFechaNacimiento.Visibility = Visibility.Hidden;
-            lblNombre.Visibility = Visibility.Hidden;
-            lblNombreUsuario.Visibility = Visibility.Hidden;
-            lblPuntos.Visibility = Visibility.Hidden;
-            lblRut.Visibility = Visibility.Hidden;
-            lblSucursal.Visibility = Visibility.Hidden;
-            lblTelefono.Visibility = Visibility.Hidden;
-            lblTipo.Visibility = Visibility.Hidden;
+            ocultarLbl();
 
         }
 
@@ -77,7 +66,7 @@ namespace QOfreces.WPF
             btnListar.Visibility = Visibility.Hidden;
             btnEjecutar.Content = "Agregar";
 
-
+            ocultarLbl();
             HabilitarControles();
         }
 
@@ -91,6 +80,7 @@ namespace QOfreces.WPF
             btnListar.Visibility = Visibility.Visible;
             btnEjecutar.Content = "Modificar";
 
+            ocultarLbl();
             HabilitarControles();
         }
 
@@ -107,6 +97,7 @@ namespace QOfreces.WPF
             pbContraseña2.Visibility = Visibility.Hidden;
             btnEjecutar.Content = "Eliminar";
 
+            ocultarLbl();
             DesabilitarControles();
         }
 
@@ -117,7 +108,6 @@ namespace QOfreces.WPF
             txtEmail.IsEnabled = false;
             txtListar.IsEnabled = false;
             txtNombre.IsEnabled = false;
-            txtPuntos.IsEnabled = false;
             txtRut.IsEnabled = false;
             txtUsuario.IsEnabled = false;
             dpFecha.IsEnabled = false;
@@ -135,7 +125,6 @@ namespace QOfreces.WPF
             txtEmail.IsEnabled = true;
             txtListar.IsEnabled = true;
             txtNombre.IsEnabled = true;
-            txtPuntos.IsEnabled = true;
             txtRut.IsEnabled = true;
             txtUsuario.IsEnabled = true;
             dpFecha.IsEnabled = true;
@@ -153,17 +142,18 @@ namespace QOfreces.WPF
             lblNombre.Content = validador.validarNombre(txtNombre.Text);
             lblNombreUsuario.Content = validador.validarNombreUsuario(txtUsuario.Text);
             lblRut.Content = validador.validarRut(txtRut.Text);
+            lblFechaNacimiento.Content = validador.validarFecha(dpFecha.Text);
 
             Usuario user = new Usuario();
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
 
-            if (lblNombre.Content.Equals("OK") || lblApellido.Content.Equals("OK") || lblEmail.Content.Equals("OK") || lblNombreUsuario.Content.Equals("OK") || lblRut.Content.Equals("OK"))
+            if (lblNombre.Content.Equals("OK") && lblApellido.Content.Equals("OK") && lblEmail.Content.Equals("OK") && lblNombreUsuario.Content.Equals("OK") && lblRut.Content.Equals("OK") && lblFechaNacimiento.Content.Equals("OK"))
             {
                 string json;
                 switch (btnEjecutar.Content.ToString())
                 {
                     case "Agregar":
-
+                        ocultarLbl();
                         if (pbContraseña.Password == pbContraseña2.Password)
                         {
 
@@ -198,17 +188,14 @@ namespace QOfreces.WPF
                             {
                                 user.Puntos = 0;
                             }
-                            else
-                            {
-                                user.Puntos = int.Parse(txtPuntos.Text);
-                            }
-
+                           
                             json = user.Serializar();
 
                             if (proxy.CrearUsuario(json))
                             {
                                 await this.ShowMessageAsync("Exito", "Usuario creado");
                                 LimpiarControles();
+                                ocultarLbl();
                             }
                             else
                             {
@@ -219,6 +206,7 @@ namespace QOfreces.WPF
                         {
                             await this.ShowMessageAsync("Error", "Las contraseñas no coinciden");
                             LimpiarControles();
+                            ocultarLbl();
                         }
 
                         break;
@@ -257,9 +245,6 @@ namespace QOfreces.WPF
                             }
                             user.IdSucursal = (int)cbSucursal.SelectedValue;
                             user.IdPerfil = (int)cbPerfil.SelectedValue;
-                            int punt;
-                            int.TryParse(txtPuntos.Text, out punt);
-                            user.Puntos = punt;
 
                             json = user.Serializar();
                             if (json != null)
@@ -307,31 +292,63 @@ namespace QOfreces.WPF
             } 
             else
             {
-                lblNombre.Visibility = Visibility.Visible;
-                lblApellido.Visibility = Visibility.Visible;
-                lblEmail.Visibility = Visibility.Visible;
-                lblNombreUsuario.Visibility = Visibility.Visible;
-                lblRut.Visibility = Visibility.Visible;
+                            
+                
+               
+                lblFechaNacimiento.Visibility = Visibility.Visible;
 
                 if (lblNombre.Content.Equals("OK"))
                 {
                     lblNombre.Visibility = Visibility.Hidden;
                 }
+                else
+                {
+                    lblNombre.Visibility = Visibility.Visible;
+                }
+
                 if (lblApellido.Content.Equals("OK"))
                 {
                     lblApellido.Visibility = Visibility.Hidden;
                 }
+                else
+                {
+                    lblApellido.Visibility = Visibility.Visible;
+                }
+
                 if (lblEmail.Content.Equals("OK"))
                 {
                     lblEmail.Visibility = Visibility.Hidden;
                 }
+                else
+                {
+                    lblEmail.Visibility = Visibility.Visible;
+                }
+
                 if (lblNombreUsuario.Content.Equals("OK"))
                 {
                     lblNombreUsuario.Visibility = Visibility.Hidden;
                 }
+                else
+                {
+                    lblNombreUsuario.Visibility = Visibility.Visible;
+                }
+
                 if (lblRut.Content.Equals("OK"))
                 {
                     lblRut.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lblRut.Visibility = Visibility.Visible;
+                }
+
+                if (lblFechaNacimiento.Content.Equals("OK"))
+                {
+                    lblFechaNacimiento.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lblFechaNacimiento.Visibility = Visibility.Visible;
                 }
 
             }
@@ -339,14 +356,29 @@ namespace QOfreces.WPF
         
     }
 
-    private void LimpiarControles()
+        private void ocultarLbl()
+        {
+
+            lblApellido.Visibility = Visibility.Hidden;
+            lblContraseña.Visibility = Visibility.Hidden;
+            lblContraseña2.Visibility = Visibility.Hidden;
+            lblEmail.Visibility = Visibility.Hidden;
+            lblFechaNacimiento.Visibility = Visibility.Hidden;
+            lblNombre.Visibility = Visibility.Hidden;
+            lblNombreUsuario.Visibility = Visibility.Hidden;
+            lblRut.Visibility = Visibility.Hidden;
+            lblSucursal.Visibility = Visibility.Hidden;
+            lblTelefono.Visibility = Visibility.Hidden;
+            lblTipo.Visibility = Visibility.Hidden;
+        }
+
+        private void LimpiarControles()
     {
         txtNombre.Text = string.Empty;
         txtApellido.Text = string.Empty;
         txtRut.Text = string.Empty;
         txtEmail.Text = string.Empty;
         txtCelular.Text = string.Empty;
-        txtPuntos.Text = string.Empty;
         txtUsuario.Text = string.Empty;
         dpFecha.SelectedDate = null;
         cbSucursal.SelectedIndex = 0;
@@ -381,7 +413,6 @@ namespace QOfreces.WPF
             txtRut.Text = u.Rut;
             txtEmail.Text = u.Email;
             txtCelular.Text = u.NumeroCelular.ToString();
-            txtPuntos.Text = u.Puntos.ToString();
             txtUsuario.Text = u.NombreUsuario;
             dpFecha.SelectedDate = u.FechaNacimiento;
             pbContraseña.Password = u.Password;
@@ -480,11 +511,11 @@ namespace QOfreces.WPF
     {
         int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
 
-        if (string.IsNullOrEmpty(e.Text))
-        {
-            lblTelefono.Content = "Telefono no debe estar vacio";
-            lblTelefono.Visibility = Visibility.Visible;
-        }
+        //if (string.IsNullOrEmpty(e.Text))
+        //{
+        //    lblTelefono.Content = "Telefono no debe estar vacio";
+        //    lblTelefono.Visibility = Visibility.Visible;
+        //}
         if (ascci >= 48 && ascci <= 57)
         {
             lblTelefono.Visibility = Visibility.Hidden;
@@ -495,6 +526,11 @@ namespace QOfreces.WPF
             lblTelefono.Visibility = Visibility.Visible;
         }
     }
-}
+
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close(); 
+        }
+    }
 }
 

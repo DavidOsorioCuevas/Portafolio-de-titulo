@@ -204,5 +204,19 @@ namespace QOfreces.WPF
             }
 
         }
+
+        public string validarFecha(string fecha)
+        {
+
+            if (fecha.Length == 0)
+            {
+                return "Ingrese Fecha";
+            }
+            else
+            {
+                return "OK";
+            }
+
+        }
     }
 }

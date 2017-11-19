@@ -20,16 +20,15 @@
         <TextBox x:Name="txtRut" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Rut 12345678-9" HorizontalAlignment="Left" Height="23" Margin="21,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="3"/>
         <TextBox x:Name="txtEmail" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa Email" HorizontalAlignment="Left" Height="23" Margin="21,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="4"/>
         <TextBox x:Name="txtCelular" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Numero de contacto" HorizontalAlignment="Left" Height="23" Margin="21,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="5" PreviewTextInput="txtCelular_PreviewTextInput"/>
-        <TextBox x:Name="txtPuntos" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Cantidad de puntos" HorizontalAlignment="Left" Height="23" Margin="21,322,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="6"/>
-        <TextBox x:Name="txtUsuario" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Nombre de usuario" HorizontalAlignment="Left" Height="23" Margin="21,376,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="7"/>
-        <PasswordBox x:Name="pbContraseña" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Contraseña" HorizontalAlignment="Left" Margin="21,430,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.681" Width="164" TabIndex="8"/>
-        <PasswordBox x:Name="pbContraseña2" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Repita contraseña" HorizontalAlignment="Left" Margin="21,484,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.681" Width="164" TabIndex="9"/>
+        <TextBox x:Name="txtUsuario" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Nombre de usuario" HorizontalAlignment="Left" Height="23" Margin="21,320,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="7"/>
+        <PasswordBox x:Name="pbContraseña" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Contraseña" HorizontalAlignment="Left" Margin="21,374,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.681" Width="164" TabIndex="8"/>
+        <PasswordBox x:Name="pbContraseña2" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Repita contraseña" HorizontalAlignment="Left" Margin="21,428,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.681" Width="164" TabIndex="9"/>
         <ComboBox x:Name="cbSucursal"  HorizontalAlignment="Left" Margin="205,158,0,0" VerticalAlignment="Top" Width="160" TabIndex="12"/>
         <CheckBox x:Name="chActivar" IsChecked="false" Content="Usuario activo" HorizontalAlignment="Left" Margin="205,212,0,0" VerticalAlignment="Top" TabIndex="13"/>
         <RadioButton x:Name="rbFem" IsChecked="True" Content="Femenino" GroupName="Sexo" HorizontalAlignment="Left" Margin="205,251,0,0" VerticalAlignment="Top" TabIndex="14"/>
         <RadioButton x:Name="rbMas" Content="Masculino" GroupName="Sexo" HorizontalAlignment="Left" Margin="205,274,0,0" VerticalAlignment="Top" TabIndex="15"/>
         <Button x:Name="btnEjecutar" Content="Agregar" HorizontalAlignment="Left" Margin="379,515,0,0" VerticalAlignment="Top" Width="75"  TabIndex="16" Click="btnEjecutar_Click"/>
-        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="486,515,0,0" VerticalAlignment="Top" Width="75" TabIndex="19"/>
+        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="486,515,0,0" VerticalAlignment="Top" Width="75" TabIndex="19" Click="btnSalir_Click"/>
         <Button x:Name="btnListar" Visibility="Hidden" Content="Listar" HorizontalAlignment="Left" Margin="505,54,0,0" VerticalAlignment="Top" Width="75" Click="btnListar_Click"/>
         <TextBox x:Name="txtListar" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="380,54,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <DataGrid x:Name="dgUsuario" Visibility="Hidden" CanUserAddRows="False" HorizontalAlignment="Left" Margin="380,88,0,0" VerticalAlignment="Top" Height="161" Width="200" SelectionChanged="dgUsuario_SelectionChanged">
@@ -41,10 +40,9 @@
         <Controls:Tile x:Name="tiAgregar" Height="Auto" Margin="50,10,471,530" Width="Auto" Title="Agregar" TitleFontSize="10" Click="tiAgregar_Click"/>
         <Controls:Tile x:Name="tiEliminar" Height="Auto" Margin="459,10,62,530" Width="Auto" Title="Eliminar" TitleFontSize="10" Click="tiEliminar_Click" />
         <Controls:Tile x:Name="tiModificar" Height="Auto" Margin="259,10,262,530" Width="Auto" Title="Modificar" TitleFontSize="10" Click="tiModificar_Click" />
-        <Label x:Name="lblContraseña2" Content="Label" HorizontalAlignment="Left" Margin="21,510,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
-        <Label x:Name="lblContraseña" Content="Label" HorizontalAlignment="Left" Margin="21,456,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
-        <Label x:Name="lblNombreUsuario" Content="Label" HorizontalAlignment="Left" Margin="21,402,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
-        <Label x:Name="lblPuntos" Content="Label" HorizontalAlignment="Left" Margin="21,348,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblContraseña2" Content="Label" HorizontalAlignment="Left" Margin="21,454,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblContraseña" Content="Label" HorizontalAlignment="Left" Margin="21,400,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblNombreUsuario" Content="Label" HorizontalAlignment="Left" Margin="21,346,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
         <Label x:Name="lblTelefono" Content="Label" HorizontalAlignment="Left" Margin="21,292,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
         <Label x:Name="lblEmail" Content="Label" HorizontalAlignment="Left" Margin="21,238,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
         <Label x:Name="lblRut" Content="Label" HorizontalAlignment="Left" Margin="21,184,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
