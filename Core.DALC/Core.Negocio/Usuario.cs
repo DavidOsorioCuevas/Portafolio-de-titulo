@@ -73,11 +73,13 @@ namespace Core.Negocio
         {
             Core.DALC.QueOfrecesEntities db= new Core.DALC.QueOfrecesEntities();
             Core.DALC.USUARIO usuario = new Core.DALC.USUARIO();
-            string codigo = "4799";
+            Random rnd = new Random();
+            int cod = rnd.Next(1000,9999);
+            string codigo = cod.ToString();
 
             
             var resultEmail = from a in db.USUARIO where a.EMAIL.Equals(this.Email) select new { a };
-            var resultRut = from a in db.USUARIO where a.RUT.Equals(this.Rut) || a.PASSAPORTE.Equals(this.Pasaporte) select new { a };
+            var resultRut = from a in db.USUARIO where a.RUT.Equals(this.Rut) select new { a };
          if (resultEmail.Count()>0)
             {
                 this.Response = "EE";

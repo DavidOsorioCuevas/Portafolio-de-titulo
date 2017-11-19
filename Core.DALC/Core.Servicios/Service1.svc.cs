@@ -13,6 +13,11 @@ namespace Core.Servicios
     // NOTE: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service1.svc o Service1.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class Service1 : IService1
     {
+        public string Filtrar(string json)
+        {
+            Negocio.Listas lista = new Negocio.Listas();
+            return lista.Filtrar(json);
+        }
         public string Puntos(string json)
         {
             Negocio.Usuario user = new Negocio.Usuario(json);
@@ -321,10 +326,10 @@ namespace Core.Servicios
             return collRetail.ReadAllRetail();
         }
 
-        public string ReadAllSucursal()
+        public string ReadAllSucursal(int idRetail)
         {
             Negocio.SucursalCollections collSuc = new Negocio.SucursalCollections();
-            return collSuc.ReadAllSucursal();
+            return collSuc.ReadAllSucursal(idRetail);
         }
 
         public bool ValidarUsuarioWPF(string username, string password)
@@ -340,10 +345,10 @@ namespace Core.Servicios
             return collOfer.ReadAllOfertasDesactivo();
         }
 
-        public string ReadAllOfertas(int idSucursal)
+        public string ReadAllOfertas(int idRetail)
         {
             Negocio.OfertaCollections collOfer = new Negocio.OfertaCollections();
-            return collOfer.ReadAllOfertas(idSucursal);
+            return collOfer.ReadAllOfertas(idRetail);
         }
         public string ReadAllOfertasDia()
         {
@@ -390,6 +395,18 @@ namespace Core.Servicios
         {
             Negocio.ProductoHasOferta pho = new Negocio.ProductoHasOferta(json);
             return pho.CrearProductoHasOferta();
+        }
+
+        public string LeerSucursalId(int idSuc)
+        {
+            Negocio.Sucursal suc = new Negocio.Sucursal();
+            return suc.LeerSucursalId(idSuc);
+        }
+
+        public string LeerRetailId(int idRet)
+        {
+            Negocio.Retail ret = new Negocio.Retail();
+            return ret.LeerRetailId(idRet);
         }
     }
 }

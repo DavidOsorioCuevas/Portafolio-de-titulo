@@ -31,13 +31,13 @@
             <Grid HorizontalAlignment="Left" Height="342" Width="797">
                 <DataGrid x:Name="dgOfertas" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="259" Width="777" AutoGenerateColumns="False" CanUserAddRows="False">
                     <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Header="Publicada" Binding="{Binding Selec}" />
                         <DataGridTextColumn Header="Id Oferta" Binding="{Binding IdOferta}" IsReadOnly="True" />
                         <DataGridTextColumn Header="Nombre Oferta" Binding="{Binding Nombre}" IsReadOnly="True" />
                         <DataGridTextColumn Header="Precio Anterior" Binding="{Binding PrecioAntes}" IsReadOnly="True" />
                         <DataGridTextColumn Header="Precio Oferta" Binding="{Binding PrecioOferta}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="Sucursal" Binding="{Binding IdSucursal}" IsReadOnly="True" />
                         <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" IsReadOnly="True" />
-                        <DataGridCheckBoxColumn Header="Publicada" Binding="{Binding Selec}" />
+                        
                     </DataGrid.Columns>
                 </DataGrid>
                 <Button x:Name="btnBusquedaPu" Content="Buscar" HorizontalAlignment="Left" Margin="712,8,0,0" VerticalAlignment="Top" Width="75" Click="btnBusquedaPu_Click"/>
@@ -52,12 +52,12 @@
                 <TextBox x:Name="txtBuscar"   HorizontalAlignment="Left" Height="23" Margin="66,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                 <DataGrid x:Name="dataGridOferta" CanUserAddRows="False"  HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Height="168" Width="616" AutoGenerateColumns="False" >
                     <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Header="Publicada" Binding="{Binding Selec}" IsReadOnly="true"/>
                         <DataGridTextColumn Header="Id Oferta" Binding="{Binding IdOferta}" IsReadOnly="true"/>
                         <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="true" />
                         <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" IsReadOnly="true"/>
                         <DataGridTextColumn Header="Precio Oferta" Binding="{Binding PrecioOferta}" IsReadOnly="true"/>
-                        <DataGridTextColumn Header="Sucursal" Binding="{Binding IdSucursal}" IsReadOnly="true" />
-                        <DataGridCheckBoxColumn Header="Publicada" Binding="{Binding Selec}" IsReadOnly="true"/>
+                        <DataGridTextColumn Header="Precio Anterior" Binding="{Binding PrecioAntes}" IsReadOnly="True" />
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

@@ -46,6 +46,7 @@ namespace Core.DALC
         public DbSet<SUCURSALES> SUCURSALES { get; set; }
         public DbSet<USUARIO> USUARIO { get; set; }
         public DbSet<VALORACION> VALORACION { get; set; }
+        public DbSet<OFERTA_HAS_SUCURSAL> OFERTA_HAS_SUCURSAL { get; set; }
     
         public virtual int CATEGORIA_OFERTA_CREAR(string iN_NOMBRE)
         {

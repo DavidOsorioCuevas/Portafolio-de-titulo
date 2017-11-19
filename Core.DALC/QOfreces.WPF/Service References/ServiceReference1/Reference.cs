@@ -207,11 +207,17 @@ namespace QOfreces.WPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarSucursal", ReplyAction="http://tempuri.org/IService1/EliminarSucursalResponse")]
         System.Threading.Tasks.Task<bool> EliminarSucursalAsync(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllSucursal", ReplyAction="http://tempuri.org/IService1/ReadAllSucursalResponse")]
-        string ReadAllSucursal();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LeerSucursalId", ReplyAction="http://tempuri.org/IService1/LeerSucursalIdResponse")]
+        string LeerSucursalId(int idSuc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LeerSucursalId", ReplyAction="http://tempuri.org/IService1/LeerSucursalIdResponse")]
+        System.Threading.Tasks.Task<string> LeerSucursalIdAsync(int idSuc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllSucursal", ReplyAction="http://tempuri.org/IService1/ReadAllSucursalResponse")]
-        System.Threading.Tasks.Task<string> ReadAllSucursalAsync();
+        string ReadAllSucursal(int idRetail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllSucursal", ReplyAction="http://tempuri.org/IService1/ReadAllSucursalResponse")]
+        System.Threading.Tasks.Task<string> ReadAllSucursalAsync(int idRetail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllComuna", ReplyAction="http://tempuri.org/IService1/ReadAllComunaResponse")]
         string ReadAllComuna();
@@ -238,10 +244,10 @@ namespace QOfreces.WPF.ServiceReference1 {
         System.Threading.Tasks.Task<string> ReadAllOfertasDesactivoAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertas", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasResponse")]
-        string ReadAllOfertas(int idSucursal);
+        string ReadAllOfertas(int idRetail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertas", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasResponse")]
-        System.Threading.Tasks.Task<string> ReadAllOfertasAsync(int idSucursal);
+        System.Threading.Tasks.Task<string> ReadAllOfertasAsync(int idRetail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllOfertasDia", ReplyAction="http://tempuri.org/IService1/ReadAllOfertasDiaResponse")]
         string ReadAllOfertasDia();
@@ -285,6 +291,12 @@ namespace QOfreces.WPF.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarRetail", ReplyAction="http://tempuri.org/IService1/EliminarRetailResponse")]
         System.Threading.Tasks.Task<bool> EliminarRetailAsync(string json);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LeerRetailId", ReplyAction="http://tempuri.org/IService1/LeerRetailIdResponse")]
+        string LeerRetailId(int idRet);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LeerRetailId", ReplyAction="http://tempuri.org/IService1/LeerRetailIdResponse")]
+        System.Threading.Tasks.Task<string> LeerRetailIdAsync(int idRet);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReadAllRetail", ReplyAction="http://tempuri.org/IService1/ReadAllRetailResponse")]
         string ReadAllRetail();
         
@@ -308,6 +320,12 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarProducto", ReplyAction="http://tempuri.org/IService1/EliminarProductoResponse")]
         System.Threading.Tasks.Task<bool> EliminarProductoAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Filtrar", ReplyAction="http://tempuri.org/IService1/FiltrarResponse")]
+        string Filtrar(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Filtrar", ReplyAction="http://tempuri.org/IService1/FiltrarResponse")]
+        System.Threading.Tasks.Task<string> FiltrarAsync(string json);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerOferta", ReplyAction="http://tempuri.org/IService1/TraerOfertaResponse")]
         string TraerOferta(string json);
@@ -653,12 +671,20 @@ namespace QOfreces.WPF.ServiceReference1 {
             return base.Channel.EliminarSucursalAsync(json);
         }
         
-        public string ReadAllSucursal() {
-            return base.Channel.ReadAllSucursal();
+        public string LeerSucursalId(int idSuc) {
+            return base.Channel.LeerSucursalId(idSuc);
         }
         
-        public System.Threading.Tasks.Task<string> ReadAllSucursalAsync() {
-            return base.Channel.ReadAllSucursalAsync();
+        public System.Threading.Tasks.Task<string> LeerSucursalIdAsync(int idSuc) {
+            return base.Channel.LeerSucursalIdAsync(idSuc);
+        }
+        
+        public string ReadAllSucursal(int idRetail) {
+            return base.Channel.ReadAllSucursal(idRetail);
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadAllSucursalAsync(int idRetail) {
+            return base.Channel.ReadAllSucursalAsync(idRetail);
         }
         
         public string ReadAllComuna() {
@@ -693,12 +719,12 @@ namespace QOfreces.WPF.ServiceReference1 {
             return base.Channel.ReadAllOfertasDesactivoAsync();
         }
         
-        public string ReadAllOfertas(int idSucursal) {
-            return base.Channel.ReadAllOfertas(idSucursal);
+        public string ReadAllOfertas(int idRetail) {
+            return base.Channel.ReadAllOfertas(idRetail);
         }
         
-        public System.Threading.Tasks.Task<string> ReadAllOfertasAsync(int idSucursal) {
-            return base.Channel.ReadAllOfertasAsync(idSucursal);
+        public System.Threading.Tasks.Task<string> ReadAllOfertasAsync(int idRetail) {
+            return base.Channel.ReadAllOfertasAsync(idRetail);
         }
         
         public string ReadAllOfertasDia() {
@@ -757,6 +783,14 @@ namespace QOfreces.WPF.ServiceReference1 {
             return base.Channel.EliminarRetailAsync(json);
         }
         
+        public string LeerRetailId(int idRet) {
+            return base.Channel.LeerRetailId(idRet);
+        }
+        
+        public System.Threading.Tasks.Task<string> LeerRetailIdAsync(int idRet) {
+            return base.Channel.LeerRetailIdAsync(idRet);
+        }
+        
         public string ReadAllRetail() {
             return base.Channel.ReadAllRetail();
         }
@@ -787,6 +821,14 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> EliminarProductoAsync(string json) {
             return base.Channel.EliminarProductoAsync(json);
+        }
+        
+        public string Filtrar(string json) {
+            return base.Channel.Filtrar(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> FiltrarAsync(string json) {
+            return base.Channel.FiltrarAsync(json);
         }
         
         public string TraerOferta(string json) {

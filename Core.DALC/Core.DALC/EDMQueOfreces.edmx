@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QueOfrecesModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QueOfrecesModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CATEGORIA_OFERTA">
           <Key>
             <PropertyRef Name="ID_CATEGORIA_OFERTA" />
@@ -74,6 +74,14 @@
           <Property Name="PRECIO_ANTES" Type="number" Precision="38" Scale="0" />
           <Property Name="PRECIO_DESPUES" Type="number" Precision="38" Scale="0" />
           <Property Name="OFERTA_DIA" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="OFERTA_HAS_SUCURSAL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="OFERTA_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="SUCURSAL_ID" Type="number" Precision="38" Scale="0" />
         </EntityType>
         <EntityType Name="PAIS">
           <Key>
@@ -513,6 +521,7 @@
           <EntitySet Name="DESCUENTO" EntityType="Self.DESCUENTO" Schema="BDMISOFERTAS" store:Type="Tables" />
           <EntitySet Name="DESCUENTO_HAS_RUBRO" EntityType="Self.DESCUENTO_HAS_RUBRO" Schema="BDMISOFERTAS" store:Type="Tables" />
           <EntitySet Name="OFERTA" EntityType="Self.OFERTA" Schema="BDMISOFERTAS" store:Type="Tables" />
+          <EntitySet Name="OFERTA_HAS_SUCURSAL" EntityType="Self.OFERTA_HAS_SUCURSAL" Schema="BDMISOFERTAS" store:Type="Tables" />
           <EntitySet Name="PAIS" EntityType="Self.PAIS" Schema="BDMISOFERTAS" store:Type="Tables" />
           <EntitySet Name="PERFIL" EntityType="Self.PERFIL" Schema="BDMISOFERTAS" store:Type="Tables" />
           <EntitySet Name="PREFERENCIA" EntityType="Self.PREFERENCIA" Schema="BDMISOFERTAS" store:Type="Tables" />
@@ -585,8 +594,7 @@
             <End Role="VALORACION" EntitySet="VALORACION" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QueOfrecesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1075,7 +1083,7 @@
             <End Role="VALORACION" EntitySet="VALORACION" />
           </AssociationSet>
           <FunctionImport Name="CATEGORIA_OFERTA_CREAR">
-            <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
+          <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="COMUNA_CREAR">
             <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
@@ -1094,7 +1102,7 @@
             <Parameter Name="IN_DESCR" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="REGION_CREAR">
-            <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
+          <Parameter Name="IN_NOMBRE" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RETAIL_CREAR">
             <Parameter Name="IN_RUT" Mode="In" Type="String" />
@@ -1117,7 +1125,7 @@
             <Parameter Name="IN_COMUNA_ID" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="RETAIL_ELIMINAR">
-            <Parameter Name="IN_ID_RETAIL" Mode="In" Type="Decimal" />
+          <Parameter Name="IN_ID_RETAIL" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="RUBRO_CREAR">
             <Parameter Name="IN_TIPO" Mode="In" Type="String" />
@@ -1129,7 +1137,7 @@
             <Parameter Name="IN_DESCRIPCION" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RUBRO_ELIMINAR">
-            <Parameter Name="IN_ID_RUBRO" Mode="In" Type="Decimal" />
+          <Parameter Name="IN_ID_RUBRO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SUCURSAL_CREAR">
             <Parameter Name="IN_RUT" Mode="In" Type="String" />
@@ -1154,7 +1162,7 @@
             <Parameter Name="IN_RETAIL_ID" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SUCURSAL_ELIMINAR">
-            <Parameter Name="IN_RUT" Mode="In" Type="Decimal" />
+          <Parameter Name="IN_RUT" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="USUARIO_CREAR">
             <Parameter Name="IN_PERFIL_ID" Mode="In" Type="Decimal" />
@@ -1175,7 +1183,7 @@
             <Parameter Name="IN_CODIGO_ACTIVACION" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="USUARIO_DESACTIVAR">
-            <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
+          <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="USUARIO_EDITAR">
             <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
@@ -1189,9 +1197,18 @@
             <Parameter Name="IN_PUNTOS" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="USUARIO_ELIMINAR">
-            <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
+          <Parameter Name="IN_LOGIN" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="OFERTA_HAS_SUCURSAL" EntityType="QueOfrecesModel.OFERTA_HAS_SUCURSAL" />
         </EntityContainer>
+        <EntityType Name="OFERTA_HAS_SUCURSAL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="OFERTA_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SUCURSAL_ID" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1429,6 +1446,15 @@
           <FunctionImportMapping FunctionImportName="USUARIO_DESACTIVAR" FunctionName="QueOfrecesModel.Store.USUARIO_DESACTIVAR" />
           <FunctionImportMapping FunctionImportName="USUARIO_EDITAR" FunctionName="QueOfrecesModel.Store.USUARIO_EDITAR" />
           <FunctionImportMapping FunctionImportName="USUARIO_ELIMINAR" FunctionName="QueOfrecesModel.Store.USUARIO_ELIMINAR" />
+          <EntitySetMapping Name="OFERTA_HAS_SUCURSAL">
+            <EntityTypeMapping TypeName="QueOfrecesModel.OFERTA_HAS_SUCURSAL">
+              <MappingFragment StoreEntitySet="OFERTA_HAS_SUCURSAL">
+                <ScalarProperty Name="SUCURSAL_ID" ColumnName="SUCURSAL_ID" />
+                <ScalarProperty Name="OFERTA_ID" ColumnName="OFERTA_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

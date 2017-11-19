@@ -61,6 +61,7 @@
     <Compile Include="ComunaCollections.cs" />
     <Compile Include="Descuento.cs" />
     <Compile Include="DescuentoCollections.cs" />
+    <Compile Include="FilterParameter.cs" />
     <Compile Include="Listas.cs" />
     <Compile Include="Oferta.cs" />
     <Compile Include="OfertaCollections.cs" />

@@ -157,13 +157,15 @@ namespace Core.Negocio
 
         }
 
-        private OfertaCollections GenerarListado(int idSucursal)
+        private OfertaCollections GenerarListado(int idRetail)
         {
             DALC.QueOfrecesEntities ctx = new DALC.QueOfrecesEntities();
 
             var listaDALC = from o in ctx.OFERTA
-                            where o.SUCURSALES_ID == idSucursal
+                            join s in ctx.SUCURSALES on o.SUCURSALES_ID equals s.ID_SUCURSAL
+                            where s.RETAIL_ID == idRetail
                             select o;
+
             OfertaCollections lista = new OfertaCollections();
             foreach (var item in listaDALC)
             {
@@ -217,9 +219,9 @@ namespace Core.Negocio
             return GenerarListadoDesactivo(listaDA.ToList()).Serializar();
         }
 
-        public string ReadAllOfertas(int idSucursal)
+        public string ReadAllOfertas(int idRetail)
         {                     
-            return GenerarListado(idSucursal).Serializar();
+            return GenerarListado(idRetail).Serializar();
         }
 
         public string Serializar()

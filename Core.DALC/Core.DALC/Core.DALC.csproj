@@ -89,6 +89,9 @@
     <Compile Include="OFERTA.cs">
       <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
+    <Compile Include="OFERTA_HAS_SUCURSAL.cs">
+      <DependentUpon>EDMQueOfreces.tt</DependentUpon>
+    </Compile>
     <Compile Include="PAIS.cs">
       <DependentUpon>EDMQueOfreces.tt</DependentUpon>
     </Compile>
