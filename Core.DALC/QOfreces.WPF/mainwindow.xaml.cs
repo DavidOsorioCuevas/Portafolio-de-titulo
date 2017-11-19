@@ -22,6 +22,8 @@ namespace QOfreces.WPF
     /// </summary>
     public partial class mainwindow : MetroWindow
     {
+        Validaciones validador = new Validaciones();
+
         public static Core.Negocio.Usuario UsuarioACtual;
         public static Core.Negocio.Retail RetailActual;
         public static Core.Negocio.Sucursal SucursalActual;
@@ -30,75 +32,107 @@ namespace QOfreces.WPF
         public mainwindow()
         {
             InitializeComponent();
-            txtUser.Focus();           
+            txtUser.Focus();
+            lblContraseña.Visibility = Visibility.Hidden;
+            lblNombre.Visibility = Visibility.Hidden;          
     }
 
         private async void button_Click(object sender, RoutedEventArgs e)
         {
-            
-
-            if (proxy.ValidarUsuarioWPF(txtUser.Text, pbPassword.Password.ToString()))
+            lblNombre.Content = validador.validarNombre(txtUser.Text);
+            lblContraseña.Content = validador.validarContraseña(pbPassword.Password);
+                
+            if (lblContraseña.Content.Equals("OK") && lblNombre.Content.Equals("OK"))
             {
+                lblNombre.Visibility = Visibility.Hidden;
+                lblContraseña.Visibility = Visibility.Hidden;
 
-                Core.Negocio.Usuario user = new Core.Negocio.Usuario();
-
-                user.NombreUsuario = txtUser.Text;
-
-                string json = user.Serializar();
-                json = proxy.LeerUsuario(json);
-                
-                
-
-                if (json != null)
+                if (proxy.ValidarUsuarioWPF(txtUser.Text, pbPassword.Password.ToString()))
                 {
 
-                    user = new Core.Negocio.Usuario(json);
-                    UsuarioACtual = user;
+                    Core.Negocio.Usuario user = new Core.Negocio.Usuario();
 
-                    string jsonSuc = proxy.LeerSucursalId(UsuarioACtual.IdSucursal);
-                    SucursalActual = new Core.Negocio.Sucursal(jsonSuc);
+                    user.NombreUsuario = txtUser.Text;
 
-                    string jsonRet = proxy.LeerRetailId(SucursalActual.IdRetail);
-                    RetailActual = new Core.Negocio.Retail(jsonRet);
+                    string json = user.Serializar();
+                    json = proxy.LeerUsuario(json);
 
 
 
-
-                    if (user.IdPerfil == 1)
+                    if (json != null)
                     {
-                        Administrador ad = new Administrador();
-                        this.Close();
-                        ad.Show();
-                        
+
+                        user = new Core.Negocio.Usuario(json);
+                        UsuarioACtual = user;
+
+                        string jsonSuc = proxy.LeerSucursalId(UsuarioACtual.IdSucursal);
+                        SucursalActual = new Core.Negocio.Sucursal(jsonSuc);
+
+                        string jsonRet = proxy.LeerRetailId(SucursalActual.IdRetail);
+                        RetailActual = new Core.Negocio.Retail(jsonRet);
+
+
+
+
+                        if (user.IdPerfil == 1)
+                        {
+                            Administrador ad = new Administrador();
+                            this.Close();
+                            ad.Show();
+
+                        }
+                        else if (user.IdPerfil == 2)
+                        {
+
+                            EncargadoTienda encar = new EncargadoTienda();
+                            this.Close();
+                            encar.Show();
+
+                        }
+                        else if (user.IdPerfil == 4)
+                        {
+                            Gerente ger = new Gerente();
+                            this.Close();
+                            ger.Show();
+                        }
+                        else if (user.IdPerfil == 3)
+                        {
+                            await this.ShowMessageAsync("Error", "No se aceptan consumidores en este sistema");
+                            txtUser.Clear();
+                            pbPassword.Clear();
+                        }
                     }
-                    else if (user.IdPerfil == 2)
-                    {
-
-                        EncargadoTienda encar = new EncargadoTienda();
-                        this.Close();
-                        encar.Show();
-
-                    }
-                    else if (user.IdPerfil == 4)
-                    {
-                        Gerente ger = new Gerente();
-                        this.Close();
-                        ger.Show();
-                    }
-                    else if(user.IdPerfil == 3)
-                    {
-                        await this.ShowMessageAsync("Error", "No se aceptan consumidores en este sistema");
-                        txtUser.Clear();
-                        pbPassword.Clear();
-                    }                  
+                }
+                else
+                {
+                    await this.ShowMessageAsync("Error", "Verifique sus credenciales");
+                    txtUser.Clear();
+                    pbPassword.Clear();
                 }
             }
             else
             {
-                await this.ShowMessageAsync("Error", "Verifique sus credenciales");
-                txtUser.Clear();
-                pbPassword.Clear();
+                if (lblContraseña.Content.Equals("OK"))
+                {
+                    lblContraseña.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+
+                    lblContraseña.Visibility = Visibility.Visible;
+                }
+
+                if (lblNombre.Content.Equals("OK"))
+                {
+                    lblNombre.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+
+                    lblNombre.Visibility = Visibility.Visible;
+                }
             }
+
         }
     }
 }
