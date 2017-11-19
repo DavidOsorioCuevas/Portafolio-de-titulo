@@ -98,10 +98,12 @@ namespace Core.Servicios
         bool ActualizarSucursal(string json);
         [OperationContract]
         bool EliminarSucursal(string json);
+        [OperationContract]
+        string LeerSucursalId(int idSuc);
 
         /*SUCURSALCOLLECTIONS*/
         [OperationContract]
-        string ReadAllSucursal();
+        string ReadAllSucursal(int idRetail);
 
         /*COMUNACOLLECTIONS*/
         [OperationContract]
@@ -115,7 +117,7 @@ namespace Core.Servicios
         [OperationContract]
         string ReadAllOfertasDesactivo();
         [OperationContract]
-        string ReadAllOfertas(int idSucursal);
+        string ReadAllOfertas(int idRetail);
         [OperationContract]
         string ReadAllOfertasDia();
 
@@ -134,6 +136,8 @@ namespace Core.Servicios
         bool ActualizarRetail(string json);
         [OperationContract]
         bool EliminarRetail(string json);
+        [OperationContract]
+        string LeerRetailId(int idRet);
 
         /*RetailCollections*/
         [OperationContract]

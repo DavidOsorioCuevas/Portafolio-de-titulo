@@ -433,9 +433,25 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="LeerSucursalId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idSuc" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeerSucursalIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LeerSucursalIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ReadAllSucursal">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idRetail" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReadAllSucursalResponse">
@@ -498,7 +514,7 @@
   <xs:element name="ReadAllOfertas">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idSucursal" type="xs:int" />
+        <xs:element minOccurs="0" name="idRetail" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -602,6 +618,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="EliminarRetailResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeerRetailId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idRet" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeerRetailIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LeerRetailIdResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

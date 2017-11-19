@@ -22,7 +22,7 @@
         <EntityTypeShape EntityType="QueOfrecesModel.RUBRO" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QueOfrecesModel.SUCURSALES" Width="1.5" PointX="10.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="QueOfrecesModel.USUARIO" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QueOfrecesModel.VALORACION" Width="1.5" PointX="15" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QueOfrecesModel.VALORACION" Width="2.25" PointX="15" PointY="3.875" IsExpanded="true" />
         <AssociationConnector Association="QueOfrecesModel.OFERTA_CATEGORIA_OFERTA_FK" ManuallyRouted="false" />
         <AssociationConnector Association="QueOfrecesModel.COMUNA_REGION_FK" ManuallyRouted="false" />
         <AssociationConnector Association="QueOfrecesModel.RETAIL_COMUNA_FK" ManuallyRouted="false" />

@@ -134,9 +134,30 @@ namespace Core.Negocio
 
                 return false;
             }
+        }
+        public string LeerRetailId(int idRet)
+        {
+
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+            Core.DALC.RETAIL ret = ctx.RETAIL.First(o => o.ID_RETAIL == idRet);
+
+            this.IdRetail = (int)ret.ID_RETAIL;
+            this.RutRetail = ret.RUT;
+            this.NombreRetail = ret.NOMBRE;
+            this.RazonSocial = ret.RAZON_SOCIAL;
+            this.Telefono = (int)ret.TELEFONO;
+            this.Email = ret.EMAIL;
+            this.Direccion = ret.DIRECCION;
+            this.IdRegion = (int)ret.REGION_ID;
+            this.IdComuna = (int)ret.COMUNA_ID;
+
+            ctx = null;
+
+            return Serializar();
 
 
         }
+
         //probar metodo 
         public string Serializar()
         {

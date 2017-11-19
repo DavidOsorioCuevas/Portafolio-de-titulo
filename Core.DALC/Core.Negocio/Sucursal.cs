@@ -141,6 +141,30 @@ namespace Core.Negocio
 
         }
 
+        public string LeerSucursalId(int idSuc)
+        {
+
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+            Core.DALC.SUCURSALES suc = ctx.SUCURSALES.First(o => o.ID_SUCURSAL == idSuc);
+
+            this.Direccion = suc.DIRECCION;
+            this.Email = suc.EMAIL;
+            this.IdComuna = (int)suc.COMUNA_ID;
+            this.IdRegion = (int)suc.REGION_ID;
+            this.IdRetail = (int)suc.RETAIL_ID;
+            this.Nombre = suc.NOMBRE;
+            this.RazonSocial = suc.RAZON_SOCIAL;
+            this.Rut = suc.RUT;
+            this.Telefono = (int)suc.TELEFONO;
+
+            ctx = null;
+
+            return Serializar();
+
+
+        }
+
+
         public string Serializar()
         {
             DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(Sucursal));

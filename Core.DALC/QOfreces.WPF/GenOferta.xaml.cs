@@ -34,9 +34,10 @@ namespace QOfreces.WPF
     public partial class GenOferta : MetroWindow
     {
         private string rutaNombreImagenOferta;
+
+        string nombreCompleto = string.Format("{0} {1}", mainwindow.UsuarioACtual.Nombre, mainwindow.UsuarioACtual.Apellido);
         public GenOferta()
         {
-
 
             InitializeComponent();
             CargarCombobox();
@@ -44,8 +45,9 @@ namespace QOfreces.WPF
 
         private void CargarCombobox()
         {
+
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = proxy.ReadAllSucursal();
+            string json = proxy.ReadAllSucursal(mainwindow.RetailActual.IdRetail);
             SucursalCollections sucCol = new SucursalCollections(json);
             cbSucursal.DisplayMemberPath = "Nombre";
             cbSucursal.SelectedValuePath = "IdSucursal";
@@ -56,6 +58,9 @@ namespace QOfreces.WPF
             cbCatOf.DisplayMemberPath = "Nombre";
             cbCatOf.SelectedValuePath = "IdCategoria";
             cbCatOf.ItemsSource = catColl.ToList();
+
+            // Carga Nombre y Apellido del usuario actual
+            lblUserAct.Content = "Bienvenido " + nombreCompleto;
 
 
         }
@@ -106,6 +111,7 @@ namespace QOfreces.WPF
                         proxy.CrearProductoHasOferta(jerson);
                     }
                 }
+
                 /*Envia por ftp imagen adjuntada*/
 
                 string user = "misofertas@adonisweb.cl";
@@ -145,6 +151,13 @@ namespace QOfreces.WPF
             Core.Negocio.ProductoCollections collprod = new Core.Negocio.ProductoCollections(json);
             collprod.ToList();
             dgProd.ItemsSource = collprod;
+
+
+            string JSON = proxy.ReadAllSucursal(mainwindow.RetailActual.IdRetail);
+            SucursalCollections sucCol = new SucursalCollections(JSON);
+            dgSuc.ItemsSource = sucCol.ToList();
+
+
         }
 
         private void btnAdjuntar_Click(object sender, RoutedEventArgs e)
@@ -165,6 +178,7 @@ namespace QOfreces.WPF
 
                     btnAdjuntar.Content = "Quitar Foto";
                     rutaNombreImagenOferta = openFile.FileName;
+
                     /*copia imagen a carpeta imgOferta*/
                     // string ruta = string.Format("{0}{1}", "C:/temp/Repositorio/Portafolio-de-titulo/Core.DALC/Core.Servicios/imgOferta/", openFile.SafeFileName);
                     //File.Copy(openFile.FileName, ruta);                    
@@ -189,7 +203,7 @@ namespace QOfreces.WPF
             this.Close();
             en.Show();
         }
-
+        /* 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ExportToPdf(dgProd);
@@ -211,7 +225,7 @@ namespace QOfreces.WPF
             }
             return null;
         }
-
+       
         public void ExportToPdf(DataGrid grid)
         {
             PdfPTable table = new PdfPTable(grid.Columns.Count);
@@ -249,6 +263,7 @@ namespace QOfreces.WPF
                 doc.Close();
             }
         }
+        */
     }
 
 }
