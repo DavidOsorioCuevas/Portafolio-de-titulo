@@ -125,14 +125,15 @@ namespace QOfreces.WPF
             Producto p = new Producto();
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
 
-            if (cbRubro.SelectedIndex == -1)
+
+            if (lblNombre.Content.Equals("OK") && lblPrecio.Content.Equals("OK") && lblCodigo.Content.Equals("OK"))
             {
-                lblRubro.Content = "Seleccione una opcion";
-                lblRubro.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                if (lblNombre.Content.Equals("OK") && lblPrecio.Content.Equals("OK") && lblCodigo.Content.Equals("OK"))
+                if (cbRubro.SelectedIndex == -1)
+                {
+                    lblRubro.Content = "Seleccione una opcion";
+                    lblRubro.Visibility = Visibility.Visible;
+                }
+                else
                 {
                     string json;
                     switch (btnEjecutar.Content.ToString())
@@ -241,37 +242,38 @@ namespace QOfreces.WPF
 
                     }
                 }
+            }
+            else
+            {
+                if (lblPrecio.Content.Equals("OK"))
+                {
+                    lblPrecio.Visibility = Visibility.Hidden;
+                }
                 else
                 {
-                    if (lblPrecio.Content.Equals("OK"))
-                    {
-                        lblPrecio.Visibility = Visibility.Hidden;
-                    }
-                    else
-                    {
-                        lblPrecio.Visibility = Visibility.Visible;
-                    }
-
-                    if (lblNombre.Content.Equals("OK"))
-                    {
-                        lblNombre.Visibility = Visibility.Hidden;
-                    }
-                    else
-                    {
-                        lblNombre.Visibility = Visibility.Visible;
-                    }
-
-                    if (lblCodigo.Content.Equals("OK"))
-                    {
-                        lblCodigo.Visibility = Visibility.Hidden;
-                    }
-                    else
-                    {
-                        lblCodigo.Visibility = Visibility.Visible;
-                    }
+                    lblPrecio.Visibility = Visibility.Visible;
                 }
+
+                if (lblNombre.Content.Equals("OK"))
+                {
+                    lblNombre.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lblNombre.Visibility = Visibility.Visible;
+                }
+
+                if (lblCodigo.Content.Equals("OK"))
+                {
+                    lblCodigo.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lblCodigo.Visibility = Visibility.Visible;
                 }
             }
+
+        }
 
         private void LimpiarControles()
         {

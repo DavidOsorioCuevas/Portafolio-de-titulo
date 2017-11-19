@@ -52,7 +52,11 @@
         <Label x:Name="lblNombre" Content="Label" HorizontalAlignment="Left" Margin="320,80,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Grid.Row="1"/>
         <Label x:Name="lblPrecio" Content="Label" HorizontalAlignment="Left" Margin="320,109,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Grid.Row="1"/>
         <Label x:Name="lblDescripcion" Content="Label" HorizontalAlignment="Left" Margin="320,142,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Grid.Row="1"/>
-        <Label x:Name="lblRubro" Content="Label" HorizontalAlignment="Left" Margin="235,202,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Grid.Row="1"/>
+        <Label x:Name="lblRubro" Content="Label" HorizontalAlignment="Left" Margin="246,202,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Grid.Row="1"/>
         <Label x:Name="lblCodigo" Content="Label" HorizontalAlignment="Left" Margin="320,171,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Grid.Row="1"/>
+        <Label x:Name="lblNombre_Copy3" Content="*" HorizontalAlignment="Left" Margin="306,80,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707" Grid.Row="1"/>
+        <Label x:Name="lblNombre_Copy" Content="*" HorizontalAlignment="Left" Margin="306,109,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707" Grid.Row="1"/>
+        <Label x:Name="lblNombre_Copy1" Content="*" HorizontalAlignment="Left" Margin="306,173,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707" Grid.Row="1"/>
+        <Label x:Name="lblNombre_Copy2" Content="*" HorizontalAlignment="Left" Margin="227,202,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707" Grid.Row="1"/>
     </Grid>
 </Controls:MetroWindow>
