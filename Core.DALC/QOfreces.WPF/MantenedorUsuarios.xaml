@@ -51,5 +51,17 @@
         <Label x:Name="lblFechaNacimiento" Content="Label" HorizontalAlignment="Left" Margin="205,80,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
         <Label x:Name="lblTipo" Content="Label" HorizontalAlignment="Left" Margin="205,130,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
         <Label x:Name="lblSucursal" Content="Label" HorizontalAlignment="Left" Margin="205,184,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblNombre_Copy" Content="*" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707"/>
+        <Label x:Name="lblNombre_Copy1" Content="*" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707"/>
+        <Label x:Name="lblNombre_Copy2" Content="*" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707"/>
+        <Label x:Name="lblNombre_Copy3" Content="*" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707"/>
+        <Label x:Name="lblNombre_Copy4" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707"/>
+        <Label x:Name="lblNombre_Copy5" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707" Margin="10,320,0,0"/>
+        <Label x:Name="lblNombre_Copy6" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707" Margin="10,212,0,0"/>
+        <Label x:Name="lblNombre_Copy7" Content="*" HorizontalAlignment="Left" Margin="10,374,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707"/>
+        <Label x:Name="lblNombre_Copy8" Content="*" HorizontalAlignment="Left" Margin="10,428,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707"/>
+        <Label x:Name="lblNombre_Copy9" Content="*" HorizontalAlignment="Left" Margin="190,55,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707"/>
+        <Label x:Name="lblNombre_Copy10" Content="*" HorizontalAlignment="Left" Margin="190,106,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707"/>
+        <Label x:Name="lblNombre_Copy11" Content="*" HorizontalAlignment="Left" Margin="190,158,0,0" VerticalAlignment="Top" Width="19"  Foreground="#FFF10707"/>
     </Grid>
 </Controls:MetroWindow>

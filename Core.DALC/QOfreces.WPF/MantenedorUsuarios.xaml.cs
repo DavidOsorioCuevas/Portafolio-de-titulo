@@ -143,11 +143,13 @@ namespace QOfreces.WPF
             lblNombreUsuario.Content = validador.validarNombreUsuario(txtUsuario.Text);
             lblRut.Content = validador.validarRut(txtRut.Text);
             lblFechaNacimiento.Content = validador.validarFecha(dpFecha.Text);
+            lblContraseña.Content = validador.validarContraseña(pbContraseña.Password);
+            lblContraseña2.Content = validador.validarContraseña(pbContraseña2.Password);
 
             Usuario user = new Usuario();
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
 
-            if (lblNombre.Content.Equals("OK") && lblApellido.Content.Equals("OK") && lblEmail.Content.Equals("OK") && lblNombreUsuario.Content.Equals("OK") && lblRut.Content.Equals("OK") && lblFechaNacimiento.Content.Equals("OK"))
+            if (lblNombre.Content.Equals("OK") && lblApellido.Content.Equals("OK") && lblEmail.Content.Equals("OK") && lblNombreUsuario.Content.Equals("OK") && lblRut.Content.Equals("OK") && lblFechaNacimiento.Content.Equals("OK") && lblContraseña.Content.Equals("OK") && lblContraseña2.Content.Equals("OK"))
             {
                 string json;
                 switch (btnEjecutar.Content.ToString())
@@ -188,7 +190,7 @@ namespace QOfreces.WPF
                             {
                                 user.Puntos = 0;
                             }
-                           
+
                             json = user.Serializar();
 
                             if (proxy.CrearUsuario(json))
@@ -289,14 +291,10 @@ namespace QOfreces.WPF
                     default:
                         break;
                 }
-            } 
+            }
             else
             {
-                            
                 
-               
-                lblFechaNacimiento.Visibility = Visibility.Visible;
-
                 if (lblNombre.Content.Equals("OK"))
                 {
                     lblNombre.Visibility = Visibility.Hidden;
@@ -351,10 +349,27 @@ namespace QOfreces.WPF
                     lblFechaNacimiento.Visibility = Visibility.Visible;
                 }
 
+                if (lblContraseña.Content.Equals("OK"))
+                {
+                    lblContraseña.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lblContraseña.Visibility = Visibility.Visible;
+                }
+
+                if (lblContraseña2.Content.Equals("OK"))
+                {
+                    lblContraseña2.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lblContraseña2.Visibility = Visibility.Visible;
+                }
             }
 
-        
-    }
+
+        }
 
         private void ocultarLbl()
         {
@@ -373,50 +388,50 @@ namespace QOfreces.WPF
         }
 
         private void LimpiarControles()
-    {
-        txtNombre.Text = string.Empty;
-        txtApellido.Text = string.Empty;
-        txtRut.Text = string.Empty;
-        txtEmail.Text = string.Empty;
-        txtCelular.Text = string.Empty;
-        txtUsuario.Text = string.Empty;
-        dpFecha.SelectedDate = null;
-        cbSucursal.SelectedIndex = 0;
-        cbPerfil.SelectedIndex = 0;
-        chActivar.IsChecked = false;
-        rbFem.IsChecked = false;
-        rbMas.IsChecked = false;
-        pbContraseña.Password = "";
-        pbContraseña2.Password = "";
-    }
-
-    private void btnListar_Click(object sender, RoutedEventArgs e)
-    {
-        ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-        string json = proxy.ReadAll();
-        Core.Negocio.UsuarioColection collUser = new Core.Negocio.UsuarioColection(json);
-        collUser.ToList();
-        dgUsuario.ItemsSource = collUser;
-    }
-
-    private void dgUsuario_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        if (dgUsuario.SelectedItem != null)
         {
+            txtNombre.Text = string.Empty;
+            txtApellido.Text = string.Empty;
+            txtRut.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtCelular.Text = string.Empty;
+            txtUsuario.Text = string.Empty;
+            dpFecha.SelectedDate = null;
+            cbSucursal.SelectedIndex = 0;
+            cbPerfil.SelectedIndex = 0;
+            chActivar.IsChecked = false;
+            rbFem.IsChecked = false;
+            rbMas.IsChecked = false;
+            pbContraseña.Password = "";
+            pbContraseña2.Password = "";
+        }
 
-            cbPerfil.ItemsSource = null;
-            cbSucursal.ItemsSource = null;
-            Usuario u = (Usuario)dgUsuario.SelectedItem;
-            Perfil p = new Perfil();
-            txtNombre.Text = u.Nombre;
-            txtApellido.Text = u.Apellido;
-            txtRut.Text = u.Rut;
-            txtEmail.Text = u.Email;
-            txtCelular.Text = u.NumeroCelular.ToString();
-            txtUsuario.Text = u.NombreUsuario;
-            dpFecha.SelectedDate = u.FechaNacimiento;
-            pbContraseña.Password = u.Password;
-            pbContraseña2.Password = u.Password;
+        private void btnListar_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json = proxy.ReadAll();
+            Core.Negocio.UsuarioColection collUser = new Core.Negocio.UsuarioColection(json);
+            collUser.ToList();
+            dgUsuario.ItemsSource = collUser;
+        }
+
+        private void dgUsuario_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgUsuario.SelectedItem != null)
+            {
+
+                cbPerfil.ItemsSource = null;
+                cbSucursal.ItemsSource = null;
+                Usuario u = (Usuario)dgUsuario.SelectedItem;
+                Perfil p = new Perfil();
+                txtNombre.Text = u.Nombre;
+                txtApellido.Text = u.Apellido;
+                txtRut.Text = u.Rut;
+                txtEmail.Text = u.Email;
+                txtCelular.Text = u.NumeroCelular.ToString();
+                txtUsuario.Text = u.NombreUsuario;
+                dpFecha.SelectedDate = u.FechaNacimiento;
+                pbContraseña.Password = u.Password;
+                pbContraseña2.Password = u.Password;
 
 
                 ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
@@ -426,110 +441,106 @@ namespace QOfreces.WPF
                 cbSucursal.SelectedValuePath = "IdSucursal";
                 cbSucursal.ItemsSource = suCol.ToList();
 
-            for (int i = 0; i < cbSucursal.Items.Count; i++)
-            {
-                Sucursal s = (Sucursal)cbSucursal.Items[i];
-                if (s.IdSucursal == u.IdSucursal)
+                for (int i = 0; i < cbSucursal.Items.Count; i++)
                 {
-                    cbSucursal.SelectedIndex = i;
+                    Sucursal s = (Sucursal)cbSucursal.Items[i];
+                    if (s.IdSucursal == u.IdSucursal)
+                    {
+                        cbSucursal.SelectedIndex = i;
+                    }
+                }
+
+                string jsonP = proxy.ReadAllPerfil();
+                PerfilCollections perCol = new PerfilCollections(jsonP);
+                cbPerfil.DisplayMemberPath = "Tipo";
+                cbPerfil.SelectedValuePath = "IdPerfil";
+                cbPerfil.ItemsSource = perCol.ToList();
+
+                for (int i = 0; i < cbPerfil.Items.Count; i++)
+                {
+                    Perfil pe = (Perfil)cbPerfil.Items[i];
+
+                    if (pe.IdPerfil == u.IdPerfil)
+                    {
+                        cbPerfil.SelectedIndex = i;
+                    }
+                }
+
+
+
+                if (u.Activo == '1')
+                {
+                    chActivar.IsChecked = true;
+                }
+                else
+                {
+                    chActivar.IsChecked = false;
+                }
+
+                if (u.Sexo == 'm' || u.Sexo == 'M')
+                {
+                    rbMas.IsChecked = true;
+                }
+                else
+                {
+                    rbFem.IsChecked = true;
                 }
             }
+        }
 
-            string jsonP = proxy.ReadAllPerfil();
-            PerfilCollections perCol = new PerfilCollections(jsonP);
-            cbPerfil.DisplayMemberPath = "Tipo";
-            cbPerfil.SelectedValuePath = "IdPerfil";
-            cbPerfil.ItemsSource = perCol.ToList();
+        private void txtNombre_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
 
-            for (int i = 0; i < cbPerfil.Items.Count; i++)
+            if (ascci >= 65 && ascci <= 90 || ascci >= 97 && ascci <= 122)
             {
-                Perfil pe = (Perfil)cbPerfil.Items[i];
-
-                if (pe.IdPerfil == u.IdPerfil)
-                {
-                    cbPerfil.SelectedIndex = i;
-                }
-            }
-
-
-
-            if (u.Activo == '1')
-            {
-                chActivar.IsChecked = true;
+                lblNombre.Visibility = Visibility.Hidden;
             }
             else
             {
-                chActivar.IsChecked = false;
-            }
 
-            if (u.Sexo == 'm' || u.Sexo == 'M')
+                lblNombre.Content = "Nombre no puede contener numeros";
+                lblNombre.Visibility = Visibility.Visible;
+
+            }
+        }
+
+        private void txtApellido_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 65 && ascci <= 90 || ascci >= 97 && ascci <= 122)
             {
-                rbMas.IsChecked = true;
+                lblNombre.Visibility = Visibility.Hidden;
             }
             else
             {
-                rbFem.IsChecked = true;
+
+                lblApellido.Content = "Apellido no puede contener numeros";
+                lblApellido.Visibility = Visibility.Visible;
+
             }
         }
-    }
 
-    private void txtNombre_PreviewTextInput(object sender, TextCompositionEventArgs e)
-    {
-        int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
-
-        if (ascci >= 65 && ascci <= 90 || ascci >= 97 && ascci <= 122)
+        private void txtCelular_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            lblNombre.Visibility = Visibility.Hidden;
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+
+            if (ascci >= 48 && ascci <= 57)
+            {
+                lblTelefono.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                lblTelefono.Content = "Ingrese solo Numeros";
+                lblTelefono.Visibility = Visibility.Visible;
+            }
         }
-        else
-        {
-
-            lblNombre.Content = "Nombre no puede contener numeros";
-            lblNombre.Visibility = Visibility.Visible;
-
-        }
-    }
-
-    private void txtApellido_PreviewTextInput(object sender, TextCompositionEventArgs e)
-    {
-        int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
-
-        if (ascci >= 65 && ascci <= 90 || ascci >= 97 && ascci <= 122)
-        {
-            lblNombre.Visibility = Visibility.Hidden;
-        }
-        else
-        {
-
-            lblApellido.Content = "Apellido no puede contener numeros";
-            lblApellido.Visibility = Visibility.Visible;
-
-        }
-    }
-
-    private void txtCelular_PreviewTextInput(object sender, TextCompositionEventArgs e)
-    {
-        int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
-
-        //if (string.IsNullOrEmpty(e.Text))
-        //{
-        //    lblTelefono.Content = "Telefono no debe estar vacio";
-        //    lblTelefono.Visibility = Visibility.Visible;
-        //}
-        if (ascci >= 48 && ascci <= 57)
-        {
-            lblTelefono.Visibility = Visibility.Hidden;
-        }
-        else
-        {
-            lblTelefono.Content = "Ingrese solo Numeros";
-            lblTelefono.Visibility = Visibility.Visible;
-        }
-    }
 
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
-            this.Close(); 
+            this.Close();
         }
     }
 }
