@@ -14,11 +14,11 @@
         Title="Mantenedor Retail" Height="400" Width="600" Background="Gainsboro">
     <Grid Margin="10,10,1,7">
         <TextBox x:Name="txtRut" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese rut" HorizontalAlignment="Left" Height="23" Margin="32,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
-        <TextBox x:Name="txtNombre" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese nombre" HorizontalAlignment="Left" Height="23" Margin="32,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
-        <TextBox x:Name="txtRazonSocial" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese razon social" HorizontalAlignment="Left" Height="23" Margin="32,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
-        <TextBox x:Name="txtTelefono" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese telefono" HorizontalAlignment="Left" Height="23" Margin="32,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
-        <TextBox x:Name="txtEmail" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese email" HorizontalAlignment="Left" Height="23" Margin="32,229,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
-        <TextBox x:Name="txtDireccion" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese direccion" HorizontalAlignment="Left" Height="23" Margin="32,274,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
+        <TextBox x:Name="txtNombre" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese nombre" HorizontalAlignment="Left" Height="23" Margin="32,104,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175" PreviewTextInput="txtNombre_PreviewTextInput"/>
+        <TextBox x:Name="txtRazonSocial" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese razon social" HorizontalAlignment="Left" Height="23" Margin="32,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
+        <TextBox x:Name="txtTelefono" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese telefono" HorizontalAlignment="Left" Height="23" Margin="32,197,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175" PreviewTextInput="txtTelefono_PreviewTextInput"/>
+        <TextBox x:Name="txtEmail" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese email" HorizontalAlignment="Left" Height="23" Margin="32,244,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175" PreviewTextInput="txtEmail_PreviewTextInput"/>
+        <TextBox x:Name="txtDireccion" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese direccion" HorizontalAlignment="Left" Height="23" Margin="32,287,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
         <ComboBox x:Name="cbRegion" HorizontalAlignment="Left" Margin="226,78,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbRegion_SelectionChanged"/>
         <ComboBox x:Name="cbComuna" HorizontalAlignment="Left" Margin="226,135,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="label" Content="Region" HorizontalAlignment="Left" Margin="226,47,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
@@ -36,5 +36,13 @@
         <Controls:Tile x:Name="tiAgregar" Height="Auto" Margin="32,10,494,308" Width="Auto" Title="Agregar" TitleFontSize="10" Click="tiAgregar_Click"/>
         <Controls:Tile x:Name="tiModificar" Height="Auto" Margin="211,10,306,308" Width="Auto" Title="Modificar" TitleFontSize="10" Click="tiModificar_Click"/>
         <Controls:Tile x:Name="tiEliminar" Height="Auto" Margin="385,10,133,308" Width="Auto" Title="Eliminar" TitleFontSize="10" RenderTransformOrigin="2.377,0.438" Click="tiEliminar_Click"/>
+        <Label x:Name="lblRut" Content="Label" HorizontalAlignment="Left" Margin="32,78,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707"/>
+        <Label x:Name="lblNombre" Content="Label" HorizontalAlignment="Left" Margin="32,122,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707"/>
+        <Label x:Name="lblRazonSocial" Content="Label" HorizontalAlignment="Left" Margin="32,171,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707"/>
+        <Label x:Name="lblTelefono" Content="Label" HorizontalAlignment="Left" Margin="32,218,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707"/>
+        <Label x:Name="lblEmail" Content="Label" HorizontalAlignment="Left" Margin="32,261,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707"/>
+        <Label x:Name="lblDireccion" Content="Label" HorizontalAlignment="Left" Margin="32,313,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707"/>
+        <Label x:Name="lblRegion" Content="Label" HorizontalAlignment="Left" Margin="346,78,-37,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707"/>
+        <Label x:Name="lblComuna" Content="Label" HorizontalAlignment="Left" Margin="346,135,-37,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707"/>
     </Grid>
 </Controls:MetroWindow>

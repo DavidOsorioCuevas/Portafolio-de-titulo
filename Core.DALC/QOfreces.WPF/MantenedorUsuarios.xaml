@@ -11,25 +11,25 @@
         Icon="img/logo.png"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
-        Title="Mantenedor Usuarios" Height="400" Width="600">
+        Title="Mantenedor Usuarios" Height="601" Width="593">
     <Grid>
-        <ComboBox x:Name="cbPerfil" HorizontalAlignment="Left" Margin="205,86,0,0" VerticalAlignment="Top" Width="160" TabIndex="11"/>
+        <ComboBox x:Name="cbPerfil" HorizontalAlignment="Left" Margin="205,106,0,0" VerticalAlignment="Top" Width="160" TabIndex="11"/>
         <DatePicker x:Name="dpFecha" HorizontalAlignment="Left" Margin="205,55,0,0" VerticalAlignment="Top" Width="160" Controls:TextBoxHelper.Watermark="Fecha de nacimiento" TabIndex="10"/>
         <TextBox x:Name="txtNombre" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu nombre" HorizontalAlignment="Left" Height="23" Margin="21,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="1"/>
-        <TextBox x:Name="txtApellido" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu apellido" HorizontalAlignment="Left" Height="23" Margin="21,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="2"/>
-        <TextBox x:Name="txtRut" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Rut 12345678-9" HorizontalAlignment="Left" Height="23" Margin="21,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="3"/>
-        <TextBox x:Name="txtEmail" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa Email" HorizontalAlignment="Left" Height="23" Margin="21,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="4"/>
-        <TextBox x:Name="txtCelular" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Numero de contacto" HorizontalAlignment="Left" Height="23" Margin="21,178,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="5"/>
-        <TextBox x:Name="txtPuntos" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Cantidad de puntos" HorizontalAlignment="Left" Height="23" Margin="21,209,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="6"/>
-        <TextBox x:Name="txtUsuario" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Nombre de usuario" HorizontalAlignment="Left" Height="23" Margin="21,240,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="7"/>
-        <PasswordBox x:Name="pbContraseña" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Contraseña" HorizontalAlignment="Left" Margin="21,271,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.681" Width="164" TabIndex="8"/>
-        <PasswordBox x:Name="pbContraseña2" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Repita contraseña" HorizontalAlignment="Left" Margin="21,302,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.681" Width="164" TabIndex="9"/>
-        <ComboBox x:Name="cbSucursal"  HorizontalAlignment="Left" Margin="205,117,0,0" VerticalAlignment="Top" Width="160" TabIndex="12"/>
-        <CheckBox x:Name="chActivar" IsChecked="false" Content="Usuario activo" HorizontalAlignment="Left" Margin="205,156,0,0" VerticalAlignment="Top" TabIndex="13"/>
-        <RadioButton x:Name="rbFem" IsChecked="True" Content="Femenino" GroupName="Sexo" HorizontalAlignment="Left" Margin="205,194,0,0" VerticalAlignment="Top" TabIndex="14"/>
-        <RadioButton x:Name="rbMas" Content="Masculino" GroupName="Sexo" HorizontalAlignment="Left" Margin="205,226,0,0" VerticalAlignment="Top" TabIndex="15"/>
-        <Button x:Name="btnEjecutar" Content="Agregar" HorizontalAlignment="Left" Margin="388,330,0,0" VerticalAlignment="Top" Width="75"  TabIndex="16" Click="btnEjecutar_Click"/>
-        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="495,330,0,0" VerticalAlignment="Top" Width="75" TabIndex="19"/>
+        <TextBox x:Name="txtApellido" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu apellido" HorizontalAlignment="Left" Height="23" Margin="21,104,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="2" PreviewTextInput="txtApellido_PreviewTextInput"/>
+        <TextBox x:Name="txtRut" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Rut 12345678-9" HorizontalAlignment="Left" Height="23" Margin="21,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="3"/>
+        <TextBox x:Name="txtEmail" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa Email" HorizontalAlignment="Left" Height="23" Margin="21,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="4"/>
+        <TextBox x:Name="txtCelular" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Numero de contacto" HorizontalAlignment="Left" Height="23" Margin="21,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="5" PreviewTextInput="txtCelular_PreviewTextInput"/>
+        <TextBox x:Name="txtPuntos" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Cantidad de puntos" HorizontalAlignment="Left" Height="23" Margin="21,322,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="6"/>
+        <TextBox x:Name="txtUsuario" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Nombre de usuario" HorizontalAlignment="Left" Height="23" Margin="21,376,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="7"/>
+        <PasswordBox x:Name="pbContraseña" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Contraseña" HorizontalAlignment="Left" Margin="21,430,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.681" Width="164" TabIndex="8"/>
+        <PasswordBox x:Name="pbContraseña2" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Repita contraseña" HorizontalAlignment="Left" Margin="21,484,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.681" Width="164" TabIndex="9"/>
+        <ComboBox x:Name="cbSucursal"  HorizontalAlignment="Left" Margin="205,158,0,0" VerticalAlignment="Top" Width="160" TabIndex="12"/>
+        <CheckBox x:Name="chActivar" IsChecked="false" Content="Usuario activo" HorizontalAlignment="Left" Margin="205,212,0,0" VerticalAlignment="Top" TabIndex="13"/>
+        <RadioButton x:Name="rbFem" IsChecked="True" Content="Femenino" GroupName="Sexo" HorizontalAlignment="Left" Margin="205,251,0,0" VerticalAlignment="Top" TabIndex="14"/>
+        <RadioButton x:Name="rbMas" Content="Masculino" GroupName="Sexo" HorizontalAlignment="Left" Margin="205,274,0,0" VerticalAlignment="Top" TabIndex="15"/>
+        <Button x:Name="btnEjecutar" Content="Agregar" HorizontalAlignment="Left" Margin="379,515,0,0" VerticalAlignment="Top" Width="75"  TabIndex="16" Click="btnEjecutar_Click"/>
+        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="486,515,0,0" VerticalAlignment="Top" Width="75" TabIndex="19"/>
         <Button x:Name="btnListar" Visibility="Hidden" Content="Listar" HorizontalAlignment="Left" Margin="505,54,0,0" VerticalAlignment="Top" Width="75" Click="btnListar_Click"/>
         <TextBox x:Name="txtListar" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="380,54,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <DataGrid x:Name="dgUsuario" Visibility="Hidden" CanUserAddRows="False" HorizontalAlignment="Left" Margin="380,88,0,0" VerticalAlignment="Top" Height="161" Width="200" SelectionChanged="dgUsuario_SelectionChanged">
@@ -38,8 +38,20 @@
                 <DataGridTextColumn x:Name="dgcNom" Header="Nombre" Binding="{Binding Path=Nombre}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Controls:Tile x:Name="tiAgregar" Height="Auto" Margin="50,10,476,327" Width="Auto" Title="Agregar" TitleFontSize="10" Click="tiAgregar_Click"/>
-        <Controls:Tile x:Name="tiEliminar" Height="Auto" Margin="476,10,50,327" Width="Auto" Title="Eliminar" TitleFontSize="10" Click="tiEliminar_Click" />
-        <Controls:Tile x:Name="tiModificar" Height="Auto" Margin="262,10,264,327" Width="Auto" Title="Modificar" TitleFontSize="10" Click="tiModificar_Click" />
+        <Controls:Tile x:Name="tiAgregar" Height="Auto" Margin="50,10,471,530" Width="Auto" Title="Agregar" TitleFontSize="10" Click="tiAgregar_Click"/>
+        <Controls:Tile x:Name="tiEliminar" Height="Auto" Margin="459,10,62,530" Width="Auto" Title="Eliminar" TitleFontSize="10" Click="tiEliminar_Click" />
+        <Controls:Tile x:Name="tiModificar" Height="Auto" Margin="259,10,262,530" Width="Auto" Title="Modificar" TitleFontSize="10" Click="tiModificar_Click" />
+        <Label x:Name="lblContraseña2" Content="Label" HorizontalAlignment="Left" Margin="21,510,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblContraseña" Content="Label" HorizontalAlignment="Left" Margin="21,456,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblNombreUsuario" Content="Label" HorizontalAlignment="Left" Margin="21,402,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblPuntos" Content="Label" HorizontalAlignment="Left" Margin="21,348,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblTelefono" Content="Label" HorizontalAlignment="Left" Margin="21,292,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblEmail" Content="Label" HorizontalAlignment="Left" Margin="21,238,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblRut" Content="Label" HorizontalAlignment="Left" Margin="21,184,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblNombre" Content="Label" HorizontalAlignment="Left" Margin="21,76,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblApellido" Content="Label" HorizontalAlignment="Left" Margin="21,130,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblFechaNacimiento" Content="Label" HorizontalAlignment="Left" Margin="205,80,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblTipo" Content="Label" HorizontalAlignment="Left" Margin="205,130,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
+        <Label x:Name="lblSucursal" Content="Label" HorizontalAlignment="Left" Margin="205,184,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="23"/>
     </Grid>
 </Controls:MetroWindow>

@@ -15,6 +15,7 @@ using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using MahApps.Metro.Behaviours;
 using Core.Negocio;
+using System.Text.RegularExpressions;
 
 namespace QOfreces.WPF
 {
@@ -23,6 +24,7 @@ namespace QOfreces.WPF
     /// </summary>
     public partial class MantenedorRetail : MetroWindow
     {
+        Validaciones validador = new Validaciones();
         public MantenedorRetail()
         {
             InitializeComponent();
@@ -43,6 +45,14 @@ namespace QOfreces.WPF
             cbComuna.SelectedIndex = 0;
             cbRegion.SelectedIndex = 0;
             dgRetail.ItemsSource = null;
+            lblComuna.Visibility = Visibility.Hidden;
+            lblDireccion.Visibility = Visibility.Hidden;
+            lblEmail.Visibility = Visibility.Hidden;
+            lblNombre.Visibility = Visibility.Hidden;
+            lblRazonSocial.Visibility = Visibility.Hidden;
+            lblRegion.Visibility = Visibility.Hidden;
+            lblRut.Visibility = Visibility.Hidden;
+            lblTelefono.Visibility = Visibility.Hidden;
         }
 
         private void CargarCombobox()
@@ -55,7 +65,15 @@ namespace QOfreces.WPF
             cbRegion.ItemsSource = reCol.ToList();
 
             cbComuna.IsEnabled = false;
-            
+            lblComuna.Visibility = Visibility.Hidden;
+            lblDireccion.Visibility = Visibility.Hidden;
+            lblEmail.Visibility = Visibility.Hidden;
+            lblNombre.Visibility = Visibility.Hidden;
+            lblRazonSocial.Visibility = Visibility.Hidden;
+            lblRegion.Visibility = Visibility.Hidden;
+            lblRut.Visibility = Visibility.Hidden;
+            lblTelefono.Visibility = Visibility.Hidden;
+
         }
 
         private void Deshabilitar()
@@ -83,7 +101,7 @@ namespace QOfreces.WPF
             txtListar.Visibility = Visibility.Hidden;
             btnListar.Visibility = Visibility.Hidden;
             btnEjecutar.Content = "Agregar";
-            
+
         }
 
         private void tiEliminar_Click(object sender, RoutedEventArgs e)
@@ -142,7 +160,7 @@ namespace QOfreces.WPF
                     }
                 }
 
-                
+
                 string json = proxy.ReadAllComuna();
                 ComunaCollections comCol = new ComunaCollections(json);
                 cbComuna.DisplayMemberPath = "Nombre";
@@ -164,88 +182,133 @@ namespace QOfreces.WPF
 
         private async void btnEjecutar_Click(object sender, RoutedEventArgs e)
         {
+            lblNombre.Content = validador.validarNombre(txtNombre.Text);
+            lblEmail.Content = validador.validarCorreo(txtEmail.Text);
+            lblRazonSocial.Content = validador.validarRazonSocial(txtRazonSocial.Text);
+            lblRut.Content = validador.validarRut(txtRut.Text);
+
             Retail ret = new Retail();
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json;
-            switch (btnEjecutar.Content.ToString())
+            if (cbComuna.SelectedIndex.Equals(-1))
             {
-                case "Agregar":
-                    
-                    ret.RutRetail = txtRut.Text;
-                    ret.NombreRetail = txtNombre.Text;
-                    ret.RazonSocial = txtRazonSocial.Text;
-                    int tele;
-                    int.TryParse(txtTelefono.Text, out tele);
-                    ret.Telefono = tele;
-                    ret.Email = txtEmail.Text;
-                    ret.Direccion = txtDireccion.Text;
-                    ret.IdRegion = (int)cbRegion.SelectedValue;
-                    ret.IdComuna = (int)cbComuna.SelectedValue;
+                lblComuna.Content = "Seleccione una opcion";
+                lblComuna.Visibility = Visibility.Visible;
+            }
 
-                    json = ret.Serializar();
-                    if (proxy.CrearRetail(json))
+            if (lblRut.Content.Equals("OK"))
+            {
+                lblRut.Visibility = Visibility.Hidden;
+                if (lblNombre.Content.Equals("OK"))
+                {
+                    lblNombre.Visibility = Visibility.Hidden;
+                    if (lblRazonSocial.Content.Equals("OK"))
                     {
-                        await this.ShowMessageAsync("Exito", "Retail creado");
-                        LimpiarControles();
+                        lblRazonSocial.Visibility = Visibility.Hidden;
+                        if (lblEmail.Content.Equals("OK"))
+                        {
+                            lblEmail.Visibility = Visibility.Hidden;
+                            string json;
+                            switch (btnEjecutar.Content.ToString())
+                            {
+                                case "Agregar":
 
+                                    ret.RutRetail = txtRut.Text;
+                                    ret.NombreRetail = txtNombre.Text;
+                                    ret.RazonSocial = txtRazonSocial.Text;
+                                    int tele;
+                                    int.TryParse(txtTelefono.Text, out tele);
+                                    ret.Telefono = tele;
+                                    ret.Email = txtEmail.Text;
+                                    ret.Direccion = txtDireccion.Text;
+                                    ret.IdRegion = (int)cbRegion.SelectedValue;
+                                    ret.IdComuna = (int)cbComuna.SelectedValue;
+
+                                    json = ret.Serializar();
+                                    if (proxy.CrearRetail(json))
+                                    {
+                                        await this.ShowMessageAsync("Exito", "Retail creado");
+                                        LimpiarControles();
+
+                                    }
+                                    else
+                                    {
+                                        await this.ShowMessageAsync("Error", "No se a podido crear");
+                                        LimpiarControles();
+                                    }
+
+                                    break;
+
+                                case "Modificar":
+
+                                    ret.RutRetail = txtRut.Text;
+                                    ret.NombreRetail = txtNombre.Text;
+                                    ret.RazonSocial = txtRazonSocial.Text;
+                                    int tel;
+                                    int.TryParse(txtTelefono.Text, out tel);
+                                    ret.Telefono = tel;
+                                    ret.Email = txtEmail.Text;
+                                    ret.Direccion = txtDireccion.Text;
+                                    ret.IdRegion = (int)cbRegion.SelectedValue;
+                                    ret.IdComuna = (int)cbComuna.SelectedValue;
+                                    Retail id = (Retail)dgRetail.SelectedItem;
+                                    ret.IdRetail = id.IdRetail;
+                                    json = ret.Serializar();
+                                    if (proxy.ActualizarRetail(json))
+                                    {
+                                        await this.ShowMessageAsync("Exito", "Retail actualizado");
+                                        LimpiarControles();
+
+                                    }
+                                    else
+                                    {
+                                        await this.ShowMessageAsync("Error", "No se a podido actualizar");
+                                        LimpiarControles();
+                                    }
+                                    break;
+
+                                case "Eliminar":
+
+                                    Retail r = (Retail)dgRetail.SelectedValue;
+                                    json = r.Serializar();
+                                    if (proxy.EliminarRetail(json))
+                                    {
+                                        await this.ShowMessageAsync("Exito", "Retail eliminado");
+                                        LimpiarControles();
+                                    }
+                                    else
+                                    {
+                                        await this.ShowMessageAsync("Error", "No se a podido eliminar");
+                                        LimpiarControles();
+                                    }
+
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            lblEmail.Visibility = Visibility.Visible;
+                        }
                     }
                     else
                     {
-                        await this.ShowMessageAsync("Error", "No se a podido crear");
-                        LimpiarControles();
+                        lblRazonSocial.Visibility = Visibility.Visible;
                     }
+                }
+                else
+                {
+                    lblNombre.Visibility = Visibility.Visible;
+                }
 
-                    break;
-
-                case "Modificar":
-
-                    ret.RutRetail = txtRut.Text;
-                    ret.NombreRetail = txtNombre.Text;
-                    ret.RazonSocial = txtRazonSocial.Text;
-                    int tel;
-                    int.TryParse(txtTelefono.Text, out tel);
-                    ret.Telefono = tel;
-                    ret.Email = txtEmail.Text;
-                    ret.Direccion = txtDireccion.Text;
-                    ret.IdRegion = (int)cbRegion.SelectedValue;
-                    ret.IdComuna = (int)cbComuna.SelectedValue;
-                    Retail id = (Retail)dgRetail.SelectedItem;
-                    ret.IdRetail = id.IdRetail;
-                    json = ret.Serializar();
-                    if (proxy.ActualizarRetail(json))
-                    {
-                        await this.ShowMessageAsync("Exito", "Retail actualizado");
-                        LimpiarControles();
-
-                    }
-                    else
-                    {
-                        await this.ShowMessageAsync("Error", "No se a podido actualizar");
-                        LimpiarControles();
-                    }
-                    break;
-
-                case "Eliminar":
-
-                    Retail r = (Retail)dgRetail.SelectedValue;
-                    json = r.Serializar();
-                    if (proxy.EliminarRetail(json))
-                    {
-                        await this.ShowMessageAsync("Exito", "Retail eliminado");
-                        LimpiarControles();
-                    }
-                    else
-                    {
-                        await this.ShowMessageAsync("Error", "No se a podido eliminar");
-                        LimpiarControles();
-                    }
-
-                    break;
-
-                default:
-                    break;
+            }
+            else
+            {
+                lblRut.Visibility = Visibility.Visible;
             }
         }
+
 
         private void cbRegion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -275,7 +338,72 @@ namespace QOfreces.WPF
                 cbComuna.ItemsSource = mostrar.ToList();
             }
 
-           
+
+        }
+
+        private void txtNombre_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (string.IsNullOrEmpty(e.Text))
+            {
+                lblTelefono.Content = "Telefono no debe estar vacio";
+                lblTelefono.Visibility = Visibility.Visible;
+            }
+            if (e.Text.Length == 0)
+            {
+                lblTelefono.Content = "Telefono no debe estar vacio forma e";
+                lblTelefono.Visibility = Visibility.Visible;
+            }
+            if (ascci >= 65 && ascci <= 90 || ascci >= 97 && ascci <= 122)
+            {
+                lblNombre.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+
+                lblNombre.Content = "Nombre no puede contener numeros";
+                lblNombre.Visibility = Visibility.Visible;
+
+            }
+        }
+
+        private void txtTelefono_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (string.IsNullOrEmpty(e.Text))
+            {
+                lblTelefono.Content = "Telefono no debe estar vacio";
+                lblTelefono.Visibility = Visibility.Visible;
+            }
+            if (ascci >= 48 && ascci <= 57)
+            {
+                lblTelefono.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                lblTelefono.Content = "Ingrese solo Numeros";
+                lblTelefono.Visibility = Visibility.Visible;
+            }
+
+        }
+
+        private void txtEmail_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (String.IsNullOrEmpty(e.Text))
+            {
+                lblEmail.Content = "El correo no puede estar en blanco";
+            }
+            if (e.Text != null && !Regex.IsMatch(e.Text, "^[\\w-]+(\\.[\\w-]+)*@([a-z0-9-]+(\\.[a-z0-9-]+)*?\\.[a-z]{2,6}|(\\d{1,3}\\.){3}\\d{1,3})(:\\d{4})?$", RegexOptions.IgnoreCase))
+            {
+                lblEmail.Content = "Digite un correo válido";
+            }
+            else
+            {
+                lblEmail.Content = "OK";
+            }
         }
     }
 }

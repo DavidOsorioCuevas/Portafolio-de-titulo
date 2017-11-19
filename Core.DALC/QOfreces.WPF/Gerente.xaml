@@ -32,5 +32,6 @@
         </DataGrid>
         <Button x:Name="btnExportar" Content="Exportar" HorizontalAlignment="Left" Margin="10,249,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="106,249,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="lblNombre" Content="Label" HorizontalAlignment="Left" Margin="137,32,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707"/>
     </Grid>
 </Controls:MetroWindow>

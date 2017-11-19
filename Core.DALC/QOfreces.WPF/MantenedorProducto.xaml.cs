@@ -24,11 +24,17 @@ namespace QOfreces.WPF
     /// </summary>
     public partial class MantenedorProducto : MetroWindow
     {
+        Validaciones validador = new Validaciones();
+
         public MantenedorProducto()
         {
             InitializeComponent();
             CargarCombobox();
-
+            lblNombre.Visibility = Visibility.Hidden;
+            lblCodigo.Visibility = Visibility.Hidden;
+            lblDescripcion.Visibility = Visibility.Hidden;
+            lblPrecio.Visibility = Visibility.Hidden;
+            lblRubro.Visibility = Visibility.Hidden;
 
         }
 
@@ -52,7 +58,7 @@ namespace QOfreces.WPF
             cbRubro.DisplayMemberPath = "TipoRubro";
             cbRubro.SelectedValuePath = "IdRubro";
             cbRubro.ItemsSource = reCol.ToList();
-            
+
         }
 
         private void btnListarProd_Click(object sender, RoutedEventArgs e)
@@ -84,7 +90,7 @@ namespace QOfreces.WPF
             txtNombre.IsEnabled = true;
             txtPrecio.IsEnabled = true;
             cbRubro.IsEnabled = true;
-            
+
         }
 
         private void tiEliminar_Click(object sender, RoutedEventArgs e)
@@ -106,121 +112,155 @@ namespace QOfreces.WPF
             txtNombre.IsEnabled = false;
             txtPrecio.IsEnabled = false;
             cbRubro.IsEnabled = false;
-            
+
         }
+
+
 
         private async void btnEjecutar_Click(object sender, RoutedEventArgs e)
         {
+            lblNombre.Content = validador.validarNombre(txtNombre.Text);
+            lblPrecio.Content = validador.validarPrecio(txtPrecio.Text);
+            lblCodigo.Content = validador.validarCodigoInterno(txtCod.Text);
 
             Producto p = new Producto();
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json;
-            switch (btnEjecutar.Content.ToString())
+
+            if (cbRubro.SelectedIndex.Equals(-1))
             {
-                case "Agregar":
-
-
-                    json = proxy.ReadAllRubros();
-                    RubroCollections reCol = new RubroCollections(json);
-                    string aux = string.Empty;
-
-                    p.IdRubro = (int)cbRubro.SelectedValue;
-                    foreach (var item in reCol)
-                    {
-                        if (p.IdRubro == item.IdRubro)
-                        {
-                            aux = item.TipoRubro;
-                        }
-                    }
-                    int precio;
-                    int.TryParse(txtPrecio.Text, out precio);
-                    p.Precio = precio;
-                    p.CodigoInterno = txtCod.Text;
-                    p.Nombre = txtNombre.Text;
-                    p.Sku = txtNombre.Text.Substring(0, 4) + aux.Substring(0, 4);
-                    p.Descripcion = txtDescripcion.Text;
-
-
-
-                    string jsons = p.Serializar();
-
-                    if (proxy.CrearProducto(jsons))
-                    {
-                        await this.ShowMessageAsync("Exito", "Producto agregado!");
-                        LimpiarControles();
-                        
-                    }
-                    else
-                    {
-                        await this.ShowMessageAsync("Error", "No se pudo agregar el producto");
-
-                    };
-
-                    break;
-
-                case "Modificar":
-
-                    json = proxy.ReadAllRubros();
-                    RubroCollections ruCol = new RubroCollections(json);
-                    string au = string.Empty;
-
-                    p.IdRubro = (int)cbRubro.SelectedValue;
-                    foreach (var item in ruCol)
-                    {
-                        if (p.IdRubro == item.IdRubro)
-                        {
-                            au = item.TipoRubro;
-                        }
-                    }
-                    int preci;
-                    int.TryParse(txtPrecio.Text, out preci);
-                    p.Precio = preci;
-                    p.CodigoInterno = txtCod.Text;
-                    p.Nombre = txtNombre.Text;
-                    p.Sku = txtNombre.Text.Substring(0, 4) + au.Substring(0, 4);
-                    p.Descripcion = txtDescripcion.Text;
-
-
-                    Producto pr = (Producto)dgProd.SelectedValue;
-                    p.IdProducto = pr.IdProducto;
-                    jsons = p.Serializar();
-
-                    if (proxy.ActualizarProducto(jsons))
-                    {
-                        await this.ShowMessageAsync("Exito", "Producto Modificado!");
-                        LimpiarControles();
-                        
-                    }
-                    else
-                    {
-                        await this.ShowMessageAsync("Error", "No se pudo agregar el producto");
-
-                    };
-
-                    break;
-
-                case "Eliminar":
-
-                    Producto pro = (Producto)dgProd.SelectedValue;
-                    json = pro.Serializar();
-                    if (proxy.EliminarProducto(json))
-                    {
-                        await this.ShowMessageAsync("Exito", "Producto eliminado");
-                        LimpiarControles();
-                    }
-                    else
-                    {
-                        await this.ShowMessageAsync("Error", "No se a podido eliminar");
-                        LimpiarControles();
-                    }
-
-                    break;
-
-                default:
-                    break;
+                lblRubro.Content = "Seleccione una opcion";
+                lblRubro.Visibility = Visibility.Visible;
             }
+            else
+            {
+                if (lblNombre.Content.Equals("OK"))
+                {
+                    if (lblPrecio.Content.Equals("OK"))
+                    {
+                        if (lblCodigo.Content.Equals("OK"))
+                        {
 
-            
+                            string json;
+                            switch (btnEjecutar.Content.ToString())
+                            {
+                                case "Agregar":
+
+                                    json = proxy.ReadAllRubros();
+                                    RubroCollections reCol = new RubroCollections(json);
+                                    string aux = string.Empty;
+
+                                    p.IdRubro = (int)cbRubro.SelectedValue;
+                                    foreach (var item in reCol)
+                                    {
+                                        if (p.IdRubro == item.IdRubro)
+                                        {
+                                            aux = item.TipoRubro;
+                                        }
+                                    }
+
+                                    int precio;
+                                    int.TryParse(txtPrecio.Text, out precio);
+                                    p.Precio = precio;
+                                    p.CodigoInterno = txtCod.Text;
+                                    p.Nombre = txtNombre.Text;
+                                    p.Sku = txtNombre.Text.Substring(0, 4) + aux.Substring(0, 4);
+                                    p.Descripcion = txtDescripcion.Text;
+
+
+
+                                    string jsons = p.Serializar();
+
+                                    if (proxy.CrearProducto(jsons))
+                                    {
+                                        await this.ShowMessageAsync("Exito", "Producto agregado!");
+                                        LimpiarControles();
+
+                                    }
+                                    else
+                                    {
+                                        await this.ShowMessageAsync("Error", "No se pudo agregar el producto");
+
+                                    };
+
+                                    break;
+
+                                case "Modificar":
+
+                                    json = proxy.ReadAllRubros();
+                                    RubroCollections ruCol = new RubroCollections(json);
+                                    string au = string.Empty;
+
+                                    p.IdRubro = (int)cbRubro.SelectedValue;
+                                    foreach (var item in ruCol)
+                                    {
+                                        if (p.IdRubro == item.IdRubro)
+                                        {
+                                            au = item.TipoRubro;
+                                        }
+                                    }
+                                    int preci;
+                                    int.TryParse(txtPrecio.Text, out preci);
+                                    p.Precio = preci;
+                                    p.CodigoInterno = txtCod.Text;
+                                    p.Nombre = txtNombre.Text;
+                                    p.Sku = txtNombre.Text.Substring(0, 4) + au.Substring(0, 4);
+                                    p.Descripcion = txtDescripcion.Text;
+
+
+                                    Producto pr = (Producto)dgProd.SelectedValue;
+                                    p.IdProducto = pr.IdProducto;
+                                    jsons = p.Serializar();
+
+                                    if (proxy.ActualizarProducto(jsons))
+                                    {
+                                        await this.ShowMessageAsync("Exito", "Producto Modificado!");
+                                        LimpiarControles();
+
+                                    }
+                                    else
+                                    {
+                                        await this.ShowMessageAsync("Error", "No se pudo agregar el producto");
+
+                                    };
+
+                                    break;
+
+                                case "Eliminar":
+
+                                    Producto pro = (Producto)dgProd.SelectedValue;
+                                    json = pro.Serializar();
+                                    if (proxy.EliminarProducto(json))
+                                    {
+                                        await this.ShowMessageAsync("Exito", "Producto eliminado");
+                                        LimpiarControles();
+                                    }
+                                    else
+                                    {
+                                        await this.ShowMessageAsync("Error", "No se a podido eliminar");
+                                        LimpiarControles();
+                                    }
+
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            lblCodigo.Visibility = Visibility.Visible;
+                        }
+                    }
+                    else
+                    {
+                        lblPrecio.Visibility = Visibility.Visible;
+                    }
+                }
+                else
+                {
+                    lblNombre.Visibility = Visibility.Visible;
+                }
+            }
         }
 
         private void LimpiarControles()
@@ -231,6 +271,7 @@ namespace QOfreces.WPF
             txtPrecio.Text = string.Empty;
             cbRubro.SelectedIndex = 0;
             dgProd.ItemsSource = null;
+
         }
 
         private void btnSalir_Click(object sender, RoutedEventArgs e)
@@ -242,13 +283,13 @@ namespace QOfreces.WPF
         {
 
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            
+
 
             if (dgProd.SelectedItem != null)
             {
-                
+
                 cbRubro.ItemsSource = null;
-                
+
                 Producto p = (Producto)dgProd.SelectedItem;
                 txtCod.Text = p.CodigoInterno;
                 txtDescripcion.Text = p.Descripcion;
@@ -269,9 +310,43 @@ namespace QOfreces.WPF
                     }
                 }
 
-               
 
+
+            }
+        }
+
+        private void txtNombre_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 65 && ascci <= 90 || ascci >= 97 && ascci <= 122)
+            {
+                lblNombre.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+
+                lblNombre.Content = "Nombre no puede contener numeros";
+                lblNombre.Visibility = Visibility.Visible;
+
+            }
+
+        }
+
+        private void txtPrecio_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 48 && ascci <= 57)
+            {
+                lblPrecio.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                lblPrecio.Content = "Precio no puede contener letras";
+                lblPrecio.Visibility = Visibility.Visible;
             }
         }
     }
 }
+

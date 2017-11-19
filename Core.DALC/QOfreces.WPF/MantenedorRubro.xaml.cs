@@ -23,50 +23,81 @@ namespace QOfreces.WPF
     /// </summary>
     public partial class MantenedorRubro : MetroWindow
     {
+        Validaciones validador = new Validaciones();
+
         public MantenedorRubro()
         {
             InitializeComponent();
+            lblDescripcion.Visibility = Visibility.Hidden;
+            lblNombre.Visibility = Visibility.Hidden;
+            lblRubroEliminar.Visibility = Visibility.Hidden;
         }
 
         private void btnAgreg_Click(object sender, RoutedEventArgs e)
         {
+            lblDescripcion.Visibility = Visibility.Hidden;
+            lblNombre.Visibility = Visibility.Hidden;
+            lblRubroEliminar.Visibility = Visibility.Hidden;
+
+            lblNombre.Content = validador.validarNombre(txtTRubro.Text);
             Rubro ru = new Rubro();
             ru.TipoRubro = txtTRubro.Text;
             ru.Descripcion = txtTRubro.Text;
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = ru.Serializar();                      
-
-            if (proxy.CrearRubro(json))
+            string json = ru.Serializar();
+            if (lblNombre.Content.Equals("OK"))
             {
-                MessageBox.Show("RUBRO CREADO");
+                if (proxy.CrearRubro(json))
+                {
+                    MessageBox.Show("RUBRO CREADO");
+                }
+                else
+                {
+                    MessageBox.Show("ERROR");
+                }
             }
             else
             {
-                MessageBox.Show("ERROR");
+                lblNombre.Visibility = Visibility.Visible;
             }
-
            
             
         }
 
         private void btnElim_Click(object sender, RoutedEventArgs e)
         {
+            lblDescripcion.Visibility = Visibility.Hidden;
+            lblNombre.Visibility = Visibility.Hidden;
+            lblRubroEliminar.Visibility = Visibility.Hidden;
+            lblRubroEliminar.Content = validador.validarNombre(txtElim.Text);
+
             Rubro ru = new Rubro();
             ru.TipoRubro = txtElim.Text;
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             string json = ru.Serializar();
-            if (proxy.EliminarRubro(json))
+            if (lblRubroEliminar.Content.Equals("OK"))
             {
-                MessageBox.Show("RUBRO ELIMINADO");
+                if (proxy.EliminarRubro(json))
+                {
+                    MessageBox.Show("RUBRO ELIMINADO");
+                }
+                else
+                {
+                    MessageBox.Show("ERROR");
+                }
             }
             else
             {
-                MessageBox.Show("ERROR");
+                lblRubroEliminar.Visibility = Visibility.Visible;
             }
         }
 
         private void btnActu_Click(object sender, RoutedEventArgs e)
         {
+            lblDescripcion.Visibility = Visibility.Hidden;
+            lblNombre.Visibility = Visibility.Hidden;
+            lblRubroEliminar.Visibility = Visibility.Hidden;
+
             Rubro ru = new Rubro();
             ru.TipoRubro = txtTRubro.Text;
             ru.Descripcion = txtDesc.Text;

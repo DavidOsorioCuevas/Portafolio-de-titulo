@@ -22,6 +22,9 @@
         <Button x:Name="btnElim" Content="Eliminar Rubro" HorizontalAlignment="Left" Margin="347,77,0,0" VerticalAlignment="Top" Width="93" Click="btnElim_Click"/>
         <Label x:Name="label2" Content="Rubro a liminar" HorizontalAlignment="Left" Margin="131,165,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtElim" HorizontalAlignment="Left" Height="23" Margin="243,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblNombre" Content="Label" HorizontalAlignment="Left" Margin="227,37,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707"/>
+        <Label x:Name="lblDescripcion" Content="Label" HorizontalAlignment="Left" Margin="227,68,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707"/>
+        <Label x:Name="lblRubroEliminar" Content="Label" HorizontalAlignment="Left" Margin="368,168,-134,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707"/>
 
     </Grid>
 </Controls:MetroWindow>

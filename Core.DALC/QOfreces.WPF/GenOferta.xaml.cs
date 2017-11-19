@@ -33,11 +33,24 @@ namespace QOfreces.WPF
     /// </summary>
     public partial class GenOferta : MetroWindow
     {
+        Validaciones validador = new Validaciones();
+
         public GenOferta()
         {
 
             InitializeComponent();
             CargarCombobox();
+            lblNombre.Visibility = Visibility.Hidden;
+            lblCategoria.Visibility = Visibility.Hidden;
+            lblDescripcion.Visibility = Visibility.Hidden;
+            lblFecha.Visibility = Visibility.Hidden;
+            lblImagen.Visibility = Visibility.Hidden;
+            lblMaxProductos.Visibility = Visibility.Hidden;
+            lblMinProductos.Visibility = Visibility.Hidden;
+            lblPrecioAntiguo.Visibility = Visibility.Hidden;
+            lblPrecioNew.Visibility = Visibility.Hidden;
+            lblSucursal.Visibility = Visibility.Hidden;
+
         }
 
         private void CargarCombobox()
@@ -60,9 +73,22 @@ namespace QOfreces.WPF
 
         private void btnGenOferta_Click(object sender, RoutedEventArgs e)
         {
+
+            lblNombre.Content = validador.validarNombre(txtNombre.Text);
+            lblPrecioAntiguo.Content = validador.validarPrecio(txtPrecioAntes.Text);
+            lblPrecioNew.Content = validador.validarPrecio(txtPrecioAntes.Text);
+            lblMaxProductos.Content = validador.validarMaxCantidad(txtMaxProd.Text);
+            lblMinProductos.Content = validador.validarMinCantidad(txtMinProd.Text);
+
+
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             Oferta of = new Oferta();
             of.ImagenOferta = imgFoto.Source.ToString();
+            if (imgFoto.Source == null)
+            {
+                lblImagen.Content = "Ingrese Imagen";
+            }
+
             of.MinProductos = int.Parse(txtMinProd.Text);
             of.MaxProductos = int.Parse(txtMaxProd.Text);
             of.PrecioAntes = int.Parse(txtPrecioAntes.Text);
@@ -85,31 +111,87 @@ namespace QOfreces.WPF
 
             string json = of.Serializar();
 
-            if (proxy.CrearOferta(json))
+            //if (imgFoto.Source.ToString() == null)
+            //{
+            //    lblImagen.Content = "Adjunte Imagen";
+            //}
+            //if (dpFecha == null)
+            //{
+            //    lblFecha.Content = "Indique Fecha";
+            //}
+            //else
+            if (cbCatOf.SelectedIndex == -1)
             {
-                List<Producto> lstprod = new List<Producto>();
-                var list = dgProd.Items.OfType<Producto>();
-                ProductoHasOferta pho = new ProductoHasOferta();
-                foreach (var item in list)
-                {
-                    if (item.Selec == true)
-                    {
-                        pho.OfertaId = of.IdOferta;
-                        pho.ProductoId = item.IdProducto;
-                        string jerson = pho.Serializar();
-                        proxy.CrearProductoHasOferta(jerson);
-                    }
-                }
+                lblCategoria.Content = "Seleccione una opcion";
+                lblCategoria.Visibility = Visibility.Visible;
 
-                
-                MessageBox.Show("OFERTA CREADA!");
+                if (cbSucursal.SelectedIndex == -1)
+                {
+                    lblSucursal.Content = "Seleccione una opcion";
+                    lblSucursal.Visibility = Visibility.Visible;
+                }
             }
             else
             {
-                MessageBox.Show("ERROR AL CREAR OFERTA!");
+                if ((lblNombre.Content.Equals("OK")))
+                {
+                    if (lblMaxProductos.Content.Equals("OK"))
+                    {
+                        if (lblMinProductos.Content.Equals("OK"))
+                        {
+                            if (lblPrecioAntiguo.Content.Equals("OK"))
+                            {
+                                if (lblPrecioNew.Content.Equals("OK"))
+                                {
+                                    if (proxy.CrearOferta(json))
+                                    {
+                                        List<Producto> lstprod = new List<Producto>();
+                                        var list = dgProd.Items.OfType<Producto>();
+                                        ProductoHasOferta pho = new ProductoHasOferta();
+                                        foreach (var item in list)
+                                        {
+                                            if (item.Selec == true)
+                                            {
+                                                pho.OfertaId = of.IdOferta;
+                                                pho.ProductoId = item.IdProducto;
+                                                string jerson = pho.Serializar();
+                                                proxy.CrearProductoHasOferta(jerson);
+                                            }
+                                        }
+
+
+                                        MessageBox.Show("OFERTA CREADA!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("ERROR AL CREAR OFERTA!");
+                                    }
+                                }
+                                else
+                                {
+                                    lblPrecioNew.Visibility = Visibility.Visible;
+                                }
+                            }
+                            else
+                            {
+                                lblPrecioAntiguo.Visibility = Visibility.Visible;
+                            }
+                        }
+                        else
+                        {
+                            lblMinProductos.Visibility = Visibility.Visible;
+                        }
+                    }
+                    else
+                    {
+                        lblMaxProductos.Visibility = Visibility.Visible;
+                    }
+                }
+                else
+                {
+                    lblNombre.Visibility = Visibility.Visible;
+                }
             }
-
-
 
         }
 
@@ -243,6 +325,96 @@ namespace QOfreces.WPF
                 doc.Add(table);
                 doc.Close();
             }
+        }
+
+        private void txtNombre_PreviewTextInput_1(object sender, TextCompositionEventArgs e)
+        {
+
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 65 && ascci <= 90 || ascci >= 97 && ascci <= 122)
+            {
+                lblNombre.Visibility = Visibility.Hidden;
+
+                if (string.IsNullOrEmpty(e.Text))
+                {
+                    lblNombre.Content = "Nombre no puede estar vacio";
+                    lblNombre.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+
+                lblNombre.Content = "Nombre no puede contener numeros";
+                lblNombre.Visibility = Visibility.Visible;
+
+            }
+
+        }
+
+        private void txtPrecioAntes_PreviewTextInput_1(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 48 && ascci <= 57)
+            {
+                lblPrecioAntiguo.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                lblPrecioAntiguo.Content = "Precio no puede contener letras";
+                lblPrecioAntiguo.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtPrecio_PreviewTextInput_1(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 48 && ascci <= 57)
+            {
+                lblPrecioNew.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                lblPrecioNew.Content = "Precio no puede contener letras";
+                lblPrecioNew.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtMaxProd_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 48 && ascci <= 57)
+            {
+                lblMaxProductos.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                lblMaxProductos.Content = "Cantidad no puede contener letras";
+                lblMaxProductos.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtMinProd_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 48 && ascci <= 57)
+            {
+                lblMinProductos.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                lblMinProductos.Content = "Cantidad no puede contener letras";
+                lblMinProductos.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtMinProd_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 

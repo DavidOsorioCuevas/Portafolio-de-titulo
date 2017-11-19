@@ -18,5 +18,7 @@
         <TextBox x:Name="txtUser" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu usuario" HorizontalAlignment="Left" Height="23" Margin="10,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" BorderBrush="Black" TabIndex="1"/>
         <PasswordBox x:Name="pbPassword" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu contraseña" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Width="272" BorderBrush="Black" TabIndex="2"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="114" Margin="80,25,0,0" VerticalAlignment="Top" Width="111" Source="img/Login.png" Stretch="Fill"/>
+        <Label x:Name="lblNombre" Content="Label" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707"/>
+        <Label x:Name="lblContraseña" Content="Label" HorizontalAlignment="Left" Margin="10,179,0,0" VerticalAlignment="Top" Width="270"  Foreground="#FFF10707" Height="32"/>
     </Grid>
 </Controls:MetroWindow>

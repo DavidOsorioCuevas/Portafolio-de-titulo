@@ -22,13 +22,20 @@ namespace QOfreces.WPF
     /// </summary>
     public partial class Gerente : MetroWindow
     {
+        Validaciones validador = new Validaciones();
         public Gerente()
         {
             InitializeComponent();
+            lblNombre.Visibility = Visibility.Hidden;
         }
 
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
+            if (cbTiendas.SelectedIndex.Equals(-1))
+            {
+                lblNombre.Content = "Seleccione una opcion";
+                lblNombre.Visibility = Visibility.Visible;
+            }
             this.Close();
         }
     }
