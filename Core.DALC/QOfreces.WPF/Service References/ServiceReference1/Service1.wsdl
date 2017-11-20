@@ -378,6 +378,12 @@
   <wsdl:message name="IService1_CrearProductoHasOferta_OutputMessage">
     <wsdl:part name="parameters" element="tns:CrearProductoHasOfertaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_CrearOfertaHasSucursal_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearOfertaHasSucursal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CrearOfertaHasSucursal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearOfertaHasSucursalResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="Puntos">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/Puntos" message="tns:IService1_Puntos_InputMessage" />
@@ -626,6 +632,10 @@
     <wsdl:operation name="CrearProductoHasOferta">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearProductoHasOferta" message="tns:IService1_CrearProductoHasOferta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearProductoHasOfertaResponse" message="tns:IService1_CrearProductoHasOferta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearOfertaHasSucursal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CrearOfertaHasSucursal" message="tns:IService1_CrearOfertaHasSucursal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CrearOfertaHasSucursalResponse" message="tns:IService1_CrearOfertaHasSucursal_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -1181,6 +1191,15 @@
     </wsdl:operation>
     <wsdl:operation name="CrearProductoHasOferta">
       <soap:operation soapAction="http://tempuri.org/IService1/CrearProductoHasOferta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearOfertaHasSucursal">
+      <soap:operation soapAction="http://tempuri.org/IService1/CrearOfertaHasSucursal" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

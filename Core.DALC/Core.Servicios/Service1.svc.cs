@@ -408,5 +408,11 @@ namespace Core.Servicios
             Negocio.Retail ret = new Negocio.Retail();
             return ret.LeerRetailId(idRet);
         }
+
+        public bool CrearOfertaHasSucursal(string json)
+        {
+            Negocio.OfertaHasSucursal ohs = new Negocio.OfertaHasSucursal(json);
+            return ohs.CrearOfertaHasSucusal();
+        }
     }
 }

@@ -177,6 +177,10 @@ namespace Core.Servicios
         [OperationContract]
         bool CrearProductoHasOferta(string json);
 
+        /*OFERTA HAS SUCURSAL*/
+        [OperationContract]
+        bool CrearOfertaHasSucursal(string json);
+
 
 
 

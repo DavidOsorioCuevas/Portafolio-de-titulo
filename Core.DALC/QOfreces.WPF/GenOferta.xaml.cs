@@ -73,6 +73,11 @@ namespace QOfreces.WPF
 
             string nombreImagen = txtNombre.Text + "_" + DateTime.Now.ToString();
 
+            var listaSuc = dgSuc.Items.OfType<Sucursal>();
+            OfertaHasSucursal ohs = new OfertaHasSucursal();
+            int contOK = 0;
+
+
             of.ImagenOferta = nombreImagen;
             of.MinProductos = int.Parse(txtMinProd.Text);
             of.MaxProductos = int.Parse(txtMaxProd.Text);
@@ -87,7 +92,7 @@ namespace QOfreces.WPF
                 of.EstadoOferta = char.Parse(0.ToString());
             }
             of.FechaOferta = dpFecha.SelectedDate;
-            of.IdSucursal = (int)cbSucursal.SelectedValue;
+            of.IdSucursal = 1;
 
             of.CategoriaIdOferta = (int)cbCatOf.SelectedValue;
             of.Nombre = txtNombre.Text;
@@ -98,7 +103,7 @@ namespace QOfreces.WPF
 
             if (proxy.CrearOferta(json))
             {
-                List<Producto> lstprod = new List<Producto>();
+                // inserta tablaaproducto has ofertas
                 var list = dgProd.Items.OfType<Producto>();
                 ProductoHasOferta pho = new ProductoHasOferta();
                 foreach (var item in list)
@@ -111,6 +116,20 @@ namespace QOfreces.WPF
                         proxy.CrearProductoHasOferta(jerson);
                     }
                 }
+                // inserta tabla Oferta Has sucursal
+                foreach (var itemSuc in listaSuc)
+                {
+                    if (itemSuc.Selec == true)
+                    {
+                        ohs.OfertaId = of.IdOferta;
+                        ohs.SucursalId = itemSuc.IdSucursal;
+                        string jeson = ohs.Serializar();
+                        proxy.CrearOfertaHasSucursal(jeson);
+                        contOK++;
+                    }
+                }
+
+
 
                 /*Envia por ftp imagen adjuntada*/
 
@@ -133,15 +152,19 @@ namespace QOfreces.WPF
                 reqStream.Flush();
                 reqStream.Close();
 
-                MessageBox.Show("OFERTA CREADA!");
-            }
-            else
-            {
-                MessageBox.Show("ERROR AL CREAR OFERTA!");
-            }
 
+                if (contOK > 0)
+                {
+                    MessageBox.Show("OFERTA CREADA PARA " + contOK + "SUCURSALES!");
+                }
+                else
+                {
+                    MessageBox.Show("ERROR AL CREAR OFERTA!");
+                }
+                contOK = 0;
+            } 
 
-
+           
         }
 
         private void btnListar_Click(object sender, RoutedEventArgs e)
