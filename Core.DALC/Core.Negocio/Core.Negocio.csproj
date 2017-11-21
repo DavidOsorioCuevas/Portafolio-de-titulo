@@ -59,6 +59,7 @@
     <Compile Include="CategoriaOferta.cs" />
     <Compile Include="Comuna.cs" />
     <Compile Include="ComunaCollections.cs" />
+    <Compile Include="Cupon.cs" />
     <Compile Include="Descuento.cs" />
     <Compile Include="DescuentoCollections.cs" />
     <Compile Include="FilterParameter.cs" />
