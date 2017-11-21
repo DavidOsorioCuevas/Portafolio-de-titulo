@@ -65,6 +65,7 @@
     <Compile Include="Listas.cs" />
     <Compile Include="Oferta.cs" />
     <Compile Include="OfertaCollections.cs" />
+    <Compile Include="OfertaHasSucursal.cs" />
     <Compile Include="Perfil.cs" />
     <Compile Include="PerfilCollections.cs" />
     <Compile Include="Producto.cs" />

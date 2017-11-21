@@ -17,7 +17,6 @@ namespace Core.DALC
         public decimal ID_DESCUENTO { get; set; }
         public Nullable<decimal> MIN_PUNTOS { get; set; }
         public Nullable<decimal> MAX_PUNTOS { get; set; }
-        public Nullable<System.DateTime> FECHA_CADUCIDAD { get; set; }
         public decimal PORCENTAJE { get; set; }
         public decimal TOPE { get; set; }
     }

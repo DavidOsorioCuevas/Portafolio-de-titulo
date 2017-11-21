@@ -20,6 +20,7 @@ namespace Core.Negocio
         public int IdRegion { get; set; }
         public string Email { get; set; }
         public int IdRetail { get; set; }
+        public bool Selec { get; set; }
 
         public Sucursal()
         {
@@ -43,6 +44,7 @@ namespace Core.Negocio
             this.RazonSocial = suc.RazonSocial;
             this.Rut = suc.Rut;
             this.Telefono = suc.Telefono;
+            this.Selec = suc.Selec;
 
         }
 
@@ -58,6 +60,7 @@ namespace Core.Negocio
             this.RazonSocial = string.Empty;
             this.Rut = string.Empty;
             this.Telefono = 0;
+            this.Selec = false;
         }
 
         public bool CrearSucursal()

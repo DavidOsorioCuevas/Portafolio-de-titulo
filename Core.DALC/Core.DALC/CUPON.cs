@@ -17,8 +17,10 @@ namespace Core.DALC
         public decimal ID_CUPON { get; set; }
         public Nullable<System.DateTime> FECHA_CREACION { get; set; }
         public Nullable<System.DateTime> FECHA_HASTA { get; set; }
-        public string ACTIVO { get; set; }
+        public decimal ACTIVO { get; set; }
         public decimal USUARIO_ID { get; set; }
+        public Nullable<decimal> DESCUENTO_ID { get; set; }
+        public string CODIGO { get; set; }
     
         public virtual USUARIO USUARIO { get; set; }
     }

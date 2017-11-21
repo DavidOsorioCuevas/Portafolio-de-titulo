@@ -59,7 +59,6 @@ namespace Core.Negocio
                 des.ID_DESCUENTO = this.IdDescuento;
                 des.MIN_PUNTOS = this.MinPuntos;
                 des.MAX_PUNTOS = this.MaxPuntos;
-                des.FECHA_CADUCIDAD = this.FechaCaducidad;
                 des.PORCENTAJE = this.Porcentaje;
                 des.TOPE = this.Tope;
 
@@ -85,7 +84,6 @@ namespace Core.Negocio
 
                 des.MIN_PUNTOS = this.MinPuntos;
                 des.MAX_PUNTOS = this.MaxPuntos;
-                des.FECHA_CADUCIDAD = this.FechaCaducidad;
                 des.PORCENTAJE = this.Porcentaje;
                 des.TOPE = this.Tope;
 
