@@ -33,7 +33,6 @@ namespace Core.Negocio
                 desc.IdDescuento = (int)item.ID_DESCUENTO;
                 desc.MinPuntos = (int)item.MIN_PUNTOS;
                 desc.MaxPuntos = (int)item.MAX_PUNTOS;
-                desc.FechaCaducidad = (DateTime)item.FECHA_CADUCIDAD;
                 desc.Porcentaje = (int)item.PORCENTAJE;
                 desc.Tope = (int)item.TOPE;
 

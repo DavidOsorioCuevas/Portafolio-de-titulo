@@ -35,8 +35,10 @@
           <Property Name="ID_CUPON" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA_CREACION" Type="date" />
           <Property Name="FECHA_HASTA" Type="date" />
-          <Property Name="ACTIVO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ACTIVO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="USUARIO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCUENTO_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="CODIGO" Type="varchar2" MaxLength="50" />
         </EntityType>
         <EntityType Name="DESCUENTO">
           <Key>
@@ -45,7 +47,6 @@
           <Property Name="ID_DESCUENTO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="MIN_PUNTOS" Type="number" Precision="38" Scale="0" />
           <Property Name="MAX_PUNTOS" Type="number" Precision="38" Scale="0" />
-          <Property Name="FECHA_CADUCIDAD" Type="date" />
           <Property Name="PORCENTAJE" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="TOPE" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
@@ -633,9 +634,11 @@
           <Property Name="ID_CUPON" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" />
           <Property Name="FECHA_HASTA" Type="DateTime" />
-          <Property Name="ACTIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ACTIVO" Type="Decimal" Nullable="false" />
           <Property Name="USUARIO_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="USUARIO" Relationship="Self.CUPON_USUARIO_FK" FromRole="CUPON" ToRole="USUARIO" />
+          <Property Name="DESCUENTO_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CODIGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="DESCUENTO">
           <Key>
@@ -644,7 +647,6 @@
           <Property Name="ID_DESCUENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="MIN_PUNTOS" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="MAX_PUNTOS" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="FECHA_CADUCIDAD" Type="DateTime" />
           <Property Name="PORCENTAJE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="TOPE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
@@ -1244,6 +1246,8 @@
           <EntitySetMapping Name="CUPON">
             <EntityTypeMapping TypeName="QueOfrecesModel.CUPON">
               <MappingFragment StoreEntitySet="CUPON">
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="DESCUENTO_ID" ColumnName="DESCUENTO_ID" />
                 <ScalarProperty Name="ID_CUPON" ColumnName="ID_CUPON" />
                 <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
                 <ScalarProperty Name="FECHA_HASTA" ColumnName="FECHA_HASTA" />
@@ -1258,7 +1262,6 @@
                 <ScalarProperty Name="ID_DESCUENTO" ColumnName="ID_DESCUENTO" />
                 <ScalarProperty Name="MIN_PUNTOS" ColumnName="MIN_PUNTOS" />
                 <ScalarProperty Name="MAX_PUNTOS" ColumnName="MAX_PUNTOS" />
-                <ScalarProperty Name="FECHA_CADUCIDAD" ColumnName="FECHA_CADUCIDAD" />
                 <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
                 <ScalarProperty Name="TOPE" ColumnName="TOPE" />
               </MappingFragment>
