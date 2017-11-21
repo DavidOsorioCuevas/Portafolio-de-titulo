@@ -46,13 +46,11 @@ namespace QOfreces.WPF
             mProd.Show();
         }
 
-        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        private void tiSalir_Click(object sender, RoutedEventArgs e)
         {
             mainwindow mai = new mainwindow();
             this.Close();
             mai.Show();
         }
-
-       
     }
 }

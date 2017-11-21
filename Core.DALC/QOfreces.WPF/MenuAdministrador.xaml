@@ -1,0 +1,399 @@
+﻿<Controls:MetroWindow x:Class="QOfreces.WPF.MenuAdministrador"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QOfreces.WPF"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Icon="img/logo.png"
+        BorderBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1"
+        mc:Ignorable="d"
+        Title="Menu Administrador" Height="730" Width="700" Background="Black" WindowStartupLocation="CenterScreen" MinWidth="700" MinHeight="730" MaxWidth="700" MaxHeight="730" >
+    <Grid>
+        <Controls:Tile x:Name="tiProducto" Background="Orange" Margin="10,67,542,510" TitleFontSize="12" Title="Mantenedor Producto" Height="Auto" Width="Auto" Click="tiProducto_Click">
+            <Image x:Name="image3" Height="100" Width="100" Stretch="Fill" Source="img/MantenedorProducto.png"/>
+        </Controls:Tile>
+        <Controls:Tile x:Name="tiUsuario" Background="Orange" Margin="10,192,542,385" TitleFontSize="12" Title="Mantenedor Usuario" Height="Auto" Width="Auto" Click="tiUsuario_Click">
+            <Image x:Name="image1" Height="100" Width="100" Stretch="Fill" Source="img/MantenedorUsuario.png"/>
+        </Controls:Tile>
+        <Controls:Tile x:Name="tiEmpresa" Background="Orange" Margin="10,317,542,260" TitleFontSize="12" Title="Mantenedor Empresa" Height="Auto" Width="Auto" Click="tiEmpresa_Click">
+            <Image x:Name="image2" Height="100" Width="100" Stretch="Fill" Source="img/MantenedorEmpresa.png"/>
+        </Controls:Tile>
+        <Controls:Tile x:Name="tiRubro" Background="Orange" Margin="10,442,542,135" TitleFontSize="12" Title="Mantenedor Rubro" Height="Auto" Width="Auto" Click="tiRubro_Click">
+            <Image x:Name="image4" Height="100" Width="100" Stretch="Fill" Source="img/MantenedorRubro.png"/>
+        </Controls:Tile>
+        <Controls:Tile x:Name="tiReportes" Background="Orange" Margin="10,567,542,10" TitleFontSize="12" Title="Archivos BI" Height="Auto" Width="Auto" Click="tiReportes_Click">
+            <Image x:Name="image5" Height="100" Width="100" Stretch="Fill" Source="img/Report.png"/>
+        </Controls:Tile>
+        <Grid HorizontalAlignment="Left" Height="697" Margin="153,0,0,0" VerticalAlignment="Top" Width="537">
+            <Controls:Flyout x:Name="flyProductos" Position="Right" Header="Mantenedor de productos" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
+                <Grid HorizontalAlignment="Left" Height="619" Margin="10,0,0,0" Width="518">
+                    <Controls:MetroTabControl Name="tcMain">
+                        <Controls:MetroTabItem Header="Agregar" Foreground="White">
+                            <Grid>
+                                <Label x:Name="lblNombrePA" Content="Nombre:"  Foreground="White" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblPrecioPA" Content="Precio:"  Foreground="White" HorizontalAlignment="Left" Margin="10,198,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblDescripcionPA" Content="Descripción:"  Foreground="White" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblCodigoPA" Content="Codigo interno:"  Foreground="White" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblRubroPA" Content="Rubro:"  Foreground="White" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="txtNombrePA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese nombre del producto" HorizontalAlignment="Left" Height="23" Margin="115,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"  MaxLength="20" MinLines="4"/>
+                                <TextBox x:Name="txtDescripcionPA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese descripcion del producto" HorizontalAlignment="Left" Height="74" Margin="115,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1" MaxLength="20" MinLines="4"/>
+                                <TextBox x:Name="txtCodigoPA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese codigo interno" HorizontalAlignment="Left" Height="23" Margin="115,167,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"  MaxLength="20" MinLines="4"/>
+                                <TextBox x:Name="txtPrecioPA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese precio del producto" HorizontalAlignment="Left" Height="23" Margin="115,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"  MaxLength="20" MinLines="4"/>
+                                <ComboBox x:Name="cbRubroPA" HorizontalAlignment="Left" Margin="115,241,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black" TabIndex="4"/>
+                                <Button x:Name="btnAgregarPA" Content="Agregar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" BorderBrush="Black" TabIndex="6" Margin="433,10,0,0"/>
+
+                            </Grid>
+                        </Controls:MetroTabItem>
+                        <Controls:MetroTabItem Header="Modificar">
+                            <Grid Margin="0,0,0,-2">
+                                <Button x:Name="btnListarProdPM"  Content="Listar Productos" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="103" Height="22" BorderBrush="Black" Margin="219,76,0,0"/>
+                                <DataGrid x:Name="dgProdPM"  CanUserAddRows="False" HorizontalAlignment="Left" Margin="219,106,0,0" VerticalAlignment="Top" Height="192" Width="289" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn x:Name="dgcIdPM" Header="ID" Binding="{Binding Path=IdProducto}"/>
+                                        <DataGridTextColumn x:Name="dgcNomPM" Header="Nombre Producto" Binding="{Binding Path=Nombre}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <TextBox x:Name="txtNombrePMO" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Nombre producto" HorizontalAlignment="Left" Height="23" Margin="64,106,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="134"/>
+                                <Label x:Name="lblBusquedaPM" Content="Buscar" Foreground="White" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblRubroPM" Content="Rubro" Foreground="White" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="cbRubroPM" HorizontalAlignment="Left" Margin="64,142,0,0" VerticalAlignment="Top" Width="134" BorderBrush="Black" TabIndex="4"/>
+                                <Label x:Name="lblInfoPM" Content="Busque el producto a modificar y seleccione uno para cargar sus datos." Foreground="White" HorizontalAlignment="Left" Margin="13,10,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblNombrePM" Content="Nombre:"  Foreground="White" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblPrecioPM" Content="Precio:"  Foreground="White" HorizontalAlignment="Left" Margin="13,507,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblDescripcionPM" Content="Descripción:"  Foreground="White" HorizontalAlignment="Left" Margin="10,383,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblCodigoPM" Content="Codigo interno:"  Foreground="White" HorizontalAlignment="Left" Margin="10,467,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblRubroPMO" Content="Rubro:"  Foreground="White" HorizontalAlignment="Left" Margin="338,349,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="txtNombrePM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese nombre del producto" HorizontalAlignment="Left" Height="23" Margin="115,349,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"  MaxLength="20" MinLines="4"/>
+                                <TextBox x:Name="txtDescripcionPM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese descripcion del producto" HorizontalAlignment="Left" Height="74" Margin="115,383,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1" MaxLength="20" MinLines="4"/>
+                                <TextBox x:Name="txtCodigoPM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese codigo interno" HorizontalAlignment="Left" Height="23" Margin="115,467,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"  MaxLength="20" MinLines="4"/>
+                                <TextBox x:Name="txtPrecioPM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese precio del producto" HorizontalAlignment="Left" Height="23" Margin="115,507,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"  MaxLength="20" MinLines="4"/>
+                                <ComboBox x:Name="cbRubroPMO" HorizontalAlignment="Left" Margin="388,349,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black" TabIndex="4"/>
+                                <Button x:Name="btnModificarPM" Content="Modificar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" BorderBrush="Black" TabIndex="6" Margin="433,10,0,0"/>
+                            </Grid>
+                        </Controls:MetroTabItem>
+                        <Controls:MetroTabItem Header="Eliminar">
+                            <Grid>
+                                <Button x:Name="btnListarProdE"  Content="Listar Productos" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="103" Height="22"  BorderBrush="Black" Margin="219,76,0,0"/>
+                                <DataGrid x:Name="dgProdPE"  CanUserAddRows="False" HorizontalAlignment="Left" Margin="219,106,0,0" VerticalAlignment="Top" Height="192" Width="289" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn x:Name="dgcIdE" Header="ID" Binding="{Binding Path=IdProducto}"/>
+                                        <DataGridTextColumn x:Name="dgcNomE" Header="Nombre Producto" Binding="{Binding Path=Nombre}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <TextBox x:Name="txtNombrePE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Nombre producto" HorizontalAlignment="Left" Height="23" Margin="64,106,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="134"/>
+                                <Label x:Name="lblBusquedaPE" Content="Buscar" Foreground="White" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblRubroPE" Content="Rubro" Foreground="White" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="cbRubroPE" HorizontalAlignment="Left" Margin="64,142,0,0" VerticalAlignment="Top" Width="134" BorderBrush="Black" TabIndex="4"/>
+                                <Label x:Name="lblInfoPE" Content="Busque el producto a eliminar y seleccione uno para cargar sus datos." Foreground="White" HorizontalAlignment="Left" Margin="13,10,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblNombrePE" Content="Nombre:"  Foreground="White" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblPrecioPE" Content="Precio:"  Foreground="White" HorizontalAlignment="Left" Margin="13,507,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblDescripcionPE" Content="Descripción:"  Foreground="White" HorizontalAlignment="Left" Margin="10,383,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblCodigoPE" Content="Codigo interno:"  Foreground="White" HorizontalAlignment="Left" Margin="10,467,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lblRubroPEL" Content="Rubro:"  Foreground="White" HorizontalAlignment="Left" Margin="338,349,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="txtNombrePEL" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese nombre del producto" HorizontalAlignment="Left" Height="23" Margin="115,349,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"  MaxLength="20" MinLines="4"/>
+                                <TextBox x:Name="txtDescripcionPE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese descripcion del producto" HorizontalAlignment="Left" Height="74" Margin="115,383,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1" MaxLength="20" MinLines="4"/>
+                                <TextBox x:Name="txtCodigoPE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese codigo interno" HorizontalAlignment="Left" Height="23" Margin="115,467,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"  MaxLength="20" MinLines="4"/>
+                                <TextBox x:Name="txtPrecioPE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese precio del producto" HorizontalAlignment="Left" Height="23" Margin="115,507,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"  MaxLength="20" MinLines="4"/>
+                                <ComboBox x:Name="cbRubroPEL" HorizontalAlignment="Left" Margin="388,349,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black" TabIndex="4"/>
+                                <Button x:Name="btnEliminarPE" Content="Eliminar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" BorderBrush="Black" TabIndex="6" Margin="433,10,0,0"/>
+                            </Grid>
+                        </Controls:MetroTabItem>
+                    </Controls:MetroTabControl>
+                </Grid>
+            </Controls:Flyout>
+            <Controls:Flyout x:Name="flyUsuarios" Position="Right" Header="Mantenedor de usuarios" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
+                <Controls:MetroTabControl>
+                    <Controls:MetroTabItem Header="Agregar">
+                        <Grid>
+                            <Label x:Name="lblNombreUA" Content="Nombre:" HorizontalAlignment="Left" Margin="21,50,0,0" VerticalAlignment="Top"  Foreground="White" />
+                            <ComboBox x:Name="cbPerfilUA" HorizontalAlignment="Left" Margin="205,312,0,0" VerticalAlignment="Top" Width="160" TabIndex="11"/>
+                            <DatePicker x:Name="dpFechaUA" HorizontalAlignment="Left" Margin="205,251,0,0" VerticalAlignment="Top" Width="160" Controls:TextBoxHelper.Watermark="Fecha de nacimiento" TabIndex="10"/>
+                            <TextBox x:Name="txtNombreUA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu nombre" HorizontalAlignment="Left" Height="23" Margin="21,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="1"/>
+                            <TextBox x:Name="txtApellidoUA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu apellido" HorizontalAlignment="Left" Height="23" Margin="21,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="2"/>
+                            <TextBox x:Name="txtRutUA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Rut 12345678-9" HorizontalAlignment="Left" Height="23" Margin="21,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="3"/>
+                            <TextBox x:Name="txtEmailUA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa Email" HorizontalAlignment="Left" Height="23" Margin="21,251,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="4"/>
+                            <TextBox x:Name="txtCelularUA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Numero de contacto" HorizontalAlignment="Left" Height="23" Margin="21,312,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="5"/>
+                            <TextBox x:Name="txtUsuarioUA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Nombre de usuario" HorizontalAlignment="Left" Height="23" Margin="205,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="7"/>
+                            <PasswordBox x:Name="pbContraseñaUA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Contraseña" HorizontalAlignment="Left" Margin="205,132,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.681" Width="164" TabIndex="8"/>
+                            <PasswordBox x:Name="pbContraseña2UA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Repita contraseña" HorizontalAlignment="Left" Margin="205,191,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.681" Width="164" TabIndex="9"/>
+                            <ComboBox x:Name="cbSucursalUA"  HorizontalAlignment="Left" Margin="118,366,0,0" VerticalAlignment="Top" Width="160" TabIndex="12"/>
+                            <CheckBox x:Name="chActivarUA" IsChecked="false" Content="Usuario activo" Foreground="White" HorizontalAlignment="Left" Margin="422,81,0,0" VerticalAlignment="Top" TabIndex="13"/>
+                            <RadioButton x:Name="rbFemUA" IsChecked="True" Content="Femenino" Foreground="White" GroupName="Sexo" HorizontalAlignment="Left" Margin="422,118,0,0" VerticalAlignment="Top" TabIndex="14"/>
+                            <RadioButton x:Name="rbMasUA" Content="Masculino" Foreground="White" GroupName="Sexo" HorizontalAlignment="Left" Margin="422,151,0,0" VerticalAlignment="Top" TabIndex="15"/>
+                            <Button x:Name="btnAgregarUsuarioUA" Content="Agregar" HorizontalAlignment="Left" Margin="453,9,0,0" VerticalAlignment="Top" Width="75"  TabIndex="16"/>
+                            <Label x:Name="lblApellidoUA" Content="Apellido:" HorizontalAlignment="Left" Margin="21,104,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblRutUA" Content="Rut:" HorizontalAlignment="Left" Margin="21,165,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblEmailUA" Content="Email:" HorizontalAlignment="Left" Margin="21,225,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblTelefonoUA" Content="Telefono:" HorizontalAlignment="Left" Margin="21,286,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblUsuarioUA" Content="Usuario:" HorizontalAlignment="Left" Margin="205,50,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblContrasena1UA" Content="Contraseña:" HorizontalAlignment="Left" Margin="205,110,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblContrasena2UA" Content="Repita Contraseña:" HorizontalAlignment="Left" Margin="205,165,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblFechaUA" Content="Fecha:" HorizontalAlignment="Left" Margin="205,225,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblPerfilUA" Content="Perfil:" HorizontalAlignment="Left" Margin="205,286,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblRetailUA" Content="Retail:" HorizontalAlignment="Left" Margin="158,343,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblInfoAgregarUA" Content="Ingrese los datos para agregar un nuevo usuario." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"  Foreground="White" />
+                        </Grid>
+                    </Controls:MetroTabItem>
+                    <Controls:MetroTabItem Header="Modificar">
+                        <Grid>
+                            <Button x:Name="btnListarUM"  Content="Listar" HorizontalAlignment="Left" Margin="237,32,0,0" VerticalAlignment="Top" Width="75"/>
+                            <TextBox x:Name="txtBuscarUM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar aqui" HorizontalAlignment="Left" Height="23" Margin="72,64,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="160"/>
+                            <DataGrid x:Name="dgUsuarioUM"  CanUserAddRows="False" HorizontalAlignment="Left" Margin="237,64,0,0" VerticalAlignment="Top" Height="161" Width="291">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="dgcIdm" Header="ID" Binding="{Binding Path=IdUsuario}"/>
+                                    <DataGridTextColumn x:Name="dgcNomm" Header="Nombre" Binding="{Binding Path=Nombre}"/>
+                                    <DataGridTextColumn x:Name="dgcRet" Header="Retail" Binding="{Binding Path=Nombre}"/>
+                                    <DataGridTextColumn x:Name="dgcPer" Header="Perfil" Binding="{Binding Path=Nombre}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Label x:Name="lblInfoModificarUM" Content="Buscar al usuario y seleccionelo en la lista para cargar sus datos." HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top"  Foreground="White" />
+                            <Label x:Name="lblBuscarUM" Content="Busqueda:" HorizontalAlignment="Left" Margin="112,38,0,0" VerticalAlignment="Top"  Foreground="White" />
+                            <ComboBox x:Name="cbPerfilUMB" HorizontalAlignment="Left" Margin="72,122,0,0" VerticalAlignment="Top" Width="160" TabIndex="11"/>
+                            <Label x:Name="lblBuscarPerfilUM" Content="Buscar por perfil:" HorizontalAlignment="Left" Margin="112,96,0,0" VerticalAlignment="Top"  Foreground="White" />
+                            <Label x:Name="lblBuscarRetailUM" Content="Buscar por retail:" HorizontalAlignment="Left" Margin="112,158,0,0" VerticalAlignment="Top"  Foreground="White" />
+                            <ComboBox x:Name="cbRetailUMB"  HorizontalAlignment="Left" Margin="72,184,0,0" VerticalAlignment="Top" Width="160" TabIndex="12"/>
+
+                            <Label x:Name="lblNombreModUM" Content="Nombre:" HorizontalAlignment="Left" Margin="237,328,0,0" VerticalAlignment="Top"  Foreground="White" />
+                            <ComboBox x:Name="cbPerfilUM" HorizontalAlignment="Left" Margin="368,468,0,0" VerticalAlignment="Top" Width="160" TabIndex="11"/>
+                            <DatePicker x:Name="dpFechaUM" HorizontalAlignment="Left" Margin="10,468,0,0" VerticalAlignment="Top" Width="160" Controls:TextBoxHelper.Watermark="Fecha de nacimiento" TabIndex="10"/>
+                            <TextBox x:Name="txtNombreUM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu nombre" HorizontalAlignment="Left" Height="23" Margin="185,354,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="1"/>
+                            <TextBox x:Name="txtApellidoUM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu apellido" HorizontalAlignment="Left" Height="23" Margin="364,411,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="2"/>
+                            <TextBox x:Name="txtRutUM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Rut 12345678-9" HorizontalAlignment="Left" Height="23" Margin="185,411,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="3"/>
+                            <TextBox x:Name="txtEmailUM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa Email" HorizontalAlignment="Left" Height="23" Margin="13,411,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="157" TabIndex="4"/>
+                            <TextBox x:Name="txtCelularUM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Numero de contacto" HorizontalAlignment="Left" Height="23" Margin="185,468,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="5"/>
+                            <TextBox x:Name="txtUsuarioUM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Nombre de usuario" HorizontalAlignment="Left" Height="23" Margin="185,291,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="7" RenderTransformOrigin="0.482,1.154"/>
+                            <PasswordBox x:Name="pbContraseñaUM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Contraseña" HorizontalAlignment="Left" Margin="364,291,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.681" Width="164" TabIndex="8"/>
+                            <PasswordBox x:Name="pbContraseña2UM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Repita contraseña" HorizontalAlignment="Left" Margin="364,354,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.681" Width="164" TabIndex="9"/>
+                            <ComboBox x:Name="cbSucursalUM"  HorizontalAlignment="Left" Margin="154,515,0,0" VerticalAlignment="Top" Width="160" TabIndex="12"/>
+                            <CheckBox x:Name="chActivarUM" IsChecked="false" Content="Usuario activo" Foreground="White" HorizontalAlignment="Left" Margin="14,268,0,0" VerticalAlignment="Top" TabIndex="13"/>
+                            <RadioButton x:Name="rbFemUM" IsChecked="True" Content="Femenino" Foreground="White" GroupName="Sexo" HorizontalAlignment="Left" Margin="14,303,0,0" VerticalAlignment="Top" TabIndex="14"/>
+                            <RadioButton x:Name="rbMasUM" Content="Masculino" Foreground="White" GroupName="Sexo" HorizontalAlignment="Left" Margin="14,328,0,0" VerticalAlignment="Top" TabIndex="15"/>
+                            <Button x:Name="btnAgregarUM" Content="Agregar" HorizontalAlignment="Left" Margin="453,9,0,0" VerticalAlignment="Top" Width="75"  TabIndex="16"/>
+                            <Label x:Name="lblApellidoUM" Content="Apellido:" HorizontalAlignment="Left" Margin="422,380,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblRutUM" Content="Rut:" HorizontalAlignment="Left" Margin="247,380,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblEmailUM" Content="Email:" HorizontalAlignment="Left" Margin="72,380,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblTelefonoUM" Content="Telefono:" HorizontalAlignment="Left" Margin="237,442,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblUsuarioUM" Content="Usuario:" HorizontalAlignment="Left" Margin="237,260,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblContrasena1UM" Content="Contraseña:" HorizontalAlignment="Left" Margin="406,260,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblContrasena2UM" Content="Repita Contraseña:" HorizontalAlignment="Left" Margin="406,331,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblFechaUM" Content="Fecha:" HorizontalAlignment="Left" Margin="53,442,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblPerfilUM" Content="Perfil:" HorizontalAlignment="Left" Margin="437,442,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblRetailUM" Content="Retail:" HorizontalAlignment="Left" Margin="216,489,0,0" VerticalAlignment="Top"   Foreground="White" />
+
+                        </Grid>
+                    </Controls:MetroTabItem>
+                    <Controls:MetroTabItem Header="Eliminar">
+                        <Grid>
+                            <Button x:Name="btnListarUE"  Content="Listar" HorizontalAlignment="Left" Margin="237,32,0,0" VerticalAlignment="Top" Width="75"/>
+                            <TextBox x:Name="txtBuscarUE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar aqui" HorizontalAlignment="Left" Height="23" Margin="72,64,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="160"/>
+                            <DataGrid x:Name="dgUsuarioUE"  CanUserAddRows="False" HorizontalAlignment="Left" Margin="237,64,0,0" VerticalAlignment="Top" Height="161" Width="291">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="dgcIdUE" Header="ID" Binding="{Binding Path=IdUsuario}"/>
+                                    <DataGridTextColumn x:Name="dgcNomUE" Header="Nombre" Binding="{Binding Path=Nombre}"/>
+                                    <DataGridTextColumn x:Name="dgcRetUE" Header="Retail" Binding="{Binding Path=Nombre}"/>
+                                    <DataGridTextColumn x:Name="dgcPerUE" Header="Perfil" Binding="{Binding Path=Nombre}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Label x:Name="lblInfoModificarUE" Content="Buscar al usuario y seleccionelo en la lista para cargar sus datos." HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top"  Foreground="White" />
+                            <Label x:Name="lblBuscarUE" Content="Busqueda:" HorizontalAlignment="Left" Margin="112,38,0,0" VerticalAlignment="Top"  Foreground="White" />
+                            <ComboBox x:Name="cbPerfilUEB" HorizontalAlignment="Left" Margin="72,122,0,0" VerticalAlignment="Top" Width="160" TabIndex="11"/>
+                            <Label x:Name="lblBuscarPerfilUE" Content="Buscar por perfil:" HorizontalAlignment="Left" Margin="112,96,0,0" VerticalAlignment="Top"  Foreground="White" />
+                            <Label x:Name="lblBuscarRetailUE" Content="Buscar por retail:" HorizontalAlignment="Left" Margin="112,158,0,0" VerticalAlignment="Top"  Foreground="White" />
+                            <ComboBox x:Name="cbRetailUEB"  HorizontalAlignment="Left" Margin="72,184,0,0" VerticalAlignment="Top" Width="160" TabIndex="12"/>
+
+                            <Label x:Name="lblNombreModUE" Content="Nombre:" HorizontalAlignment="Left" Margin="247,289,0,0" VerticalAlignment="Top"  Foreground="White" />
+                            <ComboBox x:Name="cbPerfilUE" HorizontalAlignment="Left" Margin="368,468,0,0" VerticalAlignment="Top" Width="160" TabIndex="11"/>
+                            <DatePicker x:Name="dpFechaUE" HorizontalAlignment="Left" Margin="10,468,0,0" VerticalAlignment="Top" Width="160" Controls:TextBoxHelper.Watermark="Fecha de nacimiento" TabIndex="10"/>
+                            <TextBox x:Name="txtNombreUE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu nombre" HorizontalAlignment="Left" Height="23" Margin="185,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="1"/>
+                            <TextBox x:Name="txtApellidoUE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa tu apellido" HorizontalAlignment="Left" Height="23" Margin="364,411,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="2"/>
+                            <TextBox x:Name="txtRutUE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Rut 12345678-9" HorizontalAlignment="Left" Height="23" Margin="185,411,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="3"/>
+                            <TextBox x:Name="txtEmailUE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa Email" HorizontalAlignment="Left" Height="23" Margin="13,411,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="157" TabIndex="4"/>
+                            <TextBox x:Name="txtCelularUE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Numero de contacto" HorizontalAlignment="Left" Height="23" Margin="185,468,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="5"/>
+                            <TextBox x:Name="txtUsuarioUE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Nombre de usuario" HorizontalAlignment="Left" Height="23" Margin="364,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164" TabIndex="7" RenderTransformOrigin="0.482,1.154"/>
+                            <ComboBox x:Name="cbSucursalUE"  HorizontalAlignment="Left" Margin="154,515,0,0" VerticalAlignment="Top" Width="160" TabIndex="12"/>
+                            <CheckBox x:Name="chActivarUE" IsChecked="false" Content="Usuario activo" Foreground="White" HorizontalAlignment="Left" Margin="14,268,0,0" VerticalAlignment="Top" TabIndex="13"/>
+                            <RadioButton x:Name="rbFemUE" IsChecked="True" Content="Femenino" Foreground="White" GroupName="Sexo" HorizontalAlignment="Left" Margin="14,303,0,0" VerticalAlignment="Top" TabIndex="14"/>
+                            <RadioButton x:Name="rbMasUE" Content="Masculino" Foreground="White" GroupName="Sexo" HorizontalAlignment="Left" Margin="14,328,0,0" VerticalAlignment="Top" TabIndex="15"/>
+                            <Button x:Name="btnAgregarUE" Content="Agregar" HorizontalAlignment="Left" Margin="453,9,0,0" VerticalAlignment="Top" Width="75"  TabIndex="16"/>
+                            <Label x:Name="lblApellidoUE" Content="Apellido:" HorizontalAlignment="Left" Margin="422,380,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblRutUE" Content="Rut:" HorizontalAlignment="Left" Margin="247,380,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblEmailUE" Content="Email:" HorizontalAlignment="Left" Margin="72,380,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblTelefonoUE" Content="Telefono:" HorizontalAlignment="Left" Margin="237,442,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblUsuarioUE" Content="Usuario:" HorizontalAlignment="Left" Margin="422,289,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblFechaUE" Content="Fecha:" HorizontalAlignment="Left" Margin="53,442,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblPerfilUE" Content="Perfil:" HorizontalAlignment="Left" Margin="437,442,0,0" VerticalAlignment="Top"   Foreground="White" />
+                            <Label x:Name="lblRetailUE" Content="Retail:" HorizontalAlignment="Left" Margin="216,489,0,0" VerticalAlignment="Top"   Foreground="White" />
+
+                        </Grid>
+                    </Controls:MetroTabItem>
+                </Controls:MetroTabControl>
+            </Controls:Flyout>
+            <Controls:Flyout x:Name="FlyRetail" Position="Right" Header="Mantenedor Retail" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538">
+                <Controls:MetroTabControl>
+                    <Controls:MetroTabItem Header="Agregar">
+                        <Grid>
+                            <TextBox x:Name="txtRutRA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese rut" HorizontalAlignment="Left" Height="23" Margin="115,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
+                            <TextBox x:Name="txtNombreRA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese nombre" HorizontalAlignment="Left" Height="23" Margin="115,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175" />
+                            <TextBox x:Name="txtRazonSocialRA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese razon social" HorizontalAlignment="Left" Height="23" Margin="115,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
+                            <TextBox x:Name="txtTelefonoRA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese telefono" HorizontalAlignment="Left" Height="23" Margin="115,189,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175" />
+                            <TextBox x:Name="txtEmailRA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese email" HorizontalAlignment="Left" Height="23" Margin="115,229,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175" />
+                            <TextBox x:Name="txtDireccionRA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese direccion" HorizontalAlignment="Left" Height="23" Margin="115,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
+                            <ComboBox x:Name="cbRegionRA" HorizontalAlignment="Left" Margin="408,58,0,0" VerticalAlignment="Top" Width="120" />
+                            <ComboBox x:Name="cbComunaRA" HorizontalAlignment="Left" Margin="408,104,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblRegionRA" Content="Region" Foreground="White" HorizontalAlignment="Left" Margin="356,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblComunaRA" Content="Comuna"  Foreground="White" HorizontalAlignment="Left" Margin="349,107,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblRutRA" Content="Rut:" Foreground="White" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblNombreRA" Content="Nombre:" Foreground="White" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblRazonRA" Content="Razon social:" Foreground="White" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblTelefonoRA" Content="Telefono:" Foreground="White" HorizontalAlignment="Left" Margin="10,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblEmailRA" Content="Email:" Foreground="White" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblDireccionRA" Content="Direccion:" Foreground="White" HorizontalAlignment="Left" Margin="10,270,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblInfoAgregarRA" Content="Inserte los datos para agregar un nuevo retail" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Button x:Name="btnAgregarRA" Content="Agregar" HorizontalAlignment="Left" Margin="453,9,0,0" VerticalAlignment="Top" Width="75"/>
+                        </Grid>
+                    </Controls:MetroTabItem>
+                    <Controls:MetroTabItem Header="Modificar">
+                        <Grid>
+                            <Button x:Name="btnListarRM" Content="Listar" HorizontalAlignment="Left" Margin="250,55,0,0" VerticalAlignment="Top" Width="75" />
+                            <TextBox x:Name="txtBuscarRM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar aqui" HorizontalAlignment="Left" Height="23" Margin="125,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <DataGrid x:Name="dgRetailRM" CanUserAddRows="False" HorizontalAlignment="Left" Margin="250,87,0,0" VerticalAlignment="Top" Height="161" Width="278" >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="dgcId" Header="ID" Binding="{Binding Path=IdRetail}"/>
+                                    <DataGridTextColumn x:Name="dgcNom" Header="Nombre" Binding="{Binding Path=NombreRetail}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <TextBox x:Name="txtRutRM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese rut" HorizontalAlignment="Left" Height="23" Margin="88,319,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
+                            <TextBox x:Name="txtNombreRM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese nombre" HorizontalAlignment="Left" Height="23" Margin="88,361,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175" />
+                            <TextBox x:Name="txtRazonSocialRM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese razon social" HorizontalAlignment="Left" Height="23" Margin="88,402,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
+                            <TextBox x:Name="txtTelefonoRM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese telefono" HorizontalAlignment="Left" Height="23" Margin="88,442,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175" />
+                            <TextBox x:Name="txtEmailRM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese email" HorizontalAlignment="Left" Height="23" Margin="353,442,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175" />
+                            <TextBox x:Name="txtDireccionRM" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese direccion" HorizontalAlignment="Left" Height="23" Margin="353,402,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
+                            <ComboBox x:Name="cbRegionRM" HorizontalAlignment="Left" Margin="408,319,0,0" VerticalAlignment="Top" Width="120" />
+                            <ComboBox x:Name="cbComunaRM" HorizontalAlignment="Left" Margin="408,361,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblRegionRM" Content="Region" Foreground="White" HorizontalAlignment="Left" Margin="349,319,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblComunaRM" Content="Comuna"  Foreground="White" HorizontalAlignment="Left" Margin="342,361,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblRutRM" Content="Rut:" Foreground="White" HorizontalAlignment="Left" Margin="47,319,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblNombreRM" Content="Nombre:" Foreground="White" HorizontalAlignment="Left" Margin="27,361,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblRazonRM" Content="Razon social:" Foreground="White" HorizontalAlignment="Left" Margin="5,402,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblTelefonoRM" Content="Telefono:" Foreground="White" HorizontalAlignment="Left" Margin="30,442,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblEmailRM" Content="Email:" Foreground="White" HorizontalAlignment="Left" Margin="307,402,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblDireccionRM" Content="Direccion:" Foreground="White" HorizontalAlignment="Left" Margin="291,442,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblInfoModificarRM" Content="Busque el retail y selecciónelo de la lista para cargar sus datos." Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Button x:Name="btnModificarRM" Content="Modificar" HorizontalAlignment="Left" Margin="453,9,0,0" VerticalAlignment="Top" Width="75"/>
+                            <ComboBox x:Name="cbRegionRMB" HorizontalAlignment="Left" Margin="125,146,0,0" VerticalAlignment="Top" Width="120" />
+                            <Label x:Name="lblRegionRMB" Content="Buscar por región" Foreground="White" HorizontalAlignment="Left" Margin="125,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblComunaRMB" Content="Buscar por comuna" Foreground="White" HorizontalAlignment="Left" Margin="125,177,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <ComboBox x:Name="cbComunaRMB" HorizontalAlignment="Left" Margin="125,208,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblRegionRMB_Copy" Content="Buscqueda" Foreground="White" HorizontalAlignment="Left" Margin="133,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                        </Grid>
+                    </Controls:MetroTabItem>
+                    <Controls:MetroTabItem Header="Eliminar">
+                        <Grid>
+                            <Button x:Name="btnListarRE" Content="Listar" HorizontalAlignment="Left" Margin="250,55,0,0" VerticalAlignment="Top" Width="75"/>
+                            <TextBox x:Name="txtBuscarRE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar aqui" HorizontalAlignment="Left" Height="23" Margin="125,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <DataGrid x:Name="dgRetailRE" CanUserAddRows="False" HorizontalAlignment="Left" Margin="250,87,0,0" VerticalAlignment="Top" Height="161" Width="278"  >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="dgcIdRE" Header="ID" Binding="{Binding Path=IdRetail}"/>
+                                    <DataGridTextColumn x:Name="dgcNomRE" Header="Nombre" Binding="{Binding Path=NombreRetail}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <TextBox x:Name="txtRutRE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese rut" HorizontalAlignment="Left" Height="23" Margin="88,319,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
+                            <TextBox x:Name="txtNombreRE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese nombre" HorizontalAlignment="Left" Height="23" Margin="88,361,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175" />
+                            <TextBox x:Name="txtRazonSocialRE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese razon social" HorizontalAlignment="Left" Height="23" Margin="88,402,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
+                            <TextBox x:Name="txtTelefonoRE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese telefono" HorizontalAlignment="Left" Height="23" Margin="88,442,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175" />
+                            <TextBox x:Name="txtEmailRE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese email" HorizontalAlignment="Left" Height="23" Margin="353,442,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175" />
+                            <TextBox x:Name="txtDireccionRE" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese direccion" HorizontalAlignment="Left" Height="23" Margin="353,402,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175"/>
+                            <ComboBox x:Name="cbRegionRE" HorizontalAlignment="Left" Margin="408,319,0,0" VerticalAlignment="Top" Width="120" />
+                            <ComboBox x:Name="cbComunaRE" HorizontalAlignment="Left" Margin="408,361,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblRegionRE" Content="Region" Foreground="White" HorizontalAlignment="Left" Margin="349,319,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblComunaRE" Content="Comuna"  Foreground="White" HorizontalAlignment="Left" Margin="342,361,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblRutRE" Content="Rut:" Foreground="White" HorizontalAlignment="Left" Margin="47,319,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblNombreRE" Content="Nombre:" Foreground="White" HorizontalAlignment="Left" Margin="27,361,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblRazonRE" Content="Razon social:" Foreground="White" HorizontalAlignment="Left" Margin="5,402,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblTelefonoRE" Content="Telefono:" Foreground="White" HorizontalAlignment="Left" Margin="30,442,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblEmailRE" Content="Email:" Foreground="White" HorizontalAlignment="Left" Margin="307,402,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblDireccionRE" Content="Direccion:" Foreground="White" HorizontalAlignment="Left" Margin="291,442,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblInfoModificarRE" Content="Busque el retail y selecciónelo de la lista para cargar sus datos y poder borrarlo." Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Button x:Name="btnEliminarRE" Content="Eliminar" HorizontalAlignment="Left" Margin="453,9,0,0" VerticalAlignment="Top" Width="75"/>
+                            <ComboBox x:Name="cbRegionREB" HorizontalAlignment="Left" Margin="125,146,0,0" VerticalAlignment="Top" Width="120" />
+                            <Label x:Name="lblRegionREB" Content="Buscar por región" Foreground="White" HorizontalAlignment="Left" Margin="125,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <Label x:Name="lblComunaREB" Content="Buscar por comuna" Foreground="White" HorizontalAlignment="Left" Margin="125,177,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                            <ComboBox x:Name="cbComunaREB" HorizontalAlignment="Left" Margin="125,208,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="lblBuscarREB" Content="Buscqueda" Foreground="White" HorizontalAlignment="Left" Margin="133,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.318,0.1"/>
+                        </Grid>
+                    </Controls:MetroTabItem>
+                </Controls:MetroTabControl>
+            </Controls:Flyout>
+            <Controls:Flyout x:Name="FlyRubro" Position="Right" Header="Mantenedor Rubro" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538">
+                <Controls:MetroTabControl>
+                    <Controls:MetroTabItem Header="Agregar">
+                        <Grid>
+                            <TextBox x:Name="txtTipoRubroAR" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa el tipo" HorizontalAlignment="Left" Height="23" Margin="192,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
+                            <TextBox x:Name="txtDescripcionRubroAR" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa una descripcion" HorizontalAlignment="Left" Height="90" Margin="192,138,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180"/>
+                            <Label x:Name="lblTipoAR" Content="Tipo Rubro" Foreground="White"  HorizontalAlignment="Left" Margin="106,83,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblDescripAR" Content="Descripcion" Foreground="White"  HorizontalAlignment="Left" Margin="106,138,0,0" VerticalAlignment="Top"/>
+                            <Button x:Name="btnAgregarAR" Content="Agregar" HorizontalAlignment="Left" Margin="453,10,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Label x:Name="lblInfoAgregarAR" Content="Inserta los datos para agregar un nuevo rubro" Foreground="White"  HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                        </Grid>
+                    </Controls:MetroTabItem>
+                    <Controls:MetroTabItem Header="Modificar">
+                        <Grid>
+                            <TextBox x:Name="txtTipoRubroMR" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa el tipo" HorizontalAlignment="Left" Height="23" Margin="61,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
+                            <TextBox x:Name="txtDescripcionRubroMR" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa una descripcion" HorizontalAlignment="Left" Height="90" Margin="281,276,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180"/>
+                            <Label x:Name="lblTipoMR" Content="Tipo Rubro" Foreground="White"  HorizontalAlignment="Left" Margin="98,250,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblDescripMR" Content="Descripcion" Foreground="White"  HorizontalAlignment="Left" Margin="333,253,0,0" VerticalAlignment="Top"/>
+                            <Button x:Name="btnAgregarMR" Content="Modificar" HorizontalAlignment="Left" Margin="453,10,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Label x:Name="lblInfoAgregarMR" Content="Busca y selecciona un rubro de la lista para cargar sus datos y editar." Foreground="White"  HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                            <DataGrid x:Name="dgRubroMR" CanUserAddRows="False" HorizontalAlignment="Left" Margin="250,87,0,0" VerticalAlignment="Top" Height="161" Width="278" >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="dgcIdRubroMR" Header="ID" Binding="{Binding Path=IdRubro}"/>
+                                    <DataGridTextColumn x:Name="dgcNombreRubroMR" Header="Nombre" Binding="{Binding Path=NombreRubro}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Label x:Name="lblBuscarMR" Content="Busqueda" Foreground="White"  HorizontalAlignment="Left" Margin="31,86,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtBuscarMR" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar rubro" HorizontalAlignment="Left" Height="23" Margin="98,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
+                            <Button x:Name="btnListarMR" Content="Listar" HorizontalAlignment="Left" Margin="250,55,0,0" VerticalAlignment="Top" Width="75"/>
+                        </Grid>
+                    </Controls:MetroTabItem>
+                    <Controls:MetroTabItem Header="Eliminar">
+                        <Grid>
+                            <TextBox x:Name="txtTipoRubroER" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa el tipo" HorizontalAlignment="Left" Height="23" Margin="61,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
+                            <TextBox x:Name="txtDescripcionRubroER" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa una descripcion" HorizontalAlignment="Left" Height="90" Margin="281,276,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180"/>
+                            <Label x:Name="lblTipoER" Content="Tipo Rubro" Foreground="White"  HorizontalAlignment="Left" Margin="98,250,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblDescripER" Content="Descripcion" Foreground="White"  HorizontalAlignment="Left" Margin="333,253,0,0" VerticalAlignment="Top"/>
+                            <Button x:Name="btnEliminarER" Content="Eliminar" HorizontalAlignment="Left" Margin="453,10,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Label x:Name="lblInfoEliminarER" Content="Busca y selecciona un rubro de la lista para cargar sus datos y eliminarlo." Foreground="White"  HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                            <DataGrid x:Name="dgRubroER" CanUserAddRows="False" HorizontalAlignment="Left" Margin="250,87,0,0" VerticalAlignment="Top" Height="161" Width="278" >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="dgcIdRubroER" Header="ID" Binding="{Binding Path=IdRubro}"/>
+                                    <DataGridTextColumn x:Name="dgcNombreRubroER" Header="Nombre" Binding="{Binding Path=NombreRubro}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Label x:Name="lblBuscarER" Content="Busqueda" Foreground="White"  HorizontalAlignment="Left" Margin="31,86,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtBuscarER" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar rubro" HorizontalAlignment="Left" Height="23" Margin="98,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
+                            <Button x:Name="btnListarER" Content="Listar" HorizontalAlignment="Left" Margin="250,55,0,0" VerticalAlignment="Top" Width="75"/>
+                        </Grid>
+                    </Controls:MetroTabItem>
+                </Controls:MetroTabControl>
+            </Controls:Flyout>
+            <Controls:Flyout x:Name="FlyBI" Position="Right" Header="Business Intelligence" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
+                <Controls:MetroTabControl>
+                    <Controls:MetroTabItem Header="Consultar por tienda">
+                        <Grid>
+                            <ComboBox x:Name="cbTiendas" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="120"/>
+                            <Label x:Name="label" Content="Tienda a consultar" Foreground="White" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top"/>
+                            <DataGrid x:Name="dgBI" HorizontalAlignment="Left" Margin="154,61,0,0" VerticalAlignment="Top" Height="269" Width="356"/>
+                        </Grid>
+                    </Controls:MetroTabItem>
+                </Controls:MetroTabControl>
+            </Controls:Flyout>
+        </Grid>
+        <Label x:Name="lblBienvenida" Content="Hola " Foreground="White" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblUsuarioActual" Content=" " Foreground="White" HorizontalAlignment="Left" Margin="48,10,0,0" VerticalAlignment="Top" FontStyle="Italic" FontWeight="Bold"/>
+        <Label x:Name="lblBienvenida_Copy" Content="Bienvenido!" Foreground="White" HorizontalAlignment="Left" Margin="8,35,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+    </Grid>
+</Controls:MetroWindow>

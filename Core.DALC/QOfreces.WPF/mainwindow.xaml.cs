@@ -76,7 +76,7 @@ namespace QOfreces.WPF
 
                         if (user.IdPerfil == 1)
                         {
-                            Administrador ad = new Administrador();
+                            MenuAdministrador ad = new MenuAdministrador();
                             this.Close();
                             ad.Show();
 
@@ -84,7 +84,7 @@ namespace QOfreces.WPF
                         else if (user.IdPerfil == 2)
                         {
 
-                            EncargadoTienda encar = new EncargadoTienda();
+                            MenuEncargado encar = new MenuEncargado();
                             this.Close();
                             encar.Show();
 
