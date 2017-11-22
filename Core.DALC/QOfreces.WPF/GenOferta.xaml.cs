@@ -34,13 +34,16 @@ namespace QOfreces.WPF
     public partial class GenOferta : MetroWindow
     {
         private string rutaNombreImagenOferta;
+        Validaciones validador = new Validaciones();
 
         string nombreCompleto = string.Format("{0} {1}", mainwindow.UsuarioACtual.Nombre, mainwindow.UsuarioACtual.Apellido);
+
         public GenOferta()
         {
 
             InitializeComponent();
             CargarCombobox();
+            ocultarLbl();
         }
 
         private void CargarCombobox()
@@ -65,8 +68,29 @@ namespace QOfreces.WPF
 
         }
 
+        private void ocultarLbl()
+        {
+
+            lblCategoriaOferta.Visibility = Visibility.Hidden;
+            lblFechaOferta.Visibility = Visibility.Hidden;
+            lblImagen.Visibility = Visibility.Hidden;
+            lblMaxProductos.Visibility = Visibility.Hidden;
+            lblMinProductos.Visibility = Visibility.Hidden;
+            lblNombre.Visibility = Visibility.Hidden;
+            lblPrecioAnterior.Visibility = Visibility.Hidden;
+            lblPrecioOferta.Visibility = Visibility.Hidden;
+            lblSucursal.Visibility = Visibility.Hidden;
+        }
+
         private void btnGenOferta_Click(object sender, RoutedEventArgs e)
         {
+            lblFechaOferta.Content = validador.validarFecha(dpFecha.Text);
+            lblMaxProductos.Content = validador.validarMaxCantidad(txtMaxProd.Text);
+            lblMinProductos.Content = validador.validarMinCantidad(txtMinProd.Text);
+            lblNombre.Content = validador.validarNombre(txtNombre.Text);
+            lblPrecioAnterior.Content = validador.validarPrecio(txtPrecioAntes.Text);
+            lblPrecioOferta.Content = validador.validarPrecio(txtPrecio.Text);
+           
 
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
             Oferta of = new Oferta();
@@ -100,6 +124,68 @@ namespace QOfreces.WPF
             of.OfertaDia = char.Parse("s");
 
             string json = of.Serializar();
+
+            if (lblFechaOferta.Content.Equals("OK") && lblMaxProductos.Content.Equals("OK") && lblMinProductos.Content.Equals("OK") && lblNombre.Content.Equals("OK") && lblPrecioAnterior.Content.Equals("OK") && lblPrecioOferta.Content.Equals("OK"))
+            {
+
+            }
+            else
+            {
+                if (lblFechaOferta.Content.Equals("OK"))
+                {
+                    lblFechaOferta.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lblFechaOferta.Visibility = Visibility.Visible;
+                }
+
+                if (lblMaxProductos.Content.Equals("OK"))
+                {
+                    lblMaxProductos.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lblMaxProductos.Visibility = Visibility.Visible;
+                }
+
+                if (lblMinProductos.Content.Equals("OK"))
+                {
+                    lblMinProductos.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lblMinProductos.Visibility = Visibility.Visible;
+                }
+
+                if (lblNombre.Content.Equals("OK"))
+                {
+                    lblNombre.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lblNombre.Visibility = Visibility.Visible;
+                }
+
+                if (lblPrecioAnterior.Content.Equals("OK"))
+                {
+                    lblPrecioAnterior.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lblPrecioAnterior.Visibility = Visibility.Visible;
+                }
+
+                if (lblPrecioOferta.Content.Equals("OK"))
+                {
+                    lblPrecioOferta.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    lblPrecioOferta.Visibility = Visibility.Visible;
+                }
+
+            }
 
             if (proxy.CrearOferta(json))
             {
@@ -226,67 +312,128 @@ namespace QOfreces.WPF
             this.Close();
             en.Show();
         }
+
+        private void txtPrecio_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 48 && ascci <= 57)
+            {
+                lblPrecioOferta.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                lblPrecioOferta.Content = "Precio no puede contener letras";
+                lblPrecioOferta.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtPrecioAntes_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 48 && ascci <= 57)
+            {
+                lblPrecioAnterior.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                lblPrecioAnterior.Content = "Precio no puede contener letras";
+                lblPrecioAnterior.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtMinProd_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 48 && ascci <= 57)
+            {
+                lblMinProductos.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                lblMinProductos.Content = "Minimo Producto no puede contener letras";
+                lblMinProductos.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtMaxProd_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 48 && ascci <= 57)
+            {
+                lblMaxProductos.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                lblMaxProductos.Content = "Maximo Producto no puede contener letras";
+                lblMaxProductos.Visibility = Visibility.Visible;
+            }
+        }
+
         /* 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ExportToPdf(dgProd);
-        }
+private void Button_Click(object sender, RoutedEventArgs e)
+{
+   ExportToPdf(dgProd);
+}
 
-        private T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
-        {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
-                if (child != null && child is T)
-                    return (T)child;
-                else
-                {
-                    T childOfChild = FindVisualChild<T>(child);
-                    if (childOfChild != null)
-                        return childOfChild;
-                }
-            }
-            return null;
-        }
-       
-        public void ExportToPdf(DataGrid grid)
-        {
-            PdfPTable table = new PdfPTable(grid.Columns.Count);
-            Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
-            PdfWriter writer = PdfWriter.GetInstance(doc, new System.IO.FileStream("Test.pdf", System.IO.FileMode.Create));
-            doc.Open();
+private T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
+{
+   for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+   {
+       DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+       if (child != null && child is T)
+           return (T)child;
+       else
+       {
+           T childOfChild = FindVisualChild<T>(child);
+           if (childOfChild != null)
+               return childOfChild;
+       }
+   }
+   return null;
+}
 
-            for (int j = 0; j < grid.Columns.Count; j++)
-            {
-                table.AddCell(new Phrase(grid.Columns[j].Header.ToString()));
-            }
-            table.HeaderRows = 1;
-            IEnumerable itemsSource = grid.ItemsSource as IEnumerable;
-            if (itemsSource != null)
-            {
-                foreach (var item in itemsSource)
-                {
-                    DataGridRow row = grid.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
-                    if (row != null)
-                    {
-                        DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
-                        for (int i = 0; i < grid.Columns.Count; ++i)
-                        {
-                            DataGridCell cell = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(i);
-                            TextBlock txt = cell.Content as TextBlock;
-                            if (txt != null)
-                            {
-                                table.AddCell(new Phrase(txt.Text));
-                            }
-                        }
-                    }
-                }
+public void ExportToPdf(DataGrid grid)
+{
+   PdfPTable table = new PdfPTable(grid.Columns.Count);
+   Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
+   PdfWriter writer = PdfWriter.GetInstance(doc, new System.IO.FileStream("Test.pdf", System.IO.FileMode.Create));
+   doc.Open();
 
-                doc.Add(table);
-                doc.Close();
-            }
-        }
-        */
+   for (int j = 0; j < grid.Columns.Count; j++)
+   {
+       table.AddCell(new Phrase(grid.Columns[j].Header.ToString()));
+   }
+   table.HeaderRows = 1;
+   IEnumerable itemsSource = grid.ItemsSource as IEnumerable;
+   if (itemsSource != null)
+   {
+       foreach (var item in itemsSource)
+       {
+           DataGridRow row = grid.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
+           if (row != null)
+           {
+               DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
+               for (int i = 0; i < grid.Columns.Count; ++i)
+               {
+                   DataGridCell cell = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(i);
+                   TextBlock txt = cell.Content as TextBlock;
+                   if (txt != null)
+                   {
+                       table.AddCell(new Phrase(txt.Text));
+                   }
+               }
+           }
+       }
+
+       doc.Add(table);
+       doc.Close();
+   }
+}
+*/
     }
 
 }

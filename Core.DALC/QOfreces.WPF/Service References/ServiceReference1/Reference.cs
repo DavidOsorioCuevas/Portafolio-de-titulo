@@ -15,6 +15,24 @@ namespace QOfreces.WPF.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerCupones", ReplyAction="http://tempuri.org/IService1/TraerCuponesResponse")]
+        string TraerCupones(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerCupones", ReplyAction="http://tempuri.org/IService1/TraerCuponesResponse")]
+        System.Threading.Tasks.Task<string> TraerCuponesAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GenerarEcupon", ReplyAction="http://tempuri.org/IService1/GenerarEcuponResponse")]
+        string GenerarEcupon(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GenerarEcupon", ReplyAction="http://tempuri.org/IService1/GenerarEcuponResponse")]
+        System.Threading.Tasks.Task<string> GenerarEcuponAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerDescuentos", ReplyAction="http://tempuri.org/IService1/TraerDescuentosResponse")]
+        string TraerDescuentos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerDescuentos", ReplyAction="http://tempuri.org/IService1/TraerDescuentosResponse")]
+        System.Threading.Tasks.Task<string> TraerDescuentosAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Puntos", ReplyAction="http://tempuri.org/IService1/PuntosResponse")]
         string Puntos(string json);
         
@@ -419,6 +437,30 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string TraerCupones(string json) {
+            return base.Channel.TraerCupones(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> TraerCuponesAsync(string json) {
+            return base.Channel.TraerCuponesAsync(json);
+        }
+        
+        public string GenerarEcupon(string json) {
+            return base.Channel.GenerarEcupon(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> GenerarEcuponAsync(string json) {
+            return base.Channel.GenerarEcuponAsync(json);
+        }
+        
+        public string TraerDescuentos() {
+            return base.Channel.TraerDescuentos();
+        }
+        
+        public System.Threading.Tasks.Task<string> TraerDescuentosAsync() {
+            return base.Channel.TraerDescuentosAsync();
         }
         
         public string Puntos(string json) {
