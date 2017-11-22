@@ -34,8 +34,8 @@
         <Grid Margin="153,0,0,0">
             <Controls:Flyout x:Name="flyGenerar" Position="Right" Header="Generar oferta" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
                 <Grid>
-                    <Button x:Name="btnGenOferta" Content="Generar Oferta" HorizontalAlignment="Left" Margin="400,0,0,0" VerticalAlignment="Top" Width="128" BorderBrush="Black" Height="27" RenderTransformOrigin="0.486,-0.635"/>
-                    <DataGrid x:Name="dgProd" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Height="140" Width="404"  AutoGenerateColumns="false">
+                    <Button x:Name="btnGenOferta" Content="Generar Oferta" HorizontalAlignment="Left" Margin="400,0,0,0" VerticalAlignment="Top" Width="128" BorderBrush="Black" Height="27" RenderTransformOrigin="0.486,-0.635" Click="btnGenOferta_Click"/>
+                    <DataGrid x:Name="dgProd" CanUserAddRows="False" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Height="140" Width="450"  AutoGenerateColumns="false">
                         <DataGrid.Columns>
                             <DataGridCheckBoxColumn x:Name="Selecionar" Header="Seleccionar" Binding="{Binding Selec}" />
                             <DataGridTextColumn Header="Id Producto" Binding="{Binding IdProducto}" IsReadOnly="True" />
@@ -43,7 +43,7 @@
                             <DataGridTextColumn Header="Precio " Binding="{Binding Precio}" IsReadOnly="True"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="btnListar" Content="Listar Productos" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="128"   BorderBrush="Black" Height="26"/>
+                    <Button x:Name="btnListar" Content="Listar Productos" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="128"   BorderBrush="Black" Height="26" Click="btnListar_Click"/>
                     <Label Content="Nombre Oferta" Foreground="White" HorizontalAlignment="Left" Margin="195,215,0,0" VerticalAlignment="Top" Width="137" Height="26"/>
                     <Label Content="Precio Oferta" Foreground="White" HorizontalAlignment="Left" Margin="195,267,0,0" VerticalAlignment="Top" Height="26" Width="79"/>
                     <Label Content="Fecha Oferta" Foreground="White" HorizontalAlignment="Left" Margin="197,368,0,0" VerticalAlignment="Top" Height="26" Width="77"/>
@@ -56,11 +56,11 @@
                     <TextBox x:Name="txtMinProd" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Cantidad minima" HorizontalAlignment="Left" Height="26" Margin="12,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" BorderBrush="Black"/>
                     <Label Content="Máximo Productos" Foreground="White" HorizontalAlignment="Left" Margin="12,267,0,0" VerticalAlignment="Top" Width="113" Height="26"/>
                     <TextBox x:Name="txtMaxProd" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Cantidad maxima" HorizontalAlignment="Left" Height="26" Margin="10,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" BorderBrush="Black"/>
-                    <Button x:Name="btnAdjuntar" Content="Adjuntar Imagen" HorizontalAlignment="Left" Margin="10,342,0,0" VerticalAlignment="Top" Width="141"  BorderBrush="Black" Height="26" RenderTransformOrigin="0.52,0.851"/>
+                    <Button x:Name="btnAdjuntar" Content="Adjuntar Imagen" HorizontalAlignment="Left" Margin="10,342,0,0" VerticalAlignment="Top" Width="141"  BorderBrush="Black" Height="26" RenderTransformOrigin="0.52,0.851" Click="btnAdjuntar_Click"/>
                     <Image x:Name="imgFoto" HorizontalAlignment="Left" Height="84" Margin="12,373,0,0" VerticalAlignment="Top" Width="130"/>
                     <TextBox x:Name="txtBuscarProducto" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar producto" HorizontalAlignment="Left" Height="26" Margin="143,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="126" BorderBrush="Black"/>
                     <Label Content="Precio Anterior" Foreground="White" HorizontalAlignment="Left" Margin="195,316,0,0" VerticalAlignment="Top" Width="99" Height="26"/>
-                    <TextBox x:Name="txtPrecioAntes" HorizontalAlignment="Left" Height="26" Margin="195,342,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
+                    <TextBox x:Name="txtPrecioAntes" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingresa precio antes" HorizontalAlignment="Left" Height="26" Margin="195,342,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
                     <CheckBox x:Name="chPubOf" Content="Publicar inmediatamente" Foreground="White" HorizontalAlignment="Left" Margin="372,290,0,0" VerticalAlignment="Top"   Height="18"/>
                     <Label Content="Categoria Oferta" Foreground="White" HorizontalAlignment="Left" Margin="392,394,0,0" VerticalAlignment="Top" Width="113" Height="26"/>
                     <ComboBox x:Name="cbCatOf" HorizontalAlignment="Left" Margin="387,429,0,0" VerticalAlignment="Top" Width="141" Height="22"/>
@@ -74,12 +74,12 @@
                     <Label Content="Selecciona la o las sucursales" Foreground="White" HorizontalAlignment="Left" Margin="195,420,0,0" VerticalAlignment="Top" />
                 </Grid>
             </Controls:Flyout>
-            <Controls:Flyout x:Name="flyPublicar" Position="Right" Header="Publicar ofertas" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
+            <Controls:Flyout x:Name="flyPublicar"  Position="Right" Header="Publicar ofertas" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
                 <Grid>
                     <Label Content="Busca en la lista y selecciona las ofertas que deseas activar o desactivar." Foreground="White" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" />
-                    <Button x:Name="btnBusquedaPu" Content="Buscar" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Width="75" />
+                    <Button x:Name="btnBusquedaPu" Content="Buscar" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Width="75" Click="btnBusquedaPu_Click" />
                     <TextBox x:Name="txtBusquedaPu" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar ofertas" HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="btnPublicar" Content="Actualizar" HorizontalAlignment="Left" Margin="453,-1,0,0" VerticalAlignment="Top" Width="75" />
+                    <Button x:Name="btnPublicar" Content="Actualizar" HorizontalAlignment="Left" Margin="453,-1,0,0" VerticalAlignment="Top" Width="75" Click="btnPublicar_Click" />
                     <CheckBox x:Name="cbPublicadas" Foreground="White" Content="Publicadas" HorizontalAlignment="Left" Margin="226,54,0,0" VerticalAlignment="Top" Height="24" Width="87"/>
                     <DataGrid x:Name="dgOfertas" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Height="259" Width="518" AutoGenerateColumns="False" CanUserAddRows="False">
                         <DataGrid.Columns>
@@ -177,7 +177,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <Label Content="Busqueda de ofertas." Foreground="White" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" />
-                    <Button x:Name="btnBusquedaCO" Content="Buscar" HorizontalAlignment="Left" Margin="453,10,0,0" VerticalAlignment="Top" Width="75" />
+                    <Button x:Name="btnBusquedaCO" Content="Buscar" HorizontalAlignment="Left" Margin="453,10,0,0" VerticalAlignment="Top" Width="75" Click="btnBusquedaCO_Click" />
                     <TextBox x:Name="txtBusquedaCO" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar ofertas" HorizontalAlignment="Left" Height="23" Margin="293,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                     <CheckBox x:Name="cbPublicadasCO" Foreground="White" Content="Publicadas" HorizontalAlignment="Left" Margin="293,163,0,0" VerticalAlignment="Top" Height="24" Width="87"/>
                     <DataGrid x:Name="dgOfertasCO" HorizontalAlignment="Left" Margin="10,221,0,0" VerticalAlignment="Top" Height="259" Width="518" AutoGenerateColumns="False" CanUserAddRows="False">
