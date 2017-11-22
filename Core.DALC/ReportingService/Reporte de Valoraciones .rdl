@@ -66,6 +66,15 @@ WHERE        VALORACION.OFERTA_ID = OFERTA.ID_OFERTA AND OFERTA.SUCURSALES_ID = 
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
+      <Filters>
+        <Filter>
+          <FilterExpression>=Fields!FECHA_OFERTA.Value</FilterExpression>
+          <Operator>GreaterThanOrEqual</Operator>
+          <FilterValues>
+            <FilterValue>=Parameters!fechDesd.Value</FilterValue>
+          </FilterValues>
+        </Filter>
+      </Filters>
     </DataSet>
   </DataSets>
   <ReportSections>
@@ -420,7 +429,7 @@ WHERE        VALORACION.OFERTA_ID = OFERTA.ID_OFERTA AND OFERTA.SUCURSALES_ID = 
             </ChartNoDataMessage>
             <DataSetName>Valoraciones</DataSetName>
             <Top>2.7288cm</Top>
-            <Left>15.76662cm</Left>
+            <Left>15.42937cm</Left>
             <Height>5cm</Height>
             <Width>7.5cm</Width>
             <Style>
@@ -815,7 +824,7 @@ WHERE        VALORACION.OFERTA_ID = OFERTA.ID_OFERTA AND OFERTA.SUCURSALES_ID = 
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
             <Top>0.39729cm</Top>
-            <Left>7.16703cm</Left>
+            <Left>5.60599cm</Left>
             <Height>1.10271cm</Height>
             <Width>8.58542cm</Width>
             <ZIndex>2</ZIndex>
@@ -846,7 +855,7 @@ WHERE        VALORACION.OFERTA_ID = OFERTA.ID_OFERTA AND OFERTA.SUCURSALES_ID = 
         <Height>4.022in</Height>
         <Style />
       </Body>
-      <Width>9.29644in</Width>
+      <Width>9.05686in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -860,15 +869,11 @@ WHERE        VALORACION.OFERTA_ID = OFERTA.ID_OFERTA AND OFERTA.SUCURSALES_ID = 
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="fechValo">
+    <ReportParameter Name="fechDesd">
       <DataType>DateTime</DataType>
       <Nullable>true</Nullable>
-      <Prompt>Buscar desde fecha</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="fechHasta">
-      <DataType>DateTime</DataType>
-      <Nullable>true</Nullable>
-      <Prompt>Buscar hasta fecha</Prompt>
+      <Prompt>Fecha Oferta Desde</Prompt>
+      <UsedInQuery>True</UsedInQuery>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
@@ -879,12 +884,7 @@ WHERE        VALORACION.OFERTA_ID = OFERTA.ID_OFERTA AND OFERTA.SUCURSALES_ID = 
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>fechValo</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>fechHasta</ParameterName>
+          <ParameterName>fechDesd</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
