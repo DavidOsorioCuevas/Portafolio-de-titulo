@@ -12,7 +12,12 @@ namespace Core.Servicios
     [ServiceContract]
     public interface IService1
     {
-
+        [OperationContract]
+        string TraerCupones(string json);
+        [OperationContract]
+        string GenerarEcupon(string json);
+        [OperationContract]
+        string TraerDescuentos();
         /*USUARIO*/
         [OperationContract]
         string Puntos(string json);

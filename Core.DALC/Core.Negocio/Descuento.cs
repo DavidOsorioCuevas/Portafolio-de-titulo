@@ -17,7 +17,7 @@ namespace Core.Negocio
         public int Porcentaje;
         public int Tope;
 
-
+        public List<CategoriaOferta> Categorias { get; set; }
         public Descuento()
         {
 
