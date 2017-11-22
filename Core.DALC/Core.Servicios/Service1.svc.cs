@@ -13,6 +13,10 @@ namespace Core.Servicios
     // NOTE: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service1.svc o Service1.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class Service1 : IService1
     {
+        public string TraerCupones(string json) {
+            Negocio.Listas lista = new Negocio.Listas();
+         return lista.traerCupones(json);        
+        }
         public string TraerDescuentos()
         {
             Negocio.Listas lista = new Negocio.Listas();
