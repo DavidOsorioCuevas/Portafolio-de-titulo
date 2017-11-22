@@ -6,6 +6,24 @@
       <xsd:import schemaLocation="http://localhost:50194/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IService1_TraerCupones_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCupones" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCupones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCuponesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GenerarEcupon_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarEcupon" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GenerarEcupon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerarEcuponResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerDescuentos_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDescuentos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerDescuentos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerDescuentosResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_Puntos_InputMessage">
     <wsdl:part name="parameters" element="tns:Puntos" />
   </wsdl:message>
@@ -385,6 +403,18 @@
     <wsdl:part name="parameters" element="tns:CrearOfertaHasSucursalResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
+    <wsdl:operation name="TraerCupones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerCupones" message="tns:IService1_TraerCupones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerCuponesResponse" message="tns:IService1_TraerCupones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerarEcupon">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GenerarEcupon" message="tns:IService1_GenerarEcupon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GenerarEcuponResponse" message="tns:IService1_GenerarEcupon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerDescuentos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerDescuentos" message="tns:IService1_TraerDescuentos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerDescuentosResponse" message="tns:IService1_TraerDescuentos_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Puntos">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/Puntos" message="tns:IService1_Puntos_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/PuntosResponse" message="tns:IService1_Puntos_OutputMessage" />
@@ -640,6 +670,33 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TraerCupones">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerCupones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerarEcupon">
+      <soap:operation soapAction="http://tempuri.org/IService1/GenerarEcupon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerDescuentos">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerDescuentos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Puntos">
       <soap:operation soapAction="http://tempuri.org/IService1/Puntos" style="document" />
       <wsdl:input>
