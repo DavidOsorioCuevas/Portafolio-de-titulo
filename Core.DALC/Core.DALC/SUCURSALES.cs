@@ -29,6 +29,8 @@ namespace Core.DALC
         public Nullable<decimal> REGION_ID { get; set; }
         public string EMAIL { get; set; }
         public decimal RETAIL_ID { get; set; }
+        public string LATITUD { get; set; }
+        public string LONGITUD { get; set; }
     
         public virtual COMUNA COMUNA { get; set; }
         public virtual ICollection<OFERTA> OFERTA { get; set; }

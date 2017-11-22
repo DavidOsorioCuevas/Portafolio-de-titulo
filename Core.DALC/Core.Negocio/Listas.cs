@@ -395,5 +395,46 @@ namespace Core.Negocio
             return ser.ToString();
 
         }
+
+        public string SerializarSucursales(List<Sucursal> sucursal)
+        {
+
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(List<Sucursal>));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, sucursal);
+
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+
+            return ser.ToString();
+
+        }
+        public string traerSucursales(string json)
+        {
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            FilterParameter f = (FilterParameter)serializador.ReadObject(stream);
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+
+            int IdOferta = int.Parse(f.parameter);
+
+            var t = from a in ctx.SUCURSALES join temp in ctx.OFERTA_HAS_SUCURSAL on a.ID_SUCURSAL equals temp.SUCURSAL_ID where temp.OFERTA_ID==IdOferta select new { a };
+
+            List<Sucursal> sucursales = new List<Sucursal>();
+            foreach (var itemc in t)
+            {
+                Sucursal suc = new Sucursal();
+                suc.IdSucursal = (int)itemc.a.ID_SUCURSAL;
+                suc.Nombre = itemc.a.NOMBRE;
+                suc.Direccion = itemc.a.DIRECCION;
+                suc.Telefono = (int)itemc.a.TELEFONO;
+                suc.Email = itemc.a.EMAIL;
+                suc.Latitud = itemc.a.LATITUD;
+                suc.Longitud = itemc.a.LONGITUD;
+                sucursales.Add(suc);
+            }
+
+            return SerializarSucursales(sucursales);
+        }
     }
 }

@@ -171,6 +171,8 @@
           <Property Name="REGION_ID" Type="number" Precision="38" Scale="0" />
           <Property Name="EMAIL" Type="varchar2" MaxLength="50" />
           <Property Name="RETAIL_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LATITUD" Type="varchar2" MaxLength="50" />
+          <Property Name="LONGITUD" Type="varchar2" MaxLength="50" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -780,6 +782,8 @@
           <NavigationProperty Name="OFERTA" Relationship="Self.OFERTA_SUCURSALES_FK" FromRole="SUCURSALES" ToRole="OFERTA" />
           <NavigationProperty Name="REGION" Relationship="Self.SUCURSALES_REGION_FK" FromRole="SUCURSALES" ToRole="REGION" />
           <NavigationProperty Name="RETAIL" Relationship="Self.SUCURSALES_RETAIL_FK" FromRole="SUCURSALES" ToRole="RETAIL" />
+          <Property Name="LATITUD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LONGITUD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -1379,6 +1383,8 @@
           <EntitySetMapping Name="SUCURSALES">
             <EntityTypeMapping TypeName="QueOfrecesModel.SUCURSALES">
               <MappingFragment StoreEntitySet="SUCURSALES">
+                <ScalarProperty Name="LONGITUD" ColumnName="LONGITUD" />
+                <ScalarProperty Name="LATITUD" ColumnName="LATITUD" />
                 <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
                 <ScalarProperty Name="RUT" ColumnName="RUT" />
                 <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
