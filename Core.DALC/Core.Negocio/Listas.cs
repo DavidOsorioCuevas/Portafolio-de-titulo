@@ -11,6 +11,46 @@ namespace Core.Negocio
 {
     public class Listas
     {
+        public string traerCupones(string json) {
+          
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            FilterParameter f = (FilterParameter)serializador.ReadObject(stream);
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+
+            int IdUsuario = int.Parse(f.parameter);
+            var result = from a in ctx.CUPON where a.USUARIO_ID.Equals(IdUsuario) select new { a };
+            List<Cupon> cupones = new List<Cupon>();
+            foreach (var item in result)
+            {
+                Cupon c = new Cupon();
+                c.Codigo = item.a.CODIGO;
+                
+                c.fc = item.a.FECHA_HASTA.Value.ToShortDateString();
+                var descuento = from a in ctx.DESCUENTO where a.ID_DESCUENTO.Equals(item.a.DESCUENTO_ID) select new { a };
+                Descuento d = new Descuento();
+                
+               
+
+                var r = from a in ctx.CATEGORIA_OFERTA join tempo in ctx.DESCUENTO_HAS_RUBRO on a.ID_CATEGORIA_OFERTA equals tempo.RUBRO_ID where tempo.DESCUENTO_ID == item.a.DESCUENTO_ID select new { a };
+                List<CategoriaOferta> cat = new List<CategoriaOferta>();
+                foreach (var itemc in r)
+                {
+                    CategoriaOferta ce = new CategoriaOferta();
+                    ce.IdCategoria = (int)itemc.a.ID_CATEGORIA_OFERTA;
+                    ce.Nombre = itemc.a.NOMBRE;
+                    cat.Add(ce);
+                }
+                d.Categorias = cat;
+                d.Porcentaje = (int)ctx.DESCUENTO.Find(item.a.DESCUENTO_ID).PORCENTAJE;
+                d.MinPuntos = (int)ctx.DESCUENTO.Find(item.a.DESCUENTO_ID).MIN_PUNTOS;
+                d.Tope = (int)ctx.DESCUENTO.Find(item.a.DESCUENTO_ID).TOPE;
+                c.Descuento = d;
+                cupones.Add(c);
+            }
+            string s = SerializarCupones(cupones);
+            return SerializarCupones(cupones);
+        }
         public string valoracion(string parametro)
         {
             Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
@@ -85,7 +125,7 @@ namespace Core.Negocio
             cup.FECHA_HASTA = c.Fecha_Hasta;
             cup.USUARIO_ID = c.IdUsuario;
             //cup.CODIGO = c.Fecha_Creacion.ToString()+"s"+ result.First().RUT;
-            cup.CODIGO = result.First().RUT;
+            cup.CODIGO = result.First().RUT+"V";
             db.CUPON.Add(cup);
 
             ctx.USUARIO.Find(c.IdUsuario).PUNTOS = result.First().PUNTOS - result2.First().MIN_PUNTOS;
@@ -263,6 +303,19 @@ namespace Core.Negocio
             return ser.ToString();
         }
 
+        public string SerializarCupones(List<Cupon> cupon)
+        {
+
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(List<Cupon>));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, cupon);
+
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+
+            return ser.ToString();
+
+        }
         public string SerializarDescuento(List<Descuento> descuento)
         {
 
@@ -341,6 +394,47 @@ namespace Core.Negocio
 
             return ser.ToString();
 
+        }
+
+        public string SerializarSucursales(List<Sucursal> sucursal)
+        {
+
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(List<Sucursal>));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, sucursal);
+
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+
+            return ser.ToString();
+
+        }
+        public string traerSucursales(string json)
+        {
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            FilterParameter f = (FilterParameter)serializador.ReadObject(stream);
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+
+            int IdOferta = int.Parse(f.parameter);
+
+            var t = from a in ctx.SUCURSALES join temp in ctx.OFERTA_HAS_SUCURSAL on a.ID_SUCURSAL equals temp.SUCURSAL_ID where temp.OFERTA_ID==IdOferta select new { a };
+
+            List<Sucursal> sucursales = new List<Sucursal>();
+            foreach (var itemc in t)
+            {
+                Sucursal suc = new Sucursal();
+                suc.IdSucursal = (int)itemc.a.ID_SUCURSAL;
+                suc.Nombre = itemc.a.NOMBRE;
+                suc.Direccion = itemc.a.DIRECCION;
+                suc.Telefono = (int)itemc.a.TELEFONO;
+                suc.Email = itemc.a.EMAIL;
+                suc.Latitud = itemc.a.LATITUD;
+                suc.Longitud = itemc.a.LONGITUD;
+                sucursales.Add(suc);
+            }
+
+            return SerializarSucursales(sucursales);
         }
     }
 }

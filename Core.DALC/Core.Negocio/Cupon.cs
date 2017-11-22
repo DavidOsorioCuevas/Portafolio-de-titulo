@@ -15,6 +15,8 @@ namespace Core.Negocio
         public DateTime Fecha_Creacion { get; set; }
         public DateTime Fecha_Hasta { get; set; }
 
+        public Descuento Descuento { get; set; }
+
         public string fc { get; set; }
         public string Codigo { get; set; }
 

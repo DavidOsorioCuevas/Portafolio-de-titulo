@@ -22,6 +22,8 @@ namespace Core.Negocio
         public int IdRetail { get; set; }
         public bool Selec { get; set; }
 
+        public string Latitud { get; set; }
+        public string Longitud { get; set; }
         public Sucursal()
         {
             this.Init();
@@ -33,7 +35,8 @@ namespace Core.Negocio
             MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
 
             Negocio.Sucursal suc = (Sucursal)serializador.ReadObject(stream);
-
+            this.Latitud = suc.Latitud;
+            this.Longitud = suc.Longitud;
             this.Direccion = suc.Direccion;
             this.Email = suc.Email;
             this.IdComuna = suc.IdComuna;
