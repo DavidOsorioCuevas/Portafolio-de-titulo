@@ -178,8 +178,8 @@
                     </DataGrid>
                     <Label Content="Busqueda de ofertas." Foreground="White" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" />
                     <Button x:Name="btnBusquedaCO" Content="Buscar" HorizontalAlignment="Left" Margin="453,10,0,0" VerticalAlignment="Top" Width="75" Click="btnBusquedaCO_Click" />
-                    <TextBox x:Name="txtBusquedaCO" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar ofertas" HorizontalAlignment="Left" Height="23" Margin="293,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                    <CheckBox x:Name="cbPublicadasCO" Foreground="White" Content="Publicadas" HorizontalAlignment="Left" Margin="293,163,0,0" VerticalAlignment="Top" Height="24" Width="87"/>
+                    <TextBox x:Name="txtBusquedaCO" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Buscar ofertas" HorizontalAlignment="Left" Height="23" Margin="411,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <CheckBox x:Name="cbPublicadasCO" Foreground="White" Content="Publicadas" HorizontalAlignment="Left" Margin="426,124,0,0" VerticalAlignment="Top" Height="24" Width="87"/>
                     <DataGrid x:Name="dgOfertasCO" HorizontalAlignment="Left" Margin="10,221,0,0" VerticalAlignment="Top" Height="259" Width="518" AutoGenerateColumns="False" CanUserAddRows="False">
                         <DataGrid.Columns>
                             <DataGridCheckBoxColumn Header="Publicada" Binding="{Binding Selec}" />
@@ -189,9 +189,16 @@
                             <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" IsReadOnly="True" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label Content="Buscar" Foreground="White" HorizontalAlignment="Left" Margin="243,73,0,0" VerticalAlignment="Top" />
-                    <Label Content="Ofertas publicadas" Foreground="White" HorizontalAlignment="Left" Margin="289,132,0,0" VerticalAlignment="Top" />
+                    <Label Content="Buscar" Foreground="White" HorizontalAlignment="Left" Margin="362,71,0,0" VerticalAlignment="Top" />
+                    <Label Content="Ofertas publicadas" Foreground="White" HorizontalAlignment="Left" Margin="418,100,0,0" VerticalAlignment="Top" />
                     <Label Content="Filtrar por sucursal" Foreground="White" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" />
+                    <DataGrid x:Name="dgCat" HorizontalAlignment="Left" Margin="189,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.136,-0.68" Width="166" Height="131" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserResizeColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn x:Name="SeleccionarC1" Header="" Binding="{Binding Selec}" />
+                            <DataGridTextColumn Header="Categoria oferta" Binding="{Binding Nombre}" IsReadOnly="True" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label Content="Filtrar categoria" Foreground="White" HorizontalAlignment="Left" Margin="189,45,0,0" VerticalAlignment="Top" />
                 </Grid>
             </Controls:Flyout>
             <Controls:Flyout x:Name="flyReportes" Position="Right" Header="Reporte de tienda" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
