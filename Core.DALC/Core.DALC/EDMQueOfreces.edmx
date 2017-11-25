@@ -210,6 +210,7 @@
           <Property Name="USUARIO_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="OFERTA_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA_VALORACION" Type="date" />
+          <Property Name="COMENTARIO" Type="varchar2" MaxLength="200" />
         </EntityType>
         <Association Name="COMUNA_REGION_FK">
           <End Role="REGION" Type="Self.REGION" Multiplicity="1" />
@@ -828,6 +829,7 @@
           <Property Name="FECHA_VALORACION" Type="DateTime" />
           <NavigationProperty Name="OFERTA" Relationship="Self.VALORACION_OFERTA_FK" FromRole="VALORACION" ToRole="OFERTA" />
           <NavigationProperty Name="USUARIO" Relationship="Self.VALORACION_USUARIO_FK" FromRole="VALORACION" ToRole="USUARIO" />
+          <Property Name="COMENTARIO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="OFERTA_CATEGORIA_OFERTA_FK">
           <End Role="CATEGORIA_OFERTA" Type="Self.CATEGORIA_OFERTA" Multiplicity="1" />
@@ -1427,6 +1429,7 @@
           <EntitySetMapping Name="VALORACION">
             <EntityTypeMapping TypeName="QueOfrecesModel.VALORACION">
               <MappingFragment StoreEntitySet="VALORACION">
+                <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
                 <ScalarProperty Name="ID_VALORACION" ColumnName="ID_VALORACION" />
                 <ScalarProperty Name="CODE_IMAGEN" ColumnName="CODE_IMAGEN" />
                 <ScalarProperty Name="CALIFICACION" ColumnName="CALIFICACION" />
