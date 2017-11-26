@@ -49,6 +49,9 @@
     <Reports>@(Report)</Reports>
   </PropertyGroup>
   <ItemGroup>
+    <DataSource Include="BDMISOFERTAS.rds" />
+  </ItemGroup>
+  <ItemGroup>
     <Report Include="Reporte de Valoraciones .rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />

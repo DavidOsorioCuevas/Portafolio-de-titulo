@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="BDMISOFERTAS">
+  <ConnectionProperties>
+    <Extension>ORACLE</Extension>
+    <ConnectString>DATA SOURCE=45.7.229.24:1521</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>40ba5a51-e7a1-4e43-aaec-72158542e013</DataSourceID>
+</RptDataSource>

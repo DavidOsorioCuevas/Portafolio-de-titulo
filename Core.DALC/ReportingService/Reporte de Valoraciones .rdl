@@ -4,69 +4,74 @@
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="BDMISOFERTAS">
-      <ConnectionProperties>
-        <DataProvider>ORACLE</DataProvider>
-        <ConnectString>DATA SOURCE=45.7.229.24:1521</ConnectString>
-      </ConnectionProperties>
-      <rd:SecurityType>DataBase</rd:SecurityType>
-      <rd:DataSourceID>01fe254e-3b68-400c-bb40-b63036cd53d6</rd:DataSourceID>
+      <DataSourceReference>BDMISOFERTAS</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>c394f912-c9b7-4816-8a89-cfbec738a5b8</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="Valoraciones">
       <Query>
         <DataSourceName>BDMISOFERTAS</DataSourceName>
-        <CommandText>SELECT        VALORACION.CALIFICACION, VALORACION.RUBRO, SUCURSALES.NOMBRE AS SUCURSAL, OFERTA.NOMBRE AS "NOMBRE OFERTA", SUCURSALES.DIRECCION, 
-                         VALORACION.FECHA_VALORACION, OFERTA.DESCRIPCION, OFERTA.PRECIO_ANTES AS "PRECIO ANTERIOR", 
-                         OFERTA.PRECIO_DESPUES AS "PRECIO OFERTA"
-FROM            SUCURSALES, OFERTA, VALORACION
-WHERE        SUCURSALES.ID_SUCURSAL = OFERTA.SUCURSALES_ID AND OFERTA.ID_OFERTA = VALORACION.OFERTA_ID</CommandText>
+        <CommandText>SELECT        VALORACION.ID_VALORACION, SUCURSALES.ID_SUCURSAL, OFERTA.SUCURSALES_ID, VALORACION.CALIFICACION, 
+                         SUCURSALES.NOMBRE AS "NOMBRE SUCURSAL", OFERTA.FECHA_OFERTA, OFERTA.NOMBRE, VALORACION.USUARIO_ID, VALORACION.FECHA_VALORACION, 
+                         USUARIO.ID_USUARIO, USUARIO.NOMBRE_USUARIO
+FROM            VALORACION, OFERTA, SUCURSALES, USUARIO
+WHERE        VALORACION.OFERTA_ID = OFERTA.ID_OFERTA AND OFERTA.SUCURSALES_ID = SUCURSALES.ID_SUCURSAL AND 
+                         VALORACION.USUARIO_ID = USUARIO.ID_USUARIO</CommandText>
       </Query>
       <Fields>
+        <Field Name="ID_VALORACION">
+          <DataField>ID_VALORACION</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ID_SUCURSAL">
+          <DataField>ID_SUCURSAL</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SUCURSALES_ID">
+          <DataField>SUCURSALES_ID</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
         <Field Name="CALIFICACION">
           <DataField>CALIFICACION</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="RUBRO">
-          <DataField>RUBRO</DataField>
+        <Field Name="NOMBRE_SUCURSAL">
+          <DataField>NOMBRE SUCURSAL</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="SUCURSAL">
-          <DataField>SUCURSAL</DataField>
+        <Field Name="NOMBRE">
+          <DataField>NOMBRE</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="NOMBRE_OFERTA">
-          <DataField>NOMBRE OFERTA</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="FECHA_OFERTA">
+          <DataField>FECHA_OFERTA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="DIRECCION">
-          <DataField>DIRECCION</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="USUARIO_ID">
+          <DataField>USUARIO_ID</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="FECHA_VALORACION">
           <DataField>FECHA_VALORACION</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="DESCRIPCION">
-          <DataField>DESCRIPCION</DataField>
+        <Field Name="ID_USUARIO">
+          <DataField>ID_USUARIO</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="NOMBRE_USUARIO">
+          <DataField>NOMBRE_USUARIO</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="PRECIO_ANTERIOR">
-          <DataField>PRECIO ANTERIOR</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="PRECIO_OFERTA">
-          <DataField>PRECIO OFERTA</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
       <Filters>
         <Filter>
-          <FilterExpression>=Fields!FECHA_VALORACION.Value</FilterExpression>
-          <Operator>Between</Operator>
+          <FilterExpression>=Fields!FECHA_OFERTA.Value</FilterExpression>
+          <Operator>GreaterThanOrEqual</Operator>
           <FilterValues>
-            <FilterValue>=Parameters!fechValo.Value</FilterValue>
-            <FilterValue>=Parameters!fechHasta.Value</FilterValue>
+            <FilterValue>=Parameters!fechDesd.Value</FilterValue>
           </FilterValues>
         </Filter>
       </Filters>
@@ -76,303 +81,6 @@ WHERE        SUCURSALES.ID_SUCURSAL = OFERTA.SUCURSALES_ID AND OFERTA.ID_OFERTA 
     <ReportSection>
       <Body>
         <ReportItems>
-          <Tablix Name="Tablix1">
-            <TablixBody>
-              <TablixColumns>
-                <TablixColumn>
-                  <Width>3.277cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>3.76225cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.0993cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.5cm</Width>
-                </TablixColumn>
-              </TablixColumns>
-              <TablixRows>
-                <TablixRow>
-                  <Height>1.39629cm</Height>
-                  <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox41">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>NOMBRE OFERTA</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox41</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox42">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>VALORACIONES</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox42</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox47">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>SUCURSAL</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox47</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>FECHA VALORACION</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                  </TablixCells>
-                </TablixRow>
-                <TablixRow>
-                  <Height>1.34338cm</Height>
-                  <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="NOMBRE_OFERTA">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!NOMBRE_OFERTA.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>NOMBRE_OFERTA</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="CALIFICACION">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!CALIFICACION.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>CALIFICACION</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="SUCURSAL">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!SUCURSAL.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>SUCURSAL</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="FECHA_VALORACION">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!FECHA_VALORACION.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>FECHA_VALORACION</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                  </TablixCells>
-                </TablixRow>
-              </TablixRows>
-            </TablixBody>
-            <TablixColumnHierarchy>
-              <TablixMembers>
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-              </TablixMembers>
-            </TablixColumnHierarchy>
-            <TablixRowHierarchy>
-              <TablixMembers>
-                <TablixMember>
-                  <KeepWithGroup>After</KeepWithGroup>
-                </TablixMember>
-                <TablixMember>
-                  <Group Name="Detalles" />
-                </TablixMember>
-              </TablixMembers>
-            </TablixRowHierarchy>
-            <DataSetName>Valoraciones</DataSetName>
-            <Top>2.75167cm</Top>
-            <Height>2.73967cm</Height>
-            <Width>11.63855cm</Width>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Tablix>
           <Chart Name="Chart1">
             <ChartCategoryHierarchy>
               <ChartMembers>
@@ -408,6 +116,8 @@ WHERE        SUCURSALES.ID_SUCURSAL = OFERTA.SUCURSALES_ID AND OFERTA.ID_OFERTA 
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
+                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style />
                       <ChartMarker>
@@ -675,7 +385,7 @@ WHERE        SUCURSALES.ID_SUCURSAL = OFERTA.SUCURSALES_ID AND OFERTA.ID_OFERTA 
                   <FontSize>8pt</FontSize>
                 </Style>
                 <ChartLegendTitle>
-                  <Caption>Tipos de Valoraciones</Caption>
+                  <Caption>Tipo Valoracion</Caption>
                   <Style>
                     <FontSize>8pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -688,7 +398,7 @@ WHERE        SUCURSALES.ID_SUCURSAL = OFERTA.SUCURSALES_ID AND OFERTA.ID_OFERTA 
             </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Resumen de Valoraciones</Caption>
+                <Caption>Resumen Valoraciones</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>9pt</FontSize>
@@ -718,11 +428,10 @@ WHERE        SUCURSALES.ID_SUCURSAL = OFERTA.SUCURSALES_ID AND OFERTA.ID_OFERTA 
               </Style>
             </ChartNoDataMessage>
             <DataSetName>Valoraciones</DataSetName>
-            <Top>2.16958cm</Top>
-            <Left>12.06483cm</Left>
+            <Top>2.7288cm</Top>
+            <Left>15.42937cm</Left>
             <Height>5cm</Height>
-            <Width>6.81208cm</Width>
-            <ZIndex>1</ZIndex>
+            <Width>7.5cm</Width>
             <Style>
               <Border>
                 <Color>LightGrey</Color>
@@ -732,11 +441,421 @@ WHERE        SUCURSALES.ID_SUCURSAL = OFERTA.SUCURSALES_ID AND OFERTA.ID_OFERTA 
               <BackgroundGradientType>None</BackgroundGradientType>
             </Style>
           </Chart>
+          <Tablix Name="Tablix2">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>3.1275cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>3.05562cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>3.42604cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.5cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>3.21438cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox7">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>NOMBRE OFERTA</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox7</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox9">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>NOMBRE SUCURSAL</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox9</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox16">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>FECHA VALORACION</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox16</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox13">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>CALIFICACION</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox13</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox21">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>NOMBRE USUARIO</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox21</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="NOMBRE">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!NOMBRE.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>NOMBRE</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="NOMBRE_SUCURSAL">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!NOMBRE_SUCURSAL.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>NOMBRE_SUCURSAL</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="FECHA_VALORACION">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!FECHA_VALORACION.Value</Value>
+                                  <Style>
+                                    <Format>dddd, dd' de 'MMMM' de 'yyyy</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>FECHA_VALORACION</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="CALIFICACION">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!CALIFICACION.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>CALIFICACION</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="NOMBRE_USUARIO">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!NOMBRE_USUARIO.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>NOMBRE_USUARIO</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Detalles" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>Valoraciones</DataSetName>
+            <Top>2.7288cm</Top>
+            <Height>1.2cm</Height>
+            <Width>15.32354cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Textbox Name="Textbox15">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Reporte de Valoraciones</Value>
+                    <Style>
+                      <FontSize>20pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox15</rd:DefaultName>
+            <Top>0.39729cm</Top>
+            <Left>5.60599cm</Left>
+            <Height>1.10271cm</Height>
+            <Width>8.58542cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="Image1">
+            <Source>Embedded</Source>
+            <Value>logo</Value>
+            <Sizing>FitProportional</Sizing>
+            <Height>1.5cm</Height>
+            <Width>4.78083cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
         </ReportItems>
-        <Height>3.29364in</Height>
+        <Height>4.022in</Height>
         <Style />
       </Body>
-      <Width>9.29644in</Width>
+      <Width>9.05686in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -750,15 +869,11 @@ WHERE        SUCURSALES.ID_SUCURSAL = OFERTA.SUCURSALES_ID AND OFERTA.ID_OFERTA 
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="fechValo">
+    <ReportParameter Name="fechDesd">
       <DataType>DateTime</DataType>
       <Nullable>true</Nullable>
-      <Prompt>Buscar desde fecha</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="fechHasta">
-      <DataType>DateTime</DataType>
-      <Nullable>true</Nullable>
-      <Prompt>Buscar hasta fecha</Prompt>
+      <Prompt>Fecha Oferta Desde</Prompt>
+      <UsedInQuery>True</UsedInQuery>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
@@ -769,16 +884,28 @@ WHERE        SUCURSALES.ID_SUCURSAL = OFERTA.SUCURSALES_ID AND OFERTA.ID_OFERTA 
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>fechValo</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>fechHasta</ParameterName>
+          <ParameterName>fechDesd</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="logo">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>c131dbf2-fb40-4cc6-858b-b7a140ce8e12</rd:ReportID>
 </Report>

@@ -21,6 +21,7 @@ namespace Core.DALC
         public decimal USUARIO_ID { get; set; }
         public decimal OFERTA_ID { get; set; }
         public Nullable<System.DateTime> FECHA_VALORACION { get; set; }
+        public string COMENTARIO { get; set; }
     
         public virtual OFERTA OFERTA { get; set; }
         public virtual USUARIO USUARIO { get; set; }

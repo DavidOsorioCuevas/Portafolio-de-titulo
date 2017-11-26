@@ -21,6 +21,11 @@ namespace Core.Negocio
         public string fechaValoracion { get; set; }
 
         public string response { get; set; }
+        
+        public string Comentario { get; set; }
+
+        public string nombreOferta { get; set; }
+        public int Rubro { get; set; }
         public Valoracion() { }
 
         
@@ -35,6 +40,8 @@ namespace Core.Negocio
             this.IdValoracion = val.IdValoracion;
             this.codeImagen = val.codeImagen;
             this.fechaValoracion = val.fechaValoracion;
+            this.Comentario = val.Comentario;
+            this.Rubro = val.Rubro;
         }
 
         public string ComprobarValoracion()
@@ -62,9 +69,12 @@ namespace Core.Negocio
             try
             {
                 db.USUARIO.Find(this.IdUsuario).PUNTOS = puntos;
+                valoracion.COMENTARIO = this.Comentario;
+               
                 valoracion.CALIFICACION = this.Calificacion.ToString();
                 valoracion.USUARIO_ID = this.IdUsuario;
                 valoracion.OFERTA_ID = this.IdOferta;
+                valoracion.RUBRO = this.Rubro.ToString();
                 valoracion.CODE_IMAGEN = this.codeImagen;
                 valoracion.FECHA_VALORACION = DateTime.Now;
                 db.VALORACION.Add(valoracion);
