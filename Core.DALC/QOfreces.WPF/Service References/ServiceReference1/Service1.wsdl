@@ -6,6 +6,18 @@
       <xsd:import schemaLocation="http://localhost:50194/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IService1_TraerValoraciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerValoraciones" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerValoraciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerValoracionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerSucursales_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSucursales" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerSucursales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerSucursalesResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_TraerCupones_InputMessage">
     <wsdl:part name="parameters" element="tns:TraerCupones" />
   </wsdl:message>
@@ -403,6 +415,14 @@
     <wsdl:part name="parameters" element="tns:CrearOfertaHasSucursalResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
+    <wsdl:operation name="TraerValoraciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerValoraciones" message="tns:IService1_TraerValoraciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerValoracionesResponse" message="tns:IService1_TraerValoraciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerSucursales">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerSucursales" message="tns:IService1_TraerSucursales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerSucursalesResponse" message="tns:IService1_TraerSucursales_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="TraerCupones">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerCupones" message="tns:IService1_TraerCupones_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerCuponesResponse" message="tns:IService1_TraerCupones_OutputMessage" />
@@ -670,6 +690,24 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TraerValoraciones">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerValoraciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerSucursales">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerSucursales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerCupones">
       <soap:operation soapAction="http://tempuri.org/IService1/TraerCupones" style="document" />
       <wsdl:input>

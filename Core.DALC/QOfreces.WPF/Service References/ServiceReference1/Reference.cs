@@ -15,6 +15,18 @@ namespace QOfreces.WPF.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerValoraciones", ReplyAction="http://tempuri.org/IService1/TraerValoracionesResponse")]
+        string TraerValoraciones(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerValoraciones", ReplyAction="http://tempuri.org/IService1/TraerValoracionesResponse")]
+        System.Threading.Tasks.Task<string> TraerValoracionesAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerSucursales", ReplyAction="http://tempuri.org/IService1/TraerSucursalesResponse")]
+        string TraerSucursales(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerSucursales", ReplyAction="http://tempuri.org/IService1/TraerSucursalesResponse")]
+        System.Threading.Tasks.Task<string> TraerSucursalesAsync(string json);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerCupones", ReplyAction="http://tempuri.org/IService1/TraerCuponesResponse")]
         string TraerCupones(string json);
         
@@ -437,6 +449,22 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string TraerValoraciones(string json) {
+            return base.Channel.TraerValoraciones(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> TraerValoracionesAsync(string json) {
+            return base.Channel.TraerValoracionesAsync(json);
+        }
+        
+        public string TraerSucursales(string json) {
+            return base.Channel.TraerSucursales(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> TraerSucursalesAsync(string json) {
+            return base.Channel.TraerSucursalesAsync(json);
         }
         
         public string TraerCupones(string json) {

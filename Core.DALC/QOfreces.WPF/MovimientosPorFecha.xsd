@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MovimientosPorFecha" targetNamespace="http://tempuri.org/MovimientosPorFecha.xsd" xmlns:mstns="http://tempuri.org/MovimientosPorFecha.xsd" xmlns="http://tempuri.org/MovimientosPorFecha.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Settings)" ParameterPrefix=":" PropertyReference="ApplicationSettings.QOfreces.WPF.Properties.Settings.GlobalReference.Default.ConnectionString" Provider="Oracle.ManagedDataAccess.Client" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MovimientosDataTableTableAdapter" GeneratorDataComponentClassName="MovimientosDataTableTableAdapter" Name="MovimientosDataTable" UserDataComponentName="MovimientosDataTableTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        USUARIO.ID_USUARIO, 
+PREFERENCIA.USUARIO_ID,
+RUBRO.ID_RUBRO,
+RUBRO.TIPO, 
+PREFERENCIA.CANTIDAD, 
+PREFERENCIA.RUBRO_ID,
+PREFERENCIA.ID_PREFERENCIA,
+USUARIO.NOMBRE
+FROM            BDMISOFERTAS.USUARIO, BDMISOFERTAS.PREFERENCIA, BDMISOFERTAS.RUBRO
+WHERE        (USUARIO.ID_USUARIO = PREFERENCIA.USUARIO_ID) AND (PREFERENCIA.RUBRO_ID = RUBRO.ID_RUBRO)
+ORDER BY PREFERENCIA.ID_PREFERENCIA DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="USUARIO_ID" DataSetColumn="USUARIO_ID" />
+              <Mapping SourceColumn="RUBRO_ID" DataSetColumn="RUBRO_ID" />
+              <Mapping SourceColumn="ID_PREFERENCIA" DataSetColumn="ID_PREFERENCIA" />
+              <Mapping SourceColumn="ID_USUARIO" DataSetColumn="ID_USUARIO" />
+              <Mapping SourceColumn="ID_RUBRO" DataSetColumn="ID_RUBRO" />
+              <Mapping SourceColumn="TIPO" DataSetColumn="TIPO" />
+              <Mapping SourceColumn="CANTIDAD" DataSetColumn="CANTIDAD" />
+              <Mapping SourceColumn="NOMBRE" DataSetColumn="NOMBRE" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MovimientosPorFecha" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MovimientosPorFecha" msprop:Generator_UserDSName="MovimientosPorFecha">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MovimientosDataTable" msprop:Generator_TableClassName="MovimientosDataTableDataTable" msprop:Generator_TableVarName="tableMovimientosDataTable" msprop:Generator_RowChangedName="MovimientosDataTableRowChanged" msprop:Generator_TablePropName="MovimientosDataTable" msprop:Generator_RowDeletingName="MovimientosDataTableRowDeleting" msprop:Generator_RowChangingName="MovimientosDataTableRowChanging" msprop:Generator_RowEvHandlerName="MovimientosDataTableRowChangeEventHandler" msprop:Generator_RowDeletedName="MovimientosDataTableRowDeleted" msprop:Generator_RowClassName="MovimientosDataTableRow" msprop:Generator_UserTableName="MovimientosDataTable" msprop:Generator_RowEvArgName="MovimientosDataTableRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="USUARIO_ID" msprop:Generator_ColumnVarNameInTable="columnUSUARIO_ID" msprop:Generator_ColumnPropNameInRow="USUARIO_ID" msprop:Generator_ColumnPropNameInTable="USUARIO_IDColumn" msprop:Generator_UserColumnName="USUARIO_ID" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RUBRO_ID" msprop:Generator_ColumnVarNameInTable="columnRUBRO_ID" msprop:Generator_ColumnPropNameInRow="RUBRO_ID" msprop:Generator_ColumnPropNameInTable="RUBRO_IDColumn" msprop:Generator_UserColumnName="RUBRO_ID" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ID_PREFERENCIA" msprop:Generator_ColumnVarNameInTable="columnID_PREFERENCIA" msprop:Generator_ColumnPropNameInRow="ID_PREFERENCIA" msprop:Generator_ColumnPropNameInTable="ID_PREFERENCIAColumn" msprop:Generator_UserColumnName="ID_PREFERENCIA" type="xs:decimal" />
+              <xs:element name="ID_USUARIO" msprop:Generator_ColumnVarNameInTable="columnID_USUARIO" msprop:Generator_ColumnPropNameInRow="ID_USUARIO" msprop:Generator_ColumnPropNameInTable="ID_USUARIOColumn" msprop:Generator_UserColumnName="ID_USUARIO" type="xs:decimal" />
+              <xs:element name="ID_RUBRO" msprop:Generator_ColumnVarNameInTable="columnID_RUBRO" msprop:Generator_ColumnPropNameInRow="ID_RUBRO" msprop:Generator_ColumnPropNameInTable="ID_RUBROColumn" msprop:Generator_UserColumnName="ID_RUBRO" type="xs:decimal" />
+              <xs:element name="TIPO" msprop:Generator_ColumnVarNameInTable="columnTIPO" msprop:Generator_ColumnPropNameInRow="TIPO" msprop:Generator_ColumnPropNameInTable="TIPOColumn" msprop:Generator_UserColumnName="TIPO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CANTIDAD" msprop:Generator_ColumnVarNameInTable="columnCANTIDAD" msprop:Generator_ColumnPropNameInRow="CANTIDAD" msprop:Generator_ColumnPropNameInTable="CANTIDADColumn" msprop:Generator_UserColumnName="CANTIDAD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NOMBRE" msprop:Generator_ColumnVarNameInTable="columnNOMBRE" msprop:Generator_ColumnPropNameInRow="NOMBRE" msprop:Generator_ColumnPropNameInTable="NOMBREColumn" msprop:Generator_UserColumnName="NOMBRE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
