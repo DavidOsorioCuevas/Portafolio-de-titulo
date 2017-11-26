@@ -465,19 +465,150 @@ namespace QOfreces.WPF
             string JSON = proxy.ReadAllSucursal(mainwindow.RetailActual.IdRetail);
             SucursalCollections sucCol = new SucursalCollections(JSON);
             dgSuc.ItemsSource = sucCol.ToList();
+            dgSucCO.ItemsSource = sucCol.ToList();
+            JSON = proxy.ReadAllCategoria();
+            CategoriaCollections catCol = new CategoriaCollections(JSON);
+            dgCat.ItemsSource = catCol.ToList();
             JSON = proxy.ReadAllCategoria();
             CategoriaCollections catColl = new CategoriaCollections(JSON);
             cbCatOf.DisplayMemberPath = "Nombre";
             cbCatOf.SelectedValuePath = "IdCategoria";
             cbCatOf.ItemsSource = catColl.ToList();
             cbCatOf.SelectedIndex = 0;
+            cbPublicadasCO.IsChecked = false;
         }
 
-        private void btnBusquedaCO_Click(object sender, RoutedEventArgs e)
+        private async void btnBusquedaCO_Click(object sender, RoutedEventArgs e)
         {
-            if (txtBusquedaCO.Text.Length>0)
-            {
+            var listasu = dgSucCO.Items.OfType<Sucursal>();
+            var listaCa = dgCat.Items.OfType<CategoriaOferta>();
+            ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
+            string json = proxy.ReadAllOfertas(mainwindow.UsuarioACtual.IdSucursal);
+            Core.Negocio.OfertaCollections collof = new Core.Negocio.OfertaCollections(json);
+            var colloff = new OfertaCollections();
+            var colmost = new OfertaCollections();
+            bool pas = false;
 
+            //primer filtro
+
+            if (txtBusquedaCO.Text.Length > 0)
+            {
+                foreach (var item in collof)
+                {
+                    if (item.Nombre.ToUpper().Contains(txtBusquedaCO.Text))
+                    {
+                        colloff.Add(item);
+                    }
+                }
+                colmost = colloff;
+
+            }
+            else
+            {
+                colloff = collof;
+                colmost = colloff;
+            }
+            // segundo filtro
+
+            collof = colmost;
+            colloff = new OfertaCollections();
+            if (cbPublicadasCO.IsChecked == true)
+            {
+                foreach (var item in collof)
+                {
+                    if (item.EstadoOferta.Equals('1'))
+                    {
+                        colloff.Add(item);
+                    }
+                }
+                colmost = colloff;
+            }
+            else
+            {
+                foreach (var item in collof)
+                {
+                    if (item.EstadoOferta.Equals('0'))
+                    {
+                        colloff.Add(item);
+                    }
+                }
+                colmost = colloff;
+            }
+            collof = colmost;
+            colloff = new OfertaCollections();
+            //tercer filtro
+            foreach (var item in listasu)
+            {
+                if (item.Selec == true)
+                {
+                    pas = true;
+                }
+            }
+
+            if (pas)
+            {
+                foreach (var item in listasu)
+                {
+                    if (item.Selec == true)
+                    {
+                        foreach (var item2 in collof)
+                        {
+                            if (item.IdSucursal == item2.IdSucursal)
+                            {
+                                colloff.Add(item2);
+                            }
+                        }
+                    }
+                }
+                colmost = colloff;
+            }
+            else
+            {
+                collof = colmost;
+            }
+
+            pas = false;
+
+            //Cuarto filtro
+            foreach (var item in listaCa)
+            {
+                if (item.Selec == true)
+                {
+                    pas = true;
+                }
+            }
+
+            if (pas)
+            {
+                foreach (var item in listaCa)
+                {
+                    if (item.Selec == true)
+                    {
+                        foreach (var item2 in collof)
+                        {
+                            if (item.IdCategoria == item2.CategoriaIdOferta)
+                            {
+                                colloff.Add(item2);
+                            }
+                        }
+                    }
+                }
+                colmost = colloff;
+            }
+            else
+            {
+                collof = colmost;
+            }
+
+            if (colmost.Count()>0)
+            {
+                colmost.ToList();
+                dgOfertasCO.ItemsSource = colmost;
+            }
+            else
+            {
+                await this.ShowMessageAsync("Error", "No hay coincidencias para mostrar");
+                LimpiarControles();
             }
         }
     }

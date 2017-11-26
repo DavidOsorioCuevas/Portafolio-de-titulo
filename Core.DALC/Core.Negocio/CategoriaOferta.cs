@@ -12,7 +12,8 @@ namespace Core.Negocio
     {
         public int IdCategoria { get; set; }
         public string Nombre { get; set; }
-        
+        public bool Selec { get; set; }
+
 
         public CategoriaOferta()
         {
@@ -23,6 +24,7 @@ namespace Core.Negocio
         {
             this.IdCategoria = 0;
             this.Nombre = string.Empty;
+            this.Selec = false;
         }
 
         public CategoriaOferta(string json)
@@ -33,6 +35,7 @@ namespace Core.Negocio
 
             this.IdCategoria = cat.IdCategoria;
             this.Nombre = cat.Nombre;
+            this.Selec = cat.Selec;
         }
 
         public bool CrearCategoria()
