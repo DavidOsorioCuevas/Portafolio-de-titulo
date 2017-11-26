@@ -439,6 +439,37 @@ namespace Core.Negocio
             return SerializarValoraciones(valoraciones);
         }
 
+        public string traerValoracionesOferta(string json)
+        {
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            FilterParameter f = (FilterParameter)serializador.ReadObject(stream);
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+
+            int IdOferta = int.Parse(f.parameter);
+
+            var t = from a in ctx.VALORACION join tm in ctx.OFERTA on a.OFERTA_ID equals tm.ID_OFERTA
+                    join us in ctx.USUARIO on a.USUARIO_ID equals us.ID_USUARIO
+                    where a.OFERTA_ID == IdOferta orderby a.FECHA_VALORACION descending select new { a, tm , us};
+
+            List<Valoracion> valoraciones = new List<Valoracion>();
+            foreach (var itemc in t)
+            {
+                Valoracion val = new Valoracion();
+                val.nombreUsuario = itemc.us.NOMBRE + " " + itemc.us.APELLIDO;
+                val.IdOferta = (int)itemc.a.OFERTA_ID;
+                val.IdValoracion = (int)itemc.a.ID_VALORACION;
+                val.Calificacion = itemc.a.CALIFICACION;
+                val.codeImagen = itemc.a.CODE_IMAGEN;
+                val.fechaValoracion = itemc.a.FECHA_VALORACION.Value.ToShortDateString();
+                val.Comentario = itemc.a.COMENTARIO;
+                val.nombreOferta = itemc.tm.NOMBRE;
+                valoraciones.Add(val);
+            }
+
+            return SerializarValoraciones(valoraciones);
+        }
+
         public string traerSucursales(string json)
         {
             DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));

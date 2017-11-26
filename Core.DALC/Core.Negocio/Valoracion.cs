@@ -24,6 +24,7 @@ namespace Core.Negocio
         
         public string Comentario { get; set; }
 
+        public string nombreUsuario { get; set; }
         public string nombreOferta { get; set; }
         public int Rubro { get; set; }
         public Valoracion() { }
