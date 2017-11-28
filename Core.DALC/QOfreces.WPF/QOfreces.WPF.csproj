@@ -154,12 +154,20 @@
     <Compile Include="ReporteMovimientos.xaml.cs">
       <DependentUpon>ReporteMovimientos.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ReportValoraciones.xaml.cs">
+      <DependentUpon>ReportValoraciones.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Validaciones.cs" />
+    <Compile Include="ValoracionesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValoracionesDataSet.xsd</DependentUpon>
+    </Compile>
     <Page Include="Administrador.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -220,6 +228,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ReportValoraciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -247,6 +259,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reporte Valoraciones.rdlc" />
     <EmbeddedResource Include="ReportPreferencias.rdlc" />
     <None Include="MovimientosPorFecha.xsc">
       <DependentUpon>MovimientosPorFecha.xsd</DependentUpon>
@@ -265,6 +278,17 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="ValoracionesDataSet.xsc">
+      <DependentUpon>ValoracionesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ValoracionesDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ValoracionesDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ValoracionesDataSet.xss">
+      <DependentUpon>ValoracionesDataSet.xsd</DependentUpon>
+    </None>
     <Resource Include="Resources\Entypo.ttf" />
     <None Include="Service References\ServiceReference1\Service1.wsdl" />
     <None Include="Service References\ServiceReference1\Service1.xsd">

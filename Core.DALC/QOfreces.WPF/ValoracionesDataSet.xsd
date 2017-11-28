@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ValoracionesDataSet" targetNamespace="http://tempuri.org/ValoracionesDataSet.xsd" xmlns:mstns="http://tempuri.org/ValoracionesDataSet.xsd" xmlns="http://tempuri.org/ValoracionesDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Settings)" ParameterPrefix=":" PropertyReference="ApplicationSettings.QOfreces.WPF.Properties.Settings.GlobalReference.Default.ConnectionString" Provider="Oracle.ManagedDataAccess.Client" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ValoracionesTableAdapter" GeneratorDataComponentClassName="ValoracionesTableAdapter" Name="Valoraciones" UserDataComponentName="ValoracionesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        VALORACION.ID_VALORACION, SUCURSALES.ID_SUCURSAL, OFERTA.SUCURSALES_ID, VALORACION.CALIFICACION, SUCURSALES.NOMBRE, 
+                         OFERTA.FECHA_OFERTA, OFERTA.NOMBRE, VALORACION.USUARIO_ID, VALORACION.FECHA_VALORACION, USUARIO.ID_USUARIO, 
+                         USUARIO.NOMBRE_USUARIO
+FROM            BDMISOFERTAS.VALORACION, BDMISOFERTAS.OFERTA, BDMISOFERTAS.SUCURSALES, BDMISOFERTAS.USUARIO
+WHERE        (VALORACION.OFERTA_ID = OFERTA.ID_OFERTA) AND (OFERTA.SUCURSALES_ID = SUCURSALES.ID_SUCURSAL) AND 
+                         (VALORACION.USUARIO_ID = USUARIO.ID_USUARIO)
+ORDER BY VALORACION.ID_VALORACION DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID_VALORACION" DataSetColumn="ID_VALORACION" />
+              <Mapping SourceColumn="ID_SUCURSAL" DataSetColumn="ID_SUCURSAL" />
+              <Mapping SourceColumn="SUCURSALES_ID" DataSetColumn="SUCURSALES_ID" />
+              <Mapping SourceColumn="CALIFICACION" DataSetColumn="CALIFICACION" />
+              <Mapping SourceColumn="NOMBRE" DataSetColumn="NOMBRE" />
+              <Mapping SourceColumn="FECHA_OFERTA" DataSetColumn="FECHA_OFERTA" />
+              <Mapping SourceColumn="NOMBRE1" DataSetColumn="NOMBRE1" />
+              <Mapping SourceColumn="USUARIO_ID" DataSetColumn="USUARIO_ID" />
+              <Mapping SourceColumn="FECHA_VALORACION" DataSetColumn="FECHA_VALORACION" />
+              <Mapping SourceColumn="ID_USUARIO" DataSetColumn="ID_USUARIO" />
+              <Mapping SourceColumn="NOMBRE_USUARIO" DataSetColumn="NOMBRE_USUARIO" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ValoracionesDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ValoracionesDataSet" msprop:Generator_UserDSName="ValoracionesDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Valoraciones" msprop:Generator_TableClassName="ValoracionesDataTable" msprop:Generator_TableVarName="tableValoraciones" msprop:Generator_TablePropName="Valoraciones" msprop:Generator_RowDeletingName="ValoracionesRowDeleting" msprop:Generator_RowChangingName="ValoracionesRowChanging" msprop:Generator_RowEvHandlerName="ValoracionesRowChangeEventHandler" msprop:Generator_RowDeletedName="ValoracionesRowDeleted" msprop:Generator_UserTableName="Valoraciones" msprop:Generator_RowChangedName="ValoracionesRowChanged" msprop:Generator_RowEvArgName="ValoracionesRowChangeEvent" msprop:Generator_RowClassName="ValoracionesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_VALORACION" msprop:Generator_ColumnVarNameInTable="columnID_VALORACION" msprop:Generator_ColumnPropNameInRow="ID_VALORACION" msprop:Generator_ColumnPropNameInTable="ID_VALORACIONColumn" msprop:Generator_UserColumnName="ID_VALORACION" type="xs:decimal" />
+              <xs:element name="ID_SUCURSAL" msprop:Generator_ColumnVarNameInTable="columnID_SUCURSAL" msprop:Generator_ColumnPropNameInRow="ID_SUCURSAL" msprop:Generator_ColumnPropNameInTable="ID_SUCURSALColumn" msprop:Generator_UserColumnName="ID_SUCURSAL" type="xs:decimal" />
+              <xs:element name="SUCURSALES_ID" msprop:Generator_ColumnVarNameInTable="columnSUCURSALES_ID" msprop:Generator_ColumnPropNameInRow="SUCURSALES_ID" msprop:Generator_ColumnPropNameInTable="SUCURSALES_IDColumn" msprop:Generator_UserColumnName="SUCURSALES_ID" type="xs:decimal" />
+              <xs:element name="CALIFICACION" msprop:Generator_ColumnVarNameInTable="columnCALIFICACION" msprop:Generator_ColumnPropNameInRow="CALIFICACION" msprop:Generator_ColumnPropNameInTable="CALIFICACIONColumn" msprop:Generator_UserColumnName="CALIFICACION">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NOMBRE" msprop:Generator_ColumnVarNameInTable="columnNOMBRE" msprop:Generator_ColumnPropNameInRow="NOMBRE" msprop:Generator_ColumnPropNameInTable="NOMBREColumn" msprop:Generator_UserColumnName="NOMBRE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FECHA_OFERTA" msprop:Generator_ColumnVarNameInTable="columnFECHA_OFERTA" msprop:Generator_ColumnPropNameInRow="FECHA_OFERTA" msprop:Generator_ColumnPropNameInTable="FECHA_OFERTAColumn" msprop:Generator_UserColumnName="FECHA_OFERTA" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NOMBRE1" msprop:Generator_ColumnVarNameInTable="columnNOMBRE1" msprop:Generator_ColumnPropNameInRow="NOMBRE1" msprop:Generator_ColumnPropNameInTable="NOMBRE1Column" msprop:Generator_UserColumnName="NOMBRE1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="USUARIO_ID" msprop:Generator_ColumnVarNameInTable="columnUSUARIO_ID" msprop:Generator_ColumnPropNameInRow="USUARIO_ID" msprop:Generator_ColumnPropNameInTable="USUARIO_IDColumn" msprop:Generator_UserColumnName="USUARIO_ID" type="xs:decimal" />
+              <xs:element name="FECHA_VALORACION" msprop:Generator_ColumnVarNameInTable="columnFECHA_VALORACION" msprop:Generator_ColumnPropNameInRow="FECHA_VALORACION" msprop:Generator_ColumnPropNameInTable="FECHA_VALORACIONColumn" msprop:Generator_UserColumnName="FECHA_VALORACION" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ID_USUARIO" msprop:Generator_ColumnVarNameInTable="columnID_USUARIO" msprop:Generator_ColumnPropNameInRow="ID_USUARIO" msprop:Generator_ColumnPropNameInTable="ID_USUARIOColumn" msprop:Generator_UserColumnName="ID_USUARIO" type="xs:decimal" />
+              <xs:element name="NOMBRE_USUARIO" msprop:Generator_ColumnVarNameInTable="columnNOMBRE_USUARIO" msprop:Generator_ColumnPropNameInRow="NOMBRE_USUARIO" msprop:Generator_ColumnPropNameInTable="NOMBRE_USUARIOColumn" msprop:Generator_UserColumnName="NOMBRE_USUARIO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
