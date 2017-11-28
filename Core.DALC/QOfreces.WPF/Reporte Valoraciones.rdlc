@@ -356,7 +356,12 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>Valoraciones</DataSetName>
-        <Top>0.37896cm</Top>
+        <SortExpressions>
+          <SortExpression>
+            <Value>=Fields!ID_VALORACION.Value</Value>
+          </SortExpression>
+        </SortExpressions>
+        <Top>0.48866cm</Top>
         <Height>1.41166cm</Height>
         <Width>19.60669cm</Width>
         <Style>
@@ -399,8 +404,10 @@
                     <Y>=Count(Fields!CALIFICACION.Value)</Y>
                   </ChartDataPointValues>
                   <ChartDataLabel>
-                    <Style />
-                    <UseValueAsLabel>true</UseValueAsLabel>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                    <Label>#PERCENT</Label>
                     <Visible>true</Visible>
                   </ChartDataLabel>
                   <Style />
@@ -591,6 +598,9 @@
               <BackgroundGradientType>None</BackgroundGradientType>
               <FontSize>8pt</FontSize>
             </Style>
+            <Position>RightCenter</Position>
+            <DockToChartArea>Default</DockToChartArea>
+            <DockOutsideChartArea>true</DockOutsideChartArea>
             <ChartLegendTitle>
               <Caption>Tipos de Valoraciones</Caption>
               <Style>
@@ -612,6 +622,8 @@
               <TextAlign>General</TextAlign>
               <VerticalAlign>Top</VerticalAlign>
             </Style>
+            <Position>LeftCenter</Position>
+            <DockOutsideChartArea>true</DockOutsideChartArea>
           </ChartTitle>
         </ChartTitles>
         <Palette>BrightPastel</Palette>
@@ -631,10 +643,10 @@
           </Style>
         </ChartNoDataMessage>
         <DataSetName>Valoraciones</DataSetName>
-        <Top>2.38979cm</Top>
-        <Left>5.60599cm</Left>
-        <Height>4.94708cm</Height>
-        <Width>6.94542cm</Width>
+        <Top>2.60173cm</Top>
+        <Left>3.29269cm</Left>
+        <Height>8.00771cm</Height>
+        <Width>12.49108cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -646,10 +658,10 @@
         </Style>
       </Chart>
     </ReportItems>
-    <Height>3.71145in</Height>
+    <Height>5.15958in</Height>
     <Style />
   </Body>
-  <Width>8.03125in</Width>
+  <Width>9.94109in</Width>
   <Page>
     <PageHeader>
       <Height>1.46995cm</Height>

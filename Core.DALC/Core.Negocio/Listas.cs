@@ -396,6 +396,19 @@ namespace Core.Negocio
 
         }
 
+        public string SerializarRetail(List<Retail> retail)
+        {
+
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(List<Retail>));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, retail);
+
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+
+            return ser.ToString();
+
+        }
         public string SerializarSucursales(List<Sucursal> sucursal)
         {
 
@@ -410,7 +423,21 @@ namespace Core.Negocio
 
         }
 
-      
+        public string SerializarCategoria(List<CategoriaOferta> categoria)
+        {
+
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(List<CategoriaOferta>));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, categoria);
+
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+
+            return ser.ToString();
+
+        }
+
+
         public string traerValoraciones(string json)
         {
             DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));
@@ -470,6 +497,36 @@ namespace Core.Negocio
             return SerializarValoraciones(valoraciones);
         }
 
+
+        public string traerRetail() {
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+            var r = from a in ctx.RETAIL select new { a };
+            List<Retail> retail = new List<Retail>();
+            foreach (var item in r)
+            {
+                Retail temp = new Retail();
+                temp.NombreRetail = item.a.NOMBRE;
+                temp.IdRetail = (int)item.a.ID_RETAIL;
+                retail.Add(temp);
+            }
+            return SerializarRetail(retail);
+        }
+
+        public string traerCategorías()
+        {
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+            var c = from a in ctx.CATEGORIA_OFERTA select new { a };
+            List<CategoriaOferta> categorias = new List<CategoriaOferta>();
+            foreach (var item in c)
+            {
+                CategoriaOferta temp = new CategoriaOferta();
+                temp.Nombre = item.a.NOMBRE;
+                temp.IdCategoria = (int)item.a.ID_CATEGORIA_OFERTA;
+                categorias.Add(temp);
+            }
+
+            return SerializarCategoria(categorias);
+        }
         public string traerSucursales(string json)
         {
             DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));
