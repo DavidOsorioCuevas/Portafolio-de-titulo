@@ -109,7 +109,7 @@
                     </Controls:MetroTabControl>
                 </Grid>
             </Controls:Flyout>
-            <!--<Controls:Flyout x:Name="flyUsuarios" Position="Right" Header="Mantenedor de usuarios" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
+            <Controls:Flyout x:Name="flyUsuarios" Position="Right" Header="Mantenedor de usuarios" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
                 <Controls:MetroTabControl>
                     <Controls:MetroTabItem Header="Agregar">
                         <Grid>
@@ -394,7 +394,7 @@
                         </Grid>
                     </Controls:MetroTabItem>
                 </Controls:MetroTabControl>
-            </Controls:Flyout>-->
+            </Controls:Flyout>
         </Grid>
         <Label x:Name="lblBienvenida" Content="Hola " Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label x:Name="lblUsuarioActual" Content=" " Foreground="White" HorizontalAlignment="Left" Margin="36,0,0,0" VerticalAlignment="Top" FontStyle="Italic" FontWeight="Bold"/>
