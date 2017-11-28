@@ -11,7 +11,7 @@
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
         mc:Ignorable="d"
-        Title="Menu Administrador" Height="730" Width="700" Background="Black" WindowStartupLocation="CenterScreen" MinWidth="700" MinHeight="730" MaxWidth="700" MaxHeight="730" >
+        Height="730" Width="700" Background="Black" WindowStartupLocation="CenterScreen" MinWidth="700" MinHeight="730" MaxWidth="700" MaxHeight="730" >
     <Grid>
         <Controls:Tile x:Name="tiProducto" Background="Orange" Margin="10,67,542,510" TitleFontSize="12" Title="Mantenedor Producto" Height="Auto" Width="Auto" Click="tiProducto_Click">
             <Image x:Name="image3" Height="100" Width="100" Stretch="Fill" Source="img/MantenedorProducto.png"/>
@@ -384,9 +384,7 @@
                 <Controls:MetroTabControl>
                     <Controls:MetroTabItem Header="Consultar por tienda">
                         <Grid>
-                            <ComboBox x:Name="cbTiendas" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="120"/>
-                            <Label x:Name="label" Content="Tienda a consultar" Foreground="White" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top"/>
-                            <DataGrid x:Name="dgBI" HorizontalAlignment="Left" Margin="154,61,0,0" VerticalAlignment="Top" Height="269" Width="356"/>
+                            
                         </Grid>
                     </Controls:MetroTabItem>
                 </Controls:MetroTabControl>

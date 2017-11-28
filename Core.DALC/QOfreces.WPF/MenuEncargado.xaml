@@ -7,11 +7,13 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" 
         Icon="img/logo.png"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
         mc:Ignorable="d"
-        Title="Menu Encargado" Height="730" Width="700" Background="Black" WindowStartupLocation="CenterScreen" MinWidth="700" MinHeight="730" MaxWidth="700" MaxHeight="730">
+        x:Name="tituloEncargado"   Height="730" Width="700" Background="Black" WindowStartupLocation="CenterScreen" MinWidth="700" MinHeight="730" MaxWidth="700" MaxHeight="730">
+
     <Grid>
         <Controls:Tile x:Name="tiConsultarOferta" Background="Orange" Margin="10,425,542,152" TitleFontSize="12" Title="Consultar oferta"  Height="Auto" Width="Auto" Click="tiConsultarOferta_Click">
             <Image x:Name="image1" Height="100" Width="100" Source="img/Consultar.png"/>
@@ -30,8 +32,8 @@
         </Controls:Tile>
         <Label x:Name="lblBienvenida" Content="Hola " Foreground="White" HorizontalAlignment="Left" Margin="8,4,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label x:Name="lblUsuarioActual" Content=" " Foreground="White" HorizontalAlignment="Left" Margin="48,4,0,0" VerticalAlignment="Top" FontStyle="Italic" FontWeight="Bold" RenderTransformOrigin="0.348,0.211"/>
-        <Label x:Name="lblBienvenida_Copy" Content="Bienvenido!" Foreground="White" HorizontalAlignment="Left" Margin="8,24,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Grid Margin="153,0,0,0">
+
             <Controls:Flyout x:Name="flyGenerar" Position="Right" Header="Generar oferta" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
                 <Grid>
                     <Button x:Name="btnGenOferta" Content="Generar Oferta" HorizontalAlignment="Left" Margin="400,0,0,0" VerticalAlignment="Top" Width="128" BorderBrush="Black" Height="27" RenderTransformOrigin="0.486,-0.635" Click="btnGenOferta_Click"/>
@@ -203,7 +205,13 @@
             </Controls:Flyout>
             <Controls:Flyout x:Name="flyReportes" Position="Right" Header="Reporte de tienda" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
                 <Grid>
-                    <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="46,60,0,0" VerticalAlignment="Top" Width="120"/>
+
+                    <WindowsFormsHost Margin="9,55,11,24">
+                        <rv:ReportViewer x:Name="_reportViewer"/>
+                    </WindowsFormsHost>
+                    <Button x:Name="btnReporte" Content="Reporte" HorizontalAlignment="Left" Margin="461,10,0,0" VerticalAlignment="Top" Width="74" />
+
+                    <!--<ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="46,60,0,0" VerticalAlignment="Top" Width="120"/>
                     <DatePicker HorizontalAlignment="Left" Margin="46,104,0,0" VerticalAlignment="Top"/>
                     <DatePicker HorizontalAlignment="Left" Margin="239,104,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="btnConsultar" Content="Consultar" HorizontalAlignment="Left" Margin="446,57,0,0" VerticalAlignment="Top" Width="75"/>
@@ -218,9 +226,12 @@
                             <DataGridTextColumn Header="Cant Correos" Binding="{Binding Nombre}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Valoraciones" Binding="{Binding Nombre}" IsReadOnly="True" />
                         </DataGrid.Columns>
-                    </DataGrid>
+                    </DataGrid>-->
+
                 </Grid>
             </Controls:Flyout>
         </Grid>
+        
+
     </Grid>
 </Controls:MetroWindow>

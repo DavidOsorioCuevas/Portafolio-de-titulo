@@ -24,6 +24,7 @@ namespace QOfreces.WPF
     {
         public MenuAdministrador()
         {
+            this.Title = string.Format("Administrador {0}     Sucursal: {1}", mainwindow.RetailActual.NombreRetail, mainwindow.SucursalActual.Nombre);
             InitializeComponent();
             lblUsuarioActual.Content = mainwindow.UsuarioACtual.NombreUsuario;
             

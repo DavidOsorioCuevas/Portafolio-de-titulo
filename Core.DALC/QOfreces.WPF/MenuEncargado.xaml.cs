@@ -29,12 +29,17 @@ namespace QOfreces.WPF
         private string rutaNombreImagenOferta;
         public MenuEncargado()
         {
+            this.Title = string.Format("Encargado {0}     Sucursal: {1}", mainwindow.RetailActual.NombreRetail, mainwindow.SucursalActual.Nombre);
             InitializeComponent();
-            lblUsuarioActual.Content = mainwindow.UsuarioACtual.NombreUsuario;
+            lblUsuarioActual.Content = string.Format("{0} {1}", mainwindow.UsuarioACtual.Nombre, mainwindow.UsuarioACtual.Apellido); ;
             LimpiarControles();
+            _reportViewer.Load += ReportViewer_Load;
         }
 
        
+
+        private bool _isReportViewerLoaded;
+
 
         private void tiGenerarOferta_Click(object sender, RoutedEventArgs e)
         {
@@ -476,6 +481,7 @@ namespace QOfreces.WPF
             cbCatOf.ItemsSource = catColl.ToList();
             cbCatOf.SelectedIndex = 0;
             cbPublicadasCO.IsChecked = false;
+            dgOfertasCO.ItemsSource = null;
         }
 
         private async void btnBusquedaCO_Click(object sender, RoutedEventArgs e)
@@ -609,6 +615,34 @@ namespace QOfreces.WPF
             {
                 await this.ShowMessageAsync("Error", "No hay coincidencias para mostrar");
                 LimpiarControles();
+            }
+        }
+
+        
+        private void ReportViewer_Load(object sender, EventArgs e)
+        {
+            if (!_isReportViewerLoaded)
+            {
+                Microsoft.Reporting.WinForms.ReportDataSource BDMISOFERTAS = new Microsoft.Reporting.WinForms.ReportDataSource();
+                ValoracionesDataSet dataset = new ValoracionesDataSet();
+
+                dataset.BeginInit();
+
+                BDMISOFERTAS.Name = "Valoraciones"; //Name of the report dataset in our .RDLC file
+                BDMISOFERTAS.Value = dataset.Valoraciones;
+                this._reportViewer.LocalReport.DataSources.Add(BDMISOFERTAS);
+                this._reportViewer.LocalReport.ReportEmbeddedResource = "QOfreces.WPF.Reporte Valoraciones.rdlc";
+
+                dataset.EndInit();
+
+                //fill data into adventureWorksDataSet
+                ValoracionesDataSetTableAdapters.ValoracionesTableAdapter valoracionesTableAdapter = new ValoracionesDataSetTableAdapters.ValoracionesTableAdapter();
+                valoracionesTableAdapter.ClearBeforeFill = true;
+                valoracionesTableAdapter.Fill(dataset.Valoraciones);
+
+                _reportViewer.RefreshReport();
+
+                _isReportViewerLoaded = true;
             }
         }
     }

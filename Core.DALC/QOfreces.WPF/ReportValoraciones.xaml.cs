@@ -23,6 +23,7 @@ namespace QOfreces.WPF
         {
             InitializeComponent();
             _reportViewer.Load += ReportViewer_Load;
+            
         }
 
         private bool _isReportViewerLoaded;
