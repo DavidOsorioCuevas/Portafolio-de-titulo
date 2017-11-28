@@ -645,5 +645,12 @@ namespace QOfreces.WPF
                 _isReportViewerLoaded = true;
             }
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            mainwindow mai = new mainwindow();
+            this.Close();
+            mai.Show();
+        }
     }
 }

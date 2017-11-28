@@ -7,6 +7,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" 
         Icon="img/logo.png"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
@@ -33,7 +34,10 @@
                 <Grid HorizontalAlignment="Left" Height="619" Margin="10,0,0,0" Width="518">
                     <Controls:MetroTabControl Name="tcMain">
                         <Controls:MetroTabItem Header="Agregar" Foreground="White">
+                            
                             <Grid>
+                                <Label x:Name="lblInfoPA" Content="Ingrese los datos requeridos para crear un nuevo producto." Foreground="White" HorizontalAlignment="Left" Margin="4,9,0,0" VerticalAlignment="Top"/>
+
                                 <Label x:Name="lblNombrePA" Content="Nombre:"  Foreground="White" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top"/>
                                 <Label x:Name="lblPrecioPA" Content="Precio:"  Foreground="White" HorizontalAlignment="Left" Margin="10,198,0,0" VerticalAlignment="Top"/>
                                 <Label x:Name="lblDescripcionPA" Content="Descripción:"  Foreground="White" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top"/>
@@ -105,7 +109,7 @@
                     </Controls:MetroTabControl>
                 </Grid>
             </Controls:Flyout>
-            <Controls:Flyout x:Name="flyUsuarios" Position="Right" Header="Mantenedor de usuarios" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
+            <!--<Controls:Flyout x:Name="flyUsuarios" Position="Right" Header="Mantenedor de usuarios" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
                 <Controls:MetroTabControl>
                     <Controls:MetroTabItem Header="Agregar">
                         <Grid>
@@ -382,16 +386,21 @@
             </Controls:Flyout>
             <Controls:Flyout x:Name="FlyBI" Position="Right" Header="Business Intelligence" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
                 <Controls:MetroTabControl>
-                    <Controls:MetroTabItem Header="Consultar por tienda">
-                        <Grid>
-                            
+                    <Controls:MetroTabItem Header="Reporte de movimientos">
+                        <Grid Margin="5,76,5,10">
+                            <WindowsFormsHost>
+                                <rv:ReportViewer x:Name="_reportViewer"/>
+                            </WindowsFormsHost>
                         </Grid>
                     </Controls:MetroTabItem>
                 </Controls:MetroTabControl>
-            </Controls:Flyout>
+            </Controls:Flyout>-->
         </Grid>
-        <Label x:Name="lblBienvenida" Content="Hola " Foreground="White" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label x:Name="lblUsuarioActual" Content=" " Foreground="White" HorizontalAlignment="Left" Margin="48,10,0,0" VerticalAlignment="Top" FontStyle="Italic" FontWeight="Bold"/>
-        <Label x:Name="lblBienvenida_Copy" Content="Bienvenido!" Foreground="White" HorizontalAlignment="Left" Margin="8,35,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblBienvenida" Content="Hola " Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblUsuarioActual" Content=" " Foreground="White" HorizontalAlignment="Left" Margin="36,0,0,0" VerticalAlignment="Top" FontStyle="Italic" FontWeight="Bold"/>
+        <Button x:Name="button" Background="Orange"  HorizontalAlignment="Left" Margin="8,30,0,0" VerticalAlignment="Top" Width="38" Height="31" Click="button_Click">
+            <Image Source="img/Logout.png" Height="25" Width="29"></Image>
+        </Button>
+        <Label x:Name="lblBienvenida_Copy" Content="Salir " Foreground="White" HorizontalAlignment="Left" Margin="48,33,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
     </Grid>
 </Controls:MetroWindow>
