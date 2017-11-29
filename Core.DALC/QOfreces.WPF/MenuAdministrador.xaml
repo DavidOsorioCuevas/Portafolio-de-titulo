@@ -34,7 +34,7 @@
             <Controls:Flyout x:Name="flyProductos" Position="Right" Header="Mantenedor de productos" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
                 <Grid HorizontalAlignment="Left" Height="619" Margin="10,0,0,0" Width="518">
                     <Controls:MetroTabControl Name="tcMain">
-                        <Controls:MetroTabItem Header="Agregar" Foreground="White">
+                        <Controls:MetroTabItem Header="Agregar" x:Name="tbProdA" Foreground="White">
 
                             <Grid>
                                 <Label x:Name="lblInfoPA" Content="Ingrese los datos requeridos para crear un nuevo producto." Foreground="White" HorizontalAlignment="Left" Margin="4,9,0,0" VerticalAlignment="Top"/>
@@ -45,15 +45,15 @@
                                 <Label x:Name="lblCodigoPA" Content="Codigo interno:"  Foreground="White" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top"/>
                                 <Label x:Name="lblRubroPA" Content="Rubro:"  Foreground="White" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top"/>
                                 <TextBox x:Name="txtNombrePA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese nombre del producto" HorizontalAlignment="Left" Height="23" Margin="115,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"  MaxLength="20" MinLines="4"/>
-                                <TextBox x:Name="txtDescripcionPA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese descripcion del producto" HorizontalAlignment="Left" Height="74" Margin="115,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1" MaxLength="20" MinLines="4"/>
+                                <TextBox x:Name="txtDescripcionPA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese descripcion del producto" HorizontalAlignment="Left" Height="74" Margin="115,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1" MaxLength="250" MinLines="4"/>
                                 <TextBox x:Name="txtCodigoPA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese codigo interno" HorizontalAlignment="Left" Height="23" Margin="115,167,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"  MaxLength="20" MinLines="4"/>
                                 <TextBox x:Name="txtPrecioPA" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese precio del producto" HorizontalAlignment="Left" Height="23" Margin="115,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" BorderBrush="Black" TabIndex="1"  MaxLength="20" MinLines="4"/>
                                 <ComboBox x:Name="cbRubroPA" HorizontalAlignment="Left" Margin="115,241,0,0" VerticalAlignment="Top" Width="120" BorderBrush="Black" TabIndex="4"/>
-                                <Button x:Name="btnAgregarPA" Content="Agregar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" BorderBrush="Black" TabIndex="6" Margin="433,10,0,0"/>
+                                <Button x:Name="btnAgregarPA" Content="Agregar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" BorderBrush="Black" TabIndex="6" Margin="433,10,0,0" Click="btnAgregarPA_Click"/>
 
                             </Grid>
                         </Controls:MetroTabItem>
-                        <Controls:MetroTabItem Header="Modificar">
+                        <Controls:MetroTabItem x:Name="tbProdM" Header="Modificar" >
                             <Grid Margin="0,0,0,-2">
                                 <Button x:Name="btnListarProdPM"  Content="Listar Productos" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="103" Height="22" BorderBrush="Black" Margin="219,76,0,0"/>
                                 <DataGrid x:Name="dgProdPM"  CanUserAddRows="False" HorizontalAlignment="Left" Margin="219,106,0,0" VerticalAlignment="Top" Height="192" Width="289" >
@@ -80,7 +80,7 @@
                                 <Button x:Name="btnModificarPM" Content="Modificar" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" BorderBrush="Black" TabIndex="6" Margin="433,10,0,0"/>
                             </Grid>
                         </Controls:MetroTabItem>
-                        <Controls:MetroTabItem Header="Eliminar">
+                        <Controls:MetroTabItem x:Name="tbProdE" Header="Eliminar">
                             <Grid>
                                 <Button x:Name="btnListarProdE"  Content="Listar Productos" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="103" Height="22"  BorderBrush="Black" Margin="219,76,0,0"/>
                                 <DataGrid x:Name="dgProdPE"  CanUserAddRows="False" HorizontalAlignment="Left" Margin="219,106,0,0" VerticalAlignment="Top" Height="192" Width="289" >
@@ -129,7 +129,7 @@
                             <CheckBox x:Name="chActivarUA" IsChecked="false" Content="Usuario activo" Foreground="White" HorizontalAlignment="Left" Margin="422,81,0,0" VerticalAlignment="Top" TabIndex="13"/>
                             <RadioButton x:Name="rbFemUA" IsChecked="True" Content="Femenino" Foreground="White" GroupName="Sexo" HorizontalAlignment="Left" Margin="422,118,0,0" VerticalAlignment="Top" TabIndex="14"/>
                             <RadioButton x:Name="rbMasUA" Content="Masculino" Foreground="White" GroupName="Sexo" HorizontalAlignment="Left" Margin="422,151,0,0" VerticalAlignment="Top" TabIndex="15"/>
-                            <Button x:Name="btnAgregarUsuarioUA" Content="Agregar" HorizontalAlignment="Left" Margin="453,9,0,0" VerticalAlignment="Top" Width="75"  TabIndex="16"/>
+                            <Button x:Name="btnAgregarUsuarioUA" Content="Agregar" HorizontalAlignment="Left" Margin="453,9,0,0" VerticalAlignment="Top" Width="75"  TabIndex="16" Click="btnAgregarUsuarioUA_Click"/>
                             <Label x:Name="lblApellidoUA" Content="Apellido:" HorizontalAlignment="Left" Margin="21,104,0,0" VerticalAlignment="Top"   Foreground="White" />
                             <Label x:Name="lblRutUA" Content="Rut:" HorizontalAlignment="Left" Margin="21,165,0,0" VerticalAlignment="Top"   Foreground="White" />
                             <Label x:Name="lblEmailUA" Content="Email:" HorizontalAlignment="Left" Margin="21,225,0,0" VerticalAlignment="Top"   Foreground="White" />
@@ -396,12 +396,33 @@
                     </Controls:MetroTabItem>
                 </Controls:MetroTabControl>
             </Controls:Flyout>
+            <Controls:Flyout x:Name="FlyPerfil" Position="Right" Header="Perfil Usuario" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
+                <Grid>
+                    <Label x:Name="label" Content="Datos Personales" Foreground="White" HorizontalAlignment="Left" Margin="20,14,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label_Copy" Foreground="White" HorizontalAlignment="Left" Margin="159,197,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label_Copy1" FontWeight="Bold" Content="Apellido:" Foreground="White" HorizontalAlignment="Left" Margin="20,92,0,0" VerticalAlignment="Top" Width="59"/>
+                    <Label x:Name="label_Copy2" FontWeight="Bold" Content="Telefono:" Foreground="White" HorizontalAlignment="Left" Margin="20,165,0,0" VerticalAlignment="Top" Width="59"/>
+                    <Label x:Name="label_Copy3" FontWeight="Bold" Content="Email:" Foreground="White" HorizontalAlignment="Left" Margin="20,130,0,0" VerticalAlignment="Top" Width="59"/>
+                    <Label x:Name="label_Copy4" FontWeight="Bold" Content="Fecha de nacimiento:" Foreground="White" HorizontalAlignment="Left" Margin="20,196,0,0" VerticalAlignment="Top" Width="123"/>
+                    <Label x:Name="label_Copy5" FontWeight="Bold" Content="Genero:" Foreground="White" HorizontalAlignment="Left" Margin="20,227,0,0" VerticalAlignment="Top" Width="54"/>
+                    <Label x:Name="label_Copy6" FontWeight="Bold" Content="Perfil:" Foreground="White" HorizontalAlignment="Left" Margin="264,14,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblNombre" Content="" Foreground="White" HorizontalAlignment="Left" Margin="160,55,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblTelefono" Content="" Foreground="White" HorizontalAlignment="Left" Margin="160,165,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblEmail" Content="" Foreground="White" HorizontalAlignment="Left" Margin="160,130,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblApellido" Content="" Foreground="White" HorizontalAlignment="Left" Margin="160,92,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label_Copy11" Content="Nombre:" Foreground="White" HorizontalAlignment="Left" Margin="20,55,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label x:Name="lblFecha" Content="" Foreground="White" HorizontalAlignment="Left" Margin="160,196,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblGenero" Content="" Foreground="White" HorizontalAlignment="Left" Margin="160,227,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblPerfil" Content="Administrador" Foreground="White" HorizontalAlignment="Left" Margin="307,14,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </Controls:Flyout>
         </Grid>
-        <Label x:Name="lblBienvenida" Content="Hola " Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label x:Name="lblUsuarioActual" Content=" " Foreground="White" HorizontalAlignment="Left" Margin="36,0,0,0" VerticalAlignment="Top" FontStyle="Italic" FontWeight="Bold"/>
-        <Button x:Name="button"  Background="Orange"  HorizontalAlignment="Left" Margin="8,30,0,0" VerticalAlignment="Top" Width="38" Height="31" Click="button_Click" BorderThickness="0" Padding="0">
+        <Button x:Name="btnPerfil" Background="Orange" HorizontalAlignment="Left" Margin="72,26,0,0" VerticalAlignment="Top" Width="75" Height="36" BorderThickness="0" MinHeight="0" Padding="0" Click="btnPerfil_Click">
+            <Image Source="img/Perfil.png"  Height="40" Width="75"></Image>
+        </Button>
+        <Label x:Name="lblUsuarioActual" Content=" " Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontStyle="Italic" FontWeight="Bold"/>
+        <Button x:Name="button"  Background="Orange"  HorizontalAlignment="Left" Margin="8,26,0,0" VerticalAlignment="Top" Width="45" Height="36" Click="button_Click" BorderThickness="0" Padding="0">
             <Image Source="img/Logout.png" Stretch="Fill" Height="31" Width="38"></Image>
         </Button>
-        <Label x:Name="lblBienvenida_Copy" Content="Salir " Foreground="White" HorizontalAlignment="Left" Margin="48,33,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
     </Grid>
 </Controls:MetroWindow>
