@@ -31,7 +31,7 @@ namespace QOfreces.WPF
         {
             this.Title = string.Format("Encargado {0}     Sucursal: {1}", mainwindow.RetailActual.NombreRetail, mainwindow.SucursalActual.Nombre);
             InitializeComponent();
-            lblUsuarioActual.Content = string.Format("{0} {1}", mainwindow.UsuarioACtual.Nombre, mainwindow.UsuarioACtual.Apellido); ;
+            lblUsuarioActual.Content = string.Format("{0} {1}", mainwindow.UsuarioACtual.Nombre, mainwindow.UsuarioACtual.Apellido);
             LimpiarControles();
             _reportViewer.Load += ReportViewer_Load;
         }
