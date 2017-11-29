@@ -234,7 +234,6 @@ namespace Core.Negocio
                 this.Sexo = Convert.ToChar(usuario.SEXO);
                 this.Email = usuario.EMAIL;
                 this.NumeroCelular = (int)usuario.NUMERO_CELULAR;
-                this.Puntos = (int)usuario.PUNTOS;
                 this.FechaCreacion = usuario.FECHA_CREACION;
                 this.CodigoActivacion = usuario.CODIGO_ACTIVACION;
 
