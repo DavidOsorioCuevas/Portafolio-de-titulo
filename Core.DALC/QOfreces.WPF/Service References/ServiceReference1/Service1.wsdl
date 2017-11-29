@@ -6,6 +6,24 @@
       <xsd:import schemaLocation="http://localhost:50194/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IService1_DeshacerValoracion_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeshacerValoracion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeshacerValoracion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeshacerValoracionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCategorias_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCategorias" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerCategorias_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerCategoriasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerRetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:TraerRetail" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TraerRetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TraerRetailResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_TraerValoracionesOferta_InputMessage">
     <wsdl:part name="parameters" element="tns:TraerValoracionesOferta" />
   </wsdl:message>
@@ -421,6 +439,18 @@
     <wsdl:part name="parameters" element="tns:CrearOfertaHasSucursalResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
+    <wsdl:operation name="DeshacerValoracion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeshacerValoracion" message="tns:IService1_DeshacerValoracion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeshacerValoracionResponse" message="tns:IService1_DeshacerValoracion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerCategorias">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerCategorias" message="tns:IService1_TraerCategorias_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerCategoriasResponse" message="tns:IService1_TraerCategorias_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TraerRetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerRetail" message="tns:IService1_TraerRetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerRetailResponse" message="tns:IService1_TraerRetail_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="TraerValoracionesOferta">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/TraerValoracionesOferta" message="tns:IService1_TraerValoracionesOferta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/TraerValoracionesOfertaResponse" message="tns:IService1_TraerValoracionesOferta_OutputMessage" />
@@ -700,6 +730,33 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DeshacerValoracion">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeshacerValoracion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerCategorias">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerCategorias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TraerRetail">
+      <soap:operation soapAction="http://tempuri.org/IService1/TraerRetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TraerValoracionesOferta">
       <soap:operation soapAction="http://tempuri.org/IService1/TraerValoracionesOferta" style="document" />
       <wsdl:input>

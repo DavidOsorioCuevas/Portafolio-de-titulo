@@ -43,61 +43,97 @@ namespace QOfreces.WPF
 
         private void tiGenerarOferta_Click(object sender, RoutedEventArgs e)
         {
-            if (flyConsultar.IsOpen == true || flyReportes.IsOpen == true || flyProductos.IsOpen == true || flyPublicar.IsOpen == true)
+            if (FlyPerfil.IsOpen == true || flyConsultar.IsOpen == true || flyReportes.IsOpen == true || flyProductos.IsOpen == true || flyPublicar.IsOpen == true)
             {
+                FlyPerfil.IsOpen = false;
+                btnPerfil.Background = Brushes.Orange;
                 flyConsultar.IsOpen = false;
+                tiConsultarOferta.Background = Brushes.Orange;
                 flyReportes.IsOpen = false;
+                tiReportes.Background = Brushes.Orange;
                 flyProductos.IsOpen = false;
+                tiProducto.Background = Brushes.Orange;
                 flyPublicar.IsOpen = false;
+                tiPublicarOferta.Background = Brushes.Orange;
+                
             }
+            tiGenerarOferta.Background = Brushes.Gray;
             flyGenerar.IsOpen = true;
         }
 
         private void tiPublicarOferta_Click(object sender, RoutedEventArgs e)
         {
-            if (flyConsultar.IsOpen == true || flyReportes.IsOpen == true || flyProductos.IsOpen == true || flyGenerar.IsOpen == true)
+            if (FlyPerfil.IsOpen == true || flyConsultar.IsOpen == true || flyReportes.IsOpen == true || flyProductos.IsOpen == true || flyGenerar.IsOpen == true)
             {
+                btnPerfil.Background = Brushes.Orange;
                 flyConsultar.IsOpen = false;
+                tiConsultarOferta.Background = Brushes.Orange;
                 flyReportes.IsOpen = false;
+                tiReportes.Background = Brushes.Orange;
                 flyProductos.IsOpen = false;
+                tiProducto.Background = Brushes.Orange;
                 flyGenerar.IsOpen = false;
+                tiGenerarOferta.Background = Brushes.Orange;
+                FlyPerfil.IsOpen = false;
             }
+            tiPublicarOferta.Background = Brushes.Gray;
             flyPublicar.IsOpen = true;
         }
 
         private void tiProducto_Click(object sender, RoutedEventArgs e)
         {
-            if (flyConsultar.IsOpen == true || flyReportes.IsOpen == true || flyGenerar.IsOpen == true || flyPublicar.IsOpen == true)
+            if (FlyPerfil.IsOpen == true || flyConsultar.IsOpen == true || flyReportes.IsOpen == true || flyGenerar.IsOpen == true || flyPublicar.IsOpen == true)
             {
+                btnPerfil.Background = Brushes.Orange;
                 flyConsultar.IsOpen = false;
+                tiConsultarOferta.Background = Brushes.Orange;
                 flyReportes.IsOpen = false;
+                tiReportes.Background = Brushes.Orange;
                 flyGenerar.IsOpen = false;
+                tiGenerarOferta.Background = Brushes.Orange;
                 flyPublicar.IsOpen = false;
+                tiPublicarOferta.Background = Brushes.Orange;
+                FlyPerfil.IsOpen = false;
             }
+            tiProducto.Background = Brushes.Gray;
             flyProductos.IsOpen = true;
         }
 
         private void tiConsultarOferta_Click(object sender, RoutedEventArgs e)
         {
-            if (flyGenerar.IsOpen == true || flyReportes.IsOpen == true || flyProductos.IsOpen == true || flyPublicar.IsOpen == true)
+            if (FlyPerfil.IsOpen == true || flyGenerar.IsOpen == true || flyReportes.IsOpen == true || flyProductos.IsOpen == true || flyPublicar.IsOpen == true)
             {
+                btnPerfil.Background = Brushes.Orange;
                 flyGenerar.IsOpen = false;
+                tiGenerarOferta.Background = Brushes.Orange;
                 flyReportes.IsOpen = false;
+                tiReportes.Background = Brushes.Orange;
                 flyProductos.IsOpen = false;
+                tiProducto.Background = Brushes.Orange;
                 flyPublicar.IsOpen = false;
+                tiPublicarOferta.Background = Brushes.Orange;
+                FlyPerfil.IsOpen = false;
             }
+            tiConsultarOferta.Background = Brushes.Gray;
             flyConsultar.IsOpen = true;
         }
 
         private void tiReportes_Click(object sender, RoutedEventArgs e)
         {
-            if (flyConsultar.IsOpen == true || flyGenerar.IsOpen == true || flyProductos.IsOpen == true || flyPublicar.IsOpen == true)
+            if (FlyPerfil.IsOpen == true || flyConsultar.IsOpen == true || flyGenerar.IsOpen == true || flyProductos.IsOpen == true || flyPublicar.IsOpen == true)
             {
+                btnPerfil.Background = Brushes.Orange;
                 flyConsultar.IsOpen = false;
+                tiConsultarOferta.Background = Brushes.Orange;
                 flyGenerar.IsOpen = false;
+                tiGenerarOferta.Background = Brushes.Orange;
                 flyProductos.IsOpen = false;
+                tiProducto.Background = Brushes.Orange;
                 flyPublicar.IsOpen = false;
+                tiPublicarOferta.Background = Brushes.Orange;
+                FlyPerfil.IsOpen = false;
             }
+            tiReportes.Background = Brushes.Gray;
             flyReportes.IsOpen = true;
         }
 
@@ -651,6 +687,42 @@ namespace QOfreces.WPF
             mainwindow mai = new mainwindow();
             this.Close();
             mai.Show();
+        }
+
+        private void btnPerfil_Click(object sender, RoutedEventArgs e)
+        {
+            if (flyConsultar.IsOpen == true || flyReportes.IsOpen == true || flyProductos.IsOpen == true || flyPublicar.IsOpen == true || flyGenerar.IsOpen == true)
+            {
+                btnPerfil.Background = Brushes.Orange;
+                flyConsultar.IsOpen = false;
+                tiConsultarOferta.Background = Brushes.Orange;
+                flyReportes.IsOpen = false;
+                tiReportes.Background = Brushes.Orange;
+                flyProductos.IsOpen = false;
+                tiProducto.Background = Brushes.Orange;
+                flyPublicar.IsOpen = false;
+                tiPublicarOferta.Background = Brushes.Orange;
+                tiGenerarOferta.Background = Brushes.Orange;
+                flyGenerar.IsOpen = false;
+            }
+
+            lblNombre.Content = mainwindow.UsuarioACtual.Nombre;
+            lblApellido.Content = mainwindow.UsuarioACtual.Apellido;
+            lblEmail.Content = mainwindow.UsuarioACtual.Email;
+            lblTelefono.Content = mainwindow.UsuarioACtual.NumeroCelular;
+            lblFecha.Content = mainwindow.UsuarioACtual.FechaNacimiento;
+            if (mainwindow.UsuarioACtual.Sexo.Equals('m'))
+            {
+                lblGenero.Content = "Masculino";
+            }
+            else
+            {
+                lblGenero.Content = "Femenino";
+            }
+
+
+            btnPerfil.Background = Brushes.Gray;
+            FlyPerfil.IsOpen = true;
         }
     }
 }

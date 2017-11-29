@@ -301,6 +301,8 @@ namespace QOfreces.WPF {
             
             private global::System.Data.DataColumn columnNOMBRE_USUARIO;
             
+            private global::System.Data.DataColumn columnEMAIL;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ValoracionesDataTable() {
@@ -424,6 +426,14 @@ namespace QOfreces.WPF {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EMAILColumn {
+                get {
+                    return this.columnEMAIL;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -459,7 +469,7 @@ namespace QOfreces.WPF {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ValoracionesRow AddValoracionesRow(decimal ID_VALORACION, decimal ID_SUCURSAL, decimal SUCURSALES_ID, string CALIFICACION, string NOMBRE, System.DateTime FECHA_OFERTA, string NOMBRE1, decimal USUARIO_ID, System.DateTime FECHA_VALORACION, decimal ID_USUARIO, string NOMBRE_USUARIO) {
+            public ValoracionesRow AddValoracionesRow(decimal ID_VALORACION, decimal ID_SUCURSAL, decimal SUCURSALES_ID, string CALIFICACION, string NOMBRE, System.DateTime FECHA_OFERTA, string NOMBRE1, decimal USUARIO_ID, System.DateTime FECHA_VALORACION, decimal ID_USUARIO, string NOMBRE_USUARIO, string EMAIL) {
                 ValoracionesRow rowValoracionesRow = ((ValoracionesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID_VALORACION,
@@ -472,7 +482,8 @@ namespace QOfreces.WPF {
                         USUARIO_ID,
                         FECHA_VALORACION,
                         ID_USUARIO,
-                        NOMBRE_USUARIO};
+                        NOMBRE_USUARIO,
+                        EMAIL};
                 rowValoracionesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowValoracionesRow);
                 return rowValoracionesRow;
@@ -506,6 +517,7 @@ namespace QOfreces.WPF {
                 this.columnFECHA_VALORACION = base.Columns["FECHA_VALORACION"];
                 this.columnID_USUARIO = base.Columns["ID_USUARIO"];
                 this.columnNOMBRE_USUARIO = base.Columns["NOMBRE_USUARIO"];
+                this.columnEMAIL = base.Columns["EMAIL"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -533,6 +545,8 @@ namespace QOfreces.WPF {
                 base.Columns.Add(this.columnID_USUARIO);
                 this.columnNOMBRE_USUARIO = new global::System.Data.DataColumn("NOMBRE_USUARIO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNOMBRE_USUARIO);
+                this.columnEMAIL = new global::System.Data.DataColumn("EMAIL", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEMAIL);
                 this.columnID_VALORACION.AllowDBNull = false;
                 this.columnID_SUCURSAL.AllowDBNull = false;
                 this.columnSUCURSALES_ID.AllowDBNull = false;
@@ -544,6 +558,8 @@ namespace QOfreces.WPF {
                 this.columnID_USUARIO.AllowDBNull = false;
                 this.columnNOMBRE_USUARIO.AllowDBNull = false;
                 this.columnNOMBRE_USUARIO.MaxLength = 50;
+                this.columnEMAIL.AllowDBNull = false;
+                this.columnEMAIL.MaxLength = 30;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -827,6 +843,17 @@ namespace QOfreces.WPF {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EMAIL {
+                get {
+                    return ((string)(this[this.tableValoraciones.EMAILColumn]));
+                }
+                set {
+                    this[this.tableValoraciones.EMAILColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNOMBRENull() {
                 return this.IsNull(this.tableValoraciones.NOMBREColumn);
             }
@@ -1044,6 +1071,7 @@ namespace QOfreces.WPF.ValoracionesDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("FECHA_VALORACION", "FECHA_VALORACION");
             tableMapping.ColumnMappings.Add("ID_USUARIO", "ID_USUARIO");
             tableMapping.ColumnMappings.Add("NOMBRE_USUARIO", "NOMBRE_USUARIO");
+            tableMapping.ColumnMappings.Add("EMAIL", "EMAIL");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1057,17 +1085,43 @@ namespace QOfreces.WPF.ValoracionesDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
+            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[2];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        VALORACION.ID_VALORACION, SUCURSALES.ID_SUCURSAL, OFERTA.SUCURSALES_ID, VALORACION.CALIFICACION, SUCURSALES.NOMBRE, 
                          OFERTA.FECHA_OFERTA, OFERTA.NOMBRE, VALORACION.USUARIO_ID, VALORACION.FECHA_VALORACION, USUARIO.ID_USUARIO, 
-                         USUARIO.NOMBRE_USUARIO
+                         USUARIO.NOMBRE_USUARIO, USUARIO.EMAIL
 FROM            BDMISOFERTAS.VALORACION, BDMISOFERTAS.OFERTA, BDMISOFERTAS.SUCURSALES, BDMISOFERTAS.USUARIO
 WHERE        (VALORACION.OFERTA_ID = OFERTA.ID_OFERTA) AND (OFERTA.SUCURSALES_ID = SUCURSALES.ID_SUCURSAL) AND 
                          (VALORACION.USUARIO_ID = USUARIO.ID_USUARIO)
 ORDER BY VALORACION.ID_VALORACION DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        VALORACION.ID_VALORACION, SUCURSALES.ID_SUCURSAL, OFERTA.SUCURSALES_ID, VALORACION.CALIFICACION, SUCURSALES.NOMBRE, 
+                         OFERTA.FECHA_OFERTA, OFERTA.NOMBRE, VALORACION.USUARIO_ID, VALORACION.FECHA_VALORACION, USUARIO.ID_USUARIO, 
+                         USUARIO.NOMBRE_USUARIO, USUARIO.EMAIL
+FROM            BDMISOFERTAS.VALORACION, BDMISOFERTAS.OFERTA, BDMISOFERTAS.SUCURSALES, BDMISOFERTAS.USUARIO
+WHERE        (VALORACION.OFERTA_ID = OFERTA.ID_OFERTA) AND (OFERTA.SUCURSALES_ID = SUCURSALES.ID_SUCURSAL) AND 
+                         (VALORACION.USUARIO_ID = USUARIO.ID_USUARIO) AND (OFERTA.FECHA_OFERTA BETWEEN :dateFrom AND :dateTo)
+ORDER BY VALORACION.ID_VALORACION DESC";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = ":dateFrom";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.TimeStamp;
+            param.Size = 1024;
+            param.IsNullable = true;
+            param.SourceColumn = "FECHA_OFERTA";
+            this._commandCollection[1].Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = ":dateTo";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.TimeStamp;
+            param.Size = 1024;
+            param.IsNullable = true;
+            param.SourceColumn = "FECHA_OFERTA";
+            this._commandCollection[1].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1092,6 +1146,21 @@ ORDER BY VALORACION.ID_VALORACION DESC";
             ValoracionesDataSet.ValoracionesDataTable dataTable = new ValoracionesDataSet.ValoracionesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByDate(ValoracionesDataSet.ValoracionesDataTable dataTable, System.DateTime dateFrom, System.DateTime dateTo) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(dateFrom));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(dateTo));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
     }
     

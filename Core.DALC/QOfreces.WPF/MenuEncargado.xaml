@@ -30,8 +30,7 @@
         <Controls:Tile x:Name="tiReportes" Background="Orange" Margin="8,567,544,10" TitleFontSize="12" Title="Reportes de tienda" Height="Auto" Width="Auto" Click="tiReportes_Click" >
             <Image x:Name="image5" Height="100" Width="100" Stretch="Fill" Source="img/Report.png"/>
         </Controls:Tile>
-        <Label x:Name="lblBienvenida" Content="Hola " Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label x:Name="lblUsuarioActual" Content="" Foreground="White" HorizontalAlignment="Left" Margin="31,1,0,0" VerticalAlignment="Top" FontStyle="Italic" RenderTransformOrigin="0.348,0.211" Width="118" FontWeight="Bold" FontSize="11"/>
+        <Label x:Name="lblUsuarioActual" Content="" Foreground="White" HorizontalAlignment="Left" Margin="0,-2,0,0" VerticalAlignment="Top" FontStyle="Italic" RenderTransformOrigin="0.348,0.211" Width="118" FontWeight="Bold" FontSize="11"/>
         <Grid Margin="153,0,0,0">
             <Controls:Flyout x:Name="flyGenerar" Position="Right" Header="Generar oferta" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
                 <Grid>
@@ -208,9 +207,10 @@
                     <WindowsFormsHost Margin="9,55,11,24">
                         <rv:ReportViewer x:Name="_reportViewer"/>
                     </WindowsFormsHost>
-                    <Button x:Name="btnReporte" Content="Reporte" HorizontalAlignment="Left" Margin="461,10,0,0" VerticalAlignment="Top" Width="74" />
+                    <!--<Button x:Name="btnReporte" Content="Reporte" HorizontalAlignment="Left" Margin="461,10,0,0" VerticalAlignment="Top" Width="74" />
 
-                    <!--<ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="46,60,0,0" VerticalAlignment="Top" Width="120"/>
+                    
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="46,60,0,0" VerticalAlignment="Top" Width="120"/>
                     <DatePicker HorizontalAlignment="Left" Margin="46,104,0,0" VerticalAlignment="Top"/>
                     <DatePicker HorizontalAlignment="Left" Margin="239,104,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="btnConsultar" Content="Consultar" HorizontalAlignment="Left" Margin="446,57,0,0" VerticalAlignment="Top" Width="75"/>
@@ -226,14 +226,38 @@
                             <DataGridTextColumn Header="Valoraciones" Binding="{Binding Nombre}" IsReadOnly="True" />
                         </DataGrid.Columns>
                     </DataGrid>-->
+            
+
+                </Grid>
+            </Controls:Flyout>
+            <Controls:Flyout x:Name="FlyPerfil" Position="Right" Header="Perfil Usuario" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
+                <Grid>
+                    <Label x:Name="label" Content="Datos Personales" Foreground="White" HorizontalAlignment="Left" Margin="20,14,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label_Copy" Foreground="White" HorizontalAlignment="Left" Margin="159,197,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label_Copy1" FontWeight="Bold" Content="Apellido:" Foreground="White" HorizontalAlignment="Left" Margin="20,92,0,0" VerticalAlignment="Top" Width="59"/>
+                    <Label x:Name="label_Copy2" FontWeight="Bold" Content="Telefono:" Foreground="White" HorizontalAlignment="Left" Margin="20,165,0,0" VerticalAlignment="Top" Width="59"/>
+                    <Label x:Name="label_Copy3" FontWeight="Bold" Content="Email:" Foreground="White" HorizontalAlignment="Left" Margin="20,130,0,0" VerticalAlignment="Top" Width="59"/>
+                    <Label x:Name="label_Copy4" FontWeight="Bold" Content="Fecha de nacimiento:" Foreground="White" HorizontalAlignment="Left" Margin="20,196,0,0" VerticalAlignment="Top" Width="123"/>
+                    <Label x:Name="label_Copy5" FontWeight="Bold" Content="Genero:" Foreground="White" HorizontalAlignment="Left" Margin="20,227,0,0" VerticalAlignment="Top" Width="54"/>
+                    <Label x:Name="label_Copy6" FontWeight="Bold" Content="Perfil:" Foreground="White" HorizontalAlignment="Left" Margin="264,14,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblNombre" Content="" Foreground="White" HorizontalAlignment="Left" Margin="160,55,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblTelefono" Content="" Foreground="White" HorizontalAlignment="Left" Margin="160,165,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblEmail" Content="" Foreground="White" HorizontalAlignment="Left" Margin="160,130,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblApellido" Content="" Foreground="White" HorizontalAlignment="Left" Margin="160,92,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label_Copy11" Content="Nombre:" Foreground="White" HorizontalAlignment="Left" Margin="20,55,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label x:Name="lblFecha" Content="" Foreground="White" HorizontalAlignment="Left" Margin="160,196,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblGenero" Content="" Foreground="White" HorizontalAlignment="Left" Margin="160,227,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblPerfil" Content="Encargado de Ventas" Foreground="White" HorizontalAlignment="Left" Margin="307,14,0,0" VerticalAlignment="Top"/>
 
                 </Grid>
             </Controls:Flyout>
         </Grid>
-        <Button x:Name="button" Background="Orange"  HorizontalAlignment="Left" Margin="8,30,0,0" VerticalAlignment="Top" Width="38" Height="31" Click="button_Click">
-            <Image Source="img/Logout.png" Height="25" Width="29"></Image>
+        <Button x:Name="button" Background="Orange"  HorizontalAlignment="Left" Margin="8,26,0,0" VerticalAlignment="Top" Width="45" Height="36" Click="button_Click" BorderThickness="0" MinHeight="0" Padding="0">
+            <Image Source="img/Logout.png" Stretch="Fill" Height="38" Width="42"></Image>
         </Button>
-        <Label x:Name="lblBienvenida_Copy" Content="Salir" Foreground="White" HorizontalAlignment="Left" Margin="48,34,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button x:Name="btnPerfil" Background="Orange" HorizontalAlignment="Left" Margin="72,26,0,0" VerticalAlignment="Top" Width="75" Height="36" BorderThickness="0" MinHeight="0" Padding="0" Click="btnPerfil_Click">
+            <Image Source="img/Perfil.png"  Height="40" Width="75"></Image>
+        </Button>
 
 
     </Grid>

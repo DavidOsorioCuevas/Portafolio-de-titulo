@@ -15,6 +15,24 @@ namespace QOfreces.WPF.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeshacerValoracion", ReplyAction="http://tempuri.org/IService1/DeshacerValoracionResponse")]
+        string DeshacerValoracion(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeshacerValoracion", ReplyAction="http://tempuri.org/IService1/DeshacerValoracionResponse")]
+        System.Threading.Tasks.Task<string> DeshacerValoracionAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerCategorias", ReplyAction="http://tempuri.org/IService1/TraerCategoriasResponse")]
+        string TraerCategorias();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerCategorias", ReplyAction="http://tempuri.org/IService1/TraerCategoriasResponse")]
+        System.Threading.Tasks.Task<string> TraerCategoriasAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerRetail", ReplyAction="http://tempuri.org/IService1/TraerRetailResponse")]
+        string TraerRetail();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerRetail", ReplyAction="http://tempuri.org/IService1/TraerRetailResponse")]
+        System.Threading.Tasks.Task<string> TraerRetailAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TraerValoracionesOferta", ReplyAction="http://tempuri.org/IService1/TraerValoracionesOfertaResponse")]
         string TraerValoracionesOferta(string json);
         
@@ -455,6 +473,30 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string DeshacerValoracion(string json) {
+            return base.Channel.DeshacerValoracion(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> DeshacerValoracionAsync(string json) {
+            return base.Channel.DeshacerValoracionAsync(json);
+        }
+        
+        public string TraerCategorias() {
+            return base.Channel.TraerCategorias();
+        }
+        
+        public System.Threading.Tasks.Task<string> TraerCategoriasAsync() {
+            return base.Channel.TraerCategoriasAsync();
+        }
+        
+        public string TraerRetail() {
+            return base.Channel.TraerRetail();
+        }
+        
+        public System.Threading.Tasks.Task<string> TraerRetailAsync() {
+            return base.Channel.TraerRetailAsync();
         }
         
         public string TraerValoracionesOferta(string json) {
