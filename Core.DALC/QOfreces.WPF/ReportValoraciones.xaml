@@ -15,9 +15,9 @@
         <WindowsFormsHost Margin="0,35,0,-1" Grid.ColumnSpan="2">
             <rv:ReportViewer x:Name="_reportViewer"/>
         </WindowsFormsHost>
-        <DatePicker x:Name="dpFrom" HorizontalAlignment="Left" Margin="115,4,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2"/>
-        <DatePicker x:Name="dpTo" HorizontalAlignment="Left" Margin="113,4,0,0" VerticalAlignment="Top" Width="147" Grid.Column="1"/>
-        <Button x:Name="btnFiltrar" Content="Filtrar" HorizontalAlignment="Left" Margin="479.547,4,0,0" VerticalAlignment="Top" Width="86" Click="btnFiltrar_Click" Height="26" Grid.Column="1"/>
-        <Label x:Name="label" Content="Rango Fecha Oferta" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dpFrom" HorizontalAlignment="Left" Margin="29,4,0,0" VerticalAlignment="Top" Width="146" Grid.Column="1"/>
+        <DatePicker x:Name="dpTo" HorizontalAlignment="Left" Margin="207,4,0,0" VerticalAlignment="Top" Width="147" Grid.Column="1"/>
+        <Button x:Name="btnFiltrar" Content="Filtrar" HorizontalAlignment="Left" Margin="443,4,0,0" VerticalAlignment="Top" Width="86" Click="btnFiltrar_Click" Height="26" Grid.Column="1"/>
+        <Label x:Name="label" Content="Rango Fecha Oferta" HorizontalAlignment="Left" Margin="28,4,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

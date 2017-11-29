@@ -12,7 +12,7 @@
               <Width>2.34126cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.04535cm</Width>
+              <Width>2.11589cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.3933cm</Width>
@@ -206,6 +206,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -430,7 +431,7 @@
         <Top>9.33915cm</Top>
         <Left>0.11069cm</Left>
         <Height>2.29388cm</Height>
-        <Width>15.14377cm</Width>
+        <Width>15.21432cm</Width>
         <Visibility>
           <Hidden>true</Hidden>
           <ToggleItem>Detalle</ToggleItem>
@@ -742,7 +743,7 @@
             <Style />
           </Paragraph>
         </Paragraphs>
-        <Top>8.56276cm</Top>
+        <Top>8.59804cm</Top>
         <Left>6.73488cm</Left>
         <Height>0.6cm</Height>
         <Width>1.83854cm</Width>

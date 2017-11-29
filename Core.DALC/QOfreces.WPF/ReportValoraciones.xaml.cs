@@ -66,12 +66,14 @@ namespace QOfreces.WPF
                 _reportViewer.RefreshReport();
 
                 _isReportViewerLoaded = true;
+
+                
             }
             else
             {
                 valoracionesTableAdapter.ClearBeforeFill = true;
                 valoracionesTableAdapter.FillByDate(dataset.Valoraciones, dpFrom.SelectedDate.Value, dpTo.SelectedDate.Value);
-
+                
                 _reportViewer.RefreshReport();
 
                 _isReportViewerLoaded = true;
