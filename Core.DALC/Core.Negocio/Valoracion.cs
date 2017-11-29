@@ -52,6 +52,7 @@ namespace Core.Negocio
             if (result.Count()>0)
             {
                 this.Calificacion = result.First().a.CALIFICACION;
+                this.IdValoracion = (int)result.First().a.ID_VALORACION;
                 this.response = "EV";
             }else
             {
@@ -66,7 +67,9 @@ namespace Core.Negocio
             Core.DALC.VALORACION valoracion = new Core.DALC.VALORACION();
             Core.DALC.USUARIO user = new Core.DALC.USUARIO();
 
+
             int puntos=((int)db.USUARIO.Find(this.IdUsuario).PUNTOS)+10;
+
             try
             {
                 db.USUARIO.Find(this.IdUsuario).PUNTOS = puntos;

@@ -22,11 +22,12 @@ namespace QOfreces.WPF
     /// </summary>
     public partial class MenuAdministrador : MetroWindow
     {
+
         public MenuAdministrador()
         {
             this.Title = string.Format("Administrador {0}     Sucursal: {1}", mainwindow.RetailActual.NombreRetail, mainwindow.SucursalActual.Nombre);
             InitializeComponent();
-            lblUsuarioActual.Content = mainwindow.UsuarioACtual.NombreUsuario;
+            lblUsuarioActual.Content = string.Format("{0} {1}", mainwindow.UsuarioACtual.Nombre, mainwindow.UsuarioACtual.Apellido);
             _reportViewer.Load += ReportViewer_Load;
 
         }
@@ -36,11 +37,17 @@ namespace QOfreces.WPF
             if (flyUsuarios.IsOpen == true || FlyRetail.IsOpen == true || FlyRubro.IsOpen == true || FlyBI.IsOpen == true)
             {
                 flyUsuarios.IsOpen = false;
+                tiUsuario.Background = Brushes.Orange;
                 FlyRetail.IsOpen = false;
+                tiEmpresa.Background = Brushes.Orange;
                 FlyRubro.IsOpen = false;
+                tiRubro.Background = Brushes.Orange;
                 FlyBI.IsOpen = false;
+                tiReportes.Background = Brushes.Orange;
             }
             flyProductos.IsOpen = true;
+            tiProducto.Background = Brushes.Black;
+
         }
 
         private void tiUsuario_Click(object sender, RoutedEventArgs e)
@@ -48,11 +55,16 @@ namespace QOfreces.WPF
             if (flyProductos.IsOpen == true || FlyRetail.IsOpen == true || FlyRubro.IsOpen == true || FlyBI.IsOpen == true)
             {
                 flyProductos.IsOpen = false;
+                tiProducto.Background = Brushes.Orange;
                 FlyRetail.IsOpen = false;
+                tiEmpresa.Background = Brushes.Orange;
                 FlyRubro.IsOpen = false;
+                tiRubro.Background = Brushes.Orange;
                 FlyBI.IsOpen = false;
+                tiReportes.Background = Brushes.Orange;
             }
             flyUsuarios.IsOpen = true;
+            tiUsuario.Background = Brushes.Black;
         }
 
         private void tiEmpresa_Click(object sender, RoutedEventArgs e)
@@ -60,10 +72,15 @@ namespace QOfreces.WPF
             if (flyProductos.IsOpen == true || flyUsuarios.IsOpen == true || FlyRubro.IsOpen == true || FlyBI.IsOpen == true)
             {
                 flyProductos.IsOpen = false;
+                tiProducto.Background = Brushes.Orange;
                 flyUsuarios.IsOpen = false;
+                tiUsuario.Background = Brushes.Orange;
                 FlyRubro.IsOpen = false;
+                tiRubro.Background = Brushes.Orange;
                 FlyBI.IsOpen = false;
+                tiReportes.Background = Brushes.Orange;
             }
+            tiEmpresa.Background = Brushes.Black;
             FlyRetail.IsOpen = true;
         }
 
@@ -72,10 +89,15 @@ namespace QOfreces.WPF
             if (flyProductos.IsOpen == true || flyUsuarios.IsOpen == true || FlyRetail.IsOpen == true || FlyBI.IsOpen == true)
             {
                 flyProductos.IsOpen = false;
+                tiProducto.Background = Brushes.Orange;
                 flyUsuarios.IsOpen = false;
+                tiUsuario.Background = Brushes.Orange;
                 FlyRetail.IsOpen = false;
+                tiEmpresa.Background = Brushes.Orange;
                 FlyBI.IsOpen = false;
+                tiReportes.Background = Brushes.Orange;
             }
+            tiRubro.Background = Brushes.Black; 
             FlyRubro.IsOpen = true;
 
         }
@@ -85,10 +107,15 @@ namespace QOfreces.WPF
             if (flyProductos.IsOpen == true || flyUsuarios.IsOpen == true || FlyRetail.IsOpen == true || FlyRubro.IsOpen == true)
             {
                 flyProductos.IsOpen = false;
+                tiProducto.Background = Brushes.Orange;
                 flyUsuarios.IsOpen = false;
+                tiUsuario.Background = Brushes.Orange;
                 FlyRetail.IsOpen = false;
+                tiEmpresa.Background = Brushes.Orange;
                 FlyRubro.IsOpen = false;
+                tiRubro.Background = Brushes.Orange;
             }
+            tiReportes.Background = Brushes.Black;
             FlyBI.IsOpen = true;
 
         }
@@ -132,6 +159,8 @@ namespace QOfreces.WPF
             mainwindow login = new mainwindow();
             this.Close();
             login.Show();
+            
+           
         }
     }
 }
