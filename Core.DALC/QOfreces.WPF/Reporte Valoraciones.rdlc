@@ -6,27 +6,27 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.29269cm</Width>
+              <Width>2.65769cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.48438cm</Width>
+              <Width>2.34126cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.81264cm</Width>
+              <Width>2.04535cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>5.93004cm</Width>
+              <Width>2.3933cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.06104cm</Width>
+              <Width>2.63229cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.82292cm</Width>
+              <Width>3.07389cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.70583cm</Height>
+              <Height>1.14694cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -180,21 +180,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox12">
+                    <Textbox Name="Textbox4">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>NOMBRE USUARIO</Value>
+                              <Value>USUARIO</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox12</rd:DefaultName>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -211,7 +211,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.70583cm</Height>
+              <Height>1.14694cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -369,21 +369,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="NOMBRE_USUARIO">
+                    <Textbox Name="EMAIL">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!NOMBRE_USUARIO.Value</Value>
+                              <Value>=Fields!EMAIL.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>NOMBRE_USUARIO</rd:DefaultName>
+                      <rd:DefaultName>EMAIL</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -427,11 +427,12 @@
             <Value>=Fields!ID_VALORACION.Value</Value>
           </SortExpression>
         </SortExpressions>
-        <Top>8.92887cm</Top>
+        <Top>9.33915cm</Top>
         <Left>0.11069cm</Left>
-        <Height>1.41166cm</Height>
-        <Width>24.40371cm</Width>
+        <Height>2.29388cm</Height>
+        <Width>15.14377cm</Width>
         <Visibility>
+          <Hidden>true</Hidden>
           <ToggleItem>Detalle</ToggleItem>
         </Visibility>
         <Style>
@@ -713,8 +714,8 @@
           </Style>
         </ChartNoDataMessage>
         <DataSetName>Valoraciones</DataSetName>
-        <Top>0.52035cm</Top>
-        <Left>3.9981cm</Left>
+        <Top>0.45832cm</Top>
+        <Left>0.64671cm</Left>
         <Height>8.00771cm</Height>
         <Width>14.60775cm</Width>
         <ZIndex>1</ZIndex>
@@ -741,8 +742,8 @@
             <Style />
           </Paragraph>
         </Paragraphs>
-        <Top>7.92806cm</Top>
-        <Left>20.69148cm</Left>
+        <Top>8.56276cm</Top>
+        <Left>6.73488cm</Left>
         <Height>0.6cm</Height>
         <Width>1.83854cm</Width>
         <ZIndex>2</ZIndex>
@@ -757,10 +758,10 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>4.08677in</Height>
+    <Height>5.02785in</Height>
     <Style />
   </Body>
-  <Width>9.97258in</Width>
+  <Width>6.03347in</Width>
   <Page>
     <PageHeader>
       <Height>1.46995cm</Height>
@@ -771,8 +772,8 @@
           <Source>Embedded</Source>
           <Value>logo</Value>
           <Sizing>FitProportional</Sizing>
-          <Height>1.44708cm</Height>
-          <Width>4.41042cm</Width>
+          <Height>1.29356cm</Height>
+          <Width>3.24463cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -797,8 +798,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.41134cm</Top>
-          <Left>7.3787cm</Left>
+          <Top>0.30551cm</Top>
+          <Left>3.80683cm</Left>
           <Height>1.05861cm</Height>
           <Width>8.37375cm</Width>
           <ZIndex>1</ZIndex>
@@ -820,7 +821,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>0.77639cm</Height>
+      <Height>2.52264cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -839,10 +840,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>PageNumber</rd:DefaultName>
-          <Top>0.07056cm</Top>
-          <Left>22.53932cm</Left>
+          <Top>0.10583cm</Top>
+          <Left>12.96141cm</Left>
           <Height>0.6cm</Height>
-          <Width>2.5cm</Width>
+          <Width>2.29306cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -928,6 +929,10 @@
         </Field>
         <Field Name="NOMBRE_USUARIO">
           <DataField>NOMBRE_USUARIO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EMAIL">
+          <DataField>EMAIL</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
