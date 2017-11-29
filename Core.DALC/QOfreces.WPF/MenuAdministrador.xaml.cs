@@ -34,8 +34,10 @@ namespace QOfreces.WPF
 
         private void tiProducto_Click(object sender, RoutedEventArgs e)
         {
-            if (flyUsuarios.IsOpen == true || FlyRetail.IsOpen == true || FlyRubro.IsOpen == true || FlyBI.IsOpen == true)
+            if (FlyPerfil.IsOpen == true || flyUsuarios.IsOpen == true || FlyRetail.IsOpen == true || FlyRubro.IsOpen == true || FlyBI.IsOpen == true)
             {
+                FlyPerfil.IsOpen = false;
+                btnPerfil.Background = Brushes.Orange;
                 flyUsuarios.IsOpen = false;
                 tiUsuario.Background = Brushes.Orange;
                 FlyRetail.IsOpen = false;
@@ -46,14 +48,16 @@ namespace QOfreces.WPF
                 tiReportes.Background = Brushes.Orange;
             }
             flyProductos.IsOpen = true;
-            tiProducto.Background = Brushes.Black;
+            tiProducto.Background = Brushes.Gray;
 
         }
 
         private void tiUsuario_Click(object sender, RoutedEventArgs e)
         {
-            if (flyProductos.IsOpen == true || FlyRetail.IsOpen == true || FlyRubro.IsOpen == true || FlyBI.IsOpen == true)
+            if (FlyPerfil.IsOpen == true || flyProductos.IsOpen == true || FlyRetail.IsOpen == true || FlyRubro.IsOpen == true || FlyBI.IsOpen == true)
             {
+                FlyPerfil.IsOpen = false;
+                btnPerfil.Background = Brushes.Orange;
                 flyProductos.IsOpen = false;
                 tiProducto.Background = Brushes.Orange;
                 FlyRetail.IsOpen = false;
@@ -64,13 +68,15 @@ namespace QOfreces.WPF
                 tiReportes.Background = Brushes.Orange;
             }
             flyUsuarios.IsOpen = true;
-            tiUsuario.Background = Brushes.Black;
+            tiUsuario.Background = Brushes.Gray;
         }
 
         private void tiEmpresa_Click(object sender, RoutedEventArgs e)
         {
-            if (flyProductos.IsOpen == true || flyUsuarios.IsOpen == true || FlyRubro.IsOpen == true || FlyBI.IsOpen == true)
+            if (FlyPerfil.IsOpen == true || flyProductos.IsOpen == true || flyUsuarios.IsOpen == true || FlyRubro.IsOpen == true || FlyBI.IsOpen == true)
             {
+                FlyPerfil.IsOpen = false;
+                btnPerfil.Background = Brushes.Orange;
                 flyProductos.IsOpen = false;
                 tiProducto.Background = Brushes.Orange;
                 flyUsuarios.IsOpen = false;
@@ -80,14 +86,16 @@ namespace QOfreces.WPF
                 FlyBI.IsOpen = false;
                 tiReportes.Background = Brushes.Orange;
             }
-            tiEmpresa.Background = Brushes.Black;
+            tiEmpresa.Background = Brushes.Gray;
             FlyRetail.IsOpen = true;
         }
 
         private void tiRubro_Click(object sender, RoutedEventArgs e)
         {
-            if (flyProductos.IsOpen == true || flyUsuarios.IsOpen == true || FlyRetail.IsOpen == true || FlyBI.IsOpen == true)
+            if (FlyPerfil.IsOpen == true || flyProductos.IsOpen == true || flyUsuarios.IsOpen == true || FlyRetail.IsOpen == true || FlyBI.IsOpen == true)
             {
+                FlyPerfil.IsOpen = false;
+                btnPerfil.Background = Brushes.Orange;
                 flyProductos.IsOpen = false;
                 tiProducto.Background = Brushes.Orange;
                 flyUsuarios.IsOpen = false;
@@ -97,15 +105,17 @@ namespace QOfreces.WPF
                 FlyBI.IsOpen = false;
                 tiReportes.Background = Brushes.Orange;
             }
-            tiRubro.Background = Brushes.Black; 
+            tiRubro.Background = Brushes.Gray; 
             FlyRubro.IsOpen = true;
 
         }
 
         private void tiReportes_Click(object sender, RoutedEventArgs e)
         {
-            if (flyProductos.IsOpen == true || flyUsuarios.IsOpen == true || FlyRetail.IsOpen == true || FlyRubro.IsOpen == true)
+            if (FlyPerfil.IsOpen == true || flyProductos.IsOpen == true || flyUsuarios.IsOpen == true || FlyRetail.IsOpen == true || FlyRubro.IsOpen == true)
             {
+                FlyPerfil.IsOpen = false;
+                btnPerfil.Background = Brushes.Orange;
                 flyProductos.IsOpen = false;
                 tiProducto.Background = Brushes.Orange;
                 flyUsuarios.IsOpen = false;
@@ -115,7 +125,7 @@ namespace QOfreces.WPF
                 FlyRubro.IsOpen = false;
                 tiRubro.Background = Brushes.Orange;
             }
-            tiReportes.Background = Brushes.Black;
+            tiReportes.Background = Brushes.Gray;
             FlyBI.IsOpen = true;
 
         }
@@ -161,6 +171,42 @@ namespace QOfreces.WPF
             login.Show();
             
            
+        }
+
+        private void btnPerfil_Click(object sender, RoutedEventArgs e)
+        {
+            if (flyProductos.IsOpen == true || flyUsuarios.IsOpen == true || FlyRetail.IsOpen == true || FlyRubro.IsOpen == true || FlyBI.IsOpen == true)
+            {
+                btnPerfil.Background = Brushes.Orange;
+                flyUsuarios.IsOpen = false;
+                tiUsuario.Background = Brushes.Orange;
+                FlyRetail.IsOpen = false;
+                tiEmpresa.Background = Brushes.Orange;
+                FlyRubro.IsOpen = false;
+                tiRubro.Background = Brushes.Orange;
+                FlyBI.IsOpen = false;
+                tiReportes.Background = Brushes.Orange;
+                flyProductos.IsOpen = false;
+                tiProducto.Background = Brushes.Orange;
+            }
+
+            lblNombre.Content = mainwindow.UsuarioACtual.Nombre;
+            lblApellido.Content = mainwindow.UsuarioACtual.Apellido;
+            lblEmail.Content = mainwindow.UsuarioACtual.Email;
+            lblTelefono.Content = mainwindow.UsuarioACtual.NumeroCelular;
+            lblFecha.Content = mainwindow.UsuarioACtual.FechaNacimiento;
+            if (mainwindow.UsuarioACtual.Sexo.Equals('m'))
+            {
+                lblGenero.Content = "Masculino";
+            }
+            else
+            {
+                lblGenero.Content = "Femenino";
+            }
+
+
+            btnPerfil.Background = Brushes.Gray;
+            FlyPerfil.IsOpen = true;
         }
     }
 }
