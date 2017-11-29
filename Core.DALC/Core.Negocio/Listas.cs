@@ -451,6 +451,302 @@ namespace Core.Negocio
 
         }
 
+        public string filtrar(string json)
+        {
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            FilterParameter f = (FilterParameter)serializador.ReadObject(stream);
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+            int minimo = f.min;
+            int maximo = f.max;
+            string parametro = f.parameter;
+            int IdCategoria = f.IdCategoria;
+            int IdRetail = f.IdRetail;
+            List<Oferta> ofertas = new List<Oferta>();
+
+
+            switch (parametro)
+            {
+                case "SMM":
+                    var query1 = from a in ctx.OFERTA where a.PRECIO_DESPUES >= minimo && a.PRECIO_DESPUES <= maximo select new { a };
+                    
+
+                    foreach (var item in query1)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MIN_PRODUCTO;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        ofertas.Add(of);
+                    }
+                    return SerializarOferta(ofertas);
+                    
+
+                case "SMi":
+                    var query2 = from a in ctx.OFERTA where a.PRECIO_DESPUES >= minimo select new { a };
+                    foreach (var item in query2)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MIN_PRODUCTO;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        ofertas.Add(of);
+                    }
+                    return SerializarOferta(ofertas);
+
+                case "TODO":
+                    var query3 = from a in ctx.OFERTA
+                             join c in ctx.OFERTA_HAS_SUCURSAL on a.ID_OFERTA equals c.OFERTA_ID
+                             join b in ctx.SUCURSALES on c.SUCURSAL_ID equals b.ID_SUCURSAL
+                             where b.RETAIL_ID==IdRetail && a.PRECIO_DESPUES >= minimo && a.PRECIO_DESPUES<=maximo && a.CATEGORIA_OFERTA_ID==IdCategoria
+                             select new { a };
+                    foreach (var item in query3)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MIN_PRODUCTO;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        ofertas.Add(of);
+                    }
+                    return SerializarOferta(ofertas);
+
+                case "SCAT":
+                    var query4 = from a in ctx.OFERTA           
+                            where a.CATEGORIA_OFERTA_ID == IdCategoria
+                            select new { a };
+                    foreach (var item in query4)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MIN_PRODUCTO;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        ofertas.Add(of);
+                    }
+                    return SerializarOferta(ofertas);
+
+                case "SRET":
+                    var query5 = from a in ctx.OFERTA
+                            join c in ctx.OFERTA_HAS_SUCURSAL on a.ID_OFERTA equals c.OFERTA_ID
+                            join b in ctx.SUCURSALES on c.SUCURSAL_ID equals b.ID_SUCURSAL
+                            where b.RETAIL_ID == IdRetail
+                            select new { a };
+                    foreach (var item in query5)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MIN_PRODUCTO;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        ofertas.Add(of);
+                    }
+                    return SerializarOferta(ofertas);
+
+                case "SCATRET":
+                    var query6 = from a in ctx.OFERTA
+                            join c in ctx.OFERTA_HAS_SUCURSAL on a.ID_OFERTA equals c.OFERTA_ID
+                            join b in ctx.SUCURSALES on c.SUCURSAL_ID equals b.ID_SUCURSAL
+                            where b.RETAIL_ID == IdRetail && a.CATEGORIA_OFERTA_ID == IdCategoria
+                            select new { a };
+                    foreach (var item in query6)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MIN_PRODUCTO;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        ofertas.Add(of);
+                    }
+                    return SerializarOferta(ofertas);
+
+                case "SCARETMAX":
+                    var query7 = from a in ctx.OFERTA
+                            join c in ctx.OFERTA_HAS_SUCURSAL on a.ID_OFERTA equals c.OFERTA_ID
+                            join b in ctx.SUCURSALES on c.SUCURSAL_ID equals b.ID_SUCURSAL
+                            where b.RETAIL_ID == IdRetail && a.PRECIO_DESPUES <= maximo && a.CATEGORIA_OFERTA_ID == IdCategoria
+                            select new { a };
+                    foreach (var item in query7)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MIN_PRODUCTO;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        ofertas.Add(of);
+                    }
+                    return SerializarOferta(ofertas);
+
+                case "SCARETMIN":
+                    var query8 = from a in ctx.OFERTA
+                            join c in ctx.OFERTA_HAS_SUCURSAL on a.ID_OFERTA equals c.OFERTA_ID
+                            join b in ctx.SUCURSALES on c.SUCURSAL_ID equals b.ID_SUCURSAL
+                            where b.RETAIL_ID == IdRetail && a.PRECIO_DESPUES >= minimo && a.CATEGORIA_OFERTA_ID == IdCategoria
+                            select new { a };
+                    foreach (var item in query8)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MIN_PRODUCTO;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        ofertas.Add(of);
+                    }
+                    return SerializarOferta(ofertas);
+
+                case "SCAMAX":
+                    var query9 = from a in ctx.OFERTA
+                            join c in ctx.OFERTA_HAS_SUCURSAL on a.ID_OFERTA equals c.OFERTA_ID
+                            join b in ctx.SUCURSALES on c.SUCURSAL_ID equals b.ID_SUCURSAL
+                            where  a.PRECIO_DESPUES <= maximo && a.CATEGORIA_OFERTA_ID == IdCategoria
+                            select new { a };
+                    foreach (var item in query9)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MIN_PRODUCTO;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        ofertas.Add(of);
+                    }
+                    return SerializarOferta(ofertas);
+
+                case "SCAMIN":
+                    var query10 = from a in ctx.OFERTA
+                            join c in ctx.OFERTA_HAS_SUCURSAL on a.ID_OFERTA equals c.OFERTA_ID
+                            join b in ctx.SUCURSALES on c.SUCURSAL_ID equals b.ID_SUCURSAL
+                            where a.PRECIO_DESPUES >= minimo && a.CATEGORIA_OFERTA_ID == IdCategoria
+                            select new { a };
+                    foreach (var item in query10)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MIN_PRODUCTO;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        ofertas.Add(of);
+                    }
+                    return SerializarOferta(ofertas);
+
+                case "SRETMAX":
+                    var query11 = from a in ctx.OFERTA
+                            join c in ctx.OFERTA_HAS_SUCURSAL on a.ID_OFERTA equals c.OFERTA_ID
+                            join b in ctx.SUCURSALES on c.SUCURSAL_ID equals b.ID_SUCURSAL
+                            where a.PRECIO_DESPUES <= maximo && b.RETAIL_ID == IdRetail
+                            select new { a };
+                    foreach (var item in query11)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MIN_PRODUCTO;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        ofertas.Add(of);
+                    }
+                    return SerializarOferta(ofertas);
+
+                case "SRETMIN":
+                    var query12 = from a in ctx.OFERTA
+                            join c in ctx.OFERTA_HAS_SUCURSAL on a.ID_OFERTA equals c.OFERTA_ID
+                            join b in ctx.SUCURSALES on c.SUCURSAL_ID equals b.ID_SUCURSAL
+                            where a.PRECIO_DESPUES >= minimo && b.RETAIL_ID == IdRetail
+                            select new { a };
+                    foreach (var item in query12)
+                    {
+                        Oferta of = new Oferta();
+                        of.IdOferta = (int)item.a.ID_OFERTA;
+                        of.CategoriaIdOferta = (int)item.a.CATEGORIA_OFERTA_ID;
+                        of.PrecioAntes = (int)item.a.PRECIO_ANTES;
+                        of.PrecioOferta = (int)item.a.PRECIO_DESPUES;
+                        of.Nombre = item.a.NOMBRE;
+                        of.Descripcion = item.a.DESCRIPCION;
+                        of.ImagenOferta = item.a.IMAGEN_OFERTA;
+                        of.MinProductos = (int)item.a.MIN_PRODUCTO;
+                        of.MaxProductos = (int)item.a.MIN_PRODUCTO;
+                        of.FechaOferta = item.a.FECHA_OFERTA;
+                        ofertas.Add(of);
+                    }
+                    return SerializarOferta(ofertas);
+
+
+                default:
+                    return "[]";
+                    
+            }
+           
+
+
+            
+        }
+
         public string deshacerValoracion(string json)
         {
             DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));

@@ -13,11 +13,15 @@ namespace Core.Negocio
         public int max { get; set; }
         public FilterParameter() { }
 
-        public FilterParameter(string parameter, int min, int max)
+        public int IdCategoria { get; set; }
+        public int IdRetail { get; set; }
+        public FilterParameter(string parameter, int min, int max,int IdCategoria,int IdRetail)
         {
             this.parameter = parameter;
             this.min = min;
             this.max = max;
+            this.IdCategoria = IdCategoria;
+            this.IdRetail = IdRetail;
         }
     }
 }
