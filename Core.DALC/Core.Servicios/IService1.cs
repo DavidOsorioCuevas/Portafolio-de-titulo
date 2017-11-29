@@ -13,6 +13,8 @@ namespace Core.Servicios
     public interface IService1
     {
         [OperationContract]
+        string DeshacerValoracion(string json);
+        [OperationContract]
         string TraerCategorias();
         [OperationContract]
         string TraerRetail();

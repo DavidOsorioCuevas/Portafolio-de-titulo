@@ -342,6 +342,20 @@ namespace Core.Negocio
             return ser.ToString();
 
         }
+
+        public string SerializarFilterParameterUnico(FilterParameter filter)
+        {
+
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));
+            MemoryStream stream = new MemoryStream();
+
+            serializador.WriteObject(stream, filter);
+
+            string ser = Encoding.UTF8.GetString(stream.ToArray());
+
+            return ser.ToString();
+
+        }
         public string SerializarRegion(List<Region> region)
         {
 
@@ -437,6 +451,29 @@ namespace Core.Negocio
 
         }
 
+        public string deshacerValoracion(string json)
+        {
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            FilterParameter f = (FilterParameter)serializador.ReadObject(stream);
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+            int IdValoracion = int.Parse(f.parameter);
+
+            try
+            {
+                Core.DALC.VALORACION val = (Core.DALC.VALORACION)ctx.VALORACION.Where(b => b.ID_VALORACION == IdValoracion).First();
+                ctx.VALORACION.Remove(val);
+                ctx.SaveChanges();
+                f.parameter = "OK";
+            }
+            catch (Exception)
+            {
+
+                f.parameter = "NO";
+            }
+            
+            return SerializarFilterParameterUnico(f);
+        }
 
         public string traerValoraciones(string json)
         {

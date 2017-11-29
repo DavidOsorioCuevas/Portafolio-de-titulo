@@ -56,6 +56,8 @@ namespace Core.Negocio
             this.Rut = user.Rut;
             this.Activo = user.Activo;
             this.IdSucursal = user.IdSucursal;
+            this.Idregion = user.Idregion;
+            this.IdComuna = user.IdComuna;
             this.FechaNacimiento = user.FechaNacimiento;
             this.Sexo = user.Sexo;
             this.Email = user.Email;
@@ -80,21 +82,22 @@ namespace Core.Negocio
             
             var resultEmail = from a in db.USUARIO where a.EMAIL.Equals(this.Email) select new { a };
             var resultRut = from a in db.USUARIO where a.RUT.Equals(this.Rut) select new { a };
-         if (resultEmail.Count()>0)
+            if (resultEmail.Count() > 0)
             {
                 this.Response = "EE";
                 return SerializarUsuario(this);
             }
-            else if (resultRut.Count()>0)
+            else if (resultRut.Count() > 0)
             {
-             
+
                 this.Response = "RPE";
                 return SerializarUsuario(this);
             }
             else
             {
                 usuario.PERFIL_ID = 3;
-
+                usuario.REGION_ID = this.Idregion;
+                usuario.COMUNA_ID = this.IdComuna;
                 usuario.NOMBRE_USUARIO = "0";
                 usuario.PASSWORD = this.Password;
                 usuario.NOMBRE = this.Nombre;
@@ -136,6 +139,7 @@ namespace Core.Negocio
                 ctx.SaveChanges();
                 user.Response = "OK";
                 user.Nombre = result.First().a.NOMBRE;
+                user.Apellido = result.First().a.APELLIDO;
             }else
             {
                 user.Response = "CI";
