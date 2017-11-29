@@ -116,6 +116,8 @@ namespace QOfreces.WPF
             }
             tiConsultarOferta.Background = Brushes.Gray;
             flyConsultar.IsOpen = true;
+
+
         }
 
         private void tiReportes_Click(object sender, RoutedEventArgs e)
@@ -224,12 +226,12 @@ namespace QOfreces.WPF
                         of.EstadoOferta = char.Parse(0.ToString());
                     }
                     of.FechaOferta = dpFecha.SelectedDate;
-                    of.IdSucursal = 1;
+                    of.IdSucursal = mainwindow.UsuarioACtual.IdSucursal;
 
                     of.CategoriaIdOferta = (int)cbCatOf.SelectedValue;
                     of.Nombre = txtNombre.Text;
                     of.Descripcion = txtDescOf.Text;
-                    of.OfertaDia = char.Parse("s");
+                    of.OfertaDia = char.Parse("1");
 
                     string json = of.Serializar();
 
@@ -345,7 +347,7 @@ namespace QOfreces.WPF
         private async void btnBusquedaPu_Click(object sender, RoutedEventArgs e)
         {
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = proxy.ReadAllOfertas(mainwindow.UsuarioACtual.IdSucursal);
+            string json = proxy.ReadAllOfertas(mainwindow.RetailActual.IdRetail);
             Core.Negocio.OfertaCollections collof = new Core.Negocio.OfertaCollections(json);
             var colloff = new OfertaCollections();
 
@@ -525,7 +527,7 @@ namespace QOfreces.WPF
             var listasu = dgSucCO.Items.OfType<Sucursal>();
             var listaCa = dgCat.Items.OfType<CategoriaOferta>();
             ServiceReference1.Service1Client proxy = new ServiceReference1.Service1Client();
-            string json = proxy.ReadAllOfertas(mainwindow.UsuarioACtual.IdSucursal);
+            string json = proxy.ReadAllOfertas(mainwindow.RetailActual.IdRetail);
             Core.Negocio.OfertaCollections collof = new Core.Negocio.OfertaCollections(json);
             var colloff = new OfertaCollections();
             var colmost = new OfertaCollections();
