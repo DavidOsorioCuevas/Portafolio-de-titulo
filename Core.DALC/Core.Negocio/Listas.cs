@@ -11,6 +11,65 @@ namespace Core.Negocio
 {
     public class Listas
     {
+
+        public string promedioValoracion(string json)
+        {
+            DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            FilterParameter f = (FilterParameter)serializador.ReadObject(stream);
+            Core.DALC.QueOfrecesEntities ctx = new Core.DALC.QueOfrecesEntities();
+
+            int IdOferta = int.Parse(f.parameter);
+            var consulta = from a in ctx.VALORACION where a.OFERTA_ID == IdOferta select new { a };
+
+            
+            List<int> cal = new List<int>();
+            foreach (var item in consulta)
+            {
+                if (item.a.CALIFICACION.Equals("buena"))
+                {
+                    cal.Add(2);
+                }
+                if (item.a.CALIFICACION.Equals("mala"))
+                {
+                    cal.Add(1);
+                }
+                if (item.a.CALIFICACION.Equals("excelente"))
+                {
+                    cal.Add(3);
+                }
+            }
+            int cont = 0;
+            float sum = 0;
+            foreach (var item in cal)
+            {
+                sum = sum + item;
+                cont++;
+            }
+            float prom = sum / cont;
+
+            if (cont==0)
+            {
+                f.parameter = "Sin valoraciones";
+            }
+
+            if (prom>1 && prom<=(1.8))
+            {
+                f.parameter = "Mala";
+            }
+
+            if (prom > 1.8 && prom <= (2.8))
+            {
+                f.parameter = "Buena";
+            }
+
+            if (prom > 2.8)
+            {
+                f.parameter = "Excelente";
+            }
+
+            return SerializarFilterParameterUnico(f);
+        }
         public string traerCupones(string json) {
           
             DataContractJsonSerializer serializador = new DataContractJsonSerializer(typeof(FilterParameter));
@@ -290,6 +349,9 @@ namespace Core.Negocio
 
             return SerializarOferta(ofertaLista);
         }
+
+
+
         public string SerializarCupon(Cupon c)
         {
 
