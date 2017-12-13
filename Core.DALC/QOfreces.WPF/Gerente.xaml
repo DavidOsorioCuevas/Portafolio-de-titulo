@@ -4,14 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QOfreces.WPF"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        mc:Ignorable="d"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         Icon="img/logo.png"
         BorderBrush="{DynamicResource AccentColorBrush}"
         BorderThickness="1"
-        Title="Menu Gerencia" Height="316.917" Width="433.082" Background="Gainsboro">
+        mc:Ignorable="d"
+        x:Name="MenuGerencia" Height="730" Width="850" Background="Black" WindowStartupLocation="CenterScreen" MinWidth="850" MinHeight="730" MaxWidth="850" MaxHeight="730">
     <Grid Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="405*"/>

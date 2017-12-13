@@ -25,6 +25,7 @@ namespace QOfreces.WPF
         Validaciones validador = new Validaciones();
         public Gerente()
         {
+            this.Title = string.Format("Encargado {0}     Sucursal: {1}", mainwindow.RetailActual.NombreRetail, mainwindow.SucursalActual.Nombre);
             InitializeComponent();
             lblNombre.Visibility = Visibility.Hidden;
         }
