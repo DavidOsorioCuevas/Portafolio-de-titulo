@@ -91,7 +91,7 @@ namespace QOfreces.WPF
                         }
                         else if (user.IdPerfil == 4)
                         {
-                            ReportValoraciones ger = new ReportValoraciones();
+                            ReporteMovimientos ger = new ReporteMovimientos();
                             this.Close();
                             ger.Show();
                         }

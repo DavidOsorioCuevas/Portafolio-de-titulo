@@ -6,6 +6,18 @@
       <xsd:import schemaLocation="http://localhost:50194/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IService1_ValoracionPromedio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValoracionPromedio" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ValoracionPromedio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValoracionPromedioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FiltrarOferta_InputMessage">
+    <wsdl:part name="parameters" element="tns:FiltrarOferta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FiltrarOferta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FiltrarOfertaResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_DeshacerValoracion_InputMessage">
     <wsdl:part name="parameters" element="tns:DeshacerValoracion" />
   </wsdl:message>
@@ -439,6 +451,14 @@
     <wsdl:part name="parameters" element="tns:CrearOfertaHasSucursalResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
+    <wsdl:operation name="ValoracionPromedio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ValoracionPromedio" message="tns:IService1_ValoracionPromedio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ValoracionPromedioResponse" message="tns:IService1_ValoracionPromedio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FiltrarOferta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/FiltrarOferta" message="tns:IService1_FiltrarOferta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/FiltrarOfertaResponse" message="tns:IService1_FiltrarOferta_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="DeshacerValoracion">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeshacerValoracion" message="tns:IService1_DeshacerValoracion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeshacerValoracionResponse" message="tns:IService1_DeshacerValoracion_OutputMessage" />
@@ -730,6 +750,24 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ValoracionPromedio">
+      <soap:operation soapAction="http://tempuri.org/IService1/ValoracionPromedio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FiltrarOferta">
+      <soap:operation soapAction="http://tempuri.org/IService1/FiltrarOferta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeshacerValoracion">
       <soap:operation soapAction="http://tempuri.org/IService1/DeshacerValoracion" style="document" />
       <wsdl:input>

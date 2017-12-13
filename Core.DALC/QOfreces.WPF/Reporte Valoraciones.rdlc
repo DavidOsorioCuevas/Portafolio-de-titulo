@@ -206,7 +206,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -255,7 +254,7 @@
                             <TextRun>
                               <Value>=Fields!FECHA_OFERTA.Value</Value>
                               <Style>
-                                <Format>dddd, dd' de 'MMMM' de 'yyyy</Format>
+                                <Format>dd-MM-yyyy</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -317,7 +316,7 @@
                             <TextRun>
                               <Value>=Fields!FECHA_VALORACION.Value</Value>
                               <Style>
-                                <Format>D</Format>
+                                <Format>dd-MM-yyyy</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -432,10 +431,6 @@
         <Left>0.11069cm</Left>
         <Height>2.29388cm</Height>
         <Width>15.21432cm</Width>
-        <Visibility>
-          <Hidden>true</Hidden>
-          <ToggleItem>Detalle</ToggleItem>
-        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
@@ -729,35 +724,6 @@
           <BackgroundGradientType>None</BackgroundGradientType>
         </Style>
       </Chart>
-      <Textbox Name="Detalle">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Ver Detalle</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <Top>8.59804cm</Top>
-        <Left>6.73488cm</Left>
-        <Height>0.6cm</Height>
-        <Width>1.83854cm</Width>
-        <ZIndex>2</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
     </ReportItems>
     <Height>5.02785in</Height>
     <Style />
