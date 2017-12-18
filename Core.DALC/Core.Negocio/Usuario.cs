@@ -357,7 +357,7 @@ namespace Core.Negocio
 
             if (Read())
             {
-                if (this.Password == password)
+                if (this.Password.Equals(password))
                 {
                     return true;
                 }
