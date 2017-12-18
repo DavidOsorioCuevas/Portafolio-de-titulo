@@ -203,32 +203,19 @@
             </Controls:Flyout>
             <Controls:Flyout x:Name="flyReportes" Position="Right" Header="Reporte de tienda" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
                 <Grid>
-
-                    <WindowsFormsHost Margin="9,55,11,24">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="64*"/>
+                    </Grid.ColumnDefinitions>
+                    <WindowsFormsHost Margin="0,35,0,-1" Grid.ColumnSpan="2">
                         <rv:ReportViewer x:Name="_reportViewer"/>
                     </WindowsFormsHost>
-                    <!--<Button x:Name="btnReporte" Content="Reporte" HorizontalAlignment="Left" Margin="461,10,0,0" VerticalAlignment="Top" Width="74" />
-
-                    
-            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="46,60,0,0" VerticalAlignment="Top" Width="120"/>
-                    <DatePicker HorizontalAlignment="Left" Margin="46,104,0,0" VerticalAlignment="Top"/>
-                    <DatePicker HorizontalAlignment="Left" Margin="239,104,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnConsultar" Content="Consultar" HorizontalAlignment="Left" Margin="446,57,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btnExportar" Content="Exportar" HorizontalAlignment="Left" Margin="446,89,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Label x:Name="label" Content="Selecione una tienda" Foreground="White" HorizontalAlignment="Left" Margin="46,29,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label_Copy" Content="Del:" Foreground="White" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label_Copy1" Content="Al:" Foreground="White" HorizontalAlignment="Left" Margin="206,104,0,0" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="dgReport" HorizontalAlignment="Left" Margin="59,173,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.136,-0.68" Width="401" Height="228" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserResizeColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridCheckBoxColumn x:Name="item" Header="" Binding="{Binding Selec}" />
-                            <DataGridTextColumn Header="Nombre Sucursal" Binding="{Binding Nombre}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Cant Correos" Binding="{Binding Nombre}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Valoraciones" Binding="{Binding Nombre}" IsReadOnly="True" />
-                        </DataGrid.Columns>
-                    </DataGrid>-->
-            
-
+                    <DatePicker x:Name="dpFrom" HorizontalAlignment="Left" Margin="17,4,0,0" VerticalAlignment="Top" Width="146" Grid.Column="1"/>
+                    <DatePicker x:Name="dpTo" HorizontalAlignment="Left" Margin="187,4,0,0" VerticalAlignment="Top" Width="148" Grid.Column="1"/>
+                    <Button x:Name="btnFiltrar" Content="Filtrar" HorizontalAlignment="Left" Margin="357,4,0,0" VerticalAlignment="Top" Width="62" Click="btnFiltrar_Click" Height="26" Grid.Column="1"/>
+                    <Label x:Name="labelRangoFecha" Content="Rango Fecha Oferta" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Foreground="Snow" Grid.ColumnSpan="2" Width="118" />
                 </Grid>
+
             </Controls:Flyout>
             <Controls:Flyout x:Name="FlyPerfil" Position="Right" Header="Perfil Usuario" Opacity="0.9" Background="Black" Foreground="#FFFDFDFD" HorizontalAlignment="Left" Width="538" Margin="-1,0,0,0">
                 <Grid>

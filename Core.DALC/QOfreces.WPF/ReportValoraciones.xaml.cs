@@ -11,16 +11,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MahApps.Metro.Behaviours;
 
 namespace QOfreces.WPF
 {
     /// <summary>
     /// Lógica de interacción para ReportValoraciones.xaml
     /// </summary>
-    public partial class ReportValoraciones : Window
+    public partial class ReportValoraciones : MetroWindow
     {
         public ReportValoraciones()
         {
+            this.Title = string.Format("{0}     Gerencia: {1}", string.Format("{0} {1}", mainwindow.UsuarioACtual.Nombre, mainwindow.UsuarioACtual.Apellido), mainwindow.RetailActual.NombreRetail);
             InitializeComponent();
             _reportViewer.Load += ReportViewer_Load;
             

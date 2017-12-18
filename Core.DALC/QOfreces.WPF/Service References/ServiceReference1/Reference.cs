@@ -15,6 +15,18 @@ namespace QOfreces.WPF.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ValoracionPromedio", ReplyAction="http://tempuri.org/IService1/ValoracionPromedioResponse")]
+        string ValoracionPromedio(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ValoracionPromedio", ReplyAction="http://tempuri.org/IService1/ValoracionPromedioResponse")]
+        System.Threading.Tasks.Task<string> ValoracionPromedioAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/FiltrarOferta", ReplyAction="http://tempuri.org/IService1/FiltrarOfertaResponse")]
+        string FiltrarOferta(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/FiltrarOferta", ReplyAction="http://tempuri.org/IService1/FiltrarOfertaResponse")]
+        System.Threading.Tasks.Task<string> FiltrarOfertaAsync(string json);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeshacerValoracion", ReplyAction="http://tempuri.org/IService1/DeshacerValoracionResponse")]
         string DeshacerValoracion(string json);
         
@@ -473,6 +485,22 @@ namespace QOfreces.WPF.ServiceReference1 {
         
         public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string ValoracionPromedio(string json) {
+            return base.Channel.ValoracionPromedio(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> ValoracionPromedioAsync(string json) {
+            return base.Channel.ValoracionPromedioAsync(json);
+        }
+        
+        public string FiltrarOferta(string json) {
+            return base.Channel.FiltrarOferta(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> FiltrarOfertaAsync(string json) {
+            return base.Channel.FiltrarOfertaAsync(json);
         }
         
         public string DeshacerValoracion(string json) {

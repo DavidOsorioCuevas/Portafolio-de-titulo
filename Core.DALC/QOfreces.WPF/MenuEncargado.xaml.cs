@@ -39,6 +39,9 @@ namespace QOfreces.WPF
        
 
         private bool _isReportViewerLoaded;
+        Microsoft.Reporting.WinForms.ReportDataSource BDMISOFERTAS = new Microsoft.Reporting.WinForms.ReportDataSource();
+        ValoracionesDataSet dataset = new ValoracionesDataSet();
+        ValoracionesDataSetTableAdapters.ValoracionesTableAdapter valoracionesTableAdapter = new ValoracionesDataSetTableAdapters.ValoracionesTableAdapter();
 
 
         private void tiGenerarOferta_Click(object sender, RoutedEventArgs e)
@@ -661,9 +664,6 @@ namespace QOfreces.WPF
         {
             if (!_isReportViewerLoaded)
             {
-                Microsoft.Reporting.WinForms.ReportDataSource BDMISOFERTAS = new Microsoft.Reporting.WinForms.ReportDataSource();
-                ValoracionesDataSet dataset = new ValoracionesDataSet();
-
                 dataset.BeginInit();
 
                 BDMISOFERTAS.Name = "Valoraciones"; //Name of the report dataset in our .RDLC file
@@ -674,7 +674,7 @@ namespace QOfreces.WPF
                 dataset.EndInit();
 
                 //fill data into adventureWorksDataSet
-                ValoracionesDataSetTableAdapters.ValoracionesTableAdapter valoracionesTableAdapter = new ValoracionesDataSetTableAdapters.ValoracionesTableAdapter();
+
                 valoracionesTableAdapter.ClearBeforeFill = true;
                 valoracionesTableAdapter.Fill(dataset.Valoraciones);
 
@@ -725,6 +725,30 @@ namespace QOfreces.WPF
 
             btnPerfil.Background = Brushes.Gray;
             FlyPerfil.IsOpen = true;
+        }
+
+        private void btnFiltrar_Click(object sender, RoutedEventArgs e)
+        {
+            if (dpTo.SelectedDate == null && dpFrom.SelectedDate == null)
+            {
+                valoracionesTableAdapter.ClearBeforeFill = true;
+                valoracionesTableAdapter.Fill(dataset.Valoraciones);
+
+                _reportViewer.RefreshReport();
+
+                _isReportViewerLoaded = true;
+
+
+            }
+            else
+            {
+                valoracionesTableAdapter.ClearBeforeFill = true;
+                valoracionesTableAdapter.FillByDate(dataset.Valoraciones, dpFrom.SelectedDate.Value, dpTo.SelectedDate.Value);
+
+                _reportViewer.RefreshReport();
+
+                _isReportViewerLoaded = true;
+            }
         }
     }
 }
